@@ -52,10 +52,11 @@
 		A56DB5FB259FB4780098CAAB /* PAEI */ = {
 			isa = PBXGroup;
 			children = (
+				A56DB60F259FB5660098CAAB /* Supporting File */,
+				A56DB60E259FB53B0098CAAB /* Manager */,
+				A56DB60D259FB5290098CAAB /* Content Views */,
+				A56DB60C259FB5190098CAAB /* Model */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
-				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
-				A56DB600259FB47B0098CAAB /* Assets.xcassets */,
-				A56DB605259FB47B0098CAAB /* Info.plist */,
 				A56DB602259FB47B0098CAAB /* Preview Content */,
 			);
 			path = PAEI;
@@ -67,6 +68,37 @@
 				A56DB603259FB47B0098CAAB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A56DB60C259FB5190098CAAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A56DB60D259FB5290098CAAB /* Content Views */ = {
+			isa = PBXGroup;
+			children = (
+				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
+			);
+			path = "Content Views";
+			sourceTree = "<group>";
+		};
+		A56DB60E259FB53B0098CAAB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		A56DB60F259FB5660098CAAB /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				A56DB605259FB47B0098CAAB /* Info.plist */,
+				A56DB600259FB47B0098CAAB /* Assets.xcassets */,
+			);
+			path = "Supporting File";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +303,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PAEI/Preview Content\"";
 				DEVELOPMENT_TEAM = RNER64Q73Y;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = PAEI/Info.plist;
+				INFOPLIST_FILE = "PAEI/Supporting File/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,7 +325,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PAEI/Preview Content\"";
 				DEVELOPMENT_TEAM = RNER64Q73Y;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = PAEI/Info.plist;
+				INFOPLIST_FILE = "PAEI/Supporting File/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
