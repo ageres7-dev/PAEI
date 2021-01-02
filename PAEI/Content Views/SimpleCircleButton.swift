@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct RadioButtonView: View {
+struct SimpleCircleButton: View {
     
     let isMarked: Bool
-    var isOn: Bool
+    let isOn: Bool
     var action: () -> Void
 
     
@@ -34,7 +34,7 @@ struct RadioButtonView: View {
 
 struct RadioButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtonView(isMarked: true, isOn: true, action: {})
+        SimpleCircleButton(isMarked: true, isOn: true, action: {})
             .preferredColorScheme(.dark)
     }
 }
