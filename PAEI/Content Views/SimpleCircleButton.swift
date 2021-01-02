@@ -23,11 +23,14 @@ struct SimpleCircleButton: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(isOn ? 1: 0.3)
-                    .foregroundColor(isMarked ? .blue : .primary)
+//                    .foregroundColor(isMarked ? .blue : .primary)
+                    .foregroundColor(.primary)
                     .shadow(radius: size * 0.1)
-                    .padding()
+//                    .padding()
             }
             .disabled(!isOn)
+//            .frame(width: 50, height: 50)
+            
         }
     }
 }

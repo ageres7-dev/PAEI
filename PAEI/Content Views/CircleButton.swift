@@ -16,22 +16,22 @@ struct CircleButton: View {
         GeometryReader { geometry in
             let size = min(geometry.size.height, geometry.size.width)
             
-            Button(action: { action }) {
+            Button(action: { isMarked = true }) {
                 Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(isOn ? 1: 0.3)
                     .foregroundColor(isMarked ? .blue : .primary)
                     .shadow(radius: size * 0.1)
-                    .padding()
+//                    .padding()
             }
             .disabled(!isOn)
         }
     }
     
-    private var action: () {
-        if isOn { isMarked = true }
-    }
+//    private var action: () {
+//        if isOn { isMarked = true }
+//    }
 }
 
 

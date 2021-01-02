@@ -13,6 +13,7 @@
 		A56DB604259FB47B0098CAAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB603259FB47B0098CAAB /* Preview Assets.xcassets */; };
 		A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB61325A071460098CAAB /* SimpleCircleButton.swift */; };
 		A56DB62225A113900098CAAB /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62125A113900098CAAB /* CircleButton.swift */; };
+		A56DB62625A115280098CAAB /* RadioButtonGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62525A115280098CAAB /* RadioButtonGroups.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A56DB605259FB47B0098CAAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A56DB61325A071460098CAAB /* SimpleCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCircleButton.swift; sourceTree = "<group>"; };
 		A56DB62125A113900098CAAB /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		A56DB62525A115280098CAAB /* RadioButtonGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroups.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 				A56DB62125A113900098CAAB /* CircleButton.swift */,
+				A56DB62525A115280098CAAB /* RadioButtonGroups.swift */,
 			);
 			path = "Content Views";
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
 				A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */,
 				A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */,
+				A56DB62625A115280098CAAB /* RadioButtonGroups.swift in Sources */,
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
