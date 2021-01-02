@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selected = 1
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+         Text("Hello")
+        }
+        
     }
 }
 

@@ -11,6 +11,7 @@
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
 		A56DB601259FB47B0098CAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB600259FB47B0098CAAB /* Assets.xcassets */; };
 		A56DB604259FB47B0098CAAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB603259FB47B0098CAAB /* Preview Assets.xcassets */; };
+		A56DB61425A071460098CAAB /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB61325A071460098CAAB /* RadioButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		A56DB600259FB47B0098CAAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56DB603259FB47B0098CAAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A56DB605259FB47B0098CAAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A56DB61325A071460098CAAB /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +55,10 @@
 			isa = PBXGroup;
 			children = (
 				A56DB60F259FB5660098CAAB /* Supporting File */,
+				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB60E259FB53B0098CAAB /* Manager */,
 				A56DB60D259FB5290098CAAB /* Content Views */,
 				A56DB60C259FB5190098CAAB /* Model */,
-				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB602259FB47B0098CAAB /* Preview Content */,
 			);
 			path = PAEI;
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
+				A56DB61325A071460098CAAB /* RadioButtonView.swift */,
 			);
 			path = "Content Views";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56DB61425A071460098CAAB /* RadioButtonView.swift in Sources */,
 				A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */,
 				A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */,
 			);
