@@ -6,7 +6,7 @@
 
 
 //
-
+/*
 struct Сharacteristic {
     let firstLine: String
     let secondLine: String
@@ -69,3 +69,4 @@ extension  Сharacteristic {
         ]
     }
 }
+*/

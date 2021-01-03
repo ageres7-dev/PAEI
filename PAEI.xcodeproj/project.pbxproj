@@ -20,6 +20,7 @@
 		A5A9EE5925A24E5E00816A4A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5425A24E5E00816A4A /* Question.swift */; };
 		A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5525A24E5E00816A4A /* Result.swift */; };
 		A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5625A24E5E00816A4A /* ResultFunction.swift */; };
+		A5A9EE5E25A257FF00816A4A /* CharacteristicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5D25A257FF00816A4A /* CharacteristicsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A5A9EE5425A24E5E00816A4A /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A5A9EE5525A24E5E00816A4A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A5A9EE5625A24E5E00816A4A /* ResultFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultFunction.swift; sourceTree = "<group>"; };
+		A5A9EE5D25A257FF00816A4A /* CharacteristicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
 				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A56DB62525A115280098CAAB /* RadioButtonGroups.swift */,
+				A5A9EE5D25A257FF00816A4A /* CharacteristicsView.swift */,
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 			);
 			path = "Content Views";
@@ -204,6 +207,7 @@
 				A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */,
 				A56DB62625A115280098CAAB /* RadioButtonGroups.swift in Sources */,
 				A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */,
+				A5A9EE5E25A257FF00816A4A /* CharacteristicsView.swift in Sources */,
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */,
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
