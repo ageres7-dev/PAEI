@@ -1,5 +1,5 @@
 //
-//  RadioButtonGroups.swift
+//  RadioButtons.swift
 //  PAEI
 //
 //  Created by Сергей on 03.01.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RadioButtonGroups: View {
+struct RadioButtons: View {
 //    @State private var currentValue = 4
     @Binding var currentValue: Int
     let availablePoints: Int
@@ -71,7 +71,7 @@ struct RadioButton: View {
 
 struct RadioButtonGroups_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtonGroups(currentValue: .constant(2), availablePoints: 1, label: "Уважающий")
+        RadioButtons(currentValue: .constant(2), availablePoints: 1, label: "Уважающий")
 //        RadioButtonGroups(availablePoints: 1)
         
     }

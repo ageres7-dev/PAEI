@@ -8,10 +8,70 @@
 import SwiftUI
 
 struct CharacteristicsView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @State private var producerValue = 0
+    @State private var administratorValue = 0
+    @State private var entrepreneurValue = 0
+    @State private var integratorValue = 0
+    
+    private var availablePoints: Int {
+        10 - producerValue - administratorValue - entrepreneurValue - integratorValue
     }
+    
+    private var currentNumberBlock = 0
+//    private let characteristicBlocks = CharacteristicBlock.getBlocks()
+    private var currentCharacteristic: CharacteristicBlock {
+        CharacteristicBlock.getBlocks()[currentNumberBlock]
+    }
+    private var pointsTotal: Int {
+        (producerValue
+            + administratorValue
+            + entrepreneurValue
+            + integratorValue)
+    }
+    
+    private var unansweredCharacteristic: Int {
+//        producerValue == 0 ? 1 : 0
+        var result = 0
+        for characteristic in [producerValue, administratorValue, entrepreneurValue,integratorValue] {
+            result += characteristic == 0 ? 1 : 0
+        }
+        return result
+    }
+
+    var body: some View {
+        VStack {
+            Text("Количество баллов \(pointsTotal)")
+                .font(.title)
+            Spacer()
+            
+            RadioButtons(currentValue: $producerValue,
+                         availablePoints: availablePoints,
+                         label: currentCharacteristic.qualityProducer)
+            
+            RadioButtons(currentValue: $administratorValue,
+                         availablePoints: availablePoints,
+                         label: currentCharacteristic.qualityAdministrator)
+            
+            RadioButtons(currentValue: $entrepreneurValue,
+                         availablePoints: availablePoints,
+                         label: currentCharacteristic.qualityEntrepreneurs)
+            
+            RadioButtons(currentValue: $integratorValue,
+                         availablePoints: availablePoints,
+                         label: currentCharacteristic.qualityIntegrator)
+            Spacer()
+        }
+        .padding()
+        
+       
+    }
+    
 }
+
+extension CharacteristicsView {
+    
+}
+
 
 struct CharacteristicsView_Previews: PreviewProvider {
     static var previews: some View {
