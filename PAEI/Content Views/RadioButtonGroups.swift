@@ -8,24 +8,32 @@
 import SwiftUI
 
 struct RadioButtonGroups: View {
-//    @State private var first = false
-    @State private var currentValue = 0
+//    @State private var currentValue = 4
+    @Binding var currentValue: Int
     let availablePoints: Int
     
     var body: some View {
         HStack {
-//            CircleButton(isMarked: $first, isOn: true)
-            
-            RadioButton(value: $currentValue, id: 1, availablePoints: availablePoints)
-            
-            RadioButton(value: $currentValue, id: 2, availablePoints: availablePoints)
-            RadioButton(value: $currentValue, id: 3, availablePoints: availablePoints)
-            RadioButton(value: $currentValue, id: 4, availablePoints: availablePoints)
+            RadioButton(value: $currentValue,
+                        id: 1,
+                        availablePoints: availablePoints)
+            Spacer()
+            RadioButton(value: $currentValue,
+                        id: 2,
+                        availablePoints: availablePoints)
+            Spacer()
+            RadioButton(value: $currentValue,
+                        id: 3,
+                        availablePoints: availablePoints)
+            Spacer()
+            RadioButton(value: $currentValue,
+                        id: 4,
+                        availablePoints: availablePoints)
         }
-        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+        .frame(minHeight: 60, maxHeight: 90)
+        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
     }
 }
-
 
 
 struct RadioButton: View {
@@ -37,11 +45,10 @@ struct RadioButton: View {
         VStack {
             Text("\(id)")
                 .font(.title)
-                .multilineTextAlignment(.center)
 
             SimpleCircleButton(
                 isMarked: value == id,
-                isOn: id <= availablePoints,
+                isOn: id <= availablePoints + value,
                 action: {value = id}
             )
 
@@ -53,6 +60,8 @@ struct RadioButton: View {
 
 struct RadioButtonGroups_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtonGroups(availablePoints: 2)
+        RadioButtonGroups(currentValue: .constant(2), availablePoints: 1)
+//        RadioButtonGroups(availablePoints: 1)
+        
     }
 }

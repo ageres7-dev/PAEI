@@ -14,6 +14,12 @@
 		A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB61325A071460098CAAB /* SimpleCircleButton.swift */; };
 		A56DB62225A113900098CAAB /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62125A113900098CAAB /* CircleButton.swift */; };
 		A56DB62625A115280098CAAB /* RadioButtonGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62525A115280098CAAB /* RadioButtonGroups.swift */; };
+		A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE4F25A24DAB00816A4A /* DataManager.swift */; };
+		A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */; };
+		A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5325A24E5D00816A4A /* Answer.swift */; };
+		A5A9EE5925A24E5E00816A4A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5425A24E5E00816A4A /* Question.swift */; };
+		A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5525A24E5E00816A4A /* Result.swift */; };
+		A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5625A24E5E00816A4A /* ResultFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		A56DB61325A071460098CAAB /* SimpleCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCircleButton.swift; sourceTree = "<group>"; };
 		A56DB62125A113900098CAAB /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		A56DB62525A115280098CAAB /* RadioButtonGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroups.swift; sourceTree = "<group>"; };
+		A5A9EE4F25A24DAB00816A4A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicBlock.swift; sourceTree = "<group>"; };
+		A5A9EE5325A24E5D00816A4A /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		A5A9EE5425A24E5E00816A4A /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		A5A9EE5525A24E5E00816A4A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A5A9EE5625A24E5E00816A4A /* ResultFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,11 @@
 		A56DB60C259FB5190098CAAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5A9EE5325A24E5D00816A4A /* Answer.swift */,
+				A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */,
+				A5A9EE5425A24E5E00816A4A /* Question.swift */,
+				A5A9EE5525A24E5E00816A4A /* Result.swift */,
+				A5A9EE5625A24E5E00816A4A /* ResultFunction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -87,9 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
-				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A56DB62525A115280098CAAB /* RadioButtonGroups.swift */,
+				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 			);
 			path = "Content Views";
 			sourceTree = "<group>";
@@ -97,6 +114,7 @@
 		A56DB60E259FB53B0098CAAB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				A5A9EE4F25A24DAB00816A4A /* DataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -180,10 +198,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
+				A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */,
 				A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */,
+				A5A9EE5925A24E5E00816A4A /* Question.swift in Sources */,
 				A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */,
 				A56DB62625A115280098CAAB /* RadioButtonGroups.swift in Sources */,
+				A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */,
+				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
+				A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */,
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
+				A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

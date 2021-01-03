@@ -15,23 +15,23 @@ struct SimpleCircleButton: View {
 
     
     var body: some View {
-        GeometryReader { geometry in
-            let size = min(geometry.size.height, geometry.size.width)
+//        GeometryReader { geometry in
+//            let size = min(geometry.size.height, geometry.size.width)
             
             Button(action:  action ) {
                 Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(isOn ? 1: 0.3)
-//                    .foregroundColor(isMarked ? .blue : .primary)
                     .foregroundColor(.primary)
-                    .shadow(radius: size * 0.1)
+//                    .shadow(radius: size * 0.1)
 //                    .padding()
             }
             .disabled(!isOn)
 //            .frame(width: 50, height: 50)
-            
-        }
+        
+//        }
+        
     }
 }
 
