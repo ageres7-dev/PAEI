@@ -4,7 +4,7 @@
 //
 //  Created by Сергей on 02.01.2021.
 //
-
+/*
 import SwiftUI
 
 struct SimpleCircleButton: View {
@@ -41,3 +41,4 @@ struct RadioButtonView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+*/
