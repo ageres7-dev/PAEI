@@ -23,8 +23,8 @@ struct CharacteristicsView: View {
                 .font(.title)
             Text("Остаток баллов \(availablePoints)")
                 .font(.title)
-            Text("unansweredCharacteristic \(countUncheckedCharacteristics)")
-                .font(.title)
+            Text("countUncheckedCharacteristics \(countUncheckedCharacteristics)")
+                .font(.title2)
             
             Spacer()
             
@@ -61,7 +61,13 @@ extension CharacteristicsView {
     private func autoPresLastButton() {
         guard countUncheckedCharacteristics == 1 else { return }
         
-        let setValue = 10 - pointsTotal
+//        let setValue = 10 - pointsTotal
+        var setValue: Int {
+            let availablePoints = 10 - pointsTotal
+            return (0...4).contains(availablePoints) ? availablePoints : 4
+        }
+        
+        
         if integratorValue == 0 {
             integratorValue = setValue
         } else if entrepreneurValue == 0 {
