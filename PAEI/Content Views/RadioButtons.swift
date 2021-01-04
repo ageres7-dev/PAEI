@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RadioButtons: View {
-//    @State private var currentValue = 4
     @Binding var currentValue: Int
     let availablePoints: Int
     let label: String
@@ -43,8 +42,7 @@ struct RadioButtons: View {
                             availablePoints: availablePoints,
                             closure: closure)
             }
-            
-//            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+
         }.frame(minHeight: 40, maxHeight: 100)
     }
 }
@@ -62,21 +60,26 @@ struct RadioButton: View {
                 .font(.title2)
                 .offset(y: 6)
 
-            SimpleCircleButton(
-                isMarked: value == buttonValue,
-//                isOn: buttonValue <= availablePoints + value,
-                isOn: isOn,
-                action: {value = buttonValue
-                    closure()
-                }
-            )
-
+            Button(action: { action }) {
+                Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .opacity(isOn ? 1: 0.3)
+                    .foregroundColor(.primary)
+            }
+            .disabled(!isOn)
         }
-//        .padding()
     }
 }
 
 extension RadioButton {
+    private var action: () {
+        value = buttonValue
+        closure()
+    }
+    
+    private var isMarked: Bool { value == buttonValue }
+    
     private var isOn: Bool {
         buttonValue <= availablePoints + (value == 0 ? 1 : value)
     }
@@ -85,8 +88,12 @@ extension RadioButton {
 
 struct RadioButtonGroups_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtons(currentValue: .constant(2), availablePoints: 1, label: "Уважающий", closure: {})
-//        RadioButtonGroups(availablePoints: 1)
-        
+        RadioButtons(currentValue: .constant(2), availablePoints: 1, label: "Уважающий", closure: {})        
+    }
+}
+
+struct RadioButton_Previews: PreviewProvider {
+    static var previews: some View {
+        RadioButton(value: .constant(3), buttonValue: 3, availablePoints: 3, closure: {})
     }
 }

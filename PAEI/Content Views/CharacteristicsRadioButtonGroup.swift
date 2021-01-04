@@ -29,6 +29,7 @@ struct CharacteristicsRadioButtonGroup: View {
                          availablePoints: availablePoints,
                          label: currentCharacteristic.qualityProducer,
                          closure: autoPresLastButton)
+            
             RadioButtons(currentValue: $administratorValue,
                          availablePoints: availablePoints,
                          label: currentCharacteristic.qualityAdministrator,
