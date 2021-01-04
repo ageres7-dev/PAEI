@@ -14,11 +14,11 @@ struct CharacteristicsView: View {
     @State private var integratorValue = 0
     
     private var availablePoints: Int {
-        var result = 10 - producerValue - administratorValue - entrepreneurValue - integratorValue
-//            + unansweredCharacteristic
-        if CountUnansweredCharacteristic == 2 {
-            result = (result + 1) / 2
-        }
+        let result = 10 - producerValue - administratorValue - entrepreneurValue - integratorValue - CountUnansweredCharacteristic
+
+//        if CountUnansweredCharacteristic == 2 {
+//            result = (result + 1) / 2
+//        }
         
         return result
     }

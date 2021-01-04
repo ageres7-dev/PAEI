@@ -59,7 +59,9 @@ struct RadioButton: View {
 
             SimpleCircleButton(
                 isMarked: value == buttonValue,
-                isOn: buttonValue <= availablePoints + value,
+//                isOn: buttonValue <= availablePoints + value,
+                isOn: buttonValue <= availablePoints +
+                    (value == 0 ? 1 : value),
                 action: {value = buttonValue}
             )
 
