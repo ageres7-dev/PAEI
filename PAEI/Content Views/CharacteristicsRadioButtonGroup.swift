@@ -7,17 +7,13 @@
 
 import SwiftUI
 
-struct CharacteristicsView: View {
+struct CharacteristicsRadioButtonGroup: View {
     @State private var producerValue = 0
     @State private var administratorValue = 0
     @State private var entrepreneurValue = 0
     @State private var integratorValue = 0
     
     var body: some View {
-        Group {
-  
-        }
-        
         VStack {
             Text("Количество баллов \(pointsTotal)")
                 .font(.title)
@@ -28,11 +24,11 @@ struct CharacteristicsView: View {
             
             Spacer()
             
+            
             RadioButtons(currentValue: $producerValue,
                          availablePoints: availablePoints,
                          label: currentCharacteristic.qualityProducer,
                          closure: autoPresLastButton)
-            
             RadioButtons(currentValue: $administratorValue,
                          availablePoints: availablePoints,
                          label: currentCharacteristic.qualityAdministrator,
@@ -47,26 +43,29 @@ struct CharacteristicsView: View {
                          availablePoints: availablePoints,
                          label: currentCharacteristic.qualityIntegrator,
                          closure: autoPresLastButton)
+            
             Spacer()
         }
         .padding()
+        
     }
     
     private var currentNumberBlock = 0
+    private let maxPoint = 10
     
 }
 
-extension CharacteristicsView {
+extension CharacteristicsRadioButtonGroup {
+    private var currentCharacteristic: CharacteristicBlock {
+        CharacteristicBlock.getBlocks()[currentNumberBlock]
+    }
     
     private func autoPresLastButton() {
         guard countUncheckedCharacteristics == 1 else { return }
-        
-//        let setValue = 10 - pointsTotal
         var setValue: Int {
-            let availablePoints = 10 - pointsTotal
+            let availablePoints = maxPoint - pointsTotal
             return (0...4).contains(availablePoints) ? availablePoints : 4
         }
-        
         
         if integratorValue == 0 {
             integratorValue = setValue
@@ -77,16 +76,13 @@ extension CharacteristicsView {
         } else if producerValue == 0 {
             producerValue = setValue
         }
- 
+        
     }
     
     private var availablePoints: Int {
-        10 - pointsTotal - countUncheckedCharacteristics
+        maxPoint - pointsTotal - countUncheckedCharacteristics
     }
-
-    private var currentCharacteristic: CharacteristicBlock {
-        CharacteristicBlock.getBlocks()[currentNumberBlock]
-    }
+    
     private var pointsTotal: Int {
         (producerValue + administratorValue
             + entrepreneurValue + integratorValue)
@@ -102,9 +98,9 @@ extension CharacteristicsView {
             result += $0 == 0 ? 1 : 0
         }
         /*
-        for characteristic in characteristics {
-            result += characteristic == 0 ? 1 : 0
-        }
+         for characteristic in characteristics {
+         result += characteristic == 0 ? 1 : 0
+         }
          */
         return result
     }
@@ -113,6 +109,6 @@ extension CharacteristicsView {
 
 struct CharacteristicsView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacteristicsView()
+        CharacteristicsRadioButtonGroup()
     }
 }
