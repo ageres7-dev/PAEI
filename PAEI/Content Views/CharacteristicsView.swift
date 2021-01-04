@@ -13,42 +13,13 @@ struct CharacteristicsView: View {
     @State private var entrepreneurValue = 0
     @State private var integratorValue = 0
     
-    private var availablePoints: Int {
-        let result = 10 - producerValue - administratorValue - entrepreneurValue - integratorValue - CountUnansweredCharacteristic
-
-//        if CountUnansweredCharacteristic == 2 {
-//            result = (result + 1) / 2
-//        }
-        
-        return result
-    }
-    
-    private var currentNumberBlock = 0
-//    private let characteristicBlocks = CharacteristicBlock.getBlocks()
-    private var currentCharacteristic: CharacteristicBlock {
-        CharacteristicBlock.getBlocks()[currentNumberBlock]
-    }
-    private var pointsTotal: Int {
-        (producerValue + administratorValue
-            + entrepreneurValue + integratorValue)
-    }
-    
-    private var CountUnansweredCharacteristic: Int {
-//        producerValue == 0 ? 1 : 0
-        var result = 0
-        for characteristic in [producerValue, administratorValue, entrepreneurValue,integratorValue] {
-            result += characteristic == 0 ? 1 : 0
-        }
-        return result
-    }
-
     var body: some View {
         VStack {
             Text("Количество баллов \(pointsTotal)")
                 .font(.title)
             Text("Остаток баллов \(availablePoints)")
                 .font(.title)
-            Text("unansweredCharacteristic \(CountUnansweredCharacteristic)")
+            Text("unansweredCharacteristic \(countUncheckedCharacteristics)")
                 .font(.title)
             
             Spacer()
@@ -71,14 +42,40 @@ struct CharacteristicsView: View {
             Spacer()
         }
         .padding()
-        
-       
     }
-    
 }
 
 extension CharacteristicsView {
+    private var availablePoints: Int {
+        10 - pointsTotal - countUncheckedCharacteristics
+    }
     
+    private var currentNumberBlock: Int { 0 }
+    
+    private var currentCharacteristic: CharacteristicBlock {
+        CharacteristicBlock.getBlocks()[currentNumberBlock]
+    }
+    private var pointsTotal: Int {
+        (producerValue + administratorValue
+            + entrepreneurValue + integratorValue)
+    }
+    
+    private var countUncheckedCharacteristics: Int {
+        var result = 0
+        let characteristics = [producerValue,
+                               administratorValue,
+                               entrepreneurValue,
+                               integratorValue]
+        characteristics.forEach {
+            result += $0 == 0 ? 1 : 0
+        }
+        /*
+        for characteristic in characteristics {
+            result += characteristic == 0 ? 1 : 0
+        }
+         */
+        return result
+    }
 }
 
 

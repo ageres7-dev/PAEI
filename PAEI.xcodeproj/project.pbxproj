@@ -72,6 +72,7 @@
 		A56DB5FB259FB4780098CAAB /* PAEI */ = {
 			isa = PBXGroup;
 			children = (
+				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB60E259FB53B0098CAAB /* Manager */,
@@ -106,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
-				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A56DB62525A115280098CAAB /* RadioButtons.swift */,
 				A5A9EE5D25A257FF00816A4A /* CharacteristicsView.swift */,
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,

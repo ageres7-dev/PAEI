@@ -60,13 +60,18 @@ struct RadioButton: View {
             SimpleCircleButton(
                 isMarked: value == buttonValue,
 //                isOn: buttonValue <= availablePoints + value,
-                isOn: buttonValue <= availablePoints +
-                    (value == 0 ? 1 : value),
+                isOn: isOn,
                 action: {value = buttonValue}
             )
 
         }
 //        .padding()
+    }
+}
+
+extension RadioButton {
+    private var isOn: Bool {
+        buttonValue <= availablePoints + (value == 0 ? 1 : value)
     }
 }
 
