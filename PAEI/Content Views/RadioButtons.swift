@@ -12,7 +12,7 @@ struct RadioButtons: View {
     @Binding var currentValue: Int
     let availablePoints: Int
     let label: String
-    
+    let closure: () -> Void
     var body: some View {
         VStack {
             HStack {
@@ -25,19 +25,23 @@ struct RadioButtons: View {
             HStack {
                 RadioButton(value: $currentValue,
                             buttonValue: 1,
-                            availablePoints: availablePoints)
+                            availablePoints: availablePoints,
+                            closure: closure)
                 Spacer()
                 RadioButton(value: $currentValue,
                             buttonValue: 2,
-                            availablePoints: availablePoints)
+                            availablePoints: availablePoints,
+                            closure: closure)
                 Spacer()
                 RadioButton(value: $currentValue,
                             buttonValue: 3,
-                            availablePoints: availablePoints)
+                            availablePoints: availablePoints,
+                            closure: closure)
                 Spacer()
                 RadioButton(value: $currentValue,
                             buttonValue: 4,
-                            availablePoints: availablePoints)
+                            availablePoints: availablePoints,
+                            closure: closure)
             }
             
 //            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -50,6 +54,7 @@ struct RadioButton: View {
     @Binding var value: Int
     let buttonValue: Int
     let availablePoints: Int
+    let closure: () -> Void
     
     var body: some View {
         VStack {
@@ -61,7 +66,9 @@ struct RadioButton: View {
                 isMarked: value == buttonValue,
 //                isOn: buttonValue <= availablePoints + value,
                 isOn: isOn,
-                action: {value = buttonValue}
+                action: {value = buttonValue
+                    closure()
+                }
             )
 
         }
@@ -78,7 +85,7 @@ extension RadioButton {
 
 struct RadioButtonGroups_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtons(currentValue: .constant(2), availablePoints: 1, label: "Уважающий")
+        RadioButtons(currentValue: .constant(2), availablePoints: 1, label: "Уважающий", closure: {})
 //        RadioButtonGroups(availablePoints: 1)
         
     }

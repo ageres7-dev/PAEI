@@ -14,6 +14,10 @@ struct CharacteristicsView: View {
     @State private var integratorValue = 0
     
     var body: some View {
+        Group {
+  
+        }
+        
         VStack {
             Text("Количество баллов \(pointsTotal)")
                 .font(.title)
@@ -26,32 +30,54 @@ struct CharacteristicsView: View {
             
             RadioButtons(currentValue: $producerValue,
                          availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityProducer)
+                         label: currentCharacteristic.qualityProducer,
+                         closure: autoPresLastButton)
             
             RadioButtons(currentValue: $administratorValue,
                          availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityAdministrator)
+                         label: currentCharacteristic.qualityAdministrator,
+                         closure: autoPresLastButton)
             
             RadioButtons(currentValue: $entrepreneurValue,
                          availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityEntrepreneurs)
+                         label: currentCharacteristic.qualityEntrepreneurs,
+                         closure: autoPresLastButton)
             
             RadioButtons(currentValue: $integratorValue,
                          availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityIntegrator)
+                         label: currentCharacteristic.qualityIntegrator,
+                         closure: autoPresLastButton)
             Spacer()
         }
         .padding()
     }
+    
+    private var currentNumberBlock = 0
+    
 }
 
 extension CharacteristicsView {
+    
+    private func autoPresLastButton() {
+        guard countUncheckedCharacteristics == 1 else { return }
+        
+        let setValue = 10 - pointsTotal
+        if integratorValue == 0 {
+            integratorValue = setValue
+        } else if entrepreneurValue == 0 {
+            entrepreneurValue = setValue
+        } else if administratorValue == 0 {
+            administratorValue = setValue
+        } else if producerValue == 0 {
+            producerValue = setValue
+        }
+ 
+    }
+    
     private var availablePoints: Int {
         10 - pointsTotal - countUncheckedCharacteristics
     }
-    
-    private var currentNumberBlock: Int { 0 }
-    
+
     private var currentCharacteristic: CharacteristicBlock {
         CharacteristicBlock.getBlocks()[currentNumberBlock]
     }
