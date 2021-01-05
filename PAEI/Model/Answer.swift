@@ -6,8 +6,8 @@
 //
 
 struct Answer {
-    var producer: Int
-    var administrator: Int
-    var entrepreneur: Int
-    var integrator: Int
+    var producer = 0
+    var administrator = 0
+    var entrepreneur = 0
+    var integrator = 0
 }

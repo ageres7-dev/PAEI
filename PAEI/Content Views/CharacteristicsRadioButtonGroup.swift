@@ -25,8 +25,8 @@ struct CharacteristicsRadioButtonGroup: View {
     @Binding var entrepreneurValue: Int
     @Binding var integratorValue: Int
     
-    let currentCharacteristic: CharacteristicBlock
-    let currentNumberBlock: Int
+    var currentCharacteristic: CharacteristicBlock
+//    let currentNumberBlock: Int
     
     
     var body: some View {
@@ -63,7 +63,7 @@ struct CharacteristicsRadioButtonGroup: View {
             
             Spacer()
         }
-        .padding()
+//        .padding()
         
     }
 }
@@ -95,6 +95,7 @@ extension CharacteristicsRadioButtonGroup {
         maxPoint - pointsTotal - countUncheckedCharacteristics
     }
     
+    //Вынести отсюда
     private var pointsTotal: Int {
         (producerValue + administratorValue
             + entrepreneurValue + integratorValue)
@@ -121,11 +122,12 @@ extension CharacteristicsRadioButtonGroup {
 
 struct CharacteristicsView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacteristicsRadioButtonGroup(producerValue: .constant(1),
-                                        administratorValue: .constant(2),
-                                        entrepreneurValue: .constant(3),
-                                        integratorValue: .constant(4),
-                                        currentCharacteristic: CharacteristicBlock.getBlocks()[1],
-                                        currentNumberBlock: 0)
+        CharacteristicsRadioButtonGroup(
+            producerValue: .constant(1),
+            administratorValue: .constant(2),
+            entrepreneurValue: .constant(3),
+            integratorValue: .constant(4),
+            currentCharacteristic: CharacteristicBlock.getBlocks()[1]
+        )
     }
 }
