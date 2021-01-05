@@ -11,7 +11,8 @@ struct ContentView: View {
     @State private var selected = 1
     
     var body: some View {
-        CharacteristicsRadioButtonGroup()
+//        CharacteristicsRadioButtonGroup()
+        Text("Placeholder")
         
     }
 }

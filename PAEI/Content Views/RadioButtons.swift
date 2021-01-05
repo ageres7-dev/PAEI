@@ -60,8 +60,6 @@ struct RadioButton: View {
                 .font(.title2)
                 .offset(y: 6)
 
-           
-            
             Button(action: { action }) {
                 Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
                     .resizable()

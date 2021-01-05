@@ -8,19 +8,35 @@
 import SwiftUI
 
 struct CharacteristicsRadioButtonGroup: View {
+    /*
     @State private var producerValue = 0
     @State private var administratorValue = 0
     @State private var entrepreneurValue = 0
     @State private var integratorValue = 0
     
+    private var currentCharacteristic: CharacteristicBlock {
+        CharacteristicBlock.getBlocks()[currentNumberBlock]
+    }
+    
+    private var currentNumberBlock = 0
+    */
+    @Binding var producerValue: Int
+    @Binding var administratorValue: Int
+    @Binding var entrepreneurValue: Int
+    @Binding var integratorValue: Int
+    
+    let currentCharacteristic: CharacteristicBlock
+    let currentNumberBlock: Int
+    
+    
     var body: some View {
         VStack {
-            Text("Количество баллов \(pointsTotal)")
-                .font(.title)
-            Text("Остаток баллов \(availablePoints)")
-                .font(.title)
-            Text("countUncheckedCharacteristics \(countUncheckedCharacteristics)")
-                .font(.title2)
+//            Text("Количество баллов \(pointsTotal)")
+//                .font(.title)
+//            Text("Остаток баллов \(availablePoints)")
+//                .font(.title)
+//            Text("countUncheckedCharacteristics \(countUncheckedCharacteristics)")
+//                .font(.title2)
             
             Spacer()
             
@@ -50,16 +66,10 @@ struct CharacteristicsRadioButtonGroup: View {
         .padding()
         
     }
-    
-    private var currentNumberBlock = 0
-    private let maxPoint = 10
-    
 }
 
 extension CharacteristicsRadioButtonGroup {
-    private var currentCharacteristic: CharacteristicBlock {
-        CharacteristicBlock.getBlocks()[currentNumberBlock]
-    }
+
     
     private func autoPresLastButton() {
         guard countUncheckedCharacteristics == 1 else { return }
@@ -79,6 +89,7 @@ extension CharacteristicsRadioButtonGroup {
         }
         
     }
+    private var maxPoint: Int { 10 }
     
     private var availablePoints: Int {
         maxPoint - pointsTotal - countUncheckedCharacteristics
@@ -110,6 +121,11 @@ extension CharacteristicsRadioButtonGroup {
 
 struct CharacteristicsView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacteristicsRadioButtonGroup()
+        CharacteristicsRadioButtonGroup(producerValue: .constant(1),
+                                        administratorValue: .constant(2),
+                                        entrepreneurValue: .constant(3),
+                                        integratorValue: .constant(4),
+                                        currentCharacteristic: CharacteristicBlock.getBlocks()[1],
+                                        currentNumberBlock: 0)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AF72C25A4E2A900D46757 /* PassingTest.swift */; };
 		A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FC259FB4780098CAAB /* PAEIApp.swift */; };
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
 		A56DB601259FB47B0098CAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB600259FB47B0098CAAB /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A52AF72C25A4E2A900D46757 /* PassingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingTest.swift; sourceTree = "<group>"; };
 		A56DB5F9259FB4780098CAAB /* PAEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56DB5FC259FB4780098CAAB /* PAEIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEIApp.swift; sourceTree = "<group>"; };
 		A56DB5FE259FB4780098CAAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
+				A52AF72C25A4E2A900D46757 /* PassingTest.swift */,
 				A56DB62525A115280098CAAB /* RadioButtons.swift */,
 				A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */,
 			);
@@ -211,6 +214,7 @@
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */,
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
+				A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */,
 				A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
