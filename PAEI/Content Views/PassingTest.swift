@@ -59,7 +59,7 @@ struct PassingTest: View {
                             label: { EmptyView() }
                         )
                         
-                        Button(action: { isShowingResultView = true }) {
+                        Button(action: actionFinishButton) {
                             Text("Показать результат")
                         }
                     }
@@ -68,7 +68,10 @@ struct PassingTest: View {
                 .disabled(pointsTotal != 10)
                 
                 
-                
+                Button(action: actionBackButton) {
+                    Text("Предыдущий блок")
+                }
+                .font(.title)
                 
             }
             .padding()
@@ -80,7 +83,11 @@ struct PassingTest: View {
 
 
 extension PassingTest {
+    
     private func actionNextButton() -> Void {
+        
+//        if currentIndexBlock
+        
         addCurrenAnswer()
         clearAllValue()
         currentIndexBlock += 1
@@ -92,14 +99,29 @@ extension PassingTest {
                                entrepreneur: entrepreneurValue,
                                integrator: integratorValue)
         answers.append(newAnswer)
-        print("добавилт ответ")
+        print("добавил ответ")
     }
     
+    
+    private func fetchAnswerBy(index: Int) -> Void {
+        let answer = answers[index]
+        producerValue = answer.producer
+        administratorValue = answer.administrator
+        entrepreneurValue = answer.entrepreneur
+        integratorValue = answer.integrator
+    }
+    
+    private func actionBackButton() -> Void {
+        guard currentIndexBlock > 0 else { return }
+        currentIndexBlock -= 1
+        fetchAnswerBy(index: currentIndexBlock)
+    }
     
     private func actionFinishButton() -> Void {
         addCurrenAnswer()
+        isShowingResultView = true
     }
-    
+    /*
 //    private func totalFromAnswers() -> Answer {
 //        var producer = 0
 //        var administrator = 0
@@ -117,7 +139,7 @@ extension PassingTest {
 //                      entrepreneur: entrepreneur,
 //                      integrator: integrator)
 //    }
-    
+    */
     private func clearAllValue() {
         producerValue = 0
         administratorValue = 0
@@ -125,12 +147,12 @@ extension PassingTest {
         integratorValue = 0
     }
     
-    
     private var pointsTotal: Int {
         (producerValue + administratorValue
             + entrepreneurValue + integratorValue)
     }
 }
+
 
 struct PassingTest_Previews: PreviewProvider {
     static var previews: some View {
