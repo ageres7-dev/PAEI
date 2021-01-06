@@ -72,6 +72,7 @@ struct PassingTest: View {
                     Text("Предыдущий блок")
                 }
                 .font(.title)
+                .disabled(currentIndexBlock == 0)
                 
             }
             .padding()
@@ -85,23 +86,53 @@ struct PassingTest: View {
 extension PassingTest {
     
     private func actionNextButton() -> Void {
-        
-//        if currentIndexBlock
-        
-        addCurrenAnswer()
-        clearAllValue()
         currentIndexBlock += 1
+        
+        if isNewAnswer {
+            answers.append(currentEnteredAnswer)
+            clearAllValue()
+        } else {
+            updateAnswer(at: currentIndexBlock - 1)
+            fetchAnswerBy(index: currentIndexBlock)
+        }
+        
+    }
+    
+    private func actionBackButton() -> Void {
+        guard currentIndexBlock > 0 else { return }
+        
+        if isNewAnswer {
+            answers.append(currentEnteredAnswer)
+            fetchAnswerBy(index: currentIndexBlock)
+        } else {
+            updateAnswer(at: currentIndexBlock)
+            fetchAnswerBy(index: currentIndexBlock - 1)
+        }
+        currentIndexBlock -= 1
+//        updateAnswer(at: currentIndexBlock)
+//
+//        fetchAnswerBy(index: currentIndexBlock)
+    }
+    
+    private func actionFinishButton() -> Void {
+//        addCurrenAnswer()
+        
+        if isNewAnswer {
+            addCurrenAnswer()
+        }
+        isShowingResultView = true
+        
     }
     
     private func addCurrenAnswer() {
-        let newAnswer = Answer(producer: producerValue,
-                               administrator: administratorValue,
-                               entrepreneur: entrepreneurValue,
-                               integrator: integratorValue)
-        answers.append(newAnswer)
+        answers.append(currentEnteredAnswer)
         print("добавил ответ")
     }
     
+    private func updateAnswer(at index: Int) {
+        answers.remove(at: index)
+        answers.insert(currentEnteredAnswer, at: index)
+    }
     
     private func fetchAnswerBy(index: Int) -> Void {
         let answer = answers[index]
@@ -111,40 +142,25 @@ extension PassingTest {
         integratorValue = answer.integrator
     }
     
-    private func actionBackButton() -> Void {
-        guard currentIndexBlock > 0 else { return }
-        currentIndexBlock -= 1
-        fetchAnswerBy(index: currentIndexBlock)
+
+    
+
+    private var isNewAnswer: Bool {
+        !(0..<answers.count).contains(currentIndexBlock)
     }
     
-    private func actionFinishButton() -> Void {
-        addCurrenAnswer()
-        isShowingResultView = true
-    }
-    /*
-//    private func totalFromAnswers() -> Answer {
-//        var producer = 0
-//        var administrator = 0
-//        var entrepreneur = 0
-//        var integrator = 0
-//        
-//        answers.forEach { answer in
-//            producer += answer.producer
-//            administrator += answer.administrator
-//            entrepreneur += answer.entrepreneur
-//            integrator += answer.integrator
-//        }
-//        return Answer(producer: producer,
-//                      administrator: administrator,
-//                      entrepreneur: entrepreneur,
-//                      integrator: integrator)
-//    }
-    */
     private func clearAllValue() {
         producerValue = 0
         administratorValue = 0
         entrepreneurValue = 0
         integratorValue = 0
+    }
+    
+    private var currentEnteredAnswer: Answer {
+        Answer(producer: producerValue,
+               administrator: administratorValue,
+               entrepreneur: entrepreneurValue,
+               integrator: integratorValue)
     }
     
     private var pointsTotal: Int {
