@@ -15,6 +15,8 @@ struct PassingTest: View {
     @State private var currentIndexBlock = 0
     @State private var answers: [Answer] = []
     
+    @State private var isShowingResultView = false
+    
     private var сharacteristicBlocks = CharacteristicBlock.getBlocks()
     
     private var currentCharacteristic: CharacteristicBlock { сharacteristicBlocks[currentIndexBlock]
@@ -47,24 +49,25 @@ struct PassingTest: View {
                     if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
                         Button(action: actionNextButton){
                             Text("Cледующий блок")
-                                .font(.title)
                         }
+                        
                     } else {
+
+                        NavigationLink(
+                            destination: ResultView(answers: answers),
+                            isActive: $isShowingResultView,
+                            label: { EmptyView() }
+                        )
                         
-//                        Group {
-//
-//                            NavigationLink("Показать результат", destination: ResultView(answers: answers))
-//                                .font(.title)
-//                        }
-                        
-                    
-                        
-                            NavigationLink("Finish", destination: ResultView(answers: answers))
-                                .font(.title)
-                        
-                        
+                        Button(action: { isShowingResultView = true }) {
+                            Text("Показать результат")
+                        }
                     }
-                }.disabled(pointsTotal != 10)
+                }
+                .font(.title)
+                .disabled(pointsTotal != 10)
+                
+                
                 
                 
             }
@@ -74,13 +77,13 @@ struct PassingTest: View {
     }
 }
 
+
+
 extension PassingTest {
     private func actionNextButton() -> Void {
         addCurrenAnswer()
         clearAllValue()
         currentIndexBlock += 1
-        
-        print(answers)
     }
     
     private func addCurrenAnswer() {
