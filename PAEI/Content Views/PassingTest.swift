@@ -86,24 +86,23 @@ struct PassingTest: View {
 extension PassingTest {
     
     private func actionNextButton() -> Void {
-        currentIndexBlock += 1
         
         if isNewAnswer {
-            answers.append(currentEnteredAnswer)
+            addCurrenAnswer()
             clearAllValue()
         } else {
-            updateAnswer(at: currentIndexBlock - 1)
-            fetchAnswerBy(index: currentIndexBlock)
+            updateAnswer(at: currentIndexBlock)
+            fetchAnswerBy(index: currentIndexBlock + 1)
         }
-        
+        currentIndexBlock += 1
     }
     
     private func actionBackButton() -> Void {
         guard currentIndexBlock > 0 else { return }
         
         if isNewAnswer {
-            answers.append(currentEnteredAnswer)
-            fetchAnswerBy(index: currentIndexBlock)
+            addCurrenAnswer()
+            fetchAnswerBy(index: currentIndexBlock - 1)
         } else {
             updateAnswer(at: currentIndexBlock)
             fetchAnswerBy(index: currentIndexBlock - 1)
@@ -119,6 +118,8 @@ extension PassingTest {
         
         if isNewAnswer {
             addCurrenAnswer()
+        } else {
+            updateAnswer(at: currentIndexBlock)
         }
         isShowingResultView = true
         
@@ -126,7 +127,6 @@ extension PassingTest {
     
     private func addCurrenAnswer() {
         answers.append(currentEnteredAnswer)
-        print("добавил ответ")
     }
     
     private func updateAnswer(at index: Int) {
@@ -146,7 +146,7 @@ extension PassingTest {
     
 
     private var isNewAnswer: Bool {
-        !(0..<answers.count).contains(currentIndexBlock)
+        !(0..<answers.count).contains(currentIndexBlock + 1)
     }
     
     private func clearAllValue() {
