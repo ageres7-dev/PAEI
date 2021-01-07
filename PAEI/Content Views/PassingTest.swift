@@ -26,19 +26,27 @@ struct PassingTest: View {
             VStack {
                 HStack {
                     Spacer()
-                    CircleProgressBar(currentValue: pointsTotal,
-                                      maxValue: 10,
-                                      label: "Баллов"
-                    )
+                    VStack {
+                        Text("Баллов")
+//                            .font(.title3)
+                        CircleProgressBar(currentValue: pointsTotal,
+                                          maxValue: 10
+    //                                      label: "Баллов"
+                        )
+                    }
                     Spacer()
-                    CircleProgressBar(currentValue: currentIndexBlock + 1,
-                                      maxValue: 12,
-                                      label: "Блок"
-                    )
+                    VStack {
+                        Text("Блок")
+                        CircleProgressBar(currentValue: currentIndexBlock + 1,
+                                          maxValue: 12
+    //                                      label: "Блок"
+                        )
+                    }
                     Spacer()
                 }
-                .frame(height: 130)
+                .frame(maxHeight: 150)
                 
+//                Spacer(minLength: 20)
 
                 
                 CharacteristicsRadioButtonGroup(
@@ -48,7 +56,11 @@ struct PassingTest: View {
                     integratorValue: $integratorValue,
                     currentCharacteristic: currentCharacteristic
                 )
+                .frame(
+//                    minWidth: 200,maxWidth: 350,
+                       minHeight: 320, maxHeight: 400)
 //                .frame(height: 350, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                 
                 Group {
                     if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
@@ -76,7 +88,7 @@ struct PassingTest: View {
                 Button(action: actionBackButton) {
                     Text("Предыдущий блок")
                 }
-                .font(.title)
+                .font(.title2)
                 .disabled(currentIndexBlock == 0)
                 
             }

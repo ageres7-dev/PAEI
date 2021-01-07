@@ -16,7 +16,7 @@ struct RadioButtons: View {
         VStack {
             HStack {
                 Text(label)
-                    .bold()
+//                    .bold()
                     .font(.title3)
                     .multilineTextAlignment(.leading)
                     .offset(y: 4)
@@ -48,7 +48,8 @@ struct RadioButtons: View {
 //                Spacer()
             }
 
-        }.frame(minHeight: 40, maxHeight: 100)
+        }
+        .frame(minHeight: 60, maxHeight: 100)
     }
 }
 

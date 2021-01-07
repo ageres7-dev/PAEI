@@ -26,52 +26,46 @@ struct CharacteristicsRadioButtonGroup: View {
     @Binding var integratorValue: Int
     
     var currentCharacteristic: CharacteristicBlock
-//    let currentNumberBlock: Int
-    
-    
+
     var body: some View {
-        VStack {
-//            Text("Количество баллов \(pointsTotal)")
-//                .font(.title)
-//            Text("Остаток баллов \(availablePoints)")
-//                .font(.title)
-//            Text("countUncheckedCharacteristics \(countUncheckedCharacteristics)")
-//                .font(.title2)
+        ZStack {
+            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.white)
+                .shadow(radius: 15)
+                
             
-//            Spacer()
-            
-            
-            RadioButtons(currentValue: $producerValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityProducer,
-                         closure: autoPresLastButton)
-            
-            RadioButtons(currentValue: $administratorValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityAdministrator,
-                         closure: autoPresLastButton)
-            
-            RadioButtons(currentValue: $entrepreneurValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityEntrepreneurs,
-                         closure: autoPresLastButton)
-            
-            RadioButtons(currentValue: $integratorValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityIntegrator,
-                         closure: autoPresLastButton)
-            
-//            Spacer()
+            VStack {
+                RadioButtons(currentValue: $producerValue,
+                             availablePoints: availablePoints,
+                             label: currentCharacteristic.qualityProducer,
+                             closure: autoPresLastButton)
+                
+                RadioButtons(currentValue: $administratorValue,
+                             availablePoints: availablePoints,
+                             label: currentCharacteristic.qualityAdministrator,
+                             closure: autoPresLastButton)
+                
+                RadioButtons(currentValue: $entrepreneurValue,
+                             availablePoints: availablePoints,
+                             label: currentCharacteristic.qualityEntrepreneurs,
+                             closure: autoPresLastButton)
+                
+                RadioButtons(currentValue: $integratorValue,
+                             availablePoints: availablePoints,
+                             label: currentCharacteristic.qualityIntegrator,
+                             closure: autoPresLastButton)
+                
+            }
+
+            .padding()
+            .animation(.none)
         }
-        .animation(.none)
 //        .padding()
-        
     }
 }
 
 extension CharacteristicsRadioButtonGroup {
 
-    
     private func autoPresLastButton() {
         guard countUncheckedCharacteristics == 1 else { return }
         var setValue: Int {
