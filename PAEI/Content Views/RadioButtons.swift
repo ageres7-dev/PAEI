@@ -16,12 +16,16 @@ struct RadioButtons: View {
         VStack {
             HStack {
                 Text(label)
+                    .bold()
+                    .font(.title3)
                     .multilineTextAlignment(.leading)
-                    .font(.title2)
+                    .offset(y: 4)
+                    
                     
                 Spacer()
             }
             HStack {
+//                Spacer()
                 RadioButton(value: $currentValue,
                             buttonValue: 1,
                             availablePoints: availablePoints,
@@ -41,6 +45,7 @@ struct RadioButtons: View {
                             buttonValue: 4,
                             availablePoints: availablePoints,
                             closure: closure)
+//                Spacer()
             }
 
         }.frame(minHeight: 40, maxHeight: 100)
@@ -57,7 +62,7 @@ struct RadioButton: View {
     var body: some View {
         VStack {
             Text("\(buttonValue)")
-                .font(.title2)
+                .font(.subheadline)
                 .offset(y: 6)
 
             Button(action: { action }) {
@@ -68,7 +73,7 @@ struct RadioButton: View {
                     .foregroundColor(.primary)
             }
             .disabled(!isOn)
-            .frame(width: 30, height: 30)
+            .frame(width: 20, height: 20)
         }
     }
 }

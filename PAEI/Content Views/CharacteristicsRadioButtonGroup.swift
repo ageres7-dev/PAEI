@@ -38,7 +38,7 @@ struct CharacteristicsRadioButtonGroup: View {
 //            Text("countUncheckedCharacteristics \(countUncheckedCharacteristics)")
 //                .font(.title2)
             
-            Spacer()
+//            Spacer()
             
             
             RadioButtons(currentValue: $producerValue,
@@ -61,7 +61,7 @@ struct CharacteristicsRadioButtonGroup: View {
                          label: currentCharacteristic.qualityIntegrator,
                          closure: autoPresLastButton)
             
-            Spacer()
+//            Spacer()
         }
         .animation(.none)
 //        .padding()

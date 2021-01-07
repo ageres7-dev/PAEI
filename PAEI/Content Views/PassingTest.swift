@@ -37,38 +37,9 @@ struct PassingTest: View {
                     )
                     Spacer()
                 }
-                .frame(height: 170)
+                .frame(height: 130)
                 
-                /*
-//                HStack {
-//                    Spacer()
-//                    VStack {
-//                        CircleProgressBar(
-//                            progress: CGFloat(pointsTotal) / 10,
-//                            labelValue: "\(pointsTotal)/10"
-//                        )
-//
-//                        Text("Баллов")
-//                            .font(.title)
-//                            .padding()
-//                    }
-//
-//                    //                    Text("Баллов \(pointsTotal)")
-//                    Spacer()
-//
-//                    VStack {
-//                        CircleProgressBar(
-//                            progress: CGFloat(currentIndexBlock + 1) / 12,
-//                            labelValue: "\(currentIndexBlock + 1)/12"
-//                        )
-//                        Text("Блок")
-//                            .font(.title)
-//                            .padding()
-//                    }
-//
-//                    Spacer()
-//                } .frame(height: 170)
- */
+
                 
                 CharacteristicsRadioButtonGroup(
                     producerValue: $producerValue,
@@ -77,7 +48,7 @@ struct PassingTest: View {
                     integratorValue: $integratorValue,
                     currentCharacteristic: currentCharacteristic
                 )
-                .frame(height: 350, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                .frame(height: 350, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
                 Group {
                     if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
@@ -110,6 +81,7 @@ struct PassingTest: View {
                 
             }
             .padding()
+            .navigationBarHidden(true)
         }
         
     }
