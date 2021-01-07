@@ -17,13 +17,8 @@ struct PassingTest: View {
     
     @State private var isShowingResultView = false
     
-    private var сharacteristicBlocks = CharacteristicBlock.getBlocks()
     
-    private var currentCharacteristic: CharacteristicBlock { сharacteristicBlocks[currentIndexBlock]
-    }
-    
-    
-//    private var resultTest = Answer()
+
     
     var body: some View {
         
@@ -31,11 +26,49 @@ struct PassingTest: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("Баллов \(pointsTotal)")
+                    CircleProgressBar(currentValue: pointsTotal,
+                                      maxValue: 10,
+                                      label: "Баллов"
+                    )
                     Spacer()
-                    Text("Блок \(currentIndexBlock + 1) из 12")
+                    CircleProgressBar(currentValue: currentIndexBlock + 1,
+                                      maxValue: 12,
+                                      label: "Блок"
+                    )
                     Spacer()
                 }
+                .frame(height: 170)
+                
+                /*
+//                HStack {
+//                    Spacer()
+//                    VStack {
+//                        CircleProgressBar(
+//                            progress: CGFloat(pointsTotal) / 10,
+//                            labelValue: "\(pointsTotal)/10"
+//                        )
+//
+//                        Text("Баллов")
+//                            .font(.title)
+//                            .padding()
+//                    }
+//
+//                    //                    Text("Баллов \(pointsTotal)")
+//                    Spacer()
+//
+//                    VStack {
+//                        CircleProgressBar(
+//                            progress: CGFloat(currentIndexBlock + 1) / 12,
+//                            labelValue: "\(currentIndexBlock + 1)/12"
+//                        )
+//                        Text("Блок")
+//                            .font(.title)
+//                            .padding()
+//                    }
+//
+//                    Spacer()
+//                } .frame(height: 170)
+ */
                 
                 CharacteristicsRadioButtonGroup(
                     producerValue: $producerValue,
@@ -44,6 +77,7 @@ struct PassingTest: View {
                     integratorValue: $integratorValue,
                     currentCharacteristic: currentCharacteristic
                 )
+                .frame(height: 350, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
                 Group {
                     if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
@@ -82,7 +116,6 @@ struct PassingTest: View {
 }
 
 
-
 extension PassingTest {
     
     private func actionNextButton() -> Void {
@@ -108,21 +141,15 @@ extension PassingTest {
             fetchAnswerBy(index: currentIndexBlock - 1)
         }
         currentIndexBlock -= 1
-//        updateAnswer(at: currentIndexBlock)
-//
-//        fetchAnswerBy(index: currentIndexBlock)
     }
     
     private func actionFinishButton() -> Void {
-//        addCurrenAnswer()
-        
         if isNewAnswer {
             addCurrenAnswer()
         } else {
             updateAnswer(at: currentIndexBlock)
         }
         isShowingResultView = true
-        
     }
     
     private func addCurrenAnswer() {
@@ -142,18 +169,21 @@ extension PassingTest {
         integratorValue = answer.integrator
     }
     
-
-    
-
-    private var isNewAnswer: Bool {
-        !(0..<answers.count).contains(currentIndexBlock + 1)
-    }
-    
     private func clearAllValue() {
         producerValue = 0
         administratorValue = 0
         entrepreneurValue = 0
         integratorValue = 0
+    }
+    
+    private var сharacteristicBlocks: [CharacteristicBlock] { CharacteristicBlock.getBlocks()
+    }
+    
+    private var currentCharacteristic: CharacteristicBlock { сharacteristicBlocks[currentIndexBlock]
+    }
+
+    private var isNewAnswer: Bool {
+        !(0..<answers.count).contains(currentIndexBlock + 1)
     }
     
     private var currentEnteredAnswer: Answer {
@@ -173,5 +203,6 @@ extension PassingTest {
 struct PassingTest_Previews: PreviewProvider {
     static var previews: some View {
         PassingTest()
+            .preferredColorScheme(.light)
     }
 }

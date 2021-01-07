@@ -68,6 +68,7 @@ struct RadioButton: View {
                     .foregroundColor(.primary)
             }
             .disabled(!isOn)
+            .frame(width: 30, height: 30)
         }
     }
 }

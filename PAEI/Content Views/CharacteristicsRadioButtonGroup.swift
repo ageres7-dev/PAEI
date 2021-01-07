@@ -63,6 +63,7 @@ struct CharacteristicsRadioButtonGroup: View {
             
             Spacer()
         }
+        .animation(.none)
 //        .padding()
         
     }
