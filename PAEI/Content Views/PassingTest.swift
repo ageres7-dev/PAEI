@@ -31,7 +31,6 @@ struct PassingTest: View {
 //                            .font(.title3)
                         CircleProgressBar(currentValue: pointsTotal,
                                           maxValue: 10
-    //                                      label: "Баллов"
                         )
                     }
                     Spacer()
@@ -39,7 +38,6 @@ struct PassingTest: View {
                         Text("Блок")
                         CircleProgressBar(currentValue: currentIndexBlock + 1,
                                           maxValue: 12
-    //                                      label: "Блок"
                         )
                     }
                     Spacer()
@@ -56,17 +54,23 @@ struct PassingTest: View {
                     integratorValue: $integratorValue,
                     currentCharacteristic: currentCharacteristic
                 )
-                .frame(
-//                    minWidth: 200,maxWidth: 350,
-                       minHeight: 320, maxHeight: 400)
-//                .frame(height: 350, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(minHeight: 320, maxHeight: 400)
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                 
                 Group {
-                    if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
-                        Button(action: actionNextButton){
+                    if currentIndexBlock + 1 != сharacteristicBlocks.count { //сharacteristicBlocks.count
+                        Button(action: actionNextButton) {
                             Text("Cледующий блок")
+                                .bold()
+                                .setBlueStyleButton(isOn: pointsTotal == 10)
+                                
+//                                .foregroundColor(.white)
+//                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 44, maxHeight: 50)
+//                                .background( Color.blue)
+//                                .cornerRadius(10)
                         }
+                        
+                        
                         
                     } else {
 
@@ -81,14 +85,15 @@ struct PassingTest: View {
                         }
                     }
                 }
-                .font(.title)
+                .animation(nil)
                 .disabled(pointsTotal != 10)
+                .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                 
                 
                 Button(action: actionBackButton) {
                     Text("Предыдущий блок")
                 }
-                .font(.title2)
+//                .font(.title3)
                 .disabled(currentIndexBlock == 0)
                 
             }

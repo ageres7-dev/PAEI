@@ -17,6 +17,7 @@
 		A56DB62625A115280098CAAB /* RadioButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62525A115280098CAAB /* RadioButtons.swift */; };
 		A58843C125A51254002DE43A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843C025A51254002DE43A /* ResultView.swift */; };
 		A58843C825A717B3002DE43A /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843C725A717B3002DE43A /* CircleProgressBar.swift */; };
+		A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */; };
 		A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE4F25A24DAB00816A4A /* DataManager.swift */; };
 		A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */; };
 		A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5325A24E5D00816A4A /* Answer.swift */; };
@@ -39,6 +40,7 @@
 		A56DB62525A115280098CAAB /* RadioButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtons.swift; sourceTree = "<group>"; };
 		A58843C025A51254002DE43A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		A58843C725A717B3002DE43A /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
+		A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A5A9EE4F25A24DAB00816A4A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicBlock.swift; sourceTree = "<group>"; };
 		A5A9EE5325A24E5D00816A4A /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
 				A52AF72C25A4E2A900D46757 /* PassingTest.swift */,
+				A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */,
 				A58843C725A717B3002DE43A /* CircleProgressBar.swift */,
 				A58843C025A51254002DE43A /* ResultView.swift */,
 				A56DB62525A115280098CAAB /* RadioButtons.swift */,
@@ -218,6 +221,7 @@
 				A58843C125A51254002DE43A /* ResultView.swift in Sources */,
 				A56DB62625A115280098CAAB /* RadioButtons.swift in Sources */,
 				A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */,
+				A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */,
 				A5A9EE5E25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift in Sources */,
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */,
