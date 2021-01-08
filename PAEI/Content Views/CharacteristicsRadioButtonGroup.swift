@@ -20,6 +20,8 @@ struct CharacteristicsRadioButtonGroup: View {
     
     private var currentNumberBlock = 0
     */
+    
+    @Environment(\.colorScheme) var colorScheme
     @Binding var producerValue: Int
     @Binding var administratorValue: Int
     @Binding var entrepreneurValue: Int
@@ -30,8 +32,11 @@ struct CharacteristicsRadioButtonGroup: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.white)
-                .shadow(radius: 15)
+//                .foregroundColor(.white)
+                .foregroundColor(Color.primary).colorInvert()
+//                .shadow(radius: 15)
+                .shadow(color: (colorScheme == .dark ? .blue : .black), radius: 15, x: 0, y: 0)
+            
                 
             
             VStack {
