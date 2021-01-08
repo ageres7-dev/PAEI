@@ -17,9 +17,6 @@ struct PassingTest: View {
     
     @State private var isShowingResultView = false
     
-    
-
-    
     var body: some View {
         
         NavigationView {
@@ -160,7 +157,7 @@ extension PassingTest {
     }
 
     private var isNextButtom: Bool {
-        currentIndexBlock + 1 != 3
+        currentIndexBlock != сharacteristicBlocks.count - 1
     }
     
     private var isNewAnswer: Bool {

@@ -44,7 +44,7 @@ struct CircleProgressBar: View {
                             .stroke(style: StrokeStyle(lineWidth: line, lineCap: .round, lineJoin: .round))
                             .foregroundColor(Color.blue)
                             .rotationEffect(Angle(degrees: 270))
-                            .animation(.easeInOut)
+                            .animation(.easeOut)
                         Text(labelValue)
                             .font(.system(size: fontValue))
                             .bold()
