@@ -31,16 +31,9 @@ struct CharacteristicsRadioButtonGroup: View {
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                //системный инверт
-//                .foregroundColor(Color.primary).colorInvert()
-                
-//                .foregroundColor(.gray).opacity(0.2)
+            RoundedRectangle(cornerRadius: 25.0)
                 .foregroundColor(colorScheme == .dark ? .customGray : .white)
-//                .shadow(radius: 15)
-                .shadow(color: (colorScheme == .dark ? .blue : Color.gray.opacity(0.5)), radius: 15, x: 0, y: 0)
-            
-                
+                .shadow(color: shadowColor.opacity(0.5), radius: 15, x: 0, y: 0)
             
             VStack {
                 RadioButtons(currentValue: $producerValue,
@@ -65,7 +58,8 @@ struct CharacteristicsRadioButtonGroup: View {
                 
             }
             .opacity(0.9)
-            .padding()
+            .offset(y: -4)
+            .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
             .animation(.none)
         }
 //        .padding()
@@ -94,6 +88,9 @@ extension CharacteristicsRadioButtonGroup {
     }
     private var maxPoint: Int { 10 }
     
+    private var shadowColor: Color {
+        colorScheme == .dark ? .blue : .gray
+    }
     private var availablePoints: Int {
         maxPoint - pointsTotal - countUncheckedCharacteristics
     }

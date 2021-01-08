@@ -24,6 +24,11 @@ struct PassingTest: View {
         
         NavigationView {
             VStack {
+//                NavigationLink(
+//                    destination: ResultView(answers: answers),
+//                    isActive: $isShowingResultView,
+//                    label: { EmptyView() }
+//                    )
                 HStack {
                     Spacer()
                     VStack {
@@ -58,31 +63,26 @@ struct PassingTest: View {
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                 
                 Group {
-                    if currentIndexBlock + 1 != сharacteristicBlocks.count { //сharacteristicBlocks.count
+                    if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
                         Button(action: actionNextButton) {
                             Text("Cледующий блок")
                                 .bold()
                                 .setBlueStyleButton(isOn: pointsTotal == 10)
-                                
-//                                .foregroundColor(.white)
-//                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 44, maxHeight: 50)
-//                                .background( Color.blue)
-//                                .cornerRadius(10)
                         }
-                        
-                        
-                        
+  
                     } else {
 
+                        Button(action: actionFinishButton) {
+                            Text("Показать результат")
+                                .bold()
+                                .setBlueStyleButton(isOn: pointsTotal == 10)
+                        }
+                        
                         NavigationLink(
                             destination: ResultView(answers: answers),
                             isActive: $isShowingResultView,
                             label: { EmptyView() }
-                        )
-                        
-                        Button(action: actionFinishButton) {
-                            Text("Показать результат")
-                        }
+                        ).frame(width: 0, height: 0)
                     }
                 }
                 .animation(nil)
