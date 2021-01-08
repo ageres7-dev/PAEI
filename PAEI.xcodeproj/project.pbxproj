@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A522021E25A8EA8B00EC0582 /* ModalStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */; };
 		A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AF72C25A4E2A900D46757 /* PassingTest.swift */; };
 		A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FC259FB4780098CAAB /* PAEIApp.swift */; };
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 		A58843C825A717B3002DE43A /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843C725A717B3002DE43A /* CircleProgressBar.swift */; };
 		A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */; };
 		A58843D025A89409002DE43A /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843CF25A89408002DE43A /* Color + Extension.swift */; };
+		A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843D225A8E253002DE43A /* WelcomeView.swift */; };
 		A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE4F25A24DAB00816A4A /* DataManager.swift */; };
 		A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */; };
 		A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5325A24E5D00816A4A /* Answer.swift */; };
@@ -29,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalStateManager.swift; sourceTree = "<group>"; };
 		A52AF72C25A4E2A900D46757 /* PassingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingTest.swift; sourceTree = "<group>"; };
 		A56DB5F9259FB4780098CAAB /* PAEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56DB5FC259FB4780098CAAB /* PAEIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEIApp.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		A58843C725A717B3002DE43A /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A58843CF25A89408002DE43A /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
+		A58843D225A8E253002DE43A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A5A9EE4F25A24DAB00816A4A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicBlock.swift; sourceTree = "<group>"; };
 		A5A9EE5325A24E5D00816A4A /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -86,7 +90,7 @@
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
-				A56DB60E259FB53B0098CAAB /* Manager */,
+				A56DB60E259FB53B0098CAAB /* Managers */,
 				A56DB60D259FB5290098CAAB /* Content Views */,
 				A56DB60C259FB5190098CAAB /* Model */,
 				A56DB602259FB47B0098CAAB /* Preview Content */,
@@ -117,6 +121,7 @@
 		A56DB60D259FB5290098CAAB /* Content Views */ = {
 			isa = PBXGroup;
 			children = (
+				A58843D225A8E253002DE43A /* WelcomeView.swift */,
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
 				A52AF72C25A4E2A900D46757 /* PassingTest.swift */,
 				A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */,
@@ -129,12 +134,13 @@
 			path = "Content Views";
 			sourceTree = "<group>";
 		};
-		A56DB60E259FB53B0098CAAB /* Manager */ = {
+		A56DB60E259FB53B0098CAAB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				A5A9EE4F25A24DAB00816A4A /* DataManager.swift */,
+				A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */,
 			);
-			path = Manager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		A56DB60F259FB5660098CAAB /* Supporting File */ = {
@@ -228,10 +234,12 @@
 				A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */,
 				A5A9EE5E25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift in Sources */,
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
+				A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* ResultFunction.swift in Sources */,
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
 				A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */,
 				A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */,
+				A522021E25A8EA8B00EC0582 /* ModalStateManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PassingTest: View {
+//    @EnvironmentObject var modalState: ModalStateManager
+    
     @State private var producerValue = 0
     @State private var administratorValue = 0
     @State private var entrepreneurValue = 0
@@ -63,6 +65,12 @@ struct PassingTest: View {
                             .bold()
                             .setBlueStyleButton(disabledStyle: pointsTotal != 10)
                     }
+
+//                    .sheet(isPresented: $modalState.isModalPresentResultView, content: {
+//                        ResultView(answers: answers)
+//                    })
+                    
+                    
                     NavigationLink(
                         destination: ResultView(answers: answers),
                         isActive: $isShowingResultView,
@@ -102,6 +110,8 @@ extension PassingTest {
             fetchAnswerBy(index: currentIndexBlock + 1)
         }
         currentIndexBlock += 1
+        
+        
     }
     
     private func actionBackButton() -> Void {
@@ -123,6 +133,7 @@ extension PassingTest {
         } else {
             updateAnswer(at: currentIndexBlock)
         }
+//        modalState.isModalPresentResultView = true
         isShowingResultView = true
     }
     
@@ -157,7 +168,8 @@ extension PassingTest {
     }
 
     private var isNextButtom: Bool {
-        currentIndexBlock != сharacteristicBlocks.count - 1
+//        currentIndexBlock != сharacteristicBlocks.count - 1
+        currentIndexBlock + 1 != 2
     }
     
     private var isNewAnswer: Bool {

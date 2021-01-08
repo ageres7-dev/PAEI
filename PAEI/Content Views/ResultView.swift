@@ -8,10 +8,28 @@
 import SwiftUI
 
 struct ResultView: View {
+//    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var modalState: ModalStateManager
+    
     let answers: [Answer]
     
     var body: some View {
-        Text("\(totalFrom(answers: answers).producer)")
+        
+        ZStack {
+            Color.red
+                .ignoresSafeArea()
+            VStack {
+                Text("\(totalFrom(answers: answers).producer)")
+                
+                Button("Выход") {
+    //                presentationMode.wrappedValue.dismiss()
+//                    modalState.isModalPresentResultView = false
+                    modalState.isModalPresentPassingTest = false
+                    
+                }
+            }
+        }
+        .navigationBarHidden(true)
     }
 }
 
