@@ -32,10 +32,13 @@ struct CharacteristicsRadioButtonGroup: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-//                .foregroundColor(.white)
-                .foregroundColor(Color.primary).colorInvert()
+                //системный инверт
+//                .foregroundColor(Color.primary).colorInvert()
+                
+//                .foregroundColor(.gray).opacity(0.2)
+                .foregroundColor(colorScheme == .dark ? .customGray : .white)
 //                .shadow(radius: 15)
-                .shadow(color: (colorScheme == .dark ? .blue : .black), radius: 15, x: 0, y: 0)
+                .shadow(color: (colorScheme == .dark ? .blue : Color.gray.opacity(0.5)), radius: 15, x: 0, y: 0)
             
                 
             
@@ -61,7 +64,7 @@ struct CharacteristicsRadioButtonGroup: View {
                              closure: autoPresLastButton)
                 
             }
-
+            .opacity(0.9)
             .padding()
             .animation(.none)
         }
@@ -131,3 +134,5 @@ struct CharacteristicsView_Previews: PreviewProvider {
         )
     }
 }
+
+
