@@ -24,16 +24,10 @@ struct PassingTest: View {
         
         NavigationView {
             VStack {
-//                NavigationLink(
-//                    destination: ResultView(answers: answers),
-//                    isActive: $isShowingResultView,
-//                    label: { EmptyView() }
-//                    )
                 HStack {
                     Spacer()
                     VStack {
                         Text("Баллов")
-//                            .font(.title3)
                         CircleProgressBar(currentValue: pointsTotal,
                                           maxValue: 10
                         )
@@ -62,29 +56,23 @@ struct PassingTest: View {
                 .frame(minHeight: 320, maxHeight: 400)
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                 
-                Group {
-                    if currentIndexBlock + 1 != 3 { //сharacteristicBlocks.count
-                        Button(action: actionNextButton) {
-                            Text("Cледующий блок")
-                                .bold()
-                                .setBlueStyleButton(isOn: pointsTotal == 10)
-                        }
-  
-                    } else {
-
-                        Button(action: actionFinishButton) {
-                            Text("Показать результат")
-                                .bold()
-                                .setBlueStyleButton(isOn: pointsTotal == 10)
-                        }
-                        
-                        NavigationLink(
-                            destination: ResultView(answers: answers),
-                            isActive: $isShowingResultView,
-                            label: { EmptyView() }
-                        ).frame(width: 0, height: 0)
+                ZStack {
+                    Button(action: isNextButtom
+                            ? actionNextButton
+                            : actionFinishButton) {
+                        Text(isNextButtom
+                                ? "Cледующий блок"
+                                : "Показать результат")
+                            .bold()
+                            .setBlueStyleButton(disabledStyle: pointsTotal != 10)
                     }
+                    NavigationLink(
+                        destination: ResultView(answers: answers),
+                        isActive: $isShowingResultView,
+                        label: { EmptyView() }
+                    )
                 }
+                
                 .animation(nil)
                 .disabled(pointsTotal != 10)
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
@@ -171,6 +159,10 @@ extension PassingTest {
     private var currentCharacteristic: CharacteristicBlock { сharacteristicBlocks[currentIndexBlock]
     }
 
+    private var isNextButtom: Bool {
+        currentIndexBlock + 1 != 3
+    }
+    
     private var isNewAnswer: Bool {
         !(0..<answers.count).contains(currentIndexBlock + 1)
     }
