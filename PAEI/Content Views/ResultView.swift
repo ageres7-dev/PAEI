@@ -51,7 +51,51 @@ extension ResultView {
                       entrepreneur: entrepreneur,
                       integrator: integrator)
     }
+    
+    
+    
+    
 }
+
+extension ResultView {
+    //MARK: - Расчет ключа paei
+    private func calulateResultTest(from answer: Answer) -> String {
+        var result = ""
+        
+        result += identifyFrom(characters: ["P", "p"], and: answer.producer)
+        result += identifyFrom(characters: ["A", "a"], and: answer.administrator)
+        result += identifyFrom(characters: ["E", "e"], and: answer.entrepreneur)
+        result += identifyFrom(characters: ["I", "i"], and: answer.integrator)
+        
+        return result
+    }
+    
+    //MARK: - Логика определения буквы для ключа pael
+    private func identifyFrom(characters: [String], and number: Int) -> String {
+        var result = ""
+        
+        assert(characters.count == 2, "Передан неверный массив")
+        
+        switch number {
+        case 30...:
+            result = characters.first ?? "😱"
+        case 20..<30:
+            result = characters.last ?? "😱"
+        default:
+            result = "-"
+        }
+        
+        return result
+    }
+    //MARK: - Вытаскиваем нужный символ из строки
+    private func getСharacter(number: Int, from string: String) -> String {
+        let index = string.index(string.startIndex, offsetBy: number)
+        return String(string[index])
+    }
+    
+}
+
+
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
