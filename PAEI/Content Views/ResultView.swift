@@ -15,77 +15,105 @@ struct ResultView: View {
     
     var body: some View {
         
-        ZStack {
-            Color.red
-                .ignoresSafeArea()
-            VStack {
-                Text("\(totalFrom(answers: answers).producer)")
-                
-                Button("Выход") {
-    //                presentationMode.wrappedValue.dismiss()
-//                    modalState.isModalPresentResultView = false
-                    modalState.isModalPresentPassingTest = false
+        VStack {
+            ScrollView {
+                VStack {
+//                    Spacer()
+                    Text(paeiKey)
+                        .bold()
+                        .font(.title)
                     
+                    Image(resultTest.picture)
+//                        .resizable()
+//                                .scaledToFill()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+//                        .frame(width: 200, height: 200)
+                    
+                    Spacer()
+                    Text("\(resultTest.shortInfo)")
+                        .bold()
+                        
+                        .padding()
+                    
+                    
+                    
+                
+                    
+                    Text("\(Text("\(resultTest.characteristic)"))")
+                    Spacer()
+                    
+                   
                 }
+                
+                
             }
+            .padding()
+            Spacer()
+            Button(action: {
+                modalState.isModalPresentPassingTest = false
+            }) {
+                Text("Выход")
+                    .bold()
+                    .setBlueStyleButton(color: .red)
+            }
+            .padding()
         }
+        
         .navigationBarHidden(true)
     }
 }
 
 extension ResultView {
-    private func totalFrom(answers: [Answer]) -> Answer {
-        var producer = 0
-        var administrator = 0
-        var entrepreneur = 0
-        var integrator = 0
-        
-        answers.forEach { answer in
-            producer += answer.producer
-            administrator += answer.administrator
-            entrepreneur += answer.entrepreneur
-            integrator += answer.integrator
-        }
-        return Answer(producer: producer,
-                      administrator: administrator,
-                      entrepreneur: entrepreneur,
-                      integrator: integrator)
+    
+    var paeiKey: String{
+        calculateResultTest(from: answers)
     }
     
-    
-    
-    
+    var resultTest: Result {
+        Result.getResult(text: paeiKey)
+    }
 }
+
 
 extension ResultView {
     //MARK: - Расчет ключа paei
-    private func calulateResultTest(from answer: Answer) -> String {
-        var result = ""
+    private func calculateResultTest(from answers: [Answer]) -> String {
+        var paelKey = ""
+        var pointsAccumulated: (p: Int, a: Int, e: Int, i:Int) = (0, 0, 0, 0)
         
-        result += identifyFrom(characters: ["P", "p"], and: answer.producer)
-        result += identifyFrom(characters: ["A", "a"], and: answer.administrator)
-        result += identifyFrom(characters: ["E", "e"], and: answer.entrepreneur)
-        result += identifyFrom(characters: ["I", "i"], and: answer.integrator)
+        answers.forEach { answer in
+            pointsAccumulated.p += answer.producer
+            pointsAccumulated.a += answer.administrator
+            pointsAccumulated.e += answer.entrepreneur
+            pointsAccumulated.i += answer.integrator
+        }
+      
+        paelKey += identify(characters: ["P", "p"], from: pointsAccumulated.p)
+        paelKey += identify(characters: ["A", "a"], from: pointsAccumulated.a)
+        paelKey += identify(characters: ["E", "e"], from: pointsAccumulated.e)
+        paelKey += identify(characters: ["I", "i"], from: pointsAccumulated.i)
         
-        return result
+        return paelKey
     }
     
     //MARK: - Логика определения буквы для ключа pael
-    private func identifyFrom(characters: [String], and number: Int) -> String {
-        var result = ""
+    private func identify(characters: [String], from number: Int) -> String {
+        var characterForKey = ""
         
         assert(characters.count == 2, "Передан неверный массив")
         
         switch number {
         case 30...:
-            result = characters.first ?? "😱"
+            characterForKey = characters.first ?? "😱"
         case 20..<30:
-            result = characters.last ?? "😱"
+            characterForKey = characters.last ?? "😱"
         default:
-            result = "-"
+            characterForKey = "-"
         }
         
-        return result
+        return characterForKey
     }
     //MARK: - Вытаскиваем нужный символ из строки
     private func getСharacter(number: Int, from string: String) -> String {
@@ -100,5 +128,6 @@ extension ResultView {
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         ResultView(answers: [Answer()])
+            .environmentObject(ModalStateManager())
     }
 }

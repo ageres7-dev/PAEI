@@ -161,15 +161,17 @@ extension PassingTest {
         integratorValue = 0
     }
     
-    private var сharacteristicBlocks: [CharacteristicBlock] { CharacteristicBlock.getBlocks()
+    private var сharacteristicBlocks: [CharacteristicBlock] {
+        CharacteristicBlock.getBlocks()
     }
     
-    private var currentCharacteristic: CharacteristicBlock { сharacteristicBlocks[currentIndexBlock]
+    private var currentCharacteristic: CharacteristicBlock {
+        сharacteristicBlocks[currentIndexBlock]
     }
 
     private var isNextButtom: Bool {
-//        currentIndexBlock != сharacteristicBlocks.count - 1
-        currentIndexBlock + 1 != 2
+        currentIndexBlock != сharacteristicBlocks.count - 1
+//        currentIndexBlock + 1 != 5
     }
     
     private var isNewAnswer: Bool {

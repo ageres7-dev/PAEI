@@ -42,7 +42,7 @@ struct CircleProgressBar: View {
                         Circle()
                             .trim(from: 0, to: progress)
                             .stroke(style: StrokeStyle(lineWidth: line, lineCap: .round, lineJoin: .round))
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(.blue)
                             .rotationEffect(Angle(degrees: 270))
                             .animation(.easeOut)
                         Text(labelValue)
