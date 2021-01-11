@@ -170,8 +170,8 @@ extension PassingTest {
     }
 
     private var isNextButtom: Bool {
-        currentIndexBlock != сharacteristicBlocks.count - 1
-//        currentIndexBlock + 1 != 5
+//        currentIndexBlock != сharacteristicBlocks.count - 1
+        currentIndexBlock + 1 != 3
     }
     
     private var isNewAnswer: Bool {

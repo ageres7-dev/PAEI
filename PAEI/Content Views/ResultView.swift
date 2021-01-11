@@ -15,13 +15,12 @@ struct ResultView: View {
     
     var body: some View {
         
-        VStack {
-            ScrollView {
-                VStack {
-//                    Spacer()
-                    Text(paeiKey)
-                        .bold()
-                        .font(.title)
+       
+            Form {
+      
+//                    Text(paeiKey)
+//                        .bold()
+//                        .font(.title)
                     
                     Image(resultTest.picture)
 //                        .resizable()
@@ -38,31 +37,24 @@ struct ResultView: View {
                         .padding()
                     
                     
-                    
-                
-                    
                     Text("\(Text("\(resultTest.characteristic)"))")
                     Spacer()
                     
-                   
+                Spacer()
+                Button(action: {
+                    modalState.isModalPresentPassingTest = false
+                }) {
+                    Text("Выход")
+                        .bold()
+                        .setBlueStyleButton()
                 }
                 
-                
+                .navigationTitle(paeiKey)
             }
-            .padding()
-            Spacer()
-            Button(action: {
-                modalState.isModalPresentPassingTest = false
-            }) {
-                Text("Выход")
-                    .bold()
-                    .setBlueStyleButton(color: .red)
-            }
-            .padding()
+
         }
         
-        .navigationBarHidden(true)
-    }
+    
 }
 
 extension ResultView {
@@ -131,3 +123,5 @@ struct ResultView_Previews: PreviewProvider {
             .environmentObject(ModalStateManager())
     }
 }
+
+
