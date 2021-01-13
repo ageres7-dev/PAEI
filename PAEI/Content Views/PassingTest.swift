@@ -171,7 +171,7 @@ extension PassingTest {
 
     private var isNextButtom: Bool {
 //        currentIndexBlock != сharacteristicBlocks.count - 1
-        currentIndexBlock + 1 != 3
+        currentIndexBlock + 1 != 1
     }
     
     private var isNewAnswer: Bool {

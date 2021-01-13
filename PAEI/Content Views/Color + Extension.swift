@@ -8,5 +8,8 @@
 import SwiftUI
 
 extension Color {
+
     static let customGray = (Color(red: 28/255, green: 28/255, blue: 28/255))
+
+
 }

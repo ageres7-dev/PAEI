@@ -8,64 +8,110 @@
 import SwiftUI
 
 struct ResultView: View {
-//    @Environment(\.presentationMode) var presentationMode
+    //    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var modalState: ModalStateManager
+    @Environment(\.colorScheme) private var colorScheme
     
     let answers: [Answer]
+    let screenSize = UIScreen.main.bounds.size
     
     var body: some View {
         
-       
-            Form {
-      
-//                    Text(paeiKey)
-//                        .bold()
-//                        .font(.title)
-                    
+        VStack {
+            ScrollView {
+                LazyVStack{
                     Image(resultTest.picture)
-//                        .resizable()
-//                                .scaledToFill()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
-//                        .frame(width: 200, height: 200)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .clipped()
+                        .cornerRadius(20)
                     
-                    Spacer()
-                    Text("\(resultTest.shortInfo)")
+                    Text(paeiKey)
                         .bold()
+                        .font(.largeTitle)
+//                        .padding()
+                    
+                    HStack {
+                        Spacer()
+                        CircleProgressBar(currentValue: 1, maxValue: 9)
+                        Spacer()
+                        CircleProgressBar(currentValue: 5, maxValue: 9)
+                        Spacer()
+                        CircleProgressBar(currentValue: 2, maxValue: 9)
+                        Spacer()
+                        CircleProgressBar(currentValue: 8, maxValue: 9)
+                    }
+                    .frame(height: 70)
+                
+                    TextBlock(text: resultTest.characteristic)
+                    TextBlock(text: resultTest.characteristic)
+                   
+                }
+                .shadow(color: shadowColor.opacity(0.5), radius: 10, x: 0, y: 0)
+//                .shadow(radius: 10)
+                .padding()
+            }
+            
+            Button(action: {
+                modalState.isModalPresentPassingTest = false
+            }) {
+                Text("Выход")
+                    .bold()
+                    .setBlueStyleButton()
+            }
+            .padding()
+            
+            .navigationBarBackButtonHidden(true)
+            .navigationTitle("Вы – " + resultTest.shortInfo)
+//            .navigationBarItems(leading:
+//                                    Button("Выход") {
+//                                        modalState.isModalPresentPassingTest = false
+//                                    }
+//                                , trailing:
+//                                    Button(action: {}, label: {
+//                                        Image(systemName: "square.and.arrow.up")
+//                                    })
+//            )
+            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Выход") {
+                            modalState.isModalPresentPassingTest = false
+                        }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                      
                         
-                        .padding()
-                    
-                    
-                    Text("\(Text("\(resultTest.characteristic)"))")
-                    Spacer()
-                    
-                Spacer()
-                Button(action: {
-                    modalState.isModalPresentPassingTest = false
-                }) {
-                    Text("Выход")
-                        .bold()
-                        .setBlueStyleButton()
+                        Button(action: {}, label: {
+                            Image(systemName: "square.and.arrow.up")
+                        })
                 }
                 
-                .navigationTitle(paeiKey)
             }
-
+            
         }
         
+    }
+    
     
 }
 
+
 extension ResultView {
     
-    var paeiKey: String{
+    private var paeiKey: String{
         calculateResultTest(from: answers)
     }
     
-    var resultTest: Result {
+    private var resultTest: Result {
         Result.getResult(text: paeiKey)
     }
+    
+    private var shadowColor: Color {
+        colorScheme == .dark ? .blue : .gray
+    }
+
 }
 
 
@@ -116,6 +162,25 @@ extension ResultView {
 }
 
 
+struct TextBlock: View {
+    @Environment(\.colorScheme) private var colorScheme
+    let text: String
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20.0)
+                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+//                .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
+            
+            Text(text)
+                .padding()
+        }
+    }
+    
+    private var shadowColor: Color {
+        colorScheme == .dark ? .blue : .gray
+    }
+}
+
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
@@ -124,4 +189,12 @@ struct ResultView_Previews: PreviewProvider {
     }
 }
 
+struct TextBlock_Previews: PreviewProvider {
+    static var previews: some View {
+        TextBlock(text: "hinkjnkn")
+    }
+}
 
+
+
+//resultTest.characteristic
