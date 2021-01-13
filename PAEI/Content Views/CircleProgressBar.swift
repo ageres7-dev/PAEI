@@ -10,10 +10,11 @@ import SwiftUI
 struct CircleProgressBar: View {
     let currentValue: Int
     let maxValue: Int
+    let insideLabel: String
     private var labelValue: String {
         "\(currentValue)/\(maxValue)"
     }
-//    let label: String
+
     
     private var progress: CGFloat {
         CGFloat(currentValue) / CGFloat(maxValue)
@@ -64,7 +65,7 @@ struct CircleProgressBar: View {
 
 struct CircleProgressBarView_Previews: PreviewProvider {
     static var previews: some View {
-        CircleProgressBar(currentValue: 12, maxValue: 12)
+        CircleProgressBar(currentValue: 12, maxValue: 12, insideLabel: "label")
             .frame(width: 130, height: 130, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }

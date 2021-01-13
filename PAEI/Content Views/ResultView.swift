@@ -34,13 +34,13 @@ struct ResultView: View {
                     
                     HStack {
                         Spacer()
-                        CircleProgressBar(currentValue: 1, maxValue: 9)
+                        CircleProgressBar(currentValue: 1, maxValue: 9, insideLabel: "P = 23")
                         Spacer()
-                        CircleProgressBar(currentValue: 5, maxValue: 9)
+                        CircleProgressBar(currentValue: 5, maxValue: 9, insideLabel: "P = 23")
                         Spacer()
-                        CircleProgressBar(currentValue: 2, maxValue: 9)
+                        CircleProgressBar(currentValue: 2, maxValue: 9, insideLabel: "P = 23")
                         Spacer()
-                        CircleProgressBar(currentValue: 8, maxValue: 9)
+                        CircleProgressBar(currentValue: 8, maxValue: 9, insideLabel: "P = 23")
                     }
                     .frame(height: 70)
                 

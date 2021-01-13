@@ -29,14 +29,16 @@ struct PassingTest: View {
                         Text("Баллов")
                         CircleProgressBar(
                             currentValue: pointsTotal,
-                            maxValue: 10
+                            maxValue: 10,
+                            insideLabel: "\(currentIndexBlock + 1)/10"
                         )
                     }
                     Spacer()
                     VStack {
                         Text("Блок")
                         CircleProgressBar(currentValue: currentIndexBlock + 1,
-                                          maxValue: 12
+                                          maxValue: сharacteristicBlocks.count,
+                                          insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
                         )
                     }
                     Spacer()
@@ -83,7 +85,11 @@ struct PassingTest: View {
                 .disabled(pointsTotal != 10)
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                 
-                
+                Button(action: {
+                    print(сharacteristicBlocks.count)
+                }, label: {
+                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                })
                 Button(action: actionBackButton) {
                     Text("Предыдущий блок")
                 }
@@ -171,7 +177,7 @@ extension PassingTest {
     
     private var isNextButtom: Bool {
         //        currentIndexBlock != сharacteristicBlocks.count - 1
-        currentIndexBlock + 1 != 1
+        currentIndexBlock + 1 != 2
     }
     
     private var isNewAnswer: Bool {
