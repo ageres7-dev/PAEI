@@ -11,9 +11,9 @@ struct CircleProgressBar: View {
     let currentValue: Int
     let maxValue: Int
     let insideLabel: String
-    private var labelValue: String {
-        "\(currentValue)/\(maxValue)"
-    }
+//    private var labelValue: String {
+//        "\(currentValue)/\(maxValue)"
+//    }
 
     
     private var progress: CGFloat {
@@ -46,7 +46,7 @@ struct CircleProgressBar: View {
                             .foregroundColor(.blue)
                             .rotationEffect(Angle(degrees: 270))
                             .animation(.easeOut)
-                        Text(labelValue)
+                        Text(insideLabel)
                             .font(.system(size: fontValue))
                             .bold()
                         

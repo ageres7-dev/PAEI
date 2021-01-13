@@ -30,20 +30,37 @@ struct ResultView: View {
                     Text(paeiKey)
                         .bold()
                         .font(.largeTitle)
-//                        .padding()
+                    //                        .padding()
                     
                     HStack {
                         Spacer()
-                        CircleProgressBar(currentValue: 1, maxValue: 9, insideLabel: "P = 23")
+                        CircleProgressBar(
+                            currentValue: answer.producer,
+                            maxValue: 48,
+                            insideLabel: "P=\(answer.producer)"
+                        )
                         Spacer()
-                        CircleProgressBar(currentValue: 5, maxValue: 9, insideLabel: "P = 23")
+                        CircleProgressBar(
+                            currentValue: answer.administrator,
+                            maxValue: 48,
+                            insideLabel: "A=\(answer.administrator)"
+                        )
                         Spacer()
-                        CircleProgressBar(currentValue: 2, maxValue: 9, insideLabel: "P = 23")
+                        CircleProgressBar(
+                            currentValue: answer.entrepreneur,
+                            maxValue: 48,
+                            insideLabel: "E=\(answer.entrepreneur)"
+                        )
                         Spacer()
-                        CircleProgressBar(currentValue: 8, maxValue: 9, insideLabel: "P = 23")
+                        CircleProgressBar(
+                            currentValue: answer.integrator,
+                            maxValue: 48,
+                            insideLabel: "I=\(answer.integrator)"
+                        )
                     }
                     .frame(height: 70)
-                
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    
                     TextBlock(text: resultTest.characteristic)
                     TextBlock(text: resultTest.characteristic)
                    

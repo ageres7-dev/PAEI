@@ -30,7 +30,7 @@ struct PassingTest: View {
                         CircleProgressBar(
                             currentValue: pointsTotal,
                             maxValue: 10,
-                            insideLabel: "\(currentIndexBlock + 1)/10"
+                            insideLabel: "\(pointsTotal)/10"
                         )
                     }
                     Spacer()
@@ -176,8 +176,10 @@ extension PassingTest {
     }
     
     private var isNextButtom: Bool {
-        //        currentIndexBlock != сharacteristicBlocks.count - 1
-        currentIndexBlock + 1 != 2
+                currentIndexBlock != сharacteristicBlocks.count - 1
+//        currentIndexBlock + 1 != 2
+        
+        
     }
     
     private var isNewAnswer: Bool {
