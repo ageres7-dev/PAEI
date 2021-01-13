@@ -12,7 +12,7 @@ struct ResultView: View {
     @EnvironmentObject var modalState: ModalStateManager
     @Environment(\.colorScheme) private var colorScheme
     
-    let answers: [Answer]
+    let answer: Answer
     let screenSize = UIScreen.main.bounds.size
     
     var body: some View {
@@ -101,7 +101,7 @@ struct ResultView: View {
 extension ResultView {
     
     private var paeiKey: String{
-        calculateResultTest(from: answers)
+        calculateResultKey(from: answer)
     }
     
     private var resultTest: Result {
@@ -117,21 +117,13 @@ extension ResultView {
 
 extension ResultView {
     //MARK: - Расчет ключа paei
-    private func calculateResultTest(from answers: [Answer]) -> String {
+    private func calculateResultKey(from answer: Answer) -> String {
         var paelKey = ""
-        var pointsAccumulated: (p: Int, a: Int, e: Int, i:Int) = (0, 0, 0, 0)
-        
-        answers.forEach { answer in
-            pointsAccumulated.p += answer.producer
-            pointsAccumulated.a += answer.administrator
-            pointsAccumulated.e += answer.entrepreneur
-            pointsAccumulated.i += answer.integrator
-        }
       
-        paelKey += identify(characters: ["P", "p"], from: pointsAccumulated.p)
-        paelKey += identify(characters: ["A", "a"], from: pointsAccumulated.a)
-        paelKey += identify(characters: ["E", "e"], from: pointsAccumulated.e)
-        paelKey += identify(characters: ["I", "i"], from: pointsAccumulated.i)
+        paelKey += identify(characters: ["P", "p"], from: answer.producer)
+        paelKey += identify(characters: ["A", "a"], from: answer.administrator)
+        paelKey += identify(characters: ["E", "e"], from: answer.entrepreneur)
+        paelKey += identify(characters: ["I", "i"], from: answer.integrator)
         
         return paelKey
     }
@@ -184,7 +176,7 @@ struct TextBlock: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(answers: [Answer()])
+        ResultView(answer: Answer())
             .environmentObject(ModalStateManager())
     }
 }
@@ -198,3 +190,29 @@ struct TextBlock_Previews: PreviewProvider {
 
 
 //resultTest.characteristic
+
+
+
+
+/*
+ //MARK: - Расчет ключа paei
+ private func calculateResultTest(from answers: [Answer]) -> String {
+     var paelKey = ""
+     var pointsAccumulated: (p: Int, a: Int, e: Int, i:Int) = (0, 0, 0, 0)
+     
+     answers.forEach { answer in
+         pointsAccumulated.p += answer.producer
+         pointsAccumulated.a += answer.administrator
+         pointsAccumulated.e += answer.entrepreneur
+         pointsAccumulated.i += answer.integrator
+     }
+   
+     paelKey += identify(characters: ["P", "p"], from: pointsAccumulated.p)
+     paelKey += identify(characters: ["A", "a"], from: pointsAccumulated.a)
+     paelKey += identify(characters: ["E", "e"], from: pointsAccumulated.e)
+     paelKey += identify(characters: ["I", "i"], from: pointsAccumulated.i)
+     
+     return paelKey
+ }
+ 
+ */

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PassingTest: View {
-//    @EnvironmentObject var modalState: ModalStateManager
+    //    @EnvironmentObject var modalState: ModalStateManager
     
     @State private var producerValue = 0
     @State private var administratorValue = 0
@@ -27,8 +27,9 @@ struct PassingTest: View {
                     Spacer()
                     VStack {
                         Text("Баллов")
-                        CircleProgressBar(currentValue: pointsTotal,
-                                          maxValue: 10
+                        CircleProgressBar(
+                            currentValue: pointsTotal,
+                            maxValue: 10
                         )
                     }
                     Spacer()
@@ -42,8 +43,8 @@ struct PassingTest: View {
                 }
                 .frame(maxHeight: 150)
                 
-//                Spacer(minLength: 20)
-
+                //                Spacer(minLength: 20)
+                
                 
                 CharacteristicsRadioButtonGroup(
                     producerValue: $producerValue,
@@ -65,14 +66,14 @@ struct PassingTest: View {
                             .bold()
                             .setBlueStyleButton(disabledStyle: pointsTotal != 10)
                     }
-
-//                    .sheet(isPresented: $modalState.isModalPresentResultView, content: {
-//                        ResultView(answers: answers)
-//                    })
+                    
+                    //                    .sheet(isPresented: $modalState.isModalPresentResultView, content: {
+                    //                        ResultView(answers: answers)
+                    //                    })
                     
                     
                     NavigationLink(
-                        destination: ResultView(answers: answers),
+                        destination: ResultView(answer: sumAllAnswers(from: answers)),
                         isActive: $isShowingResultView,
                         label: { EmptyView() }
                     )
@@ -86,7 +87,6 @@ struct PassingTest: View {
                 Button(action: actionBackButton) {
                     Text("Предыдущий блок")
                 }
-//                .font(.title3)
                 .disabled(currentIndexBlock == 0)
                 
             }
@@ -133,7 +133,7 @@ extension PassingTest {
         } else {
             updateAnswer(at: currentIndexBlock)
         }
-//        modalState.isModalPresentResultView = true
+        //        modalState.isModalPresentResultView = true
         isShowingResultView = true
     }
     
@@ -168,9 +168,9 @@ extension PassingTest {
     private var currentCharacteristic: CharacteristicBlock {
         сharacteristicBlocks[currentIndexBlock]
     }
-
+    
     private var isNextButtom: Bool {
-//        currentIndexBlock != сharacteristicBlocks.count - 1
+        //        currentIndexBlock != сharacteristicBlocks.count - 1
         currentIndexBlock + 1 != 1
     }
     
@@ -189,6 +189,21 @@ extension PassingTest {
         (producerValue + administratorValue
             + entrepreneurValue + integratorValue)
     }
+    
+    private func sumAllAnswers(from answers: [Answer]) -> Answer {
+        
+        var result = Answer()
+        answers.forEach { answer in
+            result.producer += answer.producer
+            result.administrator += answer.administrator
+            result.entrepreneur += answer.entrepreneur
+            result.integrator += answer.integrator
+        }
+        return result
+    }
+    
+    
+    
 }
 
 
