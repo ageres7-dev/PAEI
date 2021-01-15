@@ -9,4 +9,6 @@ struct Result {
     var shortInfo = ""
     var picture = ""
     var characteristic = ""
+    var qualities: [String] = []
+    var skills: [String] = []
 }
