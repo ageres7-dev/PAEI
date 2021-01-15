@@ -124,12 +124,12 @@
 		A56DB60D259FB5290098CAAB /* Content Views */ = {
 			isa = PBXGroup;
 			children = (
-				A58843D225A8E253002DE43A /* WelcomeView.swift */,
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
+				A58843D225A8E253002DE43A /* WelcomeView.swift */,
 				A52AF72C25A4E2A900D46757 /* PassingTest.swift */,
+				A58843C025A51254002DE43A /* ResultView.swift */,
 				A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */,
 				A58843C725A717B3002DE43A /* CircleProgressBar.swift */,
-				A58843C025A51254002DE43A /* ResultView.swift */,
 				A56DB62525A115280098CAAB /* RadioButtons.swift */,
 				A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */,
 				A58843CF25A89408002DE43A /* Color + Extension.swift */,

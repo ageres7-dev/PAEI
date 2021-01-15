@@ -23,6 +23,7 @@ struct ResultView: View {
                     Group{
                     Text("Вы – " + resultTest.shortInfo)
                         .bold()
+                        .multilineTextAlignment(.center)
                         .font(.largeTitle)
                     
                     Image(resultTest.picture)
@@ -37,7 +38,6 @@ struct ResultView: View {
                         aValue: answer.administrator,
                         eValue: answer.entrepreneur,
                         iValue: answer.integrator
-//                        height: screenSize.width / 4
                     )
                     .frame( height: screenSize.width / 3.6)
                     
@@ -47,8 +47,8 @@ struct ResultView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4 , trailing: 0))
                    
+                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
                 }
-                .shadow(color: shadowColor.opacity(0.5), radius: 10, x: 0, y: 0)
 //                .shadow(radius: 10)
                 .padding()
             }
@@ -76,16 +76,16 @@ struct ResultView: View {
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Выход") {
-                            modalState.isModalPresentPassingTest = false
-                        }
+                    Button("Выход") {
+                        modalState.isModalPresentPassingTest = false
+                    }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                      
-                        
-                        Button(action: {}, label: {
-                            Image(systemName: "square.and.arrow.up")
-                        })
+                    
+                    
+                    Button(action: {}) {
+                        Image(systemName: "square.and.arrow.up")
+                    }
                 }
                 
             }
@@ -231,6 +231,7 @@ struct CircleGraph: View {
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         ResultView(answer: Answer())
+            .preferredColorScheme(.dark)
             .environmentObject(ModalStateManager())
     }
 }
@@ -244,6 +245,7 @@ struct TextBlock_Previews: PreviewProvider {
 struct CircleGraph_Previews: PreviewProvider {
     static var previews: some View {
         CircleGraph(pValue: 23, aValue: 21, eValue: 2, iValue: 40)
+            .frame(width: 400, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 

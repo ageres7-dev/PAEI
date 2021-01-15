@@ -209,9 +209,14 @@ extension Result {
         default: break
         }
         
-        return Result(shortInfo: key,
-                      picture: "default",
-                      characteristic: "\(pCharacteristic)\n\n\(aCharacteristic)\n\n\(eCharacteristic)\n\n\(iCharacteristic)")
+        return Result(
+            shortInfo: key,
+            picture: "default",
+            characteristic:
+                pCharacteristic + "\n\n" + aCharacteristic + "\n\n" +
+                eCharacteristic + "\n\n" + iCharacteristic
+            //                        "\(pCharacteristic)\n\n\(aCharacteristic)\n\n\(eCharacteristic)\n\n\(iCharacteristic)")
+        )
         
     }
     
