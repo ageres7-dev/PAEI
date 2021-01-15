@@ -85,11 +85,6 @@ struct PassingTest: View {
                 .disabled(pointsTotal != 10)
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                 
-                Button(action: {
-                    print(сharacteristicBlocks.count)
-                }, label: {
-                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                })
                 Button(action: actionBackButton) {
                     Text("Предыдущий блок")
                 }
@@ -176,8 +171,8 @@ extension PassingTest {
     }
     
     private var isNextButtom: Bool {
-                currentIndexBlock != сharacteristicBlocks.count - 1
-//        currentIndexBlock + 1 != 2
+//                currentIndexBlock != сharacteristicBlocks.count - 1
+        currentIndexBlock + 1 != 2
         
         
     }
@@ -209,9 +204,7 @@ extension PassingTest {
         }
         return result
     }
-    
-    
-    
+
 }
 
 

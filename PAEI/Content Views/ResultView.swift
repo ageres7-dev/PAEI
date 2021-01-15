@@ -20,6 +20,10 @@ struct ResultView: View {
         VStack {
             ScrollView {
                 LazyVStack{
+                    Text("Вы – " + resultTest.shortInfo)
+                        .bold()
+                        .font(.largeTitle)
+                    
                     Image(resultTest.picture)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -27,45 +31,22 @@ struct ResultView: View {
                         .clipped()
                         .cornerRadius(20)
                     
-                    Text(paeiKey)
-                        .bold()
-                        .font(.largeTitle)
-                    //                        .padding()
+                    CircleGraph(
+                        pValue: answer.producer,
+                        aValue: answer.administrator,
+                        eValue: answer.entrepreneur,
+                        iValue: answer.integrator,
+                        height: screenSize.width / 3
+                    )
                     
-                    HStack {
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: answer.producer,
-                            maxValue: 48,
-                            insideLabel: "P=\(answer.producer)"
-                        )
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: answer.administrator,
-                            maxValue: 48,
-                            insideLabel: "A=\(answer.administrator)"
-                        )
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: answer.entrepreneur,
-                            maxValue: 48,
-                            insideLabel: "E=\(answer.entrepreneur)"
-                        )
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: answer.integrator,
-                            maxValue: 48,
-                            insideLabel: "I=\(answer.integrator)"
-                        )
+                    Group {
+                        TextBlock(text: resultTest.characteristic)
+                        TextBlock(text: resultTest.characteristic)
                     }
-                    .frame(height: 70)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    .shadow(color: shadowColor.opacity(0.5), radius: 10, x: 0, y: 0)
                     
-                    TextBlock(text: resultTest.characteristic)
-                    TextBlock(text: resultTest.characteristic)
                    
                 }
-                .shadow(color: shadowColor.opacity(0.5), radius: 10, x: 0, y: 0)
 //                .shadow(radius: 10)
                 .padding()
             }
@@ -80,7 +61,7 @@ struct ResultView: View {
             .padding()
             
             .navigationBarBackButtonHidden(true)
-            .navigationTitle("Вы – " + resultTest.shortInfo)
+            .navigationTitle(paeiKey)
 //            .navigationBarItems(leading:
 //                                    Button("Выход") {
 //                                        modalState.isModalPresentPassingTest = false
@@ -191,6 +172,62 @@ struct TextBlock: View {
 }
 
 
+
+struct CircleGraph: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
+    let pValue: Int
+    let aValue: Int
+    let eValue: Int
+    let iValue: Int
+    let height: CGFloat
+    
+    var body: some View {
+        
+            GeometryReader { geometry in
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20.0)
+        //                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+                        .foregroundColor(colorScheme == .dark ? .customGray : .red)
+                    
+                    HStack {
+                        Spacer()
+                        CircleProgressBar(
+                            currentValue: pValue,
+                            maxValue: 48,
+                            insideLabel: "P=\(pValue)"
+                        )
+                        Spacer()
+                        CircleProgressBar(
+                            currentValue: aValue,
+                            maxValue: 48,
+                            insideLabel: "A=\(aValue)"
+                        )
+                        Spacer()
+                        CircleProgressBar(
+                            currentValue: eValue,
+                            maxValue: 48,
+                            insideLabel: "E=\(eValue)"
+                        )
+                        Spacer()
+                        CircleProgressBar(
+                            currentValue: iValue,
+                            maxValue: 48,
+                            insideLabel: "I=\(iValue)"
+                        )
+                        Spacer()
+                    }
+                    .frame(height: geometry.size.width / 5) //70
+                    .padding()
+                }
+                .padding(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
+            }
+        .frame(height: height)
+    }
+}
+
+
+
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         ResultView(answer: Answer())
@@ -204,6 +241,11 @@ struct TextBlock_Previews: PreviewProvider {
     }
 }
 
+struct CircleGraph_Previews: PreviewProvider {
+    static var previews: some View {
+        CircleGraph(pValue: 23, aValue: 21, eValue: 2, iValue: 40, height: 70)
+    }
+}
 
 
 //resultTest.characteristic
@@ -233,3 +275,5 @@ struct TextBlock_Previews: PreviewProvider {
  }
  
  */
+
+

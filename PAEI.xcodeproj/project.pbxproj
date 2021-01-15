@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51AAF5C25AF93C100452EF5 /* TextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AAF5B25AF93C100452EF5 /* TextBlock.swift */; };
 		A522021E25A8EA8B00EC0582 /* ModalStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */; };
 		A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AF72C25A4E2A900D46757 /* PassingTest.swift */; };
 		A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FC259FB4780098CAAB /* PAEIApp.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A51AAF5B25AF93C100452EF5 /* TextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlock.swift; sourceTree = "<group>"; };
 		A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalStateManager.swift; sourceTree = "<group>"; };
 		A52AF72C25A4E2A900D46757 /* PassingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingTest.swift; sourceTree = "<group>"; };
 		A56DB5F9259FB4780098CAAB /* PAEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 			children = (
 				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
+				A51AAF5B25AF93C100452EF5 /* TextBlock.swift */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB60E259FB53B0098CAAB /* Managers */,
@@ -223,6 +226,7 @@
 			files = (
 				A58843D025A89409002DE43A /* Color + Extension.swift in Sources */,
 				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
+				A51AAF5C25AF93C100452EF5 /* TextBlock.swift in Sources */,
 				A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */,
 				A58843C825A717B3002DE43A /* CircleProgressBar.swift in Sources */,
 				A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */,

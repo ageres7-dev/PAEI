@@ -50,9 +50,11 @@ struct CircleProgressBar: View {
                             .font(.system(size: fontValue))
                             .bold()
                         
-                    }.offset(CGSize(width: 0, height: -3.0))
+                    }
+//                    .offset(CGSize(width: 0, height: -3.0))
                     //                    .frame(width: 100, height: 100)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+//                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                    .scaleEffect(0.9)
 //                }
                 
                 
