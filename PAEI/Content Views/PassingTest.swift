@@ -24,7 +24,7 @@ struct PassingTest: View {
         NavigationView {
             VStack {
                 HStack {
-                    Spacer()
+                    Spacer(minLength: 16)
                     VStack {
                         Text("Баллов")
                         CircleProgressBar(
@@ -33,7 +33,7 @@ struct PassingTest: View {
                             insideLabel: "\(pointsTotal)/10"
                         )
                     }
-                    Spacer()
+                    Spacer(minLength: 16)
                     VStack {
                         Text("Блок")
                         CircleProgressBar(currentValue: currentIndexBlock + 1,
@@ -41,12 +41,12 @@ struct PassingTest: View {
                                           insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
                         )
                     }
-                    Spacer()
+                    Spacer(minLength: 16)
                 }
                 .frame(maxHeight: 150)
                 
                 //                Spacer(minLength: 20)
-                
+                Spacer()
                 
                 CharacteristicsRadioButtonGroup(
                     producerValue: $producerValue,
@@ -57,6 +57,7 @@ struct PassingTest: View {
                 )
                 .frame(minHeight: 320, maxHeight: 400)
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+                Spacer()
                 
                 ZStack {
                     Button(action: isNextButtom

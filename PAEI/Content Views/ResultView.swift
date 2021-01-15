@@ -20,6 +20,7 @@ struct ResultView: View {
         VStack {
             ScrollView {
                 LazyVStack{
+                    Group{
                     Text("Вы – " + resultTest.shortInfo)
                         .bold()
                         .font(.largeTitle)
@@ -35,18 +36,19 @@ struct ResultView: View {
                         pValue: answer.producer,
                         aValue: answer.administrator,
                         eValue: answer.entrepreneur,
-                        iValue: answer.integrator,
-                        height: screenSize.width / 3
+                        iValue: answer.integrator
+//                        height: screenSize.width / 4
                     )
+                    .frame( height: screenSize.width / 3.6)
                     
-                    Group {
+                   
                         TextBlock(text: resultTest.characteristic)
                         TextBlock(text: resultTest.characteristic)
                     }
-                    .shadow(color: shadowColor.opacity(0.5), radius: 10, x: 0, y: 0)
-                    
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 4 , trailing: 0))
                    
                 }
+                .shadow(color: shadowColor.opacity(0.5), radius: 10, x: 0, y: 0)
 //                .shadow(radius: 10)
                 .padding()
             }
@@ -180,49 +182,47 @@ struct CircleGraph: View {
     let aValue: Int
     let eValue: Int
     let iValue: Int
-    let height: CGFloat
+    //    let height: CGFloat
     
     var body: some View {
         
+        ZStack {
+            RoundedRectangle(cornerRadius: 20.0)
+                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+            //                .foregroundColor(colorScheme == .dark ? .customGray : .red)
+            
             GeometryReader { geometry in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20.0)
-        //                .foregroundColor(colorScheme == .dark ? .customGray : .white)
-                        .foregroundColor(colorScheme == .dark ? .customGray : .red)
-                    
-                    HStack {
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: pValue,
-                            maxValue: 48,
-                            insideLabel: "P=\(pValue)"
-                        )
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: aValue,
-                            maxValue: 48,
-                            insideLabel: "A=\(aValue)"
-                        )
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: eValue,
-                            maxValue: 48,
-                            insideLabel: "E=\(eValue)"
-                        )
-                        Spacer()
-                        CircleProgressBar(
-                            currentValue: iValue,
-                            maxValue: 48,
-                            insideLabel: "I=\(iValue)"
-                        )
-                        Spacer()
-                    }
-                    .frame(height: geometry.size.width / 5) //70
-                    .padding()
+                HStack {
+                    CircleProgressBar(
+                        currentValue: pValue,
+                        maxValue: 48,
+                        insideLabel: "P=\(pValue)"
+                    )
+                    Spacer(minLength: 16)
+                    CircleProgressBar(
+                        currentValue: aValue,
+                        maxValue: 48,
+                        insideLabel: "A=\(aValue)"
+                    )
+                    Spacer(minLength: 16)
+                    CircleProgressBar(
+                        currentValue: eValue,
+                        maxValue: 48,
+                        insideLabel: "E=\(eValue)"
+                    )
+                    Spacer(minLength: 16)
+                    CircleProgressBar(
+                        currentValue: iValue,
+                        maxValue: 48,
+                        insideLabel: "I=\(iValue)"
+                    )
                 }
-                .padding(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                .padding()
             }
-        .frame(height: height)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -243,7 +243,7 @@ struct TextBlock_Previews: PreviewProvider {
 
 struct CircleGraph_Previews: PreviewProvider {
     static var previews: some View {
-        CircleGraph(pValue: 23, aValue: 21, eValue: 2, iValue: 40, height: 70)
+        CircleGraph(pValue: 23, aValue: 21, eValue: 2, iValue: 40)
     }
 }
 
