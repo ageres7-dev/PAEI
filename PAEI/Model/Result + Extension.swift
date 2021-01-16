@@ -42,7 +42,7 @@ extension Result {
             )
         case "pAei":
             result = Result(
-                shortInfo: "Администратор ",
+                shortInfo: "Администратор",
                 picture: "2",
                 characteristic: "Нельзя добиться результатов без тех, кто организовывает и контролирует процесс их достижения. С этим блестяще справляется администратор, который внимательно и методично работает над повышением эффективности организации.",
                 qualities: [ "внимательность",
@@ -282,14 +282,7 @@ extension Result {
         default:
             result = Result.customPael(key: text)
         }
-        
-        
-        
-        //        if result.shortInfo == "" {
-        
-        //            let j = customPael(key: text)
-        //            result.characteristic = self.customPael(key: text)
-        //        }
+
         return result
     }
 }

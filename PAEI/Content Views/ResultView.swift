@@ -40,42 +40,43 @@ struct ResultView: View {
                             iValue: answer.integrator
                         )
                         .frame( height: screenSize.width / 3.6)
-                     
-                    
+                        
+                        
                         Text(resultTest.characteristic)
                             .setCustomBackgroung()
-                       
-                        VStack {
-                            Text("Качества:")
-                                .bold()
-                            HStack {
-                                VStack(alignment: .leading){
-                                    ForEach(resultTest.qualities, id: \.self) {quality in
-                                        Text("– \(quality)")
-                                            .multilineTextAlignment(.leading)
+                        
+                        if resultTest.qualities.count != 0 {
+                            VStack {
+                                Text("Качества:")
+                                    .bold()
+                                HStack {
+                                    VStack(alignment: .leading){
+                                        ForEach(resultTest.qualities, id: \.self) {quality in
+                                            Text("– \(quality)")
+                                                .multilineTextAlignment(.leading)
+                                        }
                                     }
+                                    Spacer()
                                 }
-                                Spacer()
                             }
+                            .setCustomBackgroung()
                         }
-                        .setCustomBackgroung()
-                        
-                        
-                        VStack {
-                            Text("Навыки:")
-                                .bold()
-                            HStack {
-                                VStack(alignment: .leading){
-                                    ForEach(resultTest.skills, id: \.self) {quality in
-                                        Text("– \(quality)")
-                                            .multilineTextAlignment(.leading)
+                        if resultTest.skills.count != 0 {
+                            VStack {
+                                Text("Навыки:")
+                                    .bold()
+                                HStack {
+                                    VStack(alignment: .leading){
+                                        ForEach(resultTest.skills, id: \.self) {quality in
+                                            Text("– \(quality)")
+                                                .multilineTextAlignment(.leading)
+                                        }
                                     }
+                                    Spacer()
                                 }
-                                Spacer()
                             }
+                            .setCustomBackgroung()
                         }
-                        .setCustomBackgroung()
-                        
                         
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4 , trailing: 0))

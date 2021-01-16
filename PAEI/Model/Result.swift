@@ -12,3 +12,5 @@ struct Result {
     var qualities: [String] = []
     var skills: [String] = []
 }
+
+
