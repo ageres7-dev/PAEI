@@ -21,35 +21,68 @@ struct ResultView: View {
             ScrollView {
                 LazyVStack{
                     Group{
-                    Text("Вы – " + resultTest.shortInfo)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                        .font(.largeTitle)
+                        Text("Вы – " + resultTest.shortInfo)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                        
+                        Image(resultTest.picture)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .clipped()
+                            .cornerRadius(20)
+                        
+                        CircleGraph(
+                            pValue: answer.producer,
+                            aValue: answer.administrator,
+                            eValue: answer.entrepreneur,
+                            iValue: answer.integrator
+                        )
+                        .frame( height: screenSize.width / 3.6)
+                     
                     
-                    Image(resultTest.picture)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .clipped()
-                        .cornerRadius(20)
-                    
-                    CircleGraph(
-                        pValue: answer.producer,
-                        aValue: answer.administrator,
-                        eValue: answer.entrepreneur,
-                        iValue: answer.integrator
-                    )
-                    .frame( height: screenSize.width / 3.6)
-                    
-                   
-                        TextBlock(text: resultTest.characteristic)
-                        TextBlock(text: resultTest.characteristic)
+                        Text(resultTest.characteristic)
+                            .setCustomBackgroung()
+                       
+                        VStack {
+                            Text("Качества:")
+                                .bold()
+                            HStack {
+                                VStack(alignment: .leading){
+                                    ForEach(resultTest.qualities, id: \.self) {quality in
+                                        Text("– \(quality)")
+                                            .multilineTextAlignment(.leading)
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                        .setCustomBackgroung()
+                        
+                        
+                        VStack {
+                            Text("Навыки:")
+                                .bold()
+                            HStack {
+                                VStack(alignment: .leading){
+                                    ForEach(resultTest.skills, id: \.self) {quality in
+                                        Text("– \(quality)")
+                                            .multilineTextAlignment(.leading)
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                        .setCustomBackgroung()
+                        
+                        
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4 , trailing: 0))
-                   
+                    
                     .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
                 }
-//                .shadow(radius: 10)
+                //                .shadow(radius: 10)
                 .padding()
             }
             
@@ -153,7 +186,7 @@ extension ResultView {
     
 }
 
-
+/*
 struct TextBlock: View {
     @Environment(\.colorScheme) private var colorScheme
     let text: String
@@ -172,7 +205,7 @@ struct TextBlock: View {
         colorScheme == .dark ? .blue : .gray
     }
 }
-
+*/
 
 
 struct CircleGraph: View {
@@ -235,13 +268,13 @@ struct ResultView_Previews: PreviewProvider {
             .environmentObject(ModalStateManager())
     }
 }
-
+/*
 struct TextBlock_Previews: PreviewProvider {
     static var previews: some View {
         TextBlock(text: "hinkjnkn")
     }
 }
-
+*/
 struct CircleGraph_Previews: PreviewProvider {
     static var previews: some View {
         CircleGraph(pValue: 23, aValue: 21, eValue: 2, iValue: 40)

@@ -7,18 +7,16 @@
 
 import SwiftUI
 
-struct TextBlock2: ViewModifier {
+struct CustomBackgroung: ViewModifier {
     @Environment(\.colorScheme) private var colorScheme
     
     func body(content: Content) -> some View {
         ZStack {
-            content
-                .padding()
-            
             RoundedRectangle(cornerRadius: 20.0)
                 .foregroundColor(colorScheme == .dark ? .customGray : .white)
             //                .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
-            
+            content
+                .padding()
             
         }
     }
@@ -32,17 +30,18 @@ struct TextBlock2: ViewModifier {
 extension View {
     func setCustomBackgroung() -> some View {
         self.modifier(
-            TextBlock2()
+            CustomBackgroung()
         )
     }
 }
 
 
 
-struct TextBlock2_Previews: PreviewProvider {
-    static var previews: some View {
-        TextBlock(text: "hinkjnkn")
-            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-    }
-    
-}
+//struct TextBlock2_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Text("8899")
+//            .setCustomBackgroung()
+//
+//    }
+//    
+//}
