@@ -78,6 +78,58 @@ struct ResultView: View {
                             .setCustomBackgroung()
                         }
                         
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.producer,
+                                maxValue: 48,
+                                insideLabel: "P=\(answer.producer)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            
+                            Text(detailedResult.pCharacteristic)
+                        }
+                        .setCustomBackgroung()
+                        
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.administrator,
+                                maxValue: 48,
+                                insideLabel: "A=\(answer.administrator)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            
+                            Text(detailedResult.aCharacteristic)
+                        }
+                        .setCustomBackgroung()
+                        
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.entrepreneur,
+                                maxValue: 48,
+                                insideLabel: "E=\(answer.entrepreneur)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            
+                            Text(detailedResult.eCharacteristic)
+                        }
+                        .setCustomBackgroung()
+                        
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.integrator,
+                                maxValue: 48,
+                                insideLabel: "I=\(answer.integrator)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            
+                            Text(detailedResult.iCharacteristic)
+                        }
+                        .setCustomBackgroung()
+                        
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4 , trailing: 0))
                     
@@ -98,16 +150,17 @@ struct ResultView: View {
             
             .navigationBarBackButtonHidden(true)
             .navigationTitle(paeiKey)
-//            .navigationBarItems(leading:
-//                                    Button("Выход") {
-//                                        modalState.isModalPresentPassingTest = false
-//                                    }
-//                                , trailing:
-//                                    Button(action: {}, label: {
-//                                        Image(systemName: "square.and.arrow.up")
-//                                    })
-//            )
-            
+            /*
+            .navigationBarItems(leading:
+                                    Button("Выход") {
+                                        modalState.isModalPresentPassingTest = false
+                                    }
+                                , trailing:
+                                    Button(action: {}, label: {
+                                        Image(systemName: "square.and.arrow.up")
+                                    })
+            )
+            */
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Выход") {
@@ -121,25 +174,24 @@ struct ResultView: View {
                         Image(systemName: "square.and.arrow.up")
                     }
                 }
-                
             }
-            
         }
-        
     }
-    
-    
 }
 
 
 extension ResultView {
-    
+    //MARK: - Properties
     private var paeiKey: String{
         calculateResultKey(from: answer)
     }
     
     private var resultTest: Result {
         Result.getResult(text: paeiKey)
+    }
+    
+    private var detailedResult: DetailedResult {
+        DetailedResult.customPael(key: paeiKey)
     }
     
     private var shadowColor: Color {

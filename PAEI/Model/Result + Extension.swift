@@ -280,7 +280,15 @@ extension Result {
             )
             
         default:
-            result = Result.customPael(key: text)
+//            result = Result.customPael(key: text)
+            result = Result(
+                shortInfo: text,
+                picture: "default",
+                characteristic: "",
+                qualities: [],
+                skills: []
+            )
+            
         }
 
         return result
@@ -288,7 +296,7 @@ extension Result {
 }
 
 
-
+/*
 extension Result {
     
     
@@ -362,3 +370,5 @@ extension Result {
     
     
 }
+
+ */
