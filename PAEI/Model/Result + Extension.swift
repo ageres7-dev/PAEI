@@ -282,11 +282,9 @@ extension Result {
         default:
 //            result = Result.customPael(key: text)
             result = Result(
-                shortInfo: text,
-                picture: "default",
-                characteristic: "",
-                qualities: [],
-                skills: []
+               
+                picture: "default"
+                
             )
             
         }

@@ -21,10 +21,13 @@ struct ResultView: View {
             ScrollView {
                 LazyVStack{
                     Group{
-                        Text("Вы – " + resultTest.shortInfo)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                            .font(.largeTitle)
+                        
+                        if let shortInfo = resultTest.shortInfo {
+                            Text("Вы – " + shortInfo)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                                .font(.largeTitle)
+                        }
                         
                         Image(resultTest.picture)
                             .resizable()
@@ -32,7 +35,7 @@ struct ResultView: View {
                             .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .clipped()
                             .cornerRadius(20)
-                        
+                        /*
                         CircleGraph(
                             pValue: answer.producer,
                             aValue: answer.administrator,
@@ -40,18 +43,33 @@ struct ResultView: View {
                             iValue: answer.integrator
                         )
                         .frame( height: screenSize.width / 3.6)
+                        */
                         
-                        
-                        Text(resultTest.characteristic)
+                        if let characteristic = resultTest.characteristic {
+                            
+                            VStack {
+                                Text("Характеристика:")
+                                    .bold()
+                                    .padding(EdgeInsets(top: 0,
+                                                        leading: 0,
+                                                        bottom: 4,
+                                                        trailing: 0))
+                                Text(characteristic)
+                            }
                             .setCustomBackgroung()
+                        }
                         
-                        if resultTest.qualities.count != 0 {
+                        if  let qualities = resultTest.qualities {
                             VStack {
                                 Text("Качества:")
                                     .bold()
+                                    .padding(EdgeInsets(top: 0,
+                                                        leading: 0,
+                                                        bottom: 4,
+                                                        trailing: 0))
                                 HStack {
                                     VStack(alignment: .leading){
-                                        ForEach(resultTest.qualities, id: \.self) {quality in
+                                        ForEach(qualities, id: \.self) {quality in
                                             Text("– \(quality)")
                                                 .multilineTextAlignment(.leading)
                                         }
@@ -61,13 +79,17 @@ struct ResultView: View {
                             }
                             .setCustomBackgroung()
                         }
-                        if resultTest.skills.count != 0 {
+                        if let skills = resultTest.skills {
                             VStack {
                                 Text("Навыки:")
                                     .bold()
+                                    .padding(EdgeInsets(top: 0,
+                                                        leading: 0,
+                                                        bottom: 4,
+                                                        trailing: 0))
                                 HStack {
                                     VStack(alignment: .leading){
-                                        ForEach(resultTest.skills, id: \.self) {quality in
+                                        ForEach(skills, id: \.self) {quality in
                                             Text("– \(quality)")
                                                 .multilineTextAlignment(.leading)
                                         }
@@ -85,7 +107,10 @@ struct ResultView: View {
                                 insideLabel: "P=\(answer.producer)"
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            .padding(EdgeInsets(top: 0,
+                                                leading: 0,
+                                                bottom: 8,
+                                                trailing: 0))
                             
                             Text(detailedResult.pCharacteristic)
                         }
@@ -111,7 +136,10 @@ struct ResultView: View {
                                 insideLabel: "E=\(answer.entrepreneur)"
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            .padding(EdgeInsets(top: 0,
+                                                leading: 0,
+                                                bottom: 8,
+                                                trailing: 0))
                             
                             Text(detailedResult.eCharacteristic)
                         }
@@ -124,18 +152,22 @@ struct ResultView: View {
                                 insideLabel: "I=\(answer.integrator)"
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            .padding(EdgeInsets(top: 0,
+                                                leading: 0,
+                                                bottom: 8,
+                                                trailing: 0))
                             
                             Text(detailedResult.iCharacteristic)
                         }
                         .setCustomBackgroung()
                         
                     }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 4 , trailing: 0))
-                    
+                    .padding(EdgeInsets(top: 0,
+                                        leading: 0,
+                                        bottom: 4 ,
+                                        trailing: 0))
                     .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
                 }
-                //                .shadow(radius: 10)
                 .padding()
             }
             
@@ -149,7 +181,7 @@ struct ResultView: View {
             .padding()
             
             .navigationBarBackButtonHidden(true)
-            .navigationTitle(paeiKey)
+            .navigationTitle("Ваш ключ: \(paeiKey)")
             /*
             .navigationBarItems(leading:
                                     Button("Выход") {
@@ -168,7 +200,6 @@ struct ResultView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    
                     
                     Button(action: {}) {
                         Image(systemName: "square.and.arrow.up")
@@ -261,56 +292,6 @@ struct TextBlock: View {
 */
 
 
-struct CircleGraph: View {
-    @Environment(\.colorScheme) private var colorScheme
-    
-    let pValue: Int
-    let aValue: Int
-    let eValue: Int
-    let iValue: Int
-    //    let height: CGFloat
-    
-    var body: some View {
-        
-        ZStack {
-            RoundedRectangle(cornerRadius: 20.0)
-                .foregroundColor(colorScheme == .dark ? .customGray : .white)
-            //                .foregroundColor(colorScheme == .dark ? .customGray : .red)
-            
-            GeometryReader { geometry in
-                HStack {
-                    CircleProgressBar(
-                        currentValue: pValue,
-                        maxValue: 48,
-                        insideLabel: "P=\(pValue)"
-                    )
-                    Spacer(minLength: 16)
-                    CircleProgressBar(
-                        currentValue: aValue,
-                        maxValue: 48,
-                        insideLabel: "A=\(aValue)"
-                    )
-                    Spacer(minLength: 16)
-                    CircleProgressBar(
-                        currentValue: eValue,
-                        maxValue: 48,
-                        insideLabel: "E=\(eValue)"
-                    )
-                    Spacer(minLength: 16)
-                    CircleProgressBar(
-                        currentValue: iValue,
-                        maxValue: 48,
-                        insideLabel: "I=\(iValue)"
-                    )
-                }
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                .padding()
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-}
 
 
 
@@ -328,16 +309,6 @@ struct TextBlock_Previews: PreviewProvider {
     }
 }
 */
-struct CircleGraph_Previews: PreviewProvider {
-    static var previews: some View {
-        CircleGraph(pValue: 23, aValue: 21, eValue: 2, iValue: 40)
-            .frame(width: 400, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-    }
-}
-
-
-//resultTest.characteristic
-
 
 
 

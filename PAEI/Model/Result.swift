@@ -6,11 +6,11 @@
 //
 
 struct Result {
-    var shortInfo = ""
+    var shortInfo: String?
     var picture = ""
-    var characteristic = ""
-    var qualities: [String] = []
-    var skills: [String] = []
+    var characteristic: String?
+    var qualities: [String]?
+    var skills: [String]?
 }
 
 
