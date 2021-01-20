@@ -5,7 +5,7 @@
 //  Created by Brubrusha on 11/7/20.
 //
 
-struct Answer {
+struct Answer: Codable {
     var producer = 0
     var administrator = 0
     var entrepreneur = 0

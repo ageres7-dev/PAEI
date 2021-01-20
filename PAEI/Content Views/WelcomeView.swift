@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @EnvironmentObject var modalState: ModalStateManager
+    @EnvironmentObject var modalState: ScreenManager
+    
+    @State private var isShowingResultView = false
+    
+//    let savedAnswer =
+    
     //    @State private var isPresentPassingTest = false
     
     var body: some View {
@@ -68,6 +73,25 @@ struct WelcomeView: View {
             
         }
         
+        
+        Button(action: {
+            modalState.isModalPresentResultView.toggle()
+            
+        }) {
+            Text("мой результат")
+                .bold()
+                .setBlueStyleButton(color: .green)
+        }
+        .padding()
+        .sheet(isPresented: $modalState.isModalPresentResultView, content: {
+            ResultView(answer: DataManager.shared.loadResult())
+        })
+        
+        
+//        .fullScreenCover(
+//            isPresented: $modalState.isModalPresentResultView,
+//            content: { ResultView(answer: DataManager.shared.loadResult()) }
+//        )
         
         
         

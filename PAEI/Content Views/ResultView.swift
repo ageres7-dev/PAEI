@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResultView: View {
     //    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var modalState: ModalStateManager
+    @EnvironmentObject var modalState: ScreenManager
     @Environment(\.colorScheme) private var colorScheme
     
     let answer: Answer
@@ -21,18 +21,13 @@ struct ResultView: View {
             ScrollView {
                 LazyVStack{
                     Group{
-                        
-                        if let shortInfo = resultTest.shortInfo {
-                            Text("Вы – " + shortInfo)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                                .font(.largeTitle)
-                        }
-                        
+                       
                         Image(resultTest.picture)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                            .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            
+                            .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .clipped()
                             .cornerRadius(20)
                         /*
@@ -44,6 +39,13 @@ struct ResultView: View {
                         )
                         .frame( height: screenSize.width / 3.6)
                         */
+                        
+                        if let shortInfo = resultTest.shortInfo {
+                            Text("Вы – " + shortInfo)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                                .font(.largeTitle)
+                        }
                         
                         if let characteristic = resultTest.characteristic {
                             
@@ -173,6 +175,7 @@ struct ResultView: View {
             
             Button(action: {
                 modalState.isModalPresentPassingTest = false
+                modalState.isModalPresentResultView = false
             }) {
                 Text("Выход")
                     .bold()
@@ -197,6 +200,7 @@ struct ResultView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Выход") {
                         modalState.isModalPresentPassingTest = false
+                        modalState.isModalPresentResultView = false
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -297,9 +301,14 @@ struct TextBlock: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(answer: Answer())
-            .preferredColorScheme(.dark)
-            .environmentObject(ModalStateManager())
+        Group {
+            ResultView(answer: Answer())
+                .preferredColorScheme(.dark)
+                .environmentObject(ScreenManager())
+            ResultView(answer: Answer())
+                .preferredColorScheme(.dark)
+                .environmentObject(ScreenManager())
+        }
     }
 }
 /*

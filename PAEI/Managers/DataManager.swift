@@ -4,10 +4,15 @@
 //
 //  Created by Сергей Долгих on 06.11.2020.
 //
+import SwiftUI
 
 class DataManager {
     
-    static var shared = DataManager()
+    static let shared = DataManager()
+    
+    @AppStorage("answer") var userData = Data()
+    
+   
     
     let qualityOfProducers = [
         "Вовлеченный", "Прямолинейный", "Делающий",
@@ -39,4 +44,22 @@ class DataManager {
     
     private init() {}
     
+}
+
+
+
+extension DataManager {
+    func saveResult(result: Answer) {
+        guard let userData = try? JSONEncoder().encode(result) else { return }
+        self.userData = userData
+    }
+    
+    func loadResult() -> Answer {
+        guard let result = try? JSONDecoder().decode(Answer.self, from: userData) else { return Answer() }
+        return result
+    }
+    
+    func clear() {
+        UserDefaults.standard.removeObject(forKey: "answer")
+    }
 }

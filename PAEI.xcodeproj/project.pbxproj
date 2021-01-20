@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */; };
-		A522021E25A8EA8B00EC0582 /* ModalStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */; };
+		A522021E25A8EA8B00EC0582 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522021D25A8EA8B00EC0582 /* ScreenManager.swift */; };
 		A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AF72C25A4E2A900D46757 /* PassingTest.swift */; };
 		A540DE1525B36DE900BBBE50 /* DetailedResult + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */; };
 		A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1725B36E1800BBBE50 /* DetailedResult.swift */; };
@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroung.swift; sourceTree = "<group>"; };
-		A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalStateManager.swift; sourceTree = "<group>"; };
+		A522021D25A8EA8B00EC0582 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		A52AF72C25A4E2A900D46757 /* PassingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingTest.swift; sourceTree = "<group>"; };
 		A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailedResult + Extension.swift"; sourceTree = "<group>"; };
 		A540DE1725B36E1800BBBE50 /* DetailedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResult.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A9EE4F25A24DAB00816A4A /* DataManager.swift */,
-				A522021D25A8EA8B00EC0582 /* ModalStateManager.swift */,
+				A522021D25A8EA8B00EC0582 /* ScreenManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
 				A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */,
 				A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */,
-				A522021E25A8EA8B00EC0582 /* ModalStateManager.swift in Sources */,
+				A522021E25A8EA8B00EC0582 /* ScreenManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

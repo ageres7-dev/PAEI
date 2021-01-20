@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PassingTest: View {
-    //    @EnvironmentObject var modalState: ModalStateManager
+//        @EnvironmentObject var modalState: ScreenManager
     
     @State private var producerValue = 0
     @State private var administratorValue = 0
@@ -76,7 +76,7 @@ struct PassingTest: View {
                     
                     
                     NavigationLink(
-                        destination: ResultView(answer: sumAllAnswers(from: answers)),
+                        destination: ResultView(answer: sumAllAnswers),
                         isActive: $isShowingResultView,
                         label: { EmptyView() }
                     )
@@ -136,6 +136,7 @@ extension PassingTest {
             updateAnswer(at: currentIndexBlock)
         }
         //        modalState.isModalPresentResultView = true
+        DataManager.shared.saveResult(result: sumAllAnswers)
         isShowingResultView = true
     }
     
@@ -194,7 +195,9 @@ extension PassingTest {
             + entrepreneurValue + integratorValue)
     }
     
-    private func sumAllAnswers(from answers: [Answer]) -> Answer {
+//    private var sumAllAnswers: Answer { sumAllAnswers(from: answers) }
+    
+    private var sumAllAnswers: Answer {
         
         var result = Answer()
         answers.forEach { answer in

@@ -12,7 +12,7 @@ struct PAEIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(ModalStateManager())
+                .environmentObject(ScreenManager())
         }
     }
 }
