@@ -12,205 +12,213 @@ struct ResultView: View {
     @EnvironmentObject var modalState: ScreenManager
     @Environment(\.colorScheme) private var colorScheme
     
+    var isNewResult = true
     let answer: Answer
     let screenSize = UIScreen.main.bounds.size
     
     var body: some View {
         
-        VStack {
-            ScrollView {
-                LazyVStack{
-                    Group{
-                       
-                        Image(resultTest.picture)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-//                            .frame(height: screenSize.height * 0.28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//        NavigationView {
+            VStack {
+                ScrollView {
+                    LazyVStack{
+                        Group{
+                           
+                            Image(resultTest.picture)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .clipped()
+                                .cornerRadius(20)
+                            /*
+                            CircleGraph(
+                                pValue: answer.producer,
+                                aValue: answer.administrator,
+                                eValue: answer.entrepreneur,
+                                iValue: answer.integrator
+                            )
+                            .frame( height: screenSize.width / 3.6)
+                            */
                             
-                            .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .clipped()
-                            .cornerRadius(20)
-                        /*
-                        CircleGraph(
-                            pValue: answer.producer,
-                            aValue: answer.administrator,
-                            eValue: answer.entrepreneur,
-                            iValue: answer.integrator
-                        )
-                        .frame( height: screenSize.width / 3.6)
-                        */
-                        
-                        if let shortInfo = resultTest.shortInfo {
-                            Text("Вы – " + shortInfo)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                                .font(.largeTitle)
-                        }
-                        
-                        if let characteristic = resultTest.characteristic {
-                            
-                            VStack {
-                                Text("Характеристика:")
+                            if let shortInfo = resultTest.shortInfo {
+                                Text("Вы – " + shortInfo)
                                     .bold()
-                                    .padding(EdgeInsets(top: 0,
-                                                        leading: 0,
-                                                        bottom: 4,
-                                                        trailing: 0))
-                                Text(characteristic)
+                                    .multilineTextAlignment(.center)
+                                    .font(.largeTitle)
                             }
-                            .setCustomBackgroung()
-                        }
-                        
-                        if  let qualities = resultTest.qualities {
-                            VStack {
-                                Text("Качества:")
-                                    .bold()
-                                    .padding(EdgeInsets(top: 0,
-                                                        leading: 0,
-                                                        bottom: 4,
-                                                        trailing: 0))
-                                HStack {
-                                    VStack(alignment: .leading){
-                                        ForEach(qualities, id: \.self) {quality in
-                                            Text("– \(quality)")
-                                                .multilineTextAlignment(.leading)
-                                        }
-                                    }
-                                    Spacer()
+                            
+                            if let characteristic = resultTest.characteristic {
+                                
+                                VStack {
+                                    Text("Характеристика:")
+                                        .bold()
+                                        .padding(EdgeInsets(top: 0,
+                                                            leading: 0,
+                                                            bottom: 4,
+                                                            trailing: 0))
+                                    Text(characteristic)
                                 }
+                                .setCustomBackgroung()
                             }
-                            .setCustomBackgroung()
-                        }
-                        if let skills = resultTest.skills {
-                            VStack {
-                                Text("Навыки:")
-                                    .bold()
-                                    .padding(EdgeInsets(top: 0,
-                                                        leading: 0,
-                                                        bottom: 4,
-                                                        trailing: 0))
-                                HStack {
-                                    VStack(alignment: .leading){
-                                        ForEach(skills, id: \.self) {quality in
-                                            Text("– \(quality)")
-                                                .multilineTextAlignment(.leading)
+                            
+                            if  let qualities = resultTest.qualities {
+                                VStack {
+                                    Text("Качества:")
+                                        .bold()
+                                        .padding(EdgeInsets(top: 0,
+                                                            leading: 0,
+                                                            bottom: 4,
+                                                            trailing: 0))
+                                    HStack {
+                                        VStack(alignment: .leading){
+                                            ForEach(qualities, id: \.self) {quality in
+                                                Text("– \(quality)")
+                                                    .multilineTextAlignment(.leading)
+                                            }
                                         }
+                                        Spacer()
                                     }
-                                    Spacer()
                                 }
+                                .setCustomBackgroung()
+                            }
+                            if let skills = resultTest.skills {
+                                VStack {
+                                    Text("Навыки:")
+                                        .bold()
+                                        .padding(EdgeInsets(top: 0,
+                                                            leading: 0,
+                                                            bottom: 4,
+                                                            trailing: 0))
+                                    HStack {
+                                        VStack(alignment: .leading){
+                                            ForEach(skills, id: \.self) {quality in
+                                                Text("– \(quality)")
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                        }
+                                        Spacer()
+                                    }
+                                }
+                                .setCustomBackgroung()
+                            }
+                            
+                            VStack {
+                                CircleProgressBar(
+                                    currentValue: answer.producer,
+                                    maxValue: 48,
+                                    insideLabel: "P=\(answer.producer)"
+                                )
+                                .frame(height: 100)
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 8,
+                                                    trailing: 0))
+                                
+                                Text(detailedResult.pCharacteristic)
                             }
                             .setCustomBackgroung()
-                        }
-                        
-                        VStack {
-                            CircleProgressBar(
-                                currentValue: answer.producer,
-                                maxValue: 48,
-                                insideLabel: "P=\(answer.producer)"
-                            )
-                            .frame(height: 100)
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 8,
-                                                trailing: 0))
                             
-                            Text(detailedResult.pCharacteristic)
-                        }
-                        .setCustomBackgroung()
-                        
-                        VStack {
-                            CircleProgressBar(
-                                currentValue: answer.administrator,
-                                maxValue: 48,
-                                insideLabel: "A=\(answer.administrator)"
-                            )
-                            .frame(height: 100)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            VStack {
+                                CircleProgressBar(
+                                    currentValue: answer.administrator,
+                                    maxValue: 48,
+                                    insideLabel: "A=\(answer.administrator)"
+                                )
+                                .frame(height: 100)
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                                
+                                Text(detailedResult.aCharacteristic)
+                            }
+                            .setCustomBackgroung()
                             
-                            Text(detailedResult.aCharacteristic)
-                        }
-                        .setCustomBackgroung()
-                        
-                        VStack {
-                            CircleProgressBar(
-                                currentValue: answer.entrepreneur,
-                                maxValue: 48,
-                                insideLabel: "E=\(answer.entrepreneur)"
-                            )
-                            .frame(height: 100)
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 8,
-                                                trailing: 0))
+                            VStack {
+                                CircleProgressBar(
+                                    currentValue: answer.entrepreneur,
+                                    maxValue: 48,
+                                    insideLabel: "E=\(answer.entrepreneur)"
+                                )
+                                .frame(height: 100)
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 8,
+                                                    trailing: 0))
+                                
+                                Text(detailedResult.eCharacteristic)
+                            }
+                            .setCustomBackgroung()
                             
-                            Text(detailedResult.eCharacteristic)
-                        }
-                        .setCustomBackgroung()
-                        
-                        VStack {
-                            CircleProgressBar(
-                                currentValue: answer.integrator,
-                                maxValue: 48,
-                                insideLabel: "I=\(answer.integrator)"
-                            )
-                            .frame(height: 100)
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 8,
-                                                trailing: 0))
+                            VStack {
+                                CircleProgressBar(
+                                    currentValue: answer.integrator,
+                                    maxValue: 48,
+                                    insideLabel: "I=\(answer.integrator)"
+                                )
+                                .frame(height: 100)
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 8,
+                                                    trailing: 0))
+                                
+                                Text(detailedResult.iCharacteristic)
+                            }
+                            .setCustomBackgroung()
                             
-                            Text(detailedResult.iCharacteristic)
                         }
-                        .setCustomBackgroung()
-                        
+                        .padding(EdgeInsets(top: 0,
+                                            leading: 0,
+                                            bottom: 4 ,
+                                            trailing: 0))
+                        .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
                     }
-                    .padding(EdgeInsets(top: 0,
-                                        leading: 0,
-                                        bottom: 4 ,
-                                        trailing: 0))
-                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
+                    .padding()
                 }
-                .padding()
-            }
-            
-            Button(action: {
-                modalState.isModalPresentPassingTest = false
-                modalState.isModalPresentResultView = false
-            }) {
-                Text("Выход")
-                    .bold()
-                    .setBlueStyleButton()
-            }
-            .padding()
-            
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("Ваш ключ: \(paeiKey)")
-            /*
-            .navigationBarItems(leading:
-                                    Button("Выход") {
-                                        modalState.isModalPresentPassingTest = false
-                                    }
-                                , trailing:
-                                    Button(action: {}, label: {
-                                        Image(systemName: "square.and.arrow.up")
-                                    })
-            )
-            */
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Выход") {
+                .navigationBarBackButtonHidden(true)
+                .navigationTitle("Ваш ключ: \(paeiKey)")
+                /*
+                .navigationBarItems(leading:
+                                        Button("Выход") {
+                                            modalState.isModalPresentPassingTest = false
+                                        }
+                                    , trailing:
+                                        Button(action: {}, label: {
+                                            Image(systemName: "square.and.arrow.up")
+                                        })
+                )
+                */
+                .toolbar {
+                    
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        Button("Выход") {
+//                            modalState.isModalPresentPassingTest = false
+//                            modalState.isModalPresentResultView = false
+//                        }
+//                    }
+                    
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        
+                        Button(action: {}) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                    }
+                }
+                
+                
+                if isNewResult {
+                    Button(action: {
                         modalState.isModalPresentPassingTest = false
                         modalState.isModalPresentResultView = false
+                    }) {
+                        Text("Выход")
+                            .bold()
+                            .setBlueStyleButton()
                     }
+                    .padding()
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    
-                    Button(action: {}) {
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                }
+                
+
             }
-        }
+//        }
+//        .navigationBarHidden(true)
     }
 }
 

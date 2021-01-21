@@ -69,7 +69,8 @@ struct WelcomeView: View {
                 
             }
 //            .navigationTitle("TEST")
-//            .navigationBarTitle("test")
+            .navigationBarTitle("Кто же ты?", displayMode: .inline)
+            
             
         }
         
@@ -78,14 +79,26 @@ struct WelcomeView: View {
             modalState.isModalPresentResultView.toggle()
             
         }) {
-            Text("мой результат")
+            Text("Последний результат теста")
                 .bold()
                 .setBlueStyleButton(color: .green)
         }
         .padding()
-        .sheet(isPresented: $modalState.isModalPresentResultView, content: {
-            ResultView(answer: DataManager.shared.loadResult())
-        })
+        .sheet(isPresented: $modalState.isModalPresentResultView) {
+            
+            NavigationView {
+                ResultView(isNewResult: false, answer: DataManager.shared.loadResult())
+                    .toolbar {
+                        
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Закрыть") {
+//                                modalState.isModalPresentPassingTest = false
+                                modalState.isModalPresentResultView = false
+                            }
+                        }
+                    }
+            }
+        }
         
         
 //        .fullScreenCover(
