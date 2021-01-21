@@ -64,7 +64,36 @@ struct WelcomeView: View {
                           .frame(width: 90)
                         
                         Text("КТО ЭТО ДОЛЖЕН СДЕЛАТЬ? \n\nРуководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.")
+                        
                     }
+                    
+                    if let savedResult = DataManager.shared.loadResult() {
+                        Button(action: {
+                            modalState.isModalPresentResultView.toggle()
+                            
+                        }) {
+                            Text("Последний результат теста")
+                                .bold()
+                                .setBlueStyleButton(color: .green)
+                        }
+                        .padding()
+                        .sheet(isPresented: $modalState.isModalPresentResultView) {
+                            
+                            NavigationView {
+                                ResultView(answer: savedResult, isNewResult: false)
+                                    .toolbar {
+                                        
+                                        ToolbarItem(placement: .navigationBarTrailing) {
+                                            Button("Закрыть") {
+                                                modalState.isModalPresentResultView = false
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                    
+                    
                 }
                 
             }
@@ -75,30 +104,6 @@ struct WelcomeView: View {
         }
         
         
-        Button(action: {
-            modalState.isModalPresentResultView.toggle()
-            
-        }) {
-            Text("Последний результат теста")
-                .bold()
-                .setBlueStyleButton(color: .green)
-        }
-        .padding()
-        .sheet(isPresented: $modalState.isModalPresentResultView) {
-            
-            NavigationView {
-                ResultView(isNewResult: false, answer: DataManager.shared.loadResult())
-                    .toolbar {
-                        
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Закрыть") {
-//                                modalState.isModalPresentPassingTest = false
-                                modalState.isModalPresentResultView = false
-                            }
-                        }
-                    }
-            }
-        }
         
         
 //        .fullScreenCover(
@@ -121,12 +126,7 @@ struct WelcomeView: View {
             isPresented: $modalState.isModalPresentPassingTest,
             content: PassingTest.init
         )
-        
     }
-    
-    
-    
-    
 }
 
 

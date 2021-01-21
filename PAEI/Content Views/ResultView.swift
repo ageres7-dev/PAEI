@@ -11,11 +11,9 @@ struct ResultView: View {
     //    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var modalState: ScreenManager
     @Environment(\.colorScheme) private var colorScheme
-    
-    var isNewResult = true
     let answer: Answer
-    let screenSize = UIScreen.main.bounds.size
-    
+    var isNewResult = true
+
     var body: some View {
         
 //        NavigationView {
@@ -163,6 +161,22 @@ struct ResultView: View {
                             }
                             .setCustomBackgroung()
                             
+                            
+                            if !isNewResult {
+                                Button(action: {
+                                    DataManager.shared.clear()
+                                    modalState.isModalPresentPassingTest = false
+                                    modalState.isModalPresentResultView = false
+                                }) {
+                                    Text("Удалить результат")
+                                        .bold()
+                                        .setBlueStyleButton(color: .red)
+                                }
+//                                .padding()
+                            }
+                            
+                            
+                            
                         }
                         .padding(EdgeInsets(top: 0,
                                             leading: 0,
@@ -202,7 +216,7 @@ struct ResultView: View {
                     }
                 }
                 
-                
+                //кнопка выхода
                 if isNewResult {
                     Button(action: {
                         modalState.isModalPresentPassingTest = false
@@ -225,6 +239,10 @@ struct ResultView: View {
 
 extension ResultView {
     //MARK: - Properties
+    
+    private var screenSize: CGSize {
+        UIScreen.main.bounds.size
+    }
     private var paeiKey: String{
         calculateResultKey(from: answer)
     }

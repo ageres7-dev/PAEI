@@ -12,7 +12,7 @@ class DataManager {
     
     @AppStorage("answer") var userData = Data()
     
-   
+    private init() {}
     
     let qualityOfProducers = [
         "Вовлеченный", "Прямолинейный", "Делающий",
@@ -42,7 +42,6 @@ class DataManager {
         "Осведомленный", "Приятный", "Объединяющий"
     ]
     
-    private init() {}
     
 }
 
@@ -54,9 +53,12 @@ extension DataManager {
         self.userData = userData
     }
     
-    func loadResult() -> Answer {
-        guard let result = try? JSONDecoder().decode(Answer.self, from: userData) else { return Answer() }
-        return result
+    func loadResult() -> Answer? {
+//        guard let result = try? JSONDecoder().decode(Answer.self, from: userData) else { return Answer() }
+//        return result
+        try? JSONDecoder().decode(Answer.self, from: userData)
+        
+        
     }
     
     func clear() {
