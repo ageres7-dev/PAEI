@@ -69,11 +69,8 @@ struct PassingTest: View {
                             .bold()
                             .setBlueStyleButton(disabledStyle: pointsTotal != 10)
                     }
-                    
-                    //                    .sheet(isPresented: $modalState.isModalPresentResultView, content: {
-                    //                        ResultView(answers: answers)
-                    //                    })
-                    
+          
+            
                     
                     NavigationLink(
                         destination: ResultView(answer: sumAllAnswers),
@@ -174,7 +171,7 @@ extension PassingTest {
     
     private var isNextButtom: Bool {
 //        currentIndexBlock != сharacteristicBlocks.count - 1
-                currentIndexBlock + 1 != 5
+                currentIndexBlock + 1 != 2
         
         
     }

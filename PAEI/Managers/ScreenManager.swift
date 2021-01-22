@@ -8,6 +8,7 @@
 import SwiftUI
 
 class ScreenManager: ObservableObject {
-    @Published var isModalPresentPassingTest: Bool = false
-    @Published var isModalPresentResultView: Bool = false
+    @Published var isModalPresentPassingTest = false
+    @Published var isModalPresentResultView = false
+    @Published var isShowingInstructionsView = false
 }

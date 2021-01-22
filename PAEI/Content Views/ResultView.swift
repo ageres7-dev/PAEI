@@ -188,26 +188,8 @@ struct ResultView: View {
                 }
                 .navigationBarBackButtonHidden(true)
                 .navigationTitle("Ваш ключ: \(paeiKey)")
-                /*
-                .navigationBarItems(leading:
-                                        Button("Выход") {
-                                            modalState.isModalPresentPassingTest = false
-                                        }
-                                    , trailing:
-                                        Button(action: {}, label: {
-                                            Image(systemName: "square.and.arrow.up")
-                                        })
-                )
-                */
+  
                 .toolbar {
-                    
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Button("Выход") {
-//                            modalState.isModalPresentPassingTest = false
-//                            modalState.isModalPresentResultView = false
-//                        }
-//                    }
-                    
                     ToolbarItem(placement: .navigationBarLeading) {
                         
                         Button(action: {}) {
@@ -219,6 +201,7 @@ struct ResultView: View {
                 //кнопка выхода
                 if isNewResult {
                     Button(action: {
+//                        modalState.isShowingInstructionsView = false
                         modalState.isModalPresentPassingTest = false
                         modalState.isModalPresentResultView = false
                     }) {

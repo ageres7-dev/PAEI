@@ -10,9 +10,10 @@ import SwiftUI
 struct WelcomeView: View {
     @EnvironmentObject var modalState: ScreenManager
     
-    @State private var isShowingResultView = false
+    //    @State private var isShowingResultView = false
+//    @State private var isShowingInstructionsView = false
     
-//    let savedAnswer =
+    //    let savedAnswer =
     
     //    @State private var isPresentPassingTest = false
     
@@ -22,50 +23,6 @@ struct WelcomeView: View {
             VStack {
                 
                 ScrollView {
-                    
-                    HStack(alignment: .top) {
-                        Text("P")
-                            .bold()
-                            .font(.system(size: 100))
-                            .offset(y: -15)
-                            .frame(width: 90)
-                        
-                        Text("ЧТО НУЖНО СДЕЛАТЬ? \n\nДанная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.")
-                        
-                    }
-                   
-                    
-                    HStack(alignment: .top) {
-                        Text("A")
-                            .bold()
-                            .font(.system(size: 100))
-                            .offset(y: -15)
-                            .frame(width: 90)
-                        
-                        Text("КАК ЭТО НУЖНО СДЕЛАТЬ? \n\nОрганизация должна в правильной последовательности делать правильные вещи. Администратор обеспечивает данный процесс.")
-                    }
-                    Spacer()
-                    
-                    HStack(alignment: .top) {
-                        Text("E")
-                            .bold()
-                            .font(.system(size: 100))
-                            .offset(y: -15)
-                            .frame(width: 90)
-                        
-                        Text("КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ? \nПридерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.")
-                    }
-                    
-                    HStack(alignment: .top) {
-                        Text("I")
-                            .bold()
-                            .font(.system(size: 100))
-                            .offset(y: -15)
-                          .frame(width: 90)
-                        
-                        Text("КТО ЭТО ДОЛЖЕН СДЕЛАТЬ? \n\nРуководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.")
-                        
-                    }
                     
                     if let savedResult = DataManager.shared.loadResult() {
                         Button(action: {
@@ -93,39 +50,118 @@ struct WelcomeView: View {
                         }
                     }
                     
+                    Group {
+                        VStack {
+                            Image(systemName: "person.3")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 100)
+                                .padding(
+                                    EdgeInsets(top: 0,
+                                               leading: 0,
+                                               bottom: 8,
+                                               trailing: 0)
+                                )
+                            Text("В своей книге \"Идеальный руководитель\" Ицхак Адизес утверждает, что у менеджмента есть четыре функции, от успешной реализации которых зависит благополучие организации. Это производство результатов (P), администрирование (A), предпринимательство (E) и интеграция (I).")
+                        }
+                        .setCustomBackgroung()
+                        
+                        TextBlockView(imagaSystemName: "p.circle.fill",
+                                      key: "P",
+                                      title: "ЧТО НУЖНО СДЕЛАТЬ?",
+                                      text: "Данная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.")
+                        
+                        TextBlockView(imagaSystemName: "a.circle.fill",
+                                      key: "A",
+                                      title: "КАК ЭТО НУЖНО СДЕЛАТЬ?",
+                                      text: "Организация должна в правильной последовательности делать правильные вещи. Администратор обеспечивает данный процесс.")
+                        
+                        TextBlockView(imagaSystemName: "e.circle.fill",
+                                      key: "E",
+                                      title: "КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ?",
+                                      text: "Придерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.")
+                        TextBlockView(imagaSystemName: "i.circle.fill",
+                                      key: "I",
+                                      title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
+                                      text: "Руководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.")
+                        
+                    }
+                    .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                     
+                }.shadow(radius: 25)
+                
+                
+                Button(action: {
+                    modalState.isShowingInstructionsView.toggle()
+                    print("fuck")
+                    
+                }) {
+                    Text("Дальше")
+                        .bold()
+                        .setBlueStyleButton()
                 }
+                .padding()
+                
+                NavigationLink(
+                    destination: InstructionsView(),
+                    isActive: $modalState.isShowingInstructionsView,
+                    label: { EmptyView() }
+                )
+                /*
+                Button(action: {
+                    modalState.isModalPresentPassingTest.toggle()
+                    
+                }) {
+                    Text("Начать тест")
+                        .bold()
+                        .setBlueStyleButton()
+                }
+                .padding()
+                .fullScreenCover(
+                    isPresented: $modalState.isModalPresentPassingTest,
+                    content: PassingTest.init
+                )
+                */
                 
             }
-//            .navigationTitle("TEST")
-            .navigationBarTitle("Кто же ты?", displayMode: .inline)
-            
-            
+            .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕
         }
         
-        
-        
-        
-//        .fullScreenCover(
-//            isPresented: $modalState.isModalPresentResultView,
-//            content: { ResultView(answer: DataManager.shared.loadResult()) }
-//        )
-        
-        
-        
-        Button(action: {
-            modalState.isModalPresentPassingTest.toggle()
-            
-        }) {
-            Text("Начать тест")
+    }
+}
+
+
+
+
+struct TextBlockView: View {
+    let imagaSystemName: String
+    let key: String
+    let title: String
+    let text: String
+    var body: some View {
+        VStack { //HStack(alignment: .top)
+//            Text(key)
+//                .bold()
+//                .font(.system(size: 70))
+//                .offset(y: -15)
+//                .frame(width: 70)
+            Image(systemName: imagaSystemName) //"p.circle"
+                //                .bold()
+//                .foregroundColor(.blue)
+                .font(.system(size: 70))
+//                .offset(y: -15)
+                .frame(width: 70)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+            Text(title)
                 .bold()
-                .setBlueStyleButton()
+            
+            Spacer(minLength: 4)
+            Text(text)
+//            Text("ЧТО НУЖНО СДЕЛАТЬ? \n\nДанная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.")
+            
         }
-        .padding()
-        .fullScreenCover(
-            isPresented: $modalState.isModalPresentPassingTest,
-            content: PassingTest.init
-        )
+        .setCustomBackgroung()
+        
     }
 }
 

@@ -14,11 +14,13 @@ struct ContentView: View {
 //        CharacteristicsRadioButtonGroup()
 //        PassingTest()
         WelcomeView()
+//        InstructionsView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ScreenManager())
     }
 }

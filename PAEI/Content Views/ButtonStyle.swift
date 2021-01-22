@@ -38,7 +38,8 @@ struct CustomStyleButton: ViewModifier {
         content
             .font(.title3)
             .foregroundColor(.white)
-            .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 50)
+//            .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 50)
+            .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
             .background(disabledStyle ? backgroundColor.opacity(0.4) : backgroundColor)
             .cornerRadius(10)
     }
