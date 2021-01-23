@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */; };
+		A51C94F025BC7BA3009D7DB4 /* Сondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C94EF25BC7BA3009D7DB4 /* Сondition.swift */; };
+		A51C94F325BC7E74009D7DB4 /* СonditionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */; };
 		A522021E25A8EA8B00EC0582 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522021D25A8EA8B00EC0582 /* ScreenManager.swift */; };
 		A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AF72C25A4E2A900D46757 /* PassingTest.swift */; };
 		A530E15125BAF0980008F91C /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530E15025BAF0980008F91C /* WelcomePageView.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroung.swift; sourceTree = "<group>"; };
+		A51C94EF25BC7BA3009D7DB4 /* Сondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сondition.swift"; sourceTree = "<group>"; };
+		A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СonditionManager.swift"; sourceTree = "<group>"; };
 		A522021D25A8EA8B00EC0582 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		A52AF72C25A4E2A900D46757 /* PassingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingTest.swift; sourceTree = "<group>"; };
 		A530E15025BAF0980008F91C /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A9EE5325A24E5D00816A4A /* Answer.swift */,
+				A51C94EF25BC7BA3009D7DB4 /* Сondition.swift */,
 				A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */,
 				A5A9EE5425A24E5E00816A4A /* Question.swift */,
 				A5A9EE5525A24E5E00816A4A /* Result.swift */,
@@ -157,6 +162,7 @@
 			children = (
 				A5A9EE4F25A24DAB00816A4A /* DataManager.swift */,
 				A522021D25A8EA8B00EC0582 /* ScreenManager.swift */,
+				A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51C94F025BC7BA3009D7DB4 /* Сondition.swift in Sources */,
 				A58843D025A89409002DE43A /* Color + Extension.swift in Sources */,
 				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
 				A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */,
@@ -256,6 +263,7 @@
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
 				A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */,
 				A540DE1525B36DE900BBBE50 /* DetailedResult + Extension.swift in Sources */,
+				A51C94F325BC7E74009D7DB4 /* СonditionManager.swift in Sources */,
 				A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* Result + Extension.swift in Sources */,
 				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,

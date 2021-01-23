@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct PAEIApp: App {
+    let condition = DataManager.shared.loadCondition()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(ScreenManager())
+                .environmentObject(СonditionManager(condition: condition))
         }
     }
 }

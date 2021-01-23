@@ -48,20 +48,23 @@ class DataManager {
 
 
 extension DataManager {
-    func saveResult(result: Answer) {
-        guard let userData = try? JSONEncoder().encode(result) else { return }
+    func save(condition: Сondition) {
+        guard let userData = try? JSONEncoder().encode(condition) else { return }
         self.userData = userData
     }
     
-    func loadResult() -> Answer? {
-//        guard let result = try? JSONDecoder().decode(Answer.self, from: userData) else { return Answer() }
-//        return result
-        try? JSONDecoder().decode(Answer.self, from: userData)
+    func loadCondition() -> Сondition {
+        guard let condition = try? JSONDecoder().decode(Сondition.self, from: userData) else { return Сondition() }
+        return condition
+        
+//        try? JSONDecoder().decode(Answer.self, from: userData)
         
         
     }
     
-    func clear() {
+    func clear(conditionManager: СonditionManager) {
+        conditionManager.condition.answer = Answer()
+        conditionManager.condition.isTestPassed = false
         UserDefaults.standard.removeObject(forKey: "answer")
     }
 }

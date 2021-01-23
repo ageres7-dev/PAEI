@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @EnvironmentObject var modalState: ScreenManager
+    @EnvironmentObject var conditionManager: СonditionManager
     
     //    @State private var isShowingResultView = false
 //    @State private var isShowingInstructionsView = false
@@ -24,7 +25,7 @@ struct WelcomeView: View {
                 
                 ScrollView {
                     
-                    if let savedResult = DataManager.shared.loadResult() {
+                    if conditionManager.condition.isTestPassed {
                         Button(action: {
                             modalState.isModalPresentResultView.toggle()
                             
@@ -37,7 +38,8 @@ struct WelcomeView: View {
                         .sheet(isPresented: $modalState.isModalPresentResultView) {
                             
                             NavigationView {
-                                ResultView(answer: savedResult, isNewResult: false)
+                                ResultView(answer: conditionManager.condition.answer,
+                                           isNewResult: false)
                                     .toolbar {
                                         
                                         ToolbarItem(placement: .navigationBarTrailing) {

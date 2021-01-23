@@ -81,6 +81,7 @@ struct RadioButton: View {
 
 extension RadioButton {
     private var action: () {
+//        UISelectionFeedbackGenerator().selectionChanged()
         value = buttonValue
         closure()
     }

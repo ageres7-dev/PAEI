@@ -10,6 +10,8 @@ import SwiftUI
 struct ResultView: View {
     //    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var modalState: ScreenManager
+    @EnvironmentObject var conditionManager: СonditionManager
+    
     @Environment(\.colorScheme) private var colorScheme
     let answer: Answer
     var isNewResult = true
@@ -152,10 +154,7 @@ struct ResultView: View {
                                     insideLabel: "I=\(answer.integrator)"
                                 )
                                 .frame(height: 100)
-                                .padding(EdgeInsets(top: 0,
-                                                    leading: 0,
-                                                    bottom: 8,
-                                                    trailing: 0))
+                                .padding(EdgeInsets(top: 0,leading: 0,bottom: 8,trailing: 0))
                                 
                                 Text(detailedResult.iCharacteristic)
                             }
@@ -164,24 +163,21 @@ struct ResultView: View {
                             
                             if !isNewResult {
                                 Button(action: {
-                                    DataManager.shared.clear()
-                                    modalState.isModalPresentPassingTest = false
+                                    
+//                                    modalState.isModalPresentPassingTest = false
                                     modalState.isModalPresentResultView = false
+                                    DataManager.shared.clear(
+                                        conditionManager: conditionManager
+                                    )
+                                    
                                 }) {
                                     Text("Удалить результат")
                                         .bold()
                                         .setBlueStyleButton(color: .red)
                                 }
-//                                .padding()
                             }
-                            
-                            
-                            
                         }
-                        .padding(EdgeInsets(top: 0,
-                                            leading: 0,
-                                            bottom: 4 ,
-                                            trailing: 0))
+                        .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))
                         .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
                     }
                     .padding()

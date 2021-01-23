@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PassingTest: View {
 //        @EnvironmentObject var modalState: ScreenManager
+    @EnvironmentObject var conditionManager: СonditionManager
     
     @State private var producerValue = 0
     @State private var administratorValue = 0
@@ -18,79 +19,110 @@ struct PassingTest: View {
     @State private var answers: [Answer] = []
     
     @State private var isShowingResultView = false
+    @State private var showHelp = false
     
     var body: some View {
         
         NavigationView {
-            VStack {
-                HStack {
-                    Spacer(minLength: 16)
-                    VStack {
-                        Text("Баллов")
-                        CircleProgressBar(
-                            currentValue: pointsTotal,
-                            maxValue: 10,
-                            insideLabel: "\(pointsTotal)/10"
-                        )
+            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top) )
+            {
+      
+                VStack {
+                    HStack {
+                        Spacer(minLength: 16)
+                        VStack {
+                            Text("Баллов")
+                            CircleProgressBar(
+                                currentValue: pointsTotal,
+                                maxValue: 10,
+                                insideLabel: "\(pointsTotal)/10"
+                            )
+                        }
+                        Spacer(minLength: 16)
+                        VStack {
+                            Text("Блок")
+                            CircleProgressBar(currentValue: currentIndexBlock + 1,
+                                              maxValue: сharacteristicBlocks.count,
+                                              insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
+                            )
+                        }
+                        Spacer(minLength: 16)
                     }
-                    Spacer(minLength: 16)
-                    VStack {
-                        Text("Блок")
-                        CircleProgressBar(currentValue: currentIndexBlock + 1,
-                                          maxValue: сharacteristicBlocks.count,
-                                          insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
-                        )
-                    }
-                    Spacer(minLength: 16)
-                }
-                .frame(maxHeight: 150)
-                
-                //                Spacer(minLength: 20)
-                Spacer()
-                
-                CharacteristicsRadioButtonGroup(
-                    producerValue: $producerValue,
-                    administratorValue: $administratorValue,
-                    entrepreneurValue: $entrepreneurValue,
-                    integratorValue: $integratorValue,
-                    currentCharacteristic: currentCharacteristic
-                )
-                .frame(minHeight: 320, maxHeight: 400)
-                .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
-                Spacer()
-                
-                ZStack {
-                    Button(action: isNextButtom
-                            ? actionNextButton
-                            : actionFinishButton) {
-                        Text(isNextButtom
-                                ? "Cледующий блок"
-                                : "Показать результат")
-                            .bold()
-                            .setBlueStyleButton(disabledStyle: pointsTotal != 10)
-                    }
-          
-            
+                    .frame(maxHeight: 150)
                     
-                    NavigationLink(
-                        destination: ResultView(answer: sumAllAnswers),
-                        isActive: $isShowingResultView,
-                        label: { EmptyView() }
+                    //                Spacer(minLength: 20)
+                    Spacer()
+                    
+                    CharacteristicsRadioButtonGroup(
+                        producerValue: $producerValue,
+                        administratorValue: $administratorValue,
+                        entrepreneurValue: $entrepreneurValue,
+                        integratorValue: $integratorValue,
+                        currentCharacteristic: currentCharacteristic
                     )
-                }
+                    .frame(minHeight: 320, maxHeight: 400)
+                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+                    Spacer()
+                    
+                    ZStack {
+                        Button(action: isNextButtom
+                                ? actionNextButton
+                                : actionFinishButton) {
+                            Text(isNextButtom
+                                    ? "Cледующий блок"
+                                    : "Показать результат")
+                                .bold()
+                                .setBlueStyleButton(disabledStyle: pointsTotal != 10)
+                        }
+              
                 
-                .animation(nil)
-                .disabled(pointsTotal != 10)
-                .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
-                
-                Button(action: actionBackButton) {
-                    Text("Предыдущий блок")
+                        
+                        NavigationLink(
+                            destination: ResultView(answer: sumAllAnswers),
+                            isActive: $isShowingResultView,
+                            label: { EmptyView() }
+                        )
+                    }
+                    
+                    .animation(nil)
+                    .disabled(pointsTotal != 10)
+                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    
+                    Button(action: actionBackButton) {
+                        Text("Предыдущий блок")
+                    }
+                    .disabled(currentIndexBlock == 0)
+                    
                 }
-                .disabled(currentIndexBlock == 0)
+                .padding()
+                .navigationBarHidden(true)
+                
+                Button(action: { showHelp.toggle() }) {
+                    Image(systemName: "questionmark.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 34, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                }
+                .alert(isPresented: $showHelp, content: {
+                    Alert(
+                        title: Text("Оцените Ваши личные качества – КАКОЙ Я?"),
+                        message: Text("Будьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
+                    )
+                })
+//                .alert(isPresented: $showHelp) {
+//                    Alert(title: "789", message: "Leevfq")
+//                }
+                .padding()
+
                 
             }
-            .padding()
-            .navigationBarHidden(true)
+//            .navigationBarTitleDisplayMode(.inline)
+//            .toolbar {
+                
+//                Button(action: {}) {
+//                    Image(systemName: "questionmark.circle")
+//                }
+//            }
         }
         
     }
@@ -133,7 +165,13 @@ extension PassingTest {
             updateAnswer(at: currentIndexBlock)
         }
         //        modalState.isModalPresentResultView = true
-        DataManager.shared.saveResult(result: sumAllAnswers)
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        conditionManager.condition.isTestPassed = true
+        conditionManager.condition.answer = sumAllAnswers
+        DataManager.shared.save(
+            condition: conditionManager.condition
+        )
+        
         isShowingResultView = true
     }
     
@@ -170,8 +208,8 @@ extension PassingTest {
     }
     
     private var isNextButtom: Bool {
-//        currentIndexBlock != сharacteristicBlocks.count - 1
-                currentIndexBlock + 1 != 2
+        currentIndexBlock != сharacteristicBlocks.count - 1
+//                currentIndexBlock + 1 != 2
         
         
     }
