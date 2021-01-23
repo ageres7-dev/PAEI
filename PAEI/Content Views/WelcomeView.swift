@@ -11,18 +11,10 @@ struct WelcomeView: View {
     @EnvironmentObject var modalState: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
     
-    //    @State private var isShowingResultView = false
-//    @State private var isShowingInstructionsView = false
-    
-    //    let savedAnswer =
-    
-    //    @State private var isPresentPassingTest = false
-    
     var body: some View {
         
         NavigationView {
             VStack {
-                
                 ScrollView {
                     
                     if conditionManager.condition.isTestPassed {
@@ -36,7 +28,6 @@ struct WelcomeView: View {
                         }
                         .padding()
                         .sheet(isPresented: $modalState.isModalPresentResultView) {
-                            
                             NavigationView {
                                 ResultView(answer: conditionManager.condition.answer,
                                            isNewResult: false)
@@ -82,6 +73,7 @@ struct WelcomeView: View {
                                       key: "E",
                                       title: "КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ?",
                                       text: "Придерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.")
+                        
                         TextBlockView(imagaSystemName: "i.circle.fill",
                                       key: "I",
                                       title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
@@ -89,14 +81,12 @@ struct WelcomeView: View {
                         
                     }
                     .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-                    
-                }.shadow(radius: 25)
+                }
+                .shadow(radius: 25)
                 
                 
                 Button(action: {
                     modalState.isShowingInstructionsView.toggle()
-                    print("fuck")
-                    
                 }) {
                     Text("Дальше")
                         .bold()
@@ -109,26 +99,9 @@ struct WelcomeView: View {
                     isActive: $modalState.isShowingInstructionsView,
                     label: { EmptyView() }
                 )
-                /*
-                Button(action: {
-                    modalState.isModalPresentPassingTest.toggle()
-                    
-                }) {
-                    Text("Начать тест")
-                        .bold()
-                        .setBlueStyleButton()
-                }
-                .padding()
-                .fullScreenCover(
-                    isPresented: $modalState.isModalPresentPassingTest,
-                    content: PassingTest.init
-                )
-                */
-                
             }
             .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕
         }
-        
     }
 }
 
@@ -141,17 +114,9 @@ struct TextBlockView: View {
     let title: String
     let text: String
     var body: some View {
-        VStack { //HStack(alignment: .top)
-//            Text(key)
-//                .bold()
-//                .font(.system(size: 70))
-//                .offset(y: -15)
-//                .frame(width: 70)
-            Image(systemName: imagaSystemName) //"p.circle"
-                //                .bold()
-//                .foregroundColor(.blue)
+        VStack {
+            Image(systemName: imagaSystemName)
                 .font(.system(size: 70))
-//                .offset(y: -15)
                 .frame(width: 70)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             Text(title)
@@ -159,11 +124,8 @@ struct TextBlockView: View {
             
             Spacer(minLength: 4)
             Text(text)
-//            Text("ЧТО НУЖНО СДЕЛАТЬ? \n\nДанная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.")
-            
         }
         .setCustomBackgroung()
-        
     }
 }
 

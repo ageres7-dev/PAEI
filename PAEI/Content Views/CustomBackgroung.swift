@@ -17,7 +17,6 @@ struct CustomBackgroung: ViewModifier {
             //                .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
             content
                 .padding()
-            
         }
     }
     
@@ -34,14 +33,3 @@ extension View {
         )
     }
 }
-
-
-
-//struct TextBlock2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Text("8899")
-//            .setCustomBackgroung()
-//
-//    }
-//    
-//}

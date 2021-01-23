@@ -12,6 +12,7 @@ struct RadioButtons: View {
     let availablePoints: Int
     let label: String
     let closure: () -> Void
+    
     var body: some View {
         VStack {
             HStack {

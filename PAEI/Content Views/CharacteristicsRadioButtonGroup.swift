@@ -84,8 +84,8 @@ extension CharacteristicsRadioButtonGroup {
         } else if producerValue == 0 {
             producerValue = setValue
         }
-        
     }
+    
     private var maxPoint: Int { 10 }
     
     private var shadowColor: Color {

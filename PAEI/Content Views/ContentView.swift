@@ -7,14 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var selected = 1
-    
+struct ContentView: View {    
     var body: some View {
-//        CharacteristicsRadioButtonGroup()
-//        PassingTest()
         WelcomeView()
-//        InstructionsView()
     }
 }
 
