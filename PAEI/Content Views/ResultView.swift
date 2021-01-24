@@ -160,6 +160,7 @@ struct ResultView: View {
                                     .bold()
                                     .setBlueStyleButton(color: .red)
                             }
+                            .padding(EdgeInsets(top: 16,leading: 0,bottom: 0 ,trailing: 0))
                         }
                     }
                     .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))

@@ -49,7 +49,7 @@ struct InstructionsView: View {
                 isPresented: $modalState.isModalPresentPassingTest,
                 content: PassingTest.init
             )
-//            .sheet(isPresented: $modalState.isModalPresentPassingTest, content: {
+//            .sheet(isPresented: $screenManager.isModalPresentPassingTest, content: {
 //                PassingTest()
 //            })
             

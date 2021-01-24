@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @EnvironmentObject var modalState: ScreenManager
+    @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
     
     var body: some View {
         
         NavigationView {
             VStack {
+                
                 ScrollView {
-       
                     LazyVStack {
                         if conditionManager.condition.isTestPassed {
                             Button(action: {
-                                modalState.isModalPresentResultView.toggle()
+                                screenManager.isModalPresentResultView.toggle()
                                 
                             }) {
                                 Text("Последний результат теста")
@@ -28,7 +28,7 @@ struct WelcomeView: View {
                                     .setBlueStyleButton(color: .green)
                             }
 //                            .padding()
-                            .sheet(isPresented: $modalState.isModalPresentResultView) {
+                            .sheet(isPresented: $screenManager.isModalPresentResultView) {
                                 NavigationView {
                                     ResultView(answer: conditionManager.condition.answer,
                                                isNewResult: false)
@@ -36,7 +36,7 @@ struct WelcomeView: View {
                                             
                                             ToolbarItem(placement: .navigationBarTrailing) {
                                                 Button("Закрыть") {
-                                                    modalState.isModalPresentResultView = false
+                                                    screenManager.isModalPresentResultView = false
                                                 }
                                             }
                                         }
@@ -81,9 +81,8 @@ struct WelcomeView: View {
                 }
                 .shadow(radius: 25)
                 
-                
                 Button(action: {
-                    modalState.isShowingInstructionsView.toggle()
+                    screenManager.isShowingInstructionsView.toggle()
                 }) {
                     Text("Дальше")
                         .bold()
@@ -93,7 +92,7 @@ struct WelcomeView: View {
                 
                 NavigationLink(
                     destination: InstructionsView(),
-                    isActive: $modalState.isShowingInstructionsView,
+                    isActive: $screenManager.isShowingInstructionsView,
                     label: { EmptyView() }
                 )
             }

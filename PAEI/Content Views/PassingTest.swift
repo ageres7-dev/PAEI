@@ -47,16 +47,21 @@ struct PassingTest: View {
                     .frame(maxHeight: 150)
                     
                     Spacer()
+                    ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                        CharacteristicsRadioButtonGroup(
+                            producerValue: $producerValue,
+                            administratorValue: $administratorValue,
+                            entrepreneurValue: $entrepreneurValue,
+                            integratorValue: $integratorValue,
+                            currentCharacteristic: currentCharacteristic
+                        )
+                        .frame(minHeight: 320, maxHeight: 400)
+                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+                        
+                        HelpButton(isPresented: $showHelp)
+                            .offset(x: 10, y: 6)
+                    }
                     
-                    CharacteristicsRadioButtonGroup(
-                        producerValue: $producerValue,
-                        administratorValue: $administratorValue,
-                        entrepreneurValue: $entrepreneurValue,
-                        integratorValue: $integratorValue,
-                        currentCharacteristic: currentCharacteristic
-                    )
-                    .frame(minHeight: 320, maxHeight: 400)
-                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                     Spacer()
                     
                     ZStack {
@@ -217,7 +222,7 @@ struct HelpButton: View {
             Image(systemName: "questionmark.circle")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 34, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 24, height: 24)
         }
         .alert(isPresented: $isPresented) {
             Alert(
