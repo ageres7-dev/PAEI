@@ -16,34 +16,35 @@ struct WelcomeView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    
-                    if conditionManager.condition.isTestPassed {
-                        Button(action: {
-                            modalState.isModalPresentResultView.toggle()
-                            
-                        }) {
-                            Text("Последний результат теста")
-                                .bold()
-                                .setBlueStyleButton(color: .green)
-                        }
-                        .padding()
-                        .sheet(isPresented: $modalState.isModalPresentResultView) {
-                            NavigationView {
-                                ResultView(answer: conditionManager.condition.answer,
-                                           isNewResult: false)
-                                    .toolbar {
-                                        
-                                        ToolbarItem(placement: .navigationBarTrailing) {
-                                            Button("Закрыть") {
-                                                modalState.isModalPresentResultView = false
+       
+                    LazyVStack {
+                        if conditionManager.condition.isTestPassed {
+                            Button(action: {
+                                modalState.isModalPresentResultView.toggle()
+                                
+                            }) {
+                                Text("Последний результат теста")
+                                    .bold()
+                                    .setBlueStyleButton(color: .green)
+                            }
+                            .padding()
+                            .sheet(isPresented: $modalState.isModalPresentResultView) {
+                                NavigationView {
+                                    ResultView(answer: conditionManager.condition.answer,
+                                               isNewResult: false)
+                                        .toolbar {
+                                            
+                                            ToolbarItem(placement: .navigationBarTrailing) {
+                                                Button("Закрыть") {
+                                                    modalState.isModalPresentResultView = false
+                                                }
                                             }
                                         }
-                                    }
+                                }
                             }
                         }
-                    }
-                    
-                    Group {
+                        
+                        
                         VStack {
                             Image(systemName: "person.3")
                                 .resizable()
@@ -59,23 +60,19 @@ struct WelcomeView: View {
                         }
                         .setCustomBackgroung()
                         
-                        TextBlockView(imagaSystemName: "p.circle.fill",
-                                      key: "P",
+                        TextBlockView(imagaSystemName: "p.circle",
                                       title: "ЧТО НУЖНО СДЕЛАТЬ?",
                                       text: "Данная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.")
                         
-                        TextBlockView(imagaSystemName: "a.circle.fill",
-                                      key: "A",
+                        TextBlockView(imagaSystemName: "a.circle",
                                       title: "КАК ЭТО НУЖНО СДЕЛАТЬ?",
                                       text: "Организация должна в правильной последовательности делать правильные вещи. Администратор обеспечивает данный процесс.")
                         
-                        TextBlockView(imagaSystemName: "e.circle.fill",
-                                      key: "E",
+                        TextBlockView(imagaSystemName: "e.circle",
                                       title: "КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ?",
                                       text: "Придерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.")
                         
-                        TextBlockView(imagaSystemName: "i.circle.fill",
-                                      key: "I",
+                        TextBlockView(imagaSystemName: "i.circle",
                                       title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
                                       text: "Руководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.")
                         
@@ -110,17 +107,18 @@ struct WelcomeView: View {
 
 struct TextBlockView: View {
     let imagaSystemName: String
-    let key: String
+//    let key: String
     let title: String
     let text: String
     var body: some View {
         VStack {
             Image(systemName: imagaSystemName)
-                .font(.system(size: 70))
-                .frame(width: 70)
+                .font(.system(size: 100))
+                .frame(height: 100)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             Text(title)
                 .bold()
+                .multilineTextAlignment(.center)
             
             Spacer(minLength: 4)
             Text(text)
@@ -133,5 +131,7 @@ struct TextBlockView: View {
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()
+            .environmentObject(СonditionManager())
+            .environmentObject(ScreenManager())
     }
 }

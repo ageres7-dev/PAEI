@@ -139,8 +139,8 @@ extension PassingTest {
     private func actionFinishButton() -> Void {
         isNewAnswer ? addCurrenAnswer() : updateAnswer(at: currentIndexBlock)
         //        UINotificationFeedbackGenerator().notificationOccurred(.success)
-        isShowingResultView = true
         
+        isShowingResultView = true
         conditionManager.condition.isTestPassed = true
         conditionManager.condition.answer = sumAllAnswers
         DataManager.shared.save(

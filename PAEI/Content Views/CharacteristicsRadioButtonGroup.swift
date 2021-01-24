@@ -35,7 +35,7 @@ struct CharacteristicsRadioButtonGroup: View {
 //                .foregroundColor(colorScheme == .dark ? .customGray : .white)
 //                .shadow(color: shadowColor.opacity(0.5), radius: 15, x: 0, y: 0)
             
-        Group {
+//        Group {
              VStack {
                 Group{
                 RadioButtons(currentValue: $producerValue,
@@ -63,7 +63,7 @@ struct CharacteristicsRadioButtonGroup: View {
 //            .offset(y: -4)
             .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
             
-        }
+//        }
             .setCustomBackgroung()
             .shadow(radius: 25)
 //            .opacity(0.9)

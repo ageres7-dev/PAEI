@@ -15,7 +15,6 @@ struct InstructionsView: View {
     var body: some View {
         VStack {
             ScrollView {
-                
                     LazyVStack {
                         
                         Image(systemName: "book")
@@ -30,13 +29,12 @@ struct InstructionsView: View {
                             //                        Text("Необходимо ответить на 12 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10. И да, будьте честны перед собой")
                     }
                     .setCustomBackgroung()
-                    .shadow(radius: 25)
                     .padding()
                 
             }
+            .shadow(radius: 25)
             
-            
-            
+
             Button(action: {
                 modalState.isModalPresentPassingTest.toggle()
                 modalState.isShowingInstructionsView.toggle()

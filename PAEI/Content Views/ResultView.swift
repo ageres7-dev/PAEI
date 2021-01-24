@@ -10,7 +10,7 @@ import SwiftUI
 struct ResultView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
-    @Environment(\.colorScheme) private var colorScheme
+//    @Environment(\.colorScheme) private var colorScheme
     
     let answer: Answer
     var isNewResult = true
@@ -18,8 +18,8 @@ struct ResultView: View {
     var body: some View {
         VStack {
             ScrollView {
-                LazyVStack{
-                    Group{
+              
+                    LazyVStack{
                         
                         Image(resultTest.picture)
                             .resizable()
@@ -163,10 +163,12 @@ struct ResultView: View {
                         }
                     }
                     .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))
-                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
-                }
+//                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
+                    
+            
                 .padding()
             }
+            .shadow(radius: 25)
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Ваш ключ: \(paeiKey)")
             
@@ -214,9 +216,9 @@ extension ResultView {
         DetailedResult.customPael(key: paeiKey)
     }
     
-    private var shadowColor: Color {
-        colorScheme == .dark ? .blue : .gray
-    }
+//    private var shadowColor: Color {
+//        colorScheme == .dark ? .blue : .gray
+//    }
     
 }
 
@@ -286,14 +288,11 @@ extension ResultView {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
+       
             ResultView(answer: Answer())
-                .preferredColorScheme(.dark)
+//                .preferredColorScheme(.dark)
                 .environmentObject(ScreenManager())
-            ResultView(answer: Answer())
-                .preferredColorScheme(.dark)
-                .environmentObject(ScreenManager())
-        }
+            
     }
 }
 /*
