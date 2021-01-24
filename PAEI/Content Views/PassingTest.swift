@@ -90,19 +90,7 @@ struct PassingTest: View {
                 .padding()
                 .navigationBarHidden(true)
                 
-                Button(action: { showHelp.toggle() }) {
-                    Image(systemName: "questionmark.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 34, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                }
-                .alert(isPresented: $showHelp) {
-                    Alert(
-                        title: Text("Оцените Ваши личные качества – КАКОЙ Я?"),
-                        message: Text("Будьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
-                    )
-                }
-                .padding()
+                HelpButton(isPresented: $showHelp)
             }
         }
     }
@@ -218,6 +206,29 @@ extension PassingTest {
     }
     
 }
+
+
+
+
+struct HelpButton: View {
+    @Binding var isPresented: Bool
+    var body: some View {
+        Button(action: { isPresented.toggle() }) {
+            Image(systemName: "questionmark.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 34, height: 34, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        }
+        .alert(isPresented: $isPresented) {
+            Alert(
+                title: Text("Оцените Ваши личные качества – КАКОЙ Я?"),
+                message: Text("Будьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
+            )
+        }
+        .padding()
+    }
+}
+
 
 
 struct PassingTest_Previews: PreviewProvider {
