@@ -21,7 +21,7 @@ struct CharacteristicsRadioButtonGroup: View {
     private var currentNumberBlock = 0
     */
     
-//    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colorScheme
     @Binding var producerValue: Int
     @Binding var administratorValue: Int
     @Binding var entrepreneurValue: Int
@@ -30,10 +30,11 @@ struct CharacteristicsRadioButtonGroup: View {
     var currentCharacteristic: CharacteristicBlock
 
     var body: some View {
-//        ZStack {
-//            RoundedRectangle(cornerRadius: 25.0)
-//                .foregroundColor(colorScheme == .dark ? .customGray : .white)
-//                .shadow(color: shadowColor.opacity(0.5), radius: 15, x: 0, y: 0)
+        ZStack {
+            RoundedRectangle(cornerRadius: 20.0)
+                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+//                .shadow(color: .black, radius: 15, x: 0, y: 0)
+                .shadow(radius: 25)
             
 //        Group {
              VStack {
@@ -60,17 +61,17 @@ struct CharacteristicsRadioButtonGroup: View {
                 }
                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
             }
-//            .offset(y: -4)
-            .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
+            .offset(y: -4)
+            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
             
 //        }
-            .setCustomBackgroung()
-            .shadow(radius: 25)
+//            .setCustomBackgroung()
+//            .shadow(radius: 25)
 //            .opacity(0.9)
 //            .offset(y: -4)
 //            .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))
 //            .animation(.none)
-//        }
+        }
     }
 }
 

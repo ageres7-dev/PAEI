@@ -27,7 +27,7 @@ struct WelcomeView: View {
                                     .bold()
                                     .setBlueStyleButton(color: .green)
                             }
-                            .padding()
+//                            .padding()
                             .sheet(isPresented: $modalState.isModalPresentResultView) {
                                 NavigationView {
                                     ResultView(answer: conditionManager.condition.answer,

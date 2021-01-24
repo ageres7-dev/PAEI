@@ -18,11 +18,12 @@ struct CustomBackgroung: ViewModifier {
             content
                 .padding()
         }
+//        .shadow(radius: 25) 
     }
     
-    private var shadowColor: Color {
-        colorScheme == .dark ? .blue : .gray
-    }
+//    private var shadowColor: Color {
+//        colorScheme == .dark ? .blue : .gray
+//    }
 }
 
 
