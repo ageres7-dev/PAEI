@@ -32,7 +32,8 @@ struct CharacteristicsRadioButtonGroup: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20.0)
-                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+//                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+                .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
 //                .shadow(color: .black, radius: 15, x: 0, y: 0)
                 .shadow(radius: 25)
             

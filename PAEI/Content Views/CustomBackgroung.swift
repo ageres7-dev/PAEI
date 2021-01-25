@@ -13,7 +13,11 @@ struct CustomBackgroung: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20.0)
-                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+//                .foregroundColor(Color(.systemGray6))
+                .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
+//                .foregroundColor(colorScheme == .dark ? .customGray : .white)
+               
+            
             //                .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
             content
                 .padding()
