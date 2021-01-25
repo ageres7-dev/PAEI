@@ -82,17 +82,14 @@ struct WelcomeView: View {
                 }
                 .shadow(radius: 25)
                 
-                VStack {
-                    Spacer()
-                    BlurButton(action: {screenManager.isShowingInstructionsView.toggle()},
-                               text: "Дальше")
-                    
-                    NavigationLink(
-                        destination: InstructionsView(),
-                        isActive: $screenManager.isShowingInstructionsView,
-                        label: { EmptyView() }
-                    )
-                }
+               
+                BlurButton(text: "Дальше") {screenManager.isShowingInstructionsView.toggle()}
+                
+                NavigationLink(
+                    destination: InstructionsView(),
+                    isActive: $screenManager.isShowingInstructionsView,
+                    label: { EmptyView() }
+                )
                 
             }
             .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕

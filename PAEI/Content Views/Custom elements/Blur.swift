@@ -20,27 +20,30 @@ struct Blur: UIViewRepresentable {
 
 
 struct BlurButton: View {
-    var action: () -> Void
     let text: String
+    var action: () -> Void
     var body: some View {
-        ZStack {
-            Blur()
-            
-            Button(action: action) {
-                Text(text)
-                    .bold()
-                    .setBlueStyleButton()
+        
+        VStack {
+            Spacer()
+            ZStack {
+                Blur()
+                Button(action: action) {
+                    Text(text)
+                        .bold()
+                        .setBlueStyleButton()
+                }
+                .padding()
             }
-            .padding()
+            .frame(height: 82)
         }
-        .frame(height: 82)
     }
 }
 
 
 struct BlurButton_Previews: PreviewProvider {
     static var previews: some View {
-        BlurButton(action: {}, text: "Кнопка" )
+        BlurButton(text: "Кнопка", action: {} )
     }
 }
 

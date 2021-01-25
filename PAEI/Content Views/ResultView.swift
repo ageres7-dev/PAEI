@@ -16,7 +16,7 @@ struct ResultView: View {
     var isNewResult = true
     
     var body: some View {
-        VStack {
+        ZStack {
             ScrollView {
                 
                 LazyVStack{
@@ -148,6 +148,11 @@ struct ResultView: View {
                         Text(detailedResult.iCharacteristic)
                     }
                     .setCustomBackgroung()
+//                    Spacer(minLength: 82)
+//                    if isNewResult {
+//                        EmptyView()
+//                            .frame(height: 82)
+//                    }
                     
                     
                     if !isNewResult {
@@ -164,6 +169,9 @@ struct ResultView: View {
                         }
                         .padding(EdgeInsets(top: 16,leading: 0,bottom: 0 ,trailing: 0))
                     }
+                    
+//                    Spacer(minLength: 82)
+                   
                 }
                 .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))
                 //                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
@@ -186,15 +194,20 @@ struct ResultView: View {
             
             //кнопка выхода
             if isNewResult {
-                Button(action: {
-                    screenManager.isModalPresentPassingTest = false
-                    screenManager.isModalPresentResultView = false
-                }) {
-                    Text("Выход")
-                        .bold()
-                        .setBlueStyleButton()
+                BlurButton(text: "Выход") {
+                    screenManager.isModalPresentPassingTest.toggle()
+                    screenManager.isModalPresentResultView.toggle()
                 }
-                .padding()
+                
+//                Button(action: {
+//                    screenManager.isModalPresentPassingTest = false
+//                    screenManager.isModalPresentResultView = false
+//                }) {
+//                    Text("Выход")
+//                        .bold()
+//                        .setBlueStyleButton()
+//                }
+//                .padding()
             }
         }
     }

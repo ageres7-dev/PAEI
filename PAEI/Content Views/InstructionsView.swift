@@ -13,7 +13,7 @@ struct InstructionsView: View {
     @State private var isShowingResultView = false
     
     var body: some View {
-        VStack {
+        ZStack {
             ScrollView {
                     LazyVStack {
                         
@@ -27,6 +27,7 @@ struct InstructionsView: View {
                         
                         Text("Оцените Ваши личные качества – КАКОЙ Я? \nБудьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
                             //                        Text("Необходимо ответить на 12 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10. И да, будьте честны перед собой")
+                        Spacer(minLength: 82)
                     }
                     .setCustomBackgroung()
                     .padding()
@@ -34,17 +35,21 @@ struct InstructionsView: View {
             }
             .shadow(radius: 25)
             
-
-            Button(action: {
+            BlurButton(text: "Начать тест") {
                 modalState.isModalPresentPassingTest.toggle()
                 modalState.isShowingInstructionsView.toggle()
-                
-            }) {
-                Text("Начать тест")
-                    .bold()
-                    .setBlueStyleButton()
             }
-            .padding()
+//
+//            Button(action: {
+//                modalState.isModalPresentPassingTest.toggle()
+//                modalState.isShowingInstructionsView.toggle()
+//
+//            }) {
+//                Text("Начать тест")
+//                    .bold()
+//                    .setBlueStyleButton()
+//            }
+//            .padding()
             .fullScreenCover(
                 isPresented: $modalState.isModalPresentPassingTest,
                 content: PassingTest.init
