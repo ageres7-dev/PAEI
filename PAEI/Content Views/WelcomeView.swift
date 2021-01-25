@@ -14,7 +14,7 @@ struct WelcomeView: View {
     var body: some View {
         
         NavigationView {
-            VStack {
+            ZStack {
                 
                 ScrollView {
                     LazyVStack {
@@ -75,26 +75,25 @@ struct WelcomeView: View {
                         TextBlockView(imagaSystemName: "i.circle",
                                       title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
                                       text: "Руководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.")
+                        Spacer(minLength: 82)
                         
                     }
                     .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                 }
                 .shadow(radius: 25)
                 
-                Button(action: {
-                    screenManager.isShowingInstructionsView.toggle()
-                }) {
-                    Text("Дальше")
-                        .bold()
-                        .setBlueStyleButton()
+                VStack {
+                    Spacer()
+                    BlurButton(action: {screenManager.isShowingInstructionsView.toggle()},
+                               text: "Дальше")
+                    
+                    NavigationLink(
+                        destination: InstructionsView(),
+                        isActive: $screenManager.isShowingInstructionsView,
+                        label: { EmptyView() }
+                    )
                 }
-                .padding()
                 
-                NavigationLink(
-                    destination: InstructionsView(),
-                    isActive: $screenManager.isShowingInstructionsView,
-                    label: { EmptyView() }
-                )
             }
             .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕
         }
@@ -134,3 +133,5 @@ struct WelcomeView_Previews: PreviewProvider {
             .environmentObject(ScreenManager())
     }
 }
+
+

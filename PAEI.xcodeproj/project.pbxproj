@@ -17,6 +17,7 @@
 		A540DE1525B36DE900BBBE50 /* DetailedResult + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */; };
 		A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1725B36E1800BBBE50 /* DetailedResult.swift */; };
 		A540DE1E25B38A8C00BBBE50 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */; };
+		A55F62F025BF562800E12A2C /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55F62EF25BF562800E12A2C /* Blur.swift */; };
 		A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FC259FB4780098CAAB /* PAEIApp.swift */; };
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
 		A56DB601259FB47B0098CAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB600259FB47B0098CAAB /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailedResult + Extension.swift"; sourceTree = "<group>"; };
 		A540DE1725B36E1800BBBE50 /* DetailedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResult.swift; sourceTree = "<group>"; };
 		A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
+		A55F62EF25BF562800E12A2C /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		A56DB5F9259FB4780098CAAB /* PAEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56DB5FC259FB4780098CAAB /* PAEIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEIApp.swift; sourceTree = "<group>"; };
 		A56DB5FE259FB4780098CAAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A55F62F225BF5B0700E12A2C /* Custom elements */ = {
+			isa = PBXGroup;
+			children = (
+				A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */,
+				A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */,
+				A58843C725A717B3002DE43A /* CircleProgressBar.swift */,
+				A58843CF25A89408002DE43A /* Color + Extension.swift */,
+				A55F62EF25BF562800E12A2C /* Blur.swift */,
+			);
+			path = "Custom elements";
+			sourceTree = "<group>";
+		};
 		A56DB5F0259FB4780098CAAB = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +116,9 @@
 		A56DB5FB259FB4780098CAAB /* PAEI */ = {
 			isa = PBXGroup;
 			children = (
-				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 				A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */,
+				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A530E15025BAF0980008F91C /* WelcomePageView.swift */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
@@ -142,17 +156,14 @@
 		A56DB60D259FB5290098CAAB /* Content Views */ = {
 			isa = PBXGroup;
 			children = (
+				A55F62F225BF5B0700E12A2C /* Custom elements */,
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
 				A58843D225A8E253002DE43A /* WelcomeView.swift */,
 				A530E15525BAF5CE0008F91C /* InstructionsView.swift */,
 				A52AF72C25A4E2A900D46757 /* PassingTest.swift */,
 				A58843C025A51254002DE43A /* ResultView.swift */,
-				A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */,
-				A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */,
-				A58843C725A717B3002DE43A /* CircleProgressBar.swift */,
 				A56DB62525A115280098CAAB /* RadioButtons.swift */,
 				A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */,
-				A58843CF25A89408002DE43A /* Color + Extension.swift */,
 			);
 			path = "Content Views";
 			sourceTree = "<group>";
@@ -263,6 +274,7 @@
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
 				A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */,
 				A540DE1525B36DE900BBBE50 /* DetailedResult + Extension.swift in Sources */,
+				A55F62F025BF562800E12A2C /* Blur.swift in Sources */,
 				A51C94F325BC7E74009D7DB4 /* СonditionManager.swift in Sources */,
 				A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* Result + Extension.swift in Sources */,
