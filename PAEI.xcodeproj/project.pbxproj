@@ -30,6 +30,7 @@
 		A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */; };
 		A58843D025A89409002DE43A /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843CF25A89408002DE43A /* Color + Extension.swift */; };
 		A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843D225A8E253002DE43A /* WelcomeView.swift */; };
+		A5918F5C25C0857B00A8C608 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5918F5B25C0857B00A8C608 /* ActivityViewController.swift */; };
 		A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE4F25A24DAB00816A4A /* DataManager.swift */; };
 		A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */; };
 		A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5325A24E5D00816A4A /* Answer.swift */; };
@@ -65,6 +66,7 @@
 		A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		A58843CF25A89408002DE43A /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		A58843D225A8E253002DE43A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A5918F5B25C0857B00A8C608 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		A5A9EE4F25A24DAB00816A4A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicBlock.swift; sourceTree = "<group>"; };
 		A5A9EE5325A24E5D00816A4A /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A58843C025A51254002DE43A /* ResultView.swift */,
 				A56DB62525A115280098CAAB /* RadioButtons.swift */,
 				A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */,
+				A5918F5B25C0857B00A8C608 /* ActivityViewController.swift */,
 			);
 			path = "Content Views";
 			sourceTree = "<group>";
@@ -227,7 +230,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				ru,
 			);
 			mainGroup = A56DB5F0259FB4780098CAAB;
 			productRefGroup = A56DB5FA259FB4780098CAAB /* Products */;
@@ -260,6 +263,7 @@
 				A58843D025A89409002DE43A /* Color + Extension.swift in Sources */,
 				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
 				A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */,
+				A5918F5C25C0857B00A8C608 /* ActivityViewController.swift in Sources */,
 				A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */,
 				A58843C825A717B3002DE43A /* CircleProgressBar.swift in Sources */,
 				A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */,

@@ -11,6 +11,7 @@ struct ResultView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
     //    @Environment(\.colorScheme) private var colorScheme
+    @State private var isShareViewPresented: Bool = false
     
     let answer: Answer
     var isNewResult = true
@@ -185,9 +186,20 @@ struct ResultView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     
-                    Button(action: share) {
+                    Button(action:
+//                            share
+                            { isShareViewPresented.toggle() }
+                    ) {
                         Image(systemName: "square.and.arrow.up")
                     }
+                    .sheet(isPresented: $isShareViewPresented, content: {
+                        ActivityViewController(itemsToShare: [
+                            UIImage(named: resultTest.picture)!
+                        ])
+                    })
+                    
+                    
+                    
                 }
             }
             
