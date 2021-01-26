@@ -192,11 +192,9 @@ struct ResultView: View {
                     ) {
                         Image(systemName: "square.and.arrow.up")
                     }
-                    .sheet(isPresented: $isShareViewPresented, content: {
-                        ActivityViewController(itemsToShare: [
-                            UIImage(named: resultTest.picture)!
-                        ])
-                    })
+                    .sheet(isPresented: $isShareViewPresented) {
+                        ActivityViewController(itemsToShare: sharedContent)
+                    }
                     
                     
                     
@@ -227,6 +225,24 @@ struct ResultView: View {
 
 extension ResultView {
     //MARK: - Properties
+    
+    
+    private var sharedContent: [Any] {
+        let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)" : ""
+        
+        let qualit = resultTest.qualities != nil ? "Качества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + "." : ""
+        
+        let characteristic = resultTest.characteristic != nil ? "Характеристика:\n" + resultTest.characteristic! : ""
+        
+        let skills = resultTest.skills != nil ? "Навыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." : ""
+        
+        let text = "\(title) \n\nМой PAEI: \(paeiKey) \n\n\(characteristic) \n\n\(qualit) \n\n\(skills) \n\nПодробная расшифрока ключа: \(paeiKey)\n P=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
+
+        
+        return [
+            UIImage(named: resultTest.picture) ?? UIImage(systemName: "person.2.circle") as Any,
+            text]
+    }
     
     private var screenSize: CGSize {
         UIScreen.main.bounds.size

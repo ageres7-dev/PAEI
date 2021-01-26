@@ -230,7 +230,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				ru,
+				Base,
 			);
 			mainGroup = A56DB5F0259FB4780098CAAB;
 			productRefGroup = A56DB5FA259FB4780098CAAB /* Products */;
