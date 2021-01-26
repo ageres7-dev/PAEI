@@ -90,69 +90,66 @@ struct ResultView: View {
                         }
                         .setCustomBackgroung()
                     }
-                    
-                    VStack {
-                        CircleProgressBar(
-                            currentValue: answer.producer,
-                            maxValue: 48,
-                            insideLabel: "P=\(answer.producer)"
-                        )
-                        .frame(height: 100)
-                        .padding(EdgeInsets(top: 0,
-                                            leading: 0,
-                                            bottom: 8,
-                                            trailing: 0))
+                    Group {
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.producer,
+                                maxValue: 48,
+                                insideLabel: "P=\(answer.producer)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0,
+                                                leading: 0,
+                                                bottom: 8,
+                                                trailing: 0))
+                            
+                            Text(detailedResult.pCharacteristic)
+                        }
+                        .setCustomBackgroung()
                         
-                        Text(detailedResult.pCharacteristic)
-                    }
-                    .setCustomBackgroung()
-                    
-                    VStack {
-                        CircleProgressBar(
-                            currentValue: answer.administrator,
-                            maxValue: 48,
-                            insideLabel: "A=\(answer.administrator)"
-                        )
-                        .frame(height: 100)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.administrator,
+                                maxValue: 48,
+                                insideLabel: "A=\(answer.administrator)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            
+                            Text(detailedResult.aCharacteristic)
+                        }
+                        .setCustomBackgroung()
                         
-                        Text(detailedResult.aCharacteristic)
-                    }
-                    .setCustomBackgroung()
-                    
-                    VStack {
-                        CircleProgressBar(
-                            currentValue: answer.entrepreneur,
-                            maxValue: 48,
-                            insideLabel: "E=\(answer.entrepreneur)"
-                        )
-                        .frame(height: 100)
-                        .padding(EdgeInsets(top: 0,
-                                            leading: 0,
-                                            bottom: 8,
-                                            trailing: 0))
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.entrepreneur,
+                                maxValue: 48,
+                                insideLabel: "E=\(answer.entrepreneur)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0,
+                                                leading: 0,
+                                                bottom: 8,
+                                                trailing: 0))
+                            
+                            Text(detailedResult.eCharacteristic)
+                        }
+                        .setCustomBackgroung()
                         
-                        Text(detailedResult.eCharacteristic)
-                    }
-                    .setCustomBackgroung()
-                    
-                    VStack {
-                        CircleProgressBar(
-                            currentValue: answer.integrator,
-                            maxValue: 48,
-                            insideLabel: "I=\(answer.integrator)"
-                        )
-                        .frame(height: 100)
-                        .padding(EdgeInsets(top: 0,leading: 0,bottom: 8,trailing: 0))
+                        VStack {
+                            CircleProgressBar(
+                                currentValue: answer.integrator,
+                                maxValue: 48,
+                                insideLabel: "I=\(answer.integrator)"
+                            )
+                            .frame(height: 100)
+                            .padding(EdgeInsets(top: 0,leading: 0,bottom: 8,trailing: 0))
+                            
+                            Text(detailedResult.iCharacteristic)
+                        }
+                        .setCustomBackgroung()
                         
-                        Text(detailedResult.iCharacteristic)
                     }
-                    .setCustomBackgroung()
-//                    Spacer(minLength: 82)
-//                    if isNewResult {
-//                        EmptyView()
-//                            .frame(height: 82)
-//                    }
                     
                     
                     if !isNewResult {
@@ -170,8 +167,10 @@ struct ResultView: View {
                         .padding(EdgeInsets(top: 16,leading: 0,bottom: 0 ,trailing: 0))
                     }
                     
-//                    Spacer(minLength: 82)
-                   
+                    if isNewResult {
+                        Spacer(minLength: 82)
+                    }
+                    
                 }
                 .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))
                 //                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
@@ -199,15 +198,15 @@ struct ResultView: View {
                     screenManager.isModalPresentResultView.toggle()
                 }
                 
-//                Button(action: {
-//                    screenManager.isModalPresentPassingTest = false
-//                    screenManager.isModalPresentResultView = false
-//                }) {
-//                    Text("Выход")
-//                        .bold()
-//                        .setBlueStyleButton()
-//                }
-//                .padding()
+                //                Button(action: {
+                //                    screenManager.isModalPresentPassingTest = false
+                //                    screenManager.isModalPresentResultView = false
+                //                }) {
+                //                    Text("Выход")
+                //                        .bold()
+                //                        .setBlueStyleButton()
+                //                }
+                //                .padding()
             }
         }
     }

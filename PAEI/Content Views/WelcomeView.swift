@@ -93,6 +93,13 @@ struct WelcomeView: View {
                 
             }
             .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕
+    
+//            .toolbar {
+//                ToolbarItem(placement: .principal) {
+//                    Text("Модель PAEI")
+//                        .multilineTextAlignment(.center)
+//                }
+//            }
         }
     }
 }
