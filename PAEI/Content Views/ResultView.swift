@@ -228,15 +228,15 @@ extension ResultView {
     
     
     private var sharedContent: [Any] {
-        let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)" : ""
+        let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)\n\n" : ""
         
         let qualit = resultTest.qualities != nil ? "Качества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + "." : ""
         
-        let characteristic = resultTest.characteristic != nil ? "Характеристика:\n" + resultTest.characteristic! : ""
+        let characteristic = resultTest.characteristic != nil ? "Характеристика:\n\n\n" + resultTest.characteristic! : ""
         
-        let skills = resultTest.skills != nil ? "Навыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." : ""
+        let skills = resultTest.skills != nil ? "Навыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
         
-        let text = "\(title) \n\nМой PAEI: \(paeiKey) \n\n\(characteristic) \n\n\(qualit) \n\n\(skills) \n\nПодробная расшифрока ключа: \(paeiKey)\n P=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
+        let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit) \(skills)Подробная расшифрока ключа: \(paeiKey)\n\n P=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
 
         
         return [
