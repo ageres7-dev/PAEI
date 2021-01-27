@@ -11,6 +11,7 @@ struct CircleProgressBar: View {
     let currentValue: Int
     let maxValue: Int
     let insideLabel: String
+    var fontValueIndex: CGFloat = 0.3
     
     private var progress: CGFloat {
         CGFloat(currentValue) / CGFloat(maxValue)
@@ -22,7 +23,7 @@ struct CircleProgressBar: View {
             //                let size = max(geometry.size.height, geometry.size.width)
             let size = geometry.size.height
             let line = size * 0.12
-            let fontValue = size * 0.3
+            let fontValue = size * fontValueIndex
             
             ZStack {
                 Circle()
@@ -40,6 +41,7 @@ struct CircleProgressBar: View {
                 Text(insideLabel)
                     .font(.system(size: fontValue))
                     .bold()
+                    .multilineTextAlignment(.center)
                 
             }
             .scaleEffect(0.95)

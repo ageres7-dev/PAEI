@@ -14,6 +14,7 @@ struct ResultView: View {
     @State private var isShareViewPresented: Bool = false
     
     let answer: Answer
+    let maxValueOneCharacteristic = 48
     var isNewResult = true
     
     var body: some View {
@@ -96,7 +97,8 @@ struct ResultView: View {
                             CircleProgressBar(
                                 currentValue: answer.producer,
                                 maxValue: 48,
-                                insideLabel: "P=\(answer.producer)"
+                                insideLabel: "P=\(lround(Double(answer.producer) / Double(maxValueOneCharacteristic) * 100))%",
+                                fontValueIndex: 0.22
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0,
@@ -111,8 +113,9 @@ struct ResultView: View {
                         VStack {
                             CircleProgressBar(
                                 currentValue: answer.administrator,
-                                maxValue: 48,
-                                insideLabel: "A=\(answer.administrator)"
+                                maxValue: maxValueOneCharacteristic,
+                                insideLabel: "A=\(lround(Double(answer.administrator) / Double(maxValueOneCharacteristic) * 100))%",
+                                fontValueIndex: 0.22
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
@@ -124,8 +127,9 @@ struct ResultView: View {
                         VStack {
                             CircleProgressBar(
                                 currentValue: answer.entrepreneur,
-                                maxValue: 48,
-                                insideLabel: "E=\(answer.entrepreneur)"
+                                maxValue: maxValueOneCharacteristic,
+                                insideLabel: "E=\(lround(Double(answer.entrepreneur) / Double(maxValueOneCharacteristic) * 100))%",
+                                fontValueIndex: 0.22
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0,
@@ -140,8 +144,9 @@ struct ResultView: View {
                         VStack {
                             CircleProgressBar(
                                 currentValue: answer.integrator,
-                                maxValue: 48,
-                                insideLabel: "I=\(answer.integrator)"
+                                maxValue: maxValueOneCharacteristic,
+                                insideLabel: "I=\(lround(Double(answer.integrator) / Double(maxValueOneCharacteristic) * 100))%",
+                                fontValueIndex: 0.22
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0,leading: 0,bottom: 8,trailing: 0))
