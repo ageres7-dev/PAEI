@@ -160,7 +160,8 @@ struct ResultView: View {
                     
                     if !isNewResult {
                         Button(action: {
-                            screenManager.isModalPresentResultView = false
+//                            screenManager.isModalPresentResultView = false
+                            screenManager.isModalPresentResultView.toggle()
                             DataManager.shared.clear(
                                 conditionManager: conditionManager
                             )
@@ -210,7 +211,7 @@ struct ResultView: View {
             if isNewResult {
                 BlurButton(text: "Выход") {
                     screenManager.isModalPresentPassingTest.toggle()
-                    screenManager.isModalPresentResultView.toggle()
+//                    screenManager.isModalPresentResultView.toggle()
                 }
                 
                 //                Button(action: {
