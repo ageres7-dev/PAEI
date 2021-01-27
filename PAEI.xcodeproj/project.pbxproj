@@ -38,6 +38,7 @@
 		A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5525A24E5E00816A4A /* Result.swift */; };
 		A5A9EE5B25A24E5E00816A4A /* Result + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5625A24E5E00816A4A /* Result + Extension.swift */; };
 		A5A9EE5E25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */; };
+		A5E5386D25C20ACA004FFDF7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5E5386C25C20ACA004FFDF7 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		A5A9EE5525A24E5E00816A4A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A5A9EE5625A24E5E00816A4A /* Result + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result + Extension.swift"; sourceTree = "<group>"; };
 		A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicsRadioButtonGroup.swift; sourceTree = "<group>"; };
+		A5E5386C25C20ACA004FFDF7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				A56DB60D259FB5290098CAAB /* Content Views */,
 				A56DB60C259FB5190098CAAB /* Model */,
 				A56DB602259FB47B0098CAAB /* Preview Content */,
+				A5E5386C25C20ACA004FFDF7 /* Launch Screen.storyboard */,
 			);
 			path = PAEI;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E5386D25C20ACA004FFDF7 /* Launch Screen.storyboard in Resources */,
 				A56DB604259FB47B0098CAAB /* Preview Assets.xcassets in Resources */,
 				A56DB601259FB47B0098CAAB /* Assets.xcassets in Resources */,
 			);

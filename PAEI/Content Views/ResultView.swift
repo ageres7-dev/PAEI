@@ -36,12 +36,10 @@ struct ResultView: View {
                             .multilineTextAlignment(.center)
                             .font(.largeTitle)
                     }
-                    
-                    
-                    
+                    //MARK: - Характеристика
                     if let characteristic = resultTest.characteristic {
                         VStack {
-                            Text("Характеристика:")
+                            Text("Характеристика")
                                 .bold()
                                 .padding(EdgeInsets(top: 0,
                                                     leading: 0,
@@ -51,10 +49,10 @@ struct ResultView: View {
                         }
                         .setCustomBackgroung()
                     }
-                    
+                    //MARK: - Качества
                     if  let qualities = resultTest.qualities {
                         VStack {
-                            Text("Качества:")
+                            Text("Качества")
                                 .bold()
                                 .padding(EdgeInsets(top: 0,
                                                     leading: 0,
@@ -72,9 +70,10 @@ struct ResultView: View {
                         }
                         .setCustomBackgroung()
                     }
+                    //MARK: - Навыки
                     if let skills = resultTest.skills {
                         VStack {
-                            Text("Навыки:")
+                            Text("Навыки")
                                 .bold()
                                 .padding(EdgeInsets(top: 0,
                                                     leading: 0,
@@ -93,7 +92,15 @@ struct ResultView: View {
                         .setCustomBackgroung()
                     }
                     Group {
+                        //MARK: - P
                         VStack {
+                            Text("Производитель")
+                                .bold()
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 4,
+                                                    trailing: 0))
+                            
                             CircleProgressBar(
                                 currentValue: answer.producer,
                                 maxValue: 48,
@@ -109,8 +116,15 @@ struct ResultView: View {
                             Text(detailedResult.pCharacteristic)
                         }
                         .setCustomBackgroung()
-                        
+                        //MARK: - A
                         VStack {
+                            Text("Администратор")
+                                .bold()
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 4,
+                                                    trailing: 0))
+                            
                             CircleProgressBar(
                                 currentValue: answer.administrator,
                                 maxValue: maxValueOneCharacteristic,
@@ -123,8 +137,15 @@ struct ResultView: View {
                             Text(detailedResult.aCharacteristic)
                         }
                         .setCustomBackgroung()
-                        
+                        //MARK: - E
                         VStack {
+                            Text("Предприниматель")
+                                .bold()
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 4,
+                                                    trailing: 0))
+                            
                             CircleProgressBar(
                                 currentValue: answer.entrepreneur,
                                 maxValue: maxValueOneCharacteristic,
@@ -140,8 +161,15 @@ struct ResultView: View {
                             Text(detailedResult.eCharacteristic)
                         }
                         .setCustomBackgroung()
-                        
+                        //MARK: - I
                         VStack {
+                            Text("Интегратор")
+                                .bold()
+                                .padding(EdgeInsets(top: 0,
+                                                    leading: 0,
+                                                    bottom: 4,
+                                                    trailing: 0))
+                            
                             CircleProgressBar(
                                 currentValue: answer.integrator,
                                 maxValue: maxValueOneCharacteristic,
@@ -157,7 +185,7 @@ struct ResultView: View {
                         
                     }
                     
-                    
+                    //MARK: - Кнопка Удалить результат
                     if !isNewResult {
                         Button(action: {
 //                            screenManager.isModalPresentResultView = false
@@ -207,7 +235,7 @@ struct ResultView: View {
                 }
             }
             
-            //кнопка выхода
+            //MARK: - кнопка выхода
             if isNewResult {
                 BlurButton(text: "Выход") {
                     screenManager.isModalPresentPassingTest.toggle()
