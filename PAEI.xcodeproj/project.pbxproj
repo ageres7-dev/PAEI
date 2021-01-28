@@ -120,6 +120,7 @@
 		A56DB5FB259FB4780098CAAB /* PAEI */ = {
 			isa = PBXGroup;
 			children = (
+				A5E5386C25C20ACA004FFDF7 /* Launch Screen.storyboard */,
 				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
 				A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */,
 				A56DB62125A113900098CAAB /* CircleButton.swift */,
@@ -130,7 +131,6 @@
 				A56DB60D259FB5290098CAAB /* Content Views */,
 				A56DB60C259FB5190098CAAB /* Model */,
 				A56DB602259FB47B0098CAAB /* Preview Content */,
-				A5E5386C25C20ACA004FFDF7 /* Launch Screen.storyboard */,
 			);
 			path = PAEI;
 			sourceTree = "<group>";

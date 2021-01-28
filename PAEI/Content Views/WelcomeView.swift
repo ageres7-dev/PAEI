@@ -18,7 +18,20 @@ struct WelcomeView: View {
                 
                 ScrollView {
                     LazyVStack {
+                        
+                        
+//                            .setCustomBackgroung()
+                        
                         if conditionManager.condition.isTestPassed {
+                            
+                            Image("default")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: UIScreen.main.bounds.size.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .clipped()
+                                .cornerRadius(20)
+                            
+                            
                             Button(action: {
                                 screenManager.isModalPresentResultView.toggle()
                                 
@@ -46,7 +59,7 @@ struct WelcomeView: View {
                         
                      
                         VStack {
-                            Image(systemName: "person.3")
+                            Image("paeiLogoMini")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 100)
@@ -70,22 +83,8 @@ struct WelcomeView: View {
                         Text("Кроме того, вы можете использовать модель PAEI, чтобы узнать свои сильные и слабые стороны как лидера. Скорее всего, вы «тянетесь» к одному из этих стилей управления, и это абсолютно естественно. Когда вы знаете, какой из них подходит вам лучше всего, вы можете определить, какой из них вам следует избегать. Модель поможет выявить слабые места и пробелы в навыках, которые вы должны устранить.")
                             .setCustomBackgroung()
                         
+                        paeiTextBlocks()
                         
-                        TextBlockView(imagaSystemName: "p.circle",
-                                      title: "ЧТО НУЖНО СДЕЛАТЬ?",
-                                      text: "Данная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.")
-                        
-                        TextBlockView(imagaSystemName: "a.circle",
-                                      title: "КАК ЭТО НУЖНО СДЕЛАТЬ?",
-                                      text: "Организация должна в правильной последовательности делать правильные вещи. Администратор обеспечивает данный процесс.")
-                        
-                        TextBlockView(imagaSystemName: "e.circle",
-                                      title: "КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ?",
-                                      text: "Придерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.")
-                        
-                        TextBlockView(imagaSystemName: "i.circle",
-                                      title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
-                                      text: "Руководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.")
                         Spacer(minLength: 82)
                         
                     }
@@ -123,12 +122,14 @@ struct TextBlockView: View {
 //    let key: String
     let title: String
     let text: String
+    var imageColor = Color.primary
     var body: some View {
         VStack {
             Image(systemName: imagaSystemName)
                 .font(.system(size: 100))
                 .frame(height: 100)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                .foregroundColor(imageColor)
             Text(title)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -141,6 +142,38 @@ struct TextBlockView: View {
 }
 
 
+
+
+
+struct paeiTextBlocks: View {
+    var body: some View {
+        Group{
+            TextBlockView(imagaSystemName: "p.circle",
+                          title: "ЧТО НУЖНО СДЕЛАТЬ?",
+                          text: "Данная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.",
+                          imageColor: .red)
+            
+            TextBlockView(imagaSystemName: "a.circle",
+                          title: "КАК ЭТО НУЖНО СДЕЛАТЬ?",
+                          text: "Организация должна в правильной последовательности делать правильные вещи. Администратор обеспечивает данный процесс.",
+                          imageColor: .blue)
+            
+            TextBlockView(imagaSystemName: "e.circle",
+                          title: "КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ?",
+                          text: "Придерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.",
+                          imageColor: .customYellow)
+                
+            
+            TextBlockView(imagaSystemName: "i.circle",
+                          title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
+                          text: "Руководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.",
+                          imageColor: .green)
+        }
+    }
+}
+
+
+
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()
@@ -148,5 +181,3 @@ struct WelcomeView_Previews: PreviewProvider {
             .environmentObject(ScreenManager())
     }
 }
-
-
