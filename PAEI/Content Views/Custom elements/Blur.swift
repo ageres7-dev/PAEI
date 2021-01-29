@@ -28,6 +28,7 @@ struct BlurButton: View {
             Spacer()
             ZStack {
                 Blur()
+                    .ignoresSafeArea(edges: .bottom)
                 Button(action: action) {
                     Text(text)
                         .bold()

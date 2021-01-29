@@ -11,6 +11,7 @@ struct WelcomeView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
     
+    @State private var showSplash = true
     var body: some View {
         
         NavigationView {
@@ -18,19 +19,28 @@ struct WelcomeView: View {
                 
                 ScrollView {
                     LazyVStack {
-                        
-                        
-//                            .setCustomBackgroung()
-                        
-                        if conditionManager.condition.isTestPassed {
-                            
+/*
+                        Group{
                             Image("default")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(height: UIScreen.main.bounds.size.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .clipped()
                                 .cornerRadius(20)
-                            
+                        }
+//                        .opacity(showSplash ? 1 : 0)
+//                        .onAppear {
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                                withAnimation() {
+//                                    showSplash.toggle()
+//                                }
+//
+//                            }
+//                        }
+                        
+*/
+                        
+                        if conditionManager.condition.isTestPassed {
                             
                             Button(action: {
                                 screenManager.isModalPresentResultView.toggle()
@@ -94,6 +104,7 @@ struct WelcomeView: View {
                 
                
                 BlurButton(text: "Дальше") {screenManager.isShowingInstructionsView.toggle()}
+                    
                 
                 NavigationLink(
                     destination: InstructionsView(),
