@@ -16,30 +16,9 @@ struct WelcomeView: View {
         
         NavigationView {
             ZStack {
-                
                 ScrollView {
-                    LazyVStack {
-/*
-                        Group{
-                            Image("default")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(height: UIScreen.main.bounds.size.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                .clipped()
-                                .cornerRadius(20)
-                        }
-//                        .opacity(showSplash ? 1 : 0)
-//                        .onAppear {
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                                withAnimation() {
-//                                    showSplash.toggle()
-//                                }
-//
-//                            }
-//                        }
-                        
-*/
-                        
+                    LazyVStack(alignment: .trailing) {
+    
                         if conditionManager.condition.isTestPassed {
                             
                             Button(action: {
@@ -50,13 +29,11 @@ struct WelcomeView: View {
                                     .bold()
                                     .setBlueStyleButton(color: .green)
                             }
-//                            .padding()
                             .sheet(isPresented: $screenManager.isModalPresentResultView) {
                                 NavigationView {
                                     ResultView(answer: conditionManager.condition.answer,
                                                isNewResult: false)
                                         .toolbar {
-                                            
                                             ToolbarItem(placement: .navigationBarTrailing) {
                                                 Button("Закрыть") {
                                                     screenManager.isModalPresentResultView = false
@@ -73,25 +50,30 @@ struct WelcomeView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 100)
-                                .padding(
-                                    EdgeInsets(top: 0,
-                                               leading: 0,
-                                               bottom: 8,
-                                               trailing: 0)
-                                )
-//                            Text("В своей книге \"Идеальный руководитель\" Ицхак Адизес утверждает, что у менеджмента есть четыре функции, от успешной реализации которых зависит благополучие организации. Это производство результатов (P), администрирование (A), предпринимательство (E) и интеграция (I).")
+                                .padding(.bottom, 8)
+
                             Text("Доктор Ицхак Адизес, специалист в области управления и основатель компании Adizes Institute, разработал модель в начале 1970-х годов. С тех пор он применил ее к тысячам организаций по всему миру.")
                             
                         }
                         .setCustomBackgroung()
                         
-                        Text("PAEI – это аббревиатура, которая описывает 4 управленческих роли (или стилей); выполнение каждой из них помогает команде или организации обеспечить максимально эффективную деятельность. Это:\n\n- Producer / Производитель;\n- Administrator / Администратор;\n- Entrepreneur / Предприниматель;\n- Integrator / Интегратор.")
-                            .setCustomBackgroung()
+                        VStack(alignment: .leading) {
+                            Text("PAEI – это аббревиатура, которая описывает 4 управленческих роли (или стилей); выполнение каждой из них помогает команде или организации обеспечить максимально эффективную деятельность. Это:\n\n- Producer / Производитель;\n- Administrator / Администратор;\n- Entrepreneur / Предприниматель;\n- Integrator / Интегратор.")
+                                
+                        }
+                        .setCustomBackgroung()
                         
-                        Text("Ни один человек не может одновременно выполнять все эти роли. Важно сделать так, чтобы всегда был кто-то, кто отвечает за каждую из них; тогда вы сможете построить сильную и эффективную команду менеджеров, которые выполняют свои обязанности и задачи.")
-                            .setCustomBackgroung()
+                        VStack(alignment: .leading) {
+                            Text("Ни один человек не может одновременно выполнять все эти роли. Важно сделать так, чтобы всегда был кто-то, кто отвечает за каждую из них; тогда вы сможете построить сильную и эффективную команду менеджеров, которые выполняют свои обязанности и задачи.")
+                                .padding(0)
+                        }
+                        .setCustomBackgroung()
+//                            .multilineTextAlignment(.leading)
+                        
                         Text("Кроме того, вы можете использовать модель PAEI, чтобы узнать свои сильные и слабые стороны как лидера. Скорее всего, вы «тянетесь» к одному из этих стилей управления, и это абсолютно естественно. Когда вы знаете, какой из них подходит вам лучше всего, вы можете определить, какой из них вам следует избегать. Модель поможет выявить слабые места и пробелы в навыках, которые вы должны устранить.")
+                            .padding(0)
                             .setCustomBackgroung()
+                            
                         
                         paeiTextBlocks()
                         
@@ -114,13 +96,6 @@ struct WelcomeView: View {
                 
             }
             .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕
-    
-//            .toolbar {
-//                ToolbarItem(placement: .principal) {
-//                    Text("Модель PAEI")
-//                        .multilineTextAlignment(.center)
-//                }
-//            }
         }
     }
 }
@@ -158,7 +133,7 @@ struct TextBlockView: View {
 
 struct paeiTextBlocks: View {
     var body: some View {
-        Group{
+        Group {
             TextBlockView(imagaSystemName: "p.circle",
                           title: "ЧТО НУЖНО СДЕЛАТЬ?",
                           text: "Данная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.",

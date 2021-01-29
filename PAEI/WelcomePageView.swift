@@ -35,3 +35,28 @@ struct WelcomePageView_Previews: PreviewProvider {
             .environmentObject(ScreenManager())
     }
 }
+
+
+
+
+
+/*
+                        Group{
+                            Image("default")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: UIScreen.main.bounds.size.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .clipped()
+                                .cornerRadius(20)
+                        }
+//                        .opacity(showSplash ? 1 : 0)
+//                        .onAppear {
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                                withAnimation() {
+//                                    showSplash.toggle()
+//                                }
+//
+//                            }
+//                        }
+                        
+*/

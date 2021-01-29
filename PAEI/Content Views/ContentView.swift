@@ -12,23 +12,22 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            //            if !showSplash{
             WelcomeView()
-                
-                .opacity(!showSplash ? 1 : 0)
-//                .animation(.easeIn)
+                .opacity(showSplash ? 0 : 1)
+            
             if showSplash {
-            SplashScreen()
-//                .opacity(showSplash ? 1 : 0)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation() {
-                            showSplash = false
+                SplashScreen()
+                    .animation(.easeIn)
+                    //                .opacity(showSplash ? 1 : 0)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                            withAnimation() {
+                                showSplash = false
+                            }
                         }
                     }
-                }
-                .animation(.easeIn)
-        }
+                    
+            }
         }
     }
 }

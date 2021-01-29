@@ -10,51 +10,50 @@ import SwiftUI
 struct SplashScreen: View {
     @State private var showLogo = true
     var body: some View {
-        
-        
-        VStack(alignment: .center, spacing: -10) {
-            //            Button("run", action: {withAnimation {showLogo.toggle()}})
-            Spacer()
-            HStack(alignment: .center, spacing: -10) {
+    
+            VStack(alignment: .center, spacing: 0) {
                 Spacer()
-                if showLogo {
-                    CharacterElementLogo(text: "P", color: .red)
-                        .transition(.upperLeft)
+                HStack(alignment: .center, spacing: 0) {
+                    Spacer()
+                    if showLogo {
+                        CharacterElementLogo(text: "P", color: .red)
+                            .transition(.upperLeft)
+                    }
+                    Spacer()
+                    if showLogo {
+                        CharacterElementLogo(text: "A", color: .blue)
+                            .transition(.upperRight)
+                    }
+                    Spacer()
                 }
                 Spacer()
-                if showLogo {
-                    CharacterElementLogo(text: "A", color: .blue)
-                        .transition(.upperRight)
+                HStack(alignment: .center, spacing: 0) {
+                    Spacer()
+                    if showLogo {
+                        CharacterElementLogo(text: "E", color: .yellow)
+                            .transition(.bottomLeft)
+                        
+                    }
+                    Spacer()
+                    if showLogo {
+                        CharacterElementLogo(text: "I", color: .green)
+                            .transition(.bottomRight)
+                        
+                    }
+                    Spacer()
                 }
-                Spacer()
+
+                Spacer(minLength: 300)
             }
-            Spacer()
-            HStack(alignment: .center, spacing: -10) {
-                Spacer()
-                if showLogo {
-                    CharacterElementLogo(text: "E", color: .yellow)
-                        .transition(.bottomLeft)
-                    
+            .animation(.easeOut(duration: 1))
+            .frame(width: 300, height: 300)
+            .onAppear {
+                withAnimation() {
+                    showLogo = false
                 }
-                Spacer()
-                if showLogo {
-                    CharacterElementLogo(text: "I", color: .green)
-                        .transition(.bottomRight)
-                    
-                }
-                Spacer()
-            }
-            Spacer()
-//            Spacer()
+                
         }
-        .animation(.easeOut(duration: 1))
-        .frame(width: 300, height: 300)
-        .onAppear {
-            withAnimation() {
-                showLogo = false
-            }
-            
-        }
+        
         
         
         
