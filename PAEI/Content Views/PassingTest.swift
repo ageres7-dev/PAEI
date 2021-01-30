@@ -58,7 +58,7 @@ struct PassingTest: View {
                         integratorValue: $integratorValue,
                         currentCharacteristic: currentCharacteristic
                     )
-                    .frame(minHeight: 320, maxHeight: 400)
+                    .frame(minHeight: 320, maxHeight: 450)
 //                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                     .padding(.top, isSmallScreen ? 8 : 20)
                     .padding(.bottom, isSmallScreen ? 8 : 20)

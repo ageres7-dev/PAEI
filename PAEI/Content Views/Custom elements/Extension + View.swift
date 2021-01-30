@@ -11,6 +11,11 @@ extension View {
     var isSmallScreen: Bool {
         UIScreen.main.bounds.size.height < 570
     }
+    
+    var isBigScreen: Bool {
+        UIScreen.main.bounds.size.height > 667
+    }
+    
 }
 
 
@@ -18,7 +23,11 @@ extension View {
 
 extension ViewModifier {
     var isSmallScreen: Bool {
-        //        print("Высота экрана \(UIScreen.main.bounds.size.height)")
-        UIScreen.main.bounds.size.height < 570
+//                print("Высота экрана \(UIScreen.main.bounds.size.height)")
+//        return
+            UIScreen.main.bounds.size.height < 570
+    }
+    var isBigScreen: Bool {
+        UIScreen.main.bounds.size.height > 667
     }
 }

@@ -24,6 +24,7 @@ struct RadioButtons: View {
                 Spacer()
             }
             HStack {
+//                Spacer()
                 RadioButton(value: $currentValue,
                             buttonValue: 1,
                             availablePoints: availablePoints,
@@ -43,6 +44,7 @@ struct RadioButtons: View {
                             buttonValue: 4,
                             availablePoints: availablePoints,
                             closure: closure)
+//                Spacer()
             }
         }
         .frame(minHeight: 50, maxHeight: 100)
