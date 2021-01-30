@@ -27,7 +27,7 @@ struct WelcomeView: View {
                             }) {
                                 Text("Последний результат теста")
                                     .bold()
-                                    .setBlueStyleButton(color: .green)
+                                    .setCustomStyleButton(color: .green)
                             }
                             .sheet(isPresented: $screenManager.isModalPresentResultView) {
                                 NavigationView {
@@ -59,6 +59,8 @@ struct WelcomeView: View {
                         
                         VStack(alignment: .leading) {
                             Text("PAEI – это аббревиатура, которая описывает 4 управленческих роли (или стилей); выполнение каждой из них помогает команде или организации обеспечить максимально эффективную деятельность. Это:\n\n- Producer / Производитель;\n- Administrator / Администратор;\n- Entrepreneur / Предприниматель;\n- Integrator / Интегратор.")
+//                                .multilineTextAlignment(.center)
+//                                .frame(alignment: .)
                                 
                         }
                         .setCustomBackgroung()

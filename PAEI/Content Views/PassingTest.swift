@@ -24,10 +24,12 @@ struct PassingTest: View {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top) )
             {
                 VStack {
+                    Spacer()
                     HStack {
                         Spacer(minLength: 16)
-                        VStack {
+                        VStack(spacing: isSmallScreen ? 0 : 16) {
                             Text("Баллов")
+                                .offset( y: isSmallScreen ? -10 : 0)
                             CircleProgressBar(
                                 currentValue: pointsTotal,
                                 maxValue: 10,
@@ -35,8 +37,9 @@ struct PassingTest: View {
                             )
                         }
                         Spacer(minLength: 16)
-                        VStack {
+                        VStack(spacing: isSmallScreen ? 0 : 16) {
                             Text("Блок")
+                                .offset( y: isSmallScreen ? -10 : 0)
                             CircleProgressBar(currentValue: currentIndexBlock + 1,
                                               maxValue: сharacteristicBlocks.count,
                                               insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
@@ -44,7 +47,7 @@ struct PassingTest: View {
                         }
                         Spacer(minLength: 16)
                     }
-                    .frame(maxHeight: 150)
+                    .frame(maxHeight: 160)
                     
                     Spacer()
                     
@@ -56,8 +59,9 @@ struct PassingTest: View {
                         currentCharacteristic: currentCharacteristic
                     )
                     .frame(minHeight: 320, maxHeight: 400)
-                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
-                    
+//                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+                    .padding(.top, isSmallScreen ? 8 : 20)
+                    .padding(.bottom, isSmallScreen ? 8 : 20)
                     Spacer()
                     
                     ZStack {
@@ -68,7 +72,7 @@ struct PassingTest: View {
                                     ? "Cледующий блок"
                                     : "Показать результат")
                                 .bold()
-                                .setBlueStyleButton(disabledStyle: pointsTotal != 10)
+                                .setCustomStyleButton(disabledStyle: pointsTotal != 10)
                         }
                         
                         
@@ -80,18 +84,30 @@ struct PassingTest: View {
                     }
                     .animation(nil)
                     .disabled(pointsTotal != 10)
-                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+//                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    .padding(.top, isSmallScreen ? 0 : 8)
+                    .padding(.bottom, isSmallScreen ? 0 : 8)
                     
                     Button(action: actionBackButton) {
                         Text("Предыдущий блок")
                     }
+                    .offset(y: isSmallScreen ? 3 : 0)
                     .disabled(currentIndexBlock == 0)
                     
                 }
                 .padding()
+//                .padding(
+//                    EdgeInsets(
+//                        top: isSmallScreen ? 8 : 16,
+//                        leading: 16,
+//                        bottom: 16,
+//                        trailing: 16
+//                    )
+//                )
                 .navigationBarHidden(true)
                 
                 HelpButton(isPresented: $showHelp)
+                    .offset( y: isSmallScreen ? -10 : 0)
             }
         }
     }

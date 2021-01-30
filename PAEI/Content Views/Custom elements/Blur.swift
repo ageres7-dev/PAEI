@@ -32,11 +32,11 @@ struct BlurButton: View {
                 Button(action: action) {
                     Text(text)
                         .bold()
-                        .setBlueStyleButton()
+                        .setCustomStyleButton()
                 }
                 .padding()
             }
-            .frame(height: 82)
+            .frame(height: isSmallScreen ? 76 : 82)
         }
     }
 }

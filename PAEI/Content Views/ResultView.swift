@@ -197,7 +197,7 @@ struct ResultView: View {
                         }) {
                             Text("Удалить результат")
                                 .bold()
-                                .setBlueStyleButton(color: .red)
+                                .setCustomStyleButton(color: .red)
                         }
                         .padding(EdgeInsets(top: 16,leading: 0,bottom: 0 ,trailing: 0))
                     }
@@ -248,7 +248,7 @@ struct ResultView: View {
                 //                }) {
                 //                    Text("Выход")
                 //                        .bold()
-                //                        .setBlueStyleButton()
+                //                        .setCustomStyleButton()
                 //                }
                 //                .padding()
             }

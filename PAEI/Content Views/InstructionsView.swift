@@ -50,7 +50,7 @@ struct InstructionsView: View {
 //            }) {
 //                Text("Начать тест")
 //                    .bold()
-//                    .setBlueStyleButton()
+//                    .setCustomStyleButton()
 //            }
 //            .padding()
             .fullScreenCover(

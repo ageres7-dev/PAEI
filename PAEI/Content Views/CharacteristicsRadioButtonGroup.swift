@@ -35,7 +35,7 @@ struct CharacteristicsRadioButtonGroup: View {
 //                .foregroundColor(colorScheme == .dark ? .customGray : .white)
                 .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
 //                .shadow(color: .black, radius: 15, x: 0, y: 0)
-                .shadow(radius: 25)
+                .shadow(radius: isSmallScreen ? 10 : 25)
             
 //        Group {
              VStack {
@@ -63,8 +63,8 @@ struct CharacteristicsRadioButtonGroup: View {
                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
             }
             .offset(y: -4)
-            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-            
+//            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+            .padding(20)
 //        }
 //            .setCustomBackgroung()
 //            .shadow(radius: 25)

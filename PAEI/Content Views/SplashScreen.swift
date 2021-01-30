@@ -77,11 +77,7 @@ extension AnyTransition {
 }
 
 
-struct SplashScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashScreen()
-    }
-}
+
 
 struct CharacterElementLogo: View {
     let text: String
@@ -94,5 +90,12 @@ struct CharacterElementLogo: View {
             .foregroundColor(color)
             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         
+    }
+}
+
+
+struct SplashScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        SplashScreen()
     }
 }

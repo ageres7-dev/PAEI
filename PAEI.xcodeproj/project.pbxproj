@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A504FF9C25C580C80080F073 /* Extension + View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A504FF9B25C580C80080F073 /* Extension + View.swift */; };
 		A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */; };
 		A51C94F025BC7BA3009D7DB4 /* Сondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C94EF25BC7BA3009D7DB4 /* Сondition.swift */; };
 		A51C94F325BC7E74009D7DB4 /* СonditionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A504FF9B25C580C80080F073 /* Extension + View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + View.swift"; sourceTree = "<group>"; };
 		A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroung.swift; sourceTree = "<group>"; };
 		A51C94EF25BC7BA3009D7DB4 /* Сondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сondition.swift"; sourceTree = "<group>"; };
 		A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СonditionManager.swift"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				A58843CC25A7C0AB002DE43A /* ButtonStyle.swift */,
+				A504FF9B25C580C80080F073 /* Extension + View.swift */,
 				A51AAF5B25AF93C100452EF5 /* CustomBackgroung.swift */,
 				A58843C725A717B3002DE43A /* CircleProgressBar.swift */,
 				A58843CF25A89408002DE43A /* Color + Extension.swift */,
@@ -265,6 +268,7 @@
 				A59985F725C33232006323EA /* SplashScreen.swift in Sources */,
 				A51C94F025BC7BA3009D7DB4 /* Сondition.swift in Sources */,
 				A58843D025A89409002DE43A /* Color + Extension.swift in Sources */,
+				A504FF9C25C580C80080F073 /* Extension + View.swift in Sources */,
 				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
 				A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */,
 				A5918F5C25C0857B00A8C608 /* ActivityViewController.swift in Sources */,
@@ -432,7 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ageres7.PAEI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -456,7 +460,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
