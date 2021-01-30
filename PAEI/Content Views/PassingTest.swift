@@ -75,7 +75,6 @@ struct PassingTest: View {
                                 .setCustomStyleButton(disabledStyle: pointsTotal != 10)
                         }
                         
-                        
                         NavigationLink(
                             destination: ResultView(answer: sumAllAnswers),
                             isActive: $isShowingResultView,
@@ -93,9 +92,10 @@ struct PassingTest: View {
                     }
                     .offset(y: isSmallScreen ? 3 : 0)
                     .disabled(currentIndexBlock == 0)
+                    .padding(.bottom, 16)
                     
                 }
-                .padding()
+//                .padding()
 //                .padding(
 //                    EdgeInsets(
 //                        top: isSmallScreen ? 8 : 16,
@@ -109,6 +109,7 @@ struct PassingTest: View {
                 HelpButton(isPresented: $showHelp)
                     .offset( y: isSmallScreen ? -10 : 0)
             }
+            .padding()
         }
     }
 }
@@ -224,9 +225,6 @@ extension PassingTest {
     
 }
 
-
-
-
 struct HelpButton: View {
     @Binding var isPresented: Bool
     var body: some View {
@@ -242,10 +240,9 @@ struct HelpButton: View {
                 message: Text("Будьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
             )
         }
-        .padding()
+        .padding(.top, 8)
     }
 }
-
 
 
 struct PassingTest_Previews: PreviewProvider {
