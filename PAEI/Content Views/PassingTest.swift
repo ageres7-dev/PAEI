@@ -22,6 +22,7 @@ struct PassingTest: View {
         
         NavigationView {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+               
                 VStack {
                     Spacer()
                     
@@ -47,7 +48,7 @@ struct PassingTest: View {
                         }
                         Spacer(minLength: 16)
                     }
-                    .frame(maxHeight: 160)
+                    .frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: 160)
                     
                     Spacer()
                     
@@ -64,46 +65,41 @@ struct PassingTest: View {
                     .padding(.bottom, isSmallScreen ? 8 : 20)
                     Spacer()
                     
-                    ZStack {
-                        Button(action: isNextButtom
-                                ? actionNextButton
-                                : actionFinishButton) {
-                            Text(isNextButtom
-                                    ? "Cледующий блок"
-                                    : "Показать результат")
-                                .bold()
-                                .setCustomStyleButton(disabledStyle: pointsTotal != 10)
-                        }
-                        
-                        NavigationLink(
-                            destination: ResultView(answer: sumAllAnswers),
-                            isActive: $isShowingResultView,
-                            label: { EmptyView() }
-                        )
+                    
+                    Button(action: isNextButtom
+                            ? actionNextButton
+                            : actionFinishButton) {
+                        Text(isNextButtom
+                                ? "Cледующий блок"
+                                : "Показать результат")
+                            .bold()
+                            .setCustomStyleButton(disabledStyle: pointsTotal != 10)
                     }
                     .animation(nil)
                     .disabled(pointsTotal != 10)
                     //                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                
                     .padding(.top, isSmallScreen ? 0 : 8)
-                    .padding(.bottom, isSmallScreen ? 0 : 8)
+                    .padding(.bottom, 8)
+                    
+                    NavigationLink(
+                        destination: ResultView(answer: sumAllAnswers),
+                        isActive: $isShowingResultView,
+                        label: { EmptyView() }
+                    )
+                    
+                    
                     
                     Button(action: actionBackButton) {
                         Text("Предыдущий блок")
                     }
-                    .offset(y: isSmallScreen ? 3 : 0)
+                    //                    .offset(y: isSmallScreen ? 3 : 0)
                     .disabled(currentIndexBlock == 0)
-                    .padding(.bottom, 16)
+                    .padding(.top, isSmallScreen ? 0 : 8)
+//                    .padding(.bottom, isSmallScreen ? 8 : 40)
                     
                 }
-                //                .padding()
-                //                .padding(
-                //                    EdgeInsets(
-                //                        top: isSmallScreen ? 8 : 16,
-                //                        leading: 16,
-                //                        bottom: 16,
-                //                        trailing: 16
-                //                    )
-                //                )
+
                 .navigationBarHidden(true)
                 
                 HelpButton(isPresented: $showHelp)
