@@ -48,7 +48,7 @@ struct PassingTest: View {
                         }
                         Spacer(minLength: 16)
                     }
-                    .frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: 160)
+                    .frame(minHeight: 0, idealHeight: 100, maxHeight: 160)
                     
                     Spacer()
                     
@@ -60,7 +60,6 @@ struct PassingTest: View {
                         currentCharacteristic: currentCharacteristic
                     )
                     .frame(minHeight: 320, maxHeight: 450)
-                    //                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                     .padding(.top, isSmallScreen ? 8 : 20)
                     .padding(.bottom, isSmallScreen ? 8 : 20)
                     Spacer()
@@ -77,8 +76,6 @@ struct PassingTest: View {
                     }
                     .animation(nil)
                     .disabled(pointsTotal != 10)
-                    //                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
-                
                     .padding(.top, isSmallScreen ? 0 : 8)
                     .padding(.bottom, 8)
                     
@@ -88,16 +85,13 @@ struct PassingTest: View {
                         label: { EmptyView() }
                     )
                     
-                    
-                    
                     Button(action: actionBackButton) {
                         Text("Предыдущий блок")
                     }
                     //                    .offset(y: isSmallScreen ? 3 : 0)
                     .disabled(currentIndexBlock == 0)
-                    .padding(.top, isSmallScreen ? 0 : 8)
-//                    .padding(.bottom, isSmallScreen ? 8 : 40)
-                    
+//                    .padding(.top, isSmallScreen ? 0 : 8)
+                    .frame(height: isSmallScreen ? 24 : 30)
                 }
 
                 .navigationBarHidden(true)
