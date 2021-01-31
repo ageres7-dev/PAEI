@@ -14,15 +14,13 @@ struct ResultView: View {
     @State private var isShareViewPresented: Bool = false
     
     let answer: Answer
-    let maxValueOneCharacteristic = 48
+    var maxValueOneCharacteristic = 48
     var isNewResult = true
     
     var body: some View {
         ZStack {
             ScrollView {
-                
                 LazyVStack{
-                    
                     Image(resultTest.picture)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -104,7 +102,7 @@ struct ResultView: View {
                             CircleProgressBar(
                                 currentValue: answer.producer,
                                 maxValue: 48,
-                                insideLabel: "P=\(lround(Double(answer.producer) / Double(maxValueOneCharacteristic) * 100))%",
+                                insideLabel: "P=\(pProcent)%",
                                 fontValueIndex: 0.22
                             )
                             .frame(height: 100)
@@ -128,7 +126,7 @@ struct ResultView: View {
                             CircleProgressBar(
                                 currentValue: answer.administrator,
                                 maxValue: maxValueOneCharacteristic,
-                                insideLabel: "A=\(lround(Double(answer.administrator) / Double(maxValueOneCharacteristic) * 100))%",
+                                insideLabel: "A=\(aProcent)%",
                                 fontValueIndex: 0.22
                             )
                             .frame(height: 100)
@@ -149,7 +147,7 @@ struct ResultView: View {
                             CircleProgressBar(
                                 currentValue: answer.entrepreneur,
                                 maxValue: maxValueOneCharacteristic,
-                                insideLabel: "E=\(lround(Double(answer.entrepreneur) / Double(maxValueOneCharacteristic) * 100))%",
+                                insideLabel: "E=\(eProcent)%",
                                 fontValueIndex: 0.22
                             )
                             .frame(height: 100)
@@ -173,7 +171,7 @@ struct ResultView: View {
                             CircleProgressBar(
                                 currentValue: answer.integrator,
                                 maxValue: maxValueOneCharacteristic,
-                                insideLabel: "I=\(lround(Double(answer.integrator) / Double(maxValueOneCharacteristic) * 100))%",
+                                insideLabel: "I=\(iProcent)%",
                                 fontValueIndex: 0.22
                             )
                             .frame(height: 100)
@@ -188,7 +186,6 @@ struct ResultView: View {
                     //MARK: - Кнопка Удалить результат
                     if !isNewResult {
                         Button(action: {
-//                            screenManager.isModalPresentResultView = false
                             screenManager.isModalPresentResultView.toggle()
                             DataManager.shared.clear(
                                 conditionManager: conditionManager
@@ -208,9 +205,6 @@ struct ResultView: View {
                     
                 }
                 .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))
-                //                    .shadow(color: shadowColor.opacity(0.5), radius: 25, x: 0, y: 0)
-                
-                
                 .padding()
             }
             .shadow(radius: 25)
@@ -220,18 +214,14 @@ struct ResultView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     
-                    Button(action:
-//                            share
-                            { isShareViewPresented.toggle() }
-                    ) {
+                    Button(action: {
+                        isShareViewPresented.toggle()
+                    }) {
                         Image(systemName: "square.and.arrow.up")
                     }
                     .sheet(isPresented: $isShareViewPresented) {
                         ActivityViewController(itemsToShare: sharedContent)
                     }
-                    
-                    
-                    
                 }
             }
             
@@ -239,18 +229,7 @@ struct ResultView: View {
             if isNewResult {
                 BlurButton(text: "Выход") {
                     screenManager.isModalPresentPassingTest.toggle()
-//                    screenManager.isModalPresentResultView.toggle()
                 }
-                
-                //                Button(action: {
-                //                    screenManager.isModalPresentPassingTest = false
-                //                    screenManager.isModalPresentResultView = false
-                //                }) {
-                //                    Text("Выход")
-                //                        .bold()
-                //                        .setCustomStyleButton()
-                //                }
-                //                .padding()
             }
         }
     }
@@ -264,13 +243,13 @@ extension ResultView {
     private var sharedContent: [Any] {
         let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)\n\n" : ""
         
-        let qualit = resultTest.qualities != nil ? "Качества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + "." : ""
+        let qualit = resultTest.qualities != nil ? "\nКачества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + ".\n" : ""
         
-        let characteristic = resultTest.characteristic != nil ? "Характеристика:\n\n\n" + resultTest.characteristic! : ""
+        let characteristic = resultTest.characteristic != nil ? "Характеристика:\n" + resultTest.characteristic! + "\n" : ""
         
-        let skills = resultTest.skills != nil ? "Навыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
+        let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
         
-        let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit) \(skills)Подробная расшифрока ключа: \(paeiKey)\n\n P=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
+        let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit) \(skills)Подробная расшифрока ключа: \(paeiKey)\n\n P=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
 
         
         return [
@@ -293,9 +272,21 @@ extension ResultView {
         DetailedResult.customPael(key: paeiKey)
     }
     
-    //    private var shadowColor: Color {
-    //        colorScheme == .dark ? .blue : .gray
-    //    }
+    private var pProcent: String {
+        String(lround(Double(answer.producer) / Double(maxValueOneCharacteristic) * 100))
+    }
+    
+    private var aProcent: String {
+        String(lround(Double(answer.administrator) / Double(maxValueOneCharacteristic) * 100))
+    }
+    
+    private var eProcent: String {
+        String(lround(Double(answer.entrepreneur) / Double(maxValueOneCharacteristic) * 100))
+    }
+    
+    private var iProcent: String {
+        String(lround(Double(answer.integrator) / Double(maxValueOneCharacteristic) * 100))
+    }
     
 }
 

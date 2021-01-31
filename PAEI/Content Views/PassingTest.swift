@@ -21,10 +21,10 @@ struct PassingTest: View {
     var body: some View {
         
         NavigationView {
-            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top) )
-            {
+            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                 VStack {
                     Spacer()
+                    
                     HStack {
                         Spacer(minLength: 16)
                         VStack(spacing: isSmallScreen ? 0 : 16) {
@@ -59,7 +59,7 @@ struct PassingTest: View {
                         currentCharacteristic: currentCharacteristic
                     )
                     .frame(minHeight: 320, maxHeight: 450)
-//                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+                    //                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                     .padding(.top, isSmallScreen ? 8 : 20)
                     .padding(.bottom, isSmallScreen ? 8 : 20)
                     Spacer()
@@ -83,7 +83,7 @@ struct PassingTest: View {
                     }
                     .animation(nil)
                     .disabled(pointsTotal != 10)
-//                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    //                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                     .padding(.top, isSmallScreen ? 0 : 8)
                     .padding(.bottom, isSmallScreen ? 0 : 8)
                     
@@ -95,15 +95,15 @@ struct PassingTest: View {
                     .padding(.bottom, 16)
                     
                 }
-//                .padding()
-//                .padding(
-//                    EdgeInsets(
-//                        top: isSmallScreen ? 8 : 16,
-//                        leading: 16,
-//                        bottom: 16,
-//                        trailing: 16
-//                    )
-//                )
+                //                .padding()
+                //                .padding(
+                //                    EdgeInsets(
+                //                        top: isSmallScreen ? 8 : 16,
+                //                        leading: 16,
+                //                        bottom: 16,
+                //                        trailing: 16
+                //                    )
+                //                )
                 .navigationBarHidden(true)
                 
                 HelpButton(isPresented: $showHelp)
