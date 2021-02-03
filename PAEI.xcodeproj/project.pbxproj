@@ -18,6 +18,7 @@
 		A540DE1525B36DE900BBBE50 /* DetailedResult + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */; };
 		A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1725B36E1800BBBE50 /* DetailedResult.swift */; };
 		A540DE1E25B38A8C00BBBE50 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */; };
+		A54F3D0925CA5BED0022E603 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */; };
 		A55F62F025BF562800E12A2C /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55F62EF25BF562800E12A2C /* Blur.swift */; };
 		A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FC259FB4780098CAAB /* PAEIApp.swift */; };
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
@@ -54,6 +55,7 @@
 		A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailedResult + Extension.swift"; sourceTree = "<group>"; };
 		A540DE1725B36E1800BBBE50 /* DetailedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResult.swift; sourceTree = "<group>"; };
 		A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
+		A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A55F62EF25BF562800E12A2C /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		A56DB5F9259FB4780098CAAB /* PAEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56DB5FC259FB4780098CAAB /* PAEIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEIApp.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */,
 				A56DB62125A113900098CAAB /* CircleButton.swift */,
 				A530E15025BAF0980008F91C /* WelcomePageView.swift */,
+				A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB60E259FB53B0098CAAB /* Managers */,
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54F3D0925CA5BED0022E603 /* Launch Screen.storyboard in Resources */,
 				A56DB604259FB47B0098CAAB /* Preview Assets.xcassets in Resources */,
 				A56DB601259FB47B0098CAAB /* Assets.xcassets in Resources */,
 			);

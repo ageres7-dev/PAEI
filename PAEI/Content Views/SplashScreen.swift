@@ -26,6 +26,7 @@ struct SplashScreen: View {
                     }
                     Spacer()
                 }
+                
                 Spacer()
                 HStack(alignment: .center, spacing: 0) {
                     Spacer()
@@ -42,11 +43,15 @@ struct SplashScreen: View {
                     }
                     Spacer()
                 }
-
-                Spacer(minLength: 300)
+//
+                Spacer()
+//                Spacer(minLength: 300)
             }
-            .animation(.easeOut(duration: 1))
+            .offset(y: 6)
+//            .animation(.easeOut(duration: 0.8))
+            .animation(.easeOut)
             .frame(width: 300, height: 300)
+            
             .onAppear {
                 withAnimation() {
                     showLogo = false
@@ -86,7 +91,8 @@ struct CharacterElementLogo: View {
         Text(text)
             .bold()
             .multilineTextAlignment(.center)
-            .font(.system(size: 100))
+//            .font(.system(size: 100))
+            .font(.custom("Futura", size: 100))
             .foregroundColor(color)
             .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         

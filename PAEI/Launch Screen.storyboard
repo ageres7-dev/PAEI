@@ -22,38 +22,38 @@
                                     <constraint firstAttribute="width" secondItem="75H-gj-UWp" secondAttribute="height" multiplier="1:1" id="9AX-db-DcK"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-jR-yDw">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-jR-yDw">
                                 <rect key="frame" x="57.5" y="219.5" width="260" height="260"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-gJ-Syi">
-                                        <rect key="frame" x="0.0" y="0.0" width="260" height="130"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-gJ-Syi">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="126"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="331-Qh-JQO">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="100"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iG-P5-gMD">
-                                                <rect key="frame" x="130" y="0.0" width="130" height="130"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                                <rect key="frame" x="134" y="0.0" width="126" height="126"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="100"/>
                                                 <color key="textColor" systemColor="systemBlueColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sP4-t7-l01">
-                                        <rect key="frame" x="0.0" y="130" width="260" height="130"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sP4-t7-l01">
+                                        <rect key="frame" x="0.0" y="134" width="260" height="126"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-rT-riZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="100"/>
                                                 <color key="textColor" systemColor="systemYellowColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7u-nn-7bu">
-                                                <rect key="frame" x="130" y="0.0" width="130" height="130"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                                <rect key="frame" x="134" y="0.0" width="126" height="126"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="100"/>
                                                 <color key="textColor" systemColor="systemGreenColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -67,6 +67,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Fuj-jR-yDw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="16" id="215-zs-TM4"/>
                             <constraint firstItem="75H-gj-UWp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DOc-99-KAK"/>
@@ -80,6 +81,8 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="DOc-99-KAK"/>
+                                <exclude reference="df6-9Y-eGq"/>
+                                <exclude reference="leX-6i-cy2"/>
                             </mask>
                         </variation>
                     </view>
@@ -91,6 +94,9 @@
     </scenes>
     <resources>
         <image name="paeiLogo" width="1280" height="1280"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
