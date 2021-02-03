@@ -14,10 +14,6 @@ struct CircleProgressBar: View {
     var fontValueIndex: CGFloat = 0.3
     var color: Color = .blue
     
-    private var progress: CGFloat {
-        CGFloat(currentValue) / CGFloat(maxValue)
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size.height
@@ -45,6 +41,10 @@ struct CircleProgressBar: View {
             }
             .scaleEffect(0.95)
         }
+    }
+    
+    private var progress: CGFloat {
+        CGFloat(currentValue) / CGFloat(maxValue)
     }
 }
 
