@@ -103,7 +103,8 @@ struct ResultView: View {
                                 currentValue: answer.producer,
                                 maxValue: 48,
                                 insideLabel: "P=\(pProcent)%",
-                                fontValueIndex: 0.22
+                                fontValueIndex: 0.22,
+                                color: .red
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0,
@@ -148,7 +149,8 @@ struct ResultView: View {
                                 currentValue: answer.entrepreneur,
                                 maxValue: maxValueOneCharacteristic,
                                 insideLabel: "E=\(eProcent)%",
-                                fontValueIndex: 0.22
+                                fontValueIndex: 0.22,
+                                color: .yellow
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0,
@@ -172,7 +174,8 @@ struct ResultView: View {
                                 currentValue: answer.integrator,
                                 maxValue: maxValueOneCharacteristic,
                                 insideLabel: "I=\(iProcent)%",
-                                fontValueIndex: 0.22
+                                fontValueIndex: 0.22,
+                                color: .green
                             )
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0,leading: 0,bottom: 8,trailing: 0))

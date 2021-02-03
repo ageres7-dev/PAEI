@@ -12,15 +12,14 @@ struct CircleProgressBar: View {
     let maxValue: Int
     let insideLabel: String
     var fontValueIndex: CGFloat = 0.3
+    var color: Color = .blue
     
     private var progress: CGFloat {
         CGFloat(currentValue) / CGFloat(maxValue)
     }
     
     var body: some View {
-        
         GeometryReader { geometry in
-            //                let size = max(geometry.size.height, geometry.size.width)
             let size = geometry.size.height
             let line = size * 0.12
             let fontValue = size * fontValueIndex
@@ -29,13 +28,13 @@ struct CircleProgressBar: View {
                 Circle()
                     .stroke(lineWidth: line)
                     .opacity(0.3)
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
                 Circle()
                     .trim(from: 0, to: progress)
                     .stroke(style: StrokeStyle(lineWidth: line,
                                                lineCap: .round,
                                                lineJoin: .round))
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
                     .rotationEffect(Angle(degrees: 270))
                     .animation(.easeOut)
                 Text(insideLabel)
