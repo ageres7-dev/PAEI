@@ -316,7 +316,31 @@ extension ResultView {
         var characterForKey = ""
         
         assert(characters.count == 2, "Передан неверный массив")
+        /*
+        //12 вопросов
+        switch number {
+        case 31...:
+            characterForKey = characters.first ?? "😱"
+        case 24..<30:
+            characterForKey = characters.last ?? "😱"
+        default:
+            characterForKey = "-"
+        }
+        */
         
+        //10 вопросов
+        switch number {
+        case 26...:
+            characterForKey = characters.first ?? "😱"
+        case 20..<25:
+            characterForKey = characters.last ?? "😱"
+        default:
+            characterForKey = "-"
+        }
+        
+        
+        //хз
+        /*
         switch number {
         case 30...:
             characterForKey = characters.first ?? "😱"
@@ -325,7 +349,7 @@ extension ResultView {
         default:
             characterForKey = "-"
         }
-        
+        */
         return characterForKey
     }
     //MARK: - Вытаскиваем нужный символ из строки
