@@ -69,7 +69,6 @@ class DataManager {
     "Наблюдающий",
     "Сдержанный",
     "Аккуратный, точный"
-    
    ]
    
    let qualityOfEntrepreneurs = [
@@ -96,20 +95,12 @@ class DataManager {
     "Стремящийся к консенсусу",
     "Осведомленный",
     "Приятный"
-    
    ]
     
     
     
     
 }
-
-extension DataManager {
-    
-}
-
-
-
 
 
 extension DataManager {
