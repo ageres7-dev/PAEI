@@ -17,6 +17,7 @@ struct PassingTest: View {
     @State private var answers: [Answer] = []
     @State private var isShowingResultView = false
     @State private var showHelp = false
+    @State private var showAlertDisabledButton = false
     
     var body: some View {
         
@@ -57,8 +58,16 @@ struct PassingTest: View {
                         administratorValue: $administratorValue,
                         entrepreneurValue: $entrepreneurValue,
                         integratorValue: $integratorValue,
-                        currentCharacteristic: currentCharacteristic
+                        currentCharacteristic: currentCharacteristic,
+                        disabledButtonAction: disabledButtonAction
                     )
+                    .alert(isPresented: $showAlertDisabledButton) {
+                        Alert(
+                            title: Text("Максимальное количество баллов 10")
+//                            message: Text("Читай инструкцию")
+                        )
+                    }
+                    
                     .frame(minHeight: 320, maxHeight: 450)
                     .padding(.top, isSmallScreen ? 8 : 20)
                     .padding(.bottom, isSmallScreen ? 8 : 20)
@@ -106,6 +115,12 @@ struct PassingTest: View {
 
 
 extension PassingTest {
+    
+    private func disabledButtonAction() -> Void {
+        showAlertDisabledButton.toggle()
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
+    }
     
     private func actionNextButton() -> Void {
         

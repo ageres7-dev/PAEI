@@ -8,19 +8,6 @@
 import SwiftUI
 
 struct CharacteristicsRadioButtonGroup: View {
-    /*
-    @State private var producerValue = 0
-    @State private var administratorValue = 0
-    @State private var entrepreneurValue = 0
-    @State private var integratorValue = 0
-    
-    private var currentCharacteristic: CharacteristicBlock {
-        CharacteristicBlock.getBlocks()[currentNumberBlock]
-    }
-    
-    private var currentNumberBlock = 0
-    */
-    
     @Environment(\.colorScheme) var colorScheme
     @Binding var producerValue: Int
     @Binding var administratorValue: Int
@@ -28,7 +15,8 @@ struct CharacteristicsRadioButtonGroup: View {
     @Binding var integratorValue: Int
     
     var currentCharacteristic: CharacteristicBlock
-
+    var disabledButtonAction: () -> Void
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20.0)
@@ -40,22 +28,26 @@ struct CharacteristicsRadioButtonGroup: View {
                 RadioButtons(currentValue: $producerValue,
                              availablePoints: availablePoints,
                              label: currentCharacteristic.qualityProducer,
-                             closure: autoPresLastButton)
+                             enabledButtonAction: autoPresLastButton,
+                             disabledButtonAction: disabledButtonAction)
                 
                 RadioButtons(currentValue: $administratorValue,
                              availablePoints: availablePoints,
                              label: currentCharacteristic.qualityAdministrator,
-                             closure: autoPresLastButton)
+                             enabledButtonAction: autoPresLastButton,
+                             disabledButtonAction: disabledButtonAction)
                 
                 RadioButtons(currentValue: $entrepreneurValue,
                              availablePoints: availablePoints,
                              label: currentCharacteristic.qualityEntrepreneurs,
-                             closure: autoPresLastButton)
+                             enabledButtonAction: autoPresLastButton,
+                             disabledButtonAction: disabledButtonAction)
                 
                 RadioButtons(currentValue: $integratorValue,
                              availablePoints: availablePoints,
                              label: currentCharacteristic.qualityIntegrator,
-                             closure: autoPresLastButton)
+                             enabledButtonAction: autoPresLastButton,
+                             disabledButtonAction: disabledButtonAction)
                 }
                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
             }
@@ -134,7 +126,8 @@ struct CharacteristicsView_Previews: PreviewProvider {
             administratorValue: .constant(2),
             entrepreneurValue: .constant(3),
             integratorValue: .constant(4),
-            currentCharacteristic: CharacteristicBlock.getBlocks()[1]
+            currentCharacteristic: CharacteristicBlock.getBlocks()[1],
+            disabledButtonAction: {}
         )
     }
 }
