@@ -18,6 +18,9 @@ struct PassingTest: View {
     @State private var isShowingResultView = false
     @State private var showHelp = false
     @State private var showAlertDisabledButton = false
+    //Необходимо для смены вопросов местами
+    @State private var currentKey = ["p", "a", "e", "i"]
+    @State private var keys: [[String]] = []
     
     var body: some View {
         
@@ -59,7 +62,8 @@ struct PassingTest: View {
                         entrepreneurValue: $entrepreneurValue,
                         integratorValue: $integratorValue,
                         currentCharacteristic: currentCharacteristic,
-                        disabledButtonAction: disabledButtonAction
+                        disabledButtonAction: disabledButtonAction,
+                        keys: currentKey
                     )
                     .alert(isPresented: $showAlertDisabledButton) {
                         Alert(
@@ -159,6 +163,16 @@ extension PassingTest {
         )
     }
     
+    private func addCurrenKey() {
+        keys.append(currentKey)
+    }
+    
+    private func updateKeys(at index: Int) {
+        keys.remove(at: index)
+        keys.insert(currentKey, at: index)
+    }
+    
+    //
     private func addCurrenAnswer() {
         answers.append(currentEnteredAnswer)
     }
