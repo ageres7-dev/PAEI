@@ -131,9 +131,16 @@ extension PassingTest {
         if isNewAnswer {
             addCurrenAnswer()
             clearAllValue()
+            
+            addCurrenKey()
+            newShuffledKey()
+            
         } else {
             updateAnswer(at: currentIndexBlock)
             fetchAnswerBy(index: currentIndexBlock + 1)
+            
+            updateKey(at: currentIndexBlock)
+            fetchKeyBy(index: currentIndexBlock + 1)
         }
         currentIndexBlock += 1
     }
@@ -144,9 +151,15 @@ extension PassingTest {
         if isNewAnswer {
             addCurrenAnswer()
             fetchAnswerBy(index: currentIndexBlock - 1)
+            
+            addCurrenKey()
+            fetchKeyBy(index: currentIndexBlock - 1)
         } else {
             updateAnswer(at: currentIndexBlock)
             fetchAnswerBy(index: currentIndexBlock - 1)
+            
+            updateKey(at: currentIndexBlock)
+            fetchKeyBy(index: currentIndexBlock - 1)
         }
         currentIndexBlock -= 1
     }
@@ -162,17 +175,25 @@ extension PassingTest {
             condition: conditionManager.condition
         )
     }
+    //запоминание расположения вопросов
+    private func newShuffledKey() {
+        currentKey.shuffle()
+    }
     
     private func addCurrenKey() {
         keys.append(currentKey)
     }
     
-    private func updateKeys(at index: Int) {
+    private func updateKey(at index: Int) {
         keys.remove(at: index)
         keys.insert(currentKey, at: index)
     }
     
-    //
+    private func fetchKeyBy(index: Int) {
+        currentKey = keys[index]
+    }
+    
+    //ответы
     private func addCurrenAnswer() {
         answers.append(currentEnteredAnswer)
     }
@@ -182,7 +203,7 @@ extension PassingTest {
         answers.insert(currentEnteredAnswer, at: index)
     }
     
-    private func fetchAnswerBy(index: Int) -> Void {
+    private func fetchAnswerBy(index: Int) {
         let answer = answers[index]
         producerValue = answer.producer
         administratorValue = answer.administrator
