@@ -129,7 +129,10 @@ extension PassingTest {
     private func actionNextButton() -> Void {
         print("actionNextButton()")
         print("currentIndexBlock \(currentIndexBlock) isNewAnswer \(isNewAnswer) answers.count \(answers.count)")
+        
         print("")
+        
+        
         if isNewAnswer {
             addCurrenAnswer()
             clearAllValue()
@@ -155,6 +158,7 @@ extension PassingTest {
             
         }
         currentIndexBlock += 1
+        print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
     }
     
@@ -162,6 +166,7 @@ extension PassingTest {
         print("actionBackButton()")
         print("currentIndexBlock \(currentIndexBlock) isNewAnswer \(isNewAnswer) answers.count \(answers.count)")
         print("")
+        
         guard currentIndexBlock > 0 else { return }
         
         if isNewAnswer {
@@ -171,13 +176,24 @@ extension PassingTest {
             addCurrenKey()
             fetchKeyBy(index: currentIndexBlock - 1)
         } else {
-            updateAnswer(at: currentIndexBlock)
-            fetchAnswerBy(index: currentIndexBlock - 1)
             
-//            updateKey(at: currentIndexBlock)
-            fetchKeyBy(index: currentIndexBlock - 1)
+            updateAnswer(at: currentIndexBlock)
+            if (currentIndexBlock + 1) == answers.count {
+                addCurrenAnswer()
+                fetchAnswerBy(index: currentIndexBlock - 1)
+                
+                addCurrenKey()
+                fetchKeyBy(index: currentIndexBlock - 1)
+            } else {
+                
+                fetchAnswerBy(index: currentIndexBlock - 1)
+                
+                //            updateKey(at: currentIndexBlock)
+                fetchKeyBy(index: currentIndexBlock - 1)
+            }
         }
         currentIndexBlock -= 1
+        print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
     }
     
