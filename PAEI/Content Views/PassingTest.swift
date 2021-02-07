@@ -127,7 +127,9 @@ extension PassingTest {
     }
     
     private func actionNextButton() -> Void {
-        
+        print("actionNextButton()")
+        print("currentIndexBlock \(currentIndexBlock) isNewAnswer \(isNewAnswer) answers.count \(answers.count)")
+        print("")
         if isNewAnswer {
             addCurrenAnswer()
             clearAllValue()
@@ -137,15 +139,29 @@ extension PassingTest {
             
         } else {
             updateAnswer(at: currentIndexBlock)
-            fetchAnswerBy(index: currentIndexBlock + 1)
+//            fetchAnswerBy(index: currentIndexBlock + 1)
             
-            updateKey(at: currentIndexBlock)
-            fetchKeyBy(index: currentIndexBlock + 1)
+            if (currentIndexBlock + 1) == answers.count {
+                addCurrenAnswer()
+                clearAllValue()
+                
+                addCurrenKey()
+                newShuffledKey()
+            } else {
+                fetchAnswerBy(index: currentIndexBlock + 1)
+                fetchKeyBy(index: currentIndexBlock + 1)
+            }
+//            updateKey(at: currentIndexBlock)
+            
         }
         currentIndexBlock += 1
+        print("answers.count \(answers.count)")
     }
     
     private func actionBackButton() -> Void {
+        print("actionBackButton()")
+        print("currentIndexBlock \(currentIndexBlock) isNewAnswer \(isNewAnswer) answers.count \(answers.count)")
+        print("")
         guard currentIndexBlock > 0 else { return }
         
         if isNewAnswer {
@@ -158,10 +174,11 @@ extension PassingTest {
             updateAnswer(at: currentIndexBlock)
             fetchAnswerBy(index: currentIndexBlock - 1)
             
-            updateKey(at: currentIndexBlock)
+//            updateKey(at: currentIndexBlock)
             fetchKeyBy(index: currentIndexBlock - 1)
         }
         currentIndexBlock -= 1
+        print("answers.count \(answers.count)")
     }
     
     private func actionFinishButton() -> Void {
@@ -184,10 +201,10 @@ extension PassingTest {
         keys.append(currentKey)
     }
     
-    private func updateKey(at index: Int) {
-        keys.remove(at: index)
-        keys.insert(currentKey, at: index)
-    }
+//    private func updateKey(at index: Int) {
+//        keys.remove(at: index)
+//        keys.insert(currentKey, at: index)
+//    }
     
     private func fetchKeyBy(index: Int) {
         currentKey = keys[index]
@@ -234,7 +251,8 @@ extension PassingTest {
     }
     
     private var isNewAnswer: Bool {
-        !(0..<answers.count).contains(currentIndexBlock + 1)
+//        !(0..<answers.count).contains(currentIndexBlock + 1)
+        !(0..<answers.count).contains(currentIndexBlock)
     }
     
     private var currentEnteredAnswer: Answer {
