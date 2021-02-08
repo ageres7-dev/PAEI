@@ -22,6 +22,8 @@ struct PassingTest: View {
     @State private var currentKey = ["p", "a", "e", "i"]
     @State private var keys: [[String]] = [["p", "a", "e", "i"]]
     
+    
+    
     var body: some View {
         
         NavigationView {
@@ -129,52 +131,20 @@ extension PassingTest {
     private func actionNextButton() -> Void {
         print("actionNextButton()")
         print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
-//        print("isNotSavedAnswer \(isNotSavedAnswer)")
         print("isLastAnswer \(isLastAnswer)")
       
         updateAnswer(at: currentIndexBlock)
         if isLastAnswer {
             clearAllValue()
             addCurrenAnswer()
-            
             newShuffledKey()
             addCurrenKey()
         } else {
             fetchAnswerBy(index: currentIndexBlock + 1)
             fetchKeyBy(index: currentIndexBlock + 1)
         }
-        
         currentIndexBlock += 1
-        
-        
-        /*
-        if isNotSavedAnswer {
-            addCurrenAnswer()
-            clearAllValue()
-            
-            addCurrenKey()
-            newShuffledKey()
-            
-        } else {
-            updateAnswer(at: currentIndexBlock)
-//            fetchAnswerBy(index: currentIndexBlock + 1)
-            
-            if isLastAnswer {
-                addCurrenAnswer()
-                clearAllValue()
-                
-                addCurrenKey()
-                newShuffledKey()
-            } else {
-                fetchAnswerBy(index: currentIndexBlock + 1)
-                fetchKeyBy(index: currentIndexBlock + 1)
-            }
-//            updateKey(at: currentIndexBlock)
-            
-        }
-        */
-        
-//        currentIndexBlock += 1
+
         print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
         print("")
@@ -185,50 +155,14 @@ extension PassingTest {
     private func actionBackButton() -> Void {
         print("actionBackButton()")
         print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
-//        print("isNotSavedAnswer \(isNotSavedAnswer)")
         print("isLastAnswer \(isLastAnswer)")
-        
-        
+
         guard currentIndexBlock > 0 else { return }
         updateAnswer(at: currentIndexBlock)
-//        if isLastAnswer {
-////            newShuffledKey()
-//            addCurrenKey()
-//        }
         fetchAnswerBy(index: currentIndexBlock - 1)
         fetchKeyBy(index: currentIndexBlock - 1)
         currentIndexBlock -= 1
-        /*
-        if isNotSavedAnswer {
-            addCurrenAnswer()
-            fetchAnswerBy(index: currentIndexBlock - 1)
-            
-            addCurrenKey()
-            fetchKeyBy(index: currentIndexBlock - 1)
-        } else {
-            
-            updateAnswer(at: currentIndexBlock)
-            fetchAnswerBy(index: currentIndexBlock - 1)
-            fetchKeyBy(index: currentIndexBlock - 1)
-            */
-            /*
-            if isLastAnswer {
-//                addCurrenAnswer()
-                fetchAnswerBy(index: currentIndexBlock - 1)
-//
-//                addCurrenKey()
-                fetchKeyBy(index: currentIndexBlock - 1)
-            } else {
-                
-                fetchAnswerBy(index: currentIndexBlock - 1)
-                
-                //            updateKey(at: currentIndexBlock)
-                fetchKeyBy(index: currentIndexBlock - 1)
-            }
-            
-            */
-//        }
-        
+
         print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
         print("")
@@ -258,11 +192,6 @@ extension PassingTest {
     private func addCurrenKey() {
         keys.append(currentKey)
     }
-    
-//    private func updateKey(at index: Int) {
-//        keys.remove(at: index)
-//        keys.insert(currentKey, at: index)
-//    }
     
     private func fetchKeyBy(index: Int) {
         currentKey = keys[index]
@@ -303,19 +232,8 @@ extension PassingTest {
     
     private var isNextButtom: Bool {
         currentIndexBlock != сharacteristicBlocks.count - 1
-        //                currentIndexBlock + 1 != 2
-        
-        
     }
-    /*
-    //Текущий индекс блока не входит в
-//    текущий ответ сохранен
-    private var isNotSavedAnswer: Bool {
-//        !(0..<answers.count).contains(currentIndexBlock + 1)
-        !(0..<answers.count).contains(currentIndexBlock)
-    }
-    */
-    //
+
     private var isLastAnswer: Bool {
         (currentIndexBlock + 1) == answers.count
     }
@@ -360,7 +278,7 @@ struct HelpButton: View {
         .alert(isPresented: $isPresented) {
             Alert(
                 title: Text("Оцените Ваши личные качества – КАКОЙ Я?"),
-                message: Text("Необходимо ответить на 12 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10.")
+                message: Text("Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10.")
             )
         }
         .padding(.top, 8)
