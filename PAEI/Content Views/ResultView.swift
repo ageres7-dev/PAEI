@@ -101,7 +101,7 @@ struct ResultView: View {
                             
                             CircleProgressBar(
                                 currentValue: answer.producer,
-                                maxValue: 48,
+                                maxValue: maxValueOneCharacteristic,
                                 insideLabel: "P=\(pProcent)%",
                                 fontValueIndex: 0.22,
                                 color: .red

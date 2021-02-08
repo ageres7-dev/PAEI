@@ -129,12 +129,12 @@ extension PassingTest {
     private func actionNextButton() -> Void {
         print("actionNextButton()")
         print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
-        print("isNewAnswer \(isNewAnswer)")
-        print("хзКакНазвать \(хзКакНазвать)")
+        print("isNotSavedAnswer \(isNotSavedAnswer)")
+        print("isLastAnswer \(isLastAnswer)")
       
         
         
-        if isNewAnswer {
+        if isNotSavedAnswer {
             addCurrenAnswer()
             clearAllValue()
             
@@ -145,7 +145,7 @@ extension PassingTest {
             updateAnswer(at: currentIndexBlock)
 //            fetchAnswerBy(index: currentIndexBlock + 1)
             
-            if хзКакНазвать {
+            if isLastAnswer {
                 addCurrenAnswer()
                 clearAllValue()
                 
@@ -168,13 +168,13 @@ extension PassingTest {
     private func actionBackButton() -> Void {
         print("actionBackButton()")
         print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
-        print("isNewAnswer \(isNewAnswer)")
-        print("хзКакНазвать \(хзКакНазвать)")
+        print("isNotSavedAnswer \(isNotSavedAnswer)")
+        print("isLastAnswer \(isLastAnswer)")
         
         
         guard currentIndexBlock > 0 else { return }
         
-        if isNewAnswer {
+        if isNotSavedAnswer {
             addCurrenAnswer()
             fetchAnswerBy(index: currentIndexBlock - 1)
             
@@ -183,7 +183,11 @@ extension PassingTest {
         } else {
             
             updateAnswer(at: currentIndexBlock)
-            if хзКакНазвать {
+            fetchAnswerBy(index: currentIndexBlock - 1)
+            fetchKeyBy(index: currentIndexBlock - 1)
+            
+            /*
+            if isLastAnswer {
 //                addCurrenAnswer()
                 fetchAnswerBy(index: currentIndexBlock - 1)
 //
@@ -196,6 +200,8 @@ extension PassingTest {
                 //            updateKey(at: currentIndexBlock)
                 fetchKeyBy(index: currentIndexBlock - 1)
             }
+            
+            */
         }
         currentIndexBlock -= 1
         print("keys.count \(keys.count)")
@@ -205,7 +211,7 @@ extension PassingTest {
     }
     
     private func actionFinishButton() -> Void {
-        isNewAnswer ? addCurrenAnswer() : updateAnswer(at: currentIndexBlock)
+        isNotSavedAnswer ? addCurrenAnswer() : updateAnswer(at: currentIndexBlock)
         //        UINotificationFeedbackGenerator().notificationOccurred(.success)
         
         isShowingResultView = true
@@ -214,6 +220,7 @@ extension PassingTest {
         DataManager.shared.save(
             condition: conditionManager.condition
         )
+        print(answers)
     }
     //запоминание расположения вопросов
     private func newShuffledKey() {
@@ -272,13 +279,15 @@ extension PassingTest {
         
         
     }
-    
-    private var isNewAnswer: Bool {
+    //Текущий индекс блока не входит в
+//    текущий ответ сохранен
+    private var isNotSavedAnswer: Bool {
 //        !(0..<answers.count).contains(currentIndexBlock + 1)
         !(0..<answers.count).contains(currentIndexBlock)
     }
     
-    private var хзКакНазвать: Bool {
+    //
+    private var isLastAnswer: Bool {
         (currentIndexBlock + 1) == answers.count
     }
     
