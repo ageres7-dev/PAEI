@@ -14,7 +14,7 @@ struct ResultView: View {
     @State private var isShareViewPresented: Bool = false
     
     let answer: Answer
-    var maxValueOneCharacteristic = 48
+    var maxValueOneCharacteristic = 40
     var isNewResult = true
     
     var body: some View {

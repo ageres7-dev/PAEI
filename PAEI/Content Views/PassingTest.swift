@@ -128,9 +128,10 @@ extension PassingTest {
     
     private func actionNextButton() -> Void {
         print("actionNextButton()")
-        print("currentIndexBlock \(currentIndexBlock) isNewAnswer \(isNewAnswer) answers.count \(answers.count)")
-        
-        print("")
+        print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
+        print("isNewAnswer \(isNewAnswer)")
+        print("хзКакНазвать \(хзКакНазвать)")
+      
         
         
         if isNewAnswer {
@@ -144,7 +145,7 @@ extension PassingTest {
             updateAnswer(at: currentIndexBlock)
 //            fetchAnswerBy(index: currentIndexBlock + 1)
             
-            if (currentIndexBlock + 1) == answers.count {
+            if хзКакНазвать {
                 addCurrenAnswer()
                 clearAllValue()
                 
@@ -160,12 +161,16 @@ extension PassingTest {
         currentIndexBlock += 1
         print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
+        print("")
+        print(answers)
     }
     
     private func actionBackButton() -> Void {
         print("actionBackButton()")
-        print("currentIndexBlock \(currentIndexBlock) isNewAnswer \(isNewAnswer) answers.count \(answers.count)")
-        print("")
+        print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
+        print("isNewAnswer \(isNewAnswer)")
+        print("хзКакНазвать \(хзКакНазвать)")
+        
         
         guard currentIndexBlock > 0 else { return }
         
@@ -178,11 +183,11 @@ extension PassingTest {
         } else {
             
             updateAnswer(at: currentIndexBlock)
-            if (currentIndexBlock + 1) == answers.count {
-                addCurrenAnswer()
+            if хзКакНазвать {
+//                addCurrenAnswer()
                 fetchAnswerBy(index: currentIndexBlock - 1)
-                
-                addCurrenKey()
+//
+//                addCurrenKey()
                 fetchKeyBy(index: currentIndexBlock - 1)
             } else {
                 
@@ -195,6 +200,8 @@ extension PassingTest {
         currentIndexBlock -= 1
         print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
+        print("")
+        print(answers)
     }
     
     private func actionFinishButton() -> Void {
@@ -269,6 +276,10 @@ extension PassingTest {
     private var isNewAnswer: Bool {
 //        !(0..<answers.count).contains(currentIndexBlock + 1)
         !(0..<answers.count).contains(currentIndexBlock)
+    }
+    
+    private var хзКакНазвать: Bool {
+        (currentIndexBlock + 1) == answers.count
     }
     
     private var currentEnteredAnswer: Answer {
