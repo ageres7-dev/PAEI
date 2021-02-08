@@ -14,13 +14,13 @@ struct PassingTest: View {
     @State private var entrepreneurValue = 0
     @State private var integratorValue = 0
     @State private var currentIndexBlock = 0
-    @State private var answers: [Answer] = []
+    @State private var answers: [Answer] = [Answer()]
     @State private var isShowingResultView = false
     @State private var showHelp = false
     @State private var showAlertDisabledButton = false
     //Необходимо для смены вопросов местами
     @State private var currentKey = ["p", "a", "e", "i"]
-    @State private var keys: [[String]] = []
+    @State private var keys: [[String]] = [["p", "a", "e", "i"]]
     
     var body: some View {
         
@@ -129,11 +129,25 @@ extension PassingTest {
     private func actionNextButton() -> Void {
         print("actionNextButton()")
         print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
-        print("isNotSavedAnswer \(isNotSavedAnswer)")
+//        print("isNotSavedAnswer \(isNotSavedAnswer)")
         print("isLastAnswer \(isLastAnswer)")
       
+        updateAnswer(at: currentIndexBlock)
+        if isLastAnswer {
+            clearAllValue()
+            addCurrenAnswer()
+            
+            newShuffledKey()
+            addCurrenKey()
+        } else {
+            fetchAnswerBy(index: currentIndexBlock + 1)
+            fetchKeyBy(index: currentIndexBlock + 1)
+        }
+        
+        currentIndexBlock += 1
         
         
+        /*
         if isNotSavedAnswer {
             addCurrenAnswer()
             clearAllValue()
@@ -158,22 +172,33 @@ extension PassingTest {
 //            updateKey(at: currentIndexBlock)
             
         }
-        currentIndexBlock += 1
+        */
+        
+//        currentIndexBlock += 1
         print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
         print("")
+        print(keys)
         print(answers)
     }
     
     private func actionBackButton() -> Void {
         print("actionBackButton()")
         print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
-        print("isNotSavedAnswer \(isNotSavedAnswer)")
+//        print("isNotSavedAnswer \(isNotSavedAnswer)")
         print("isLastAnswer \(isLastAnswer)")
         
         
         guard currentIndexBlock > 0 else { return }
-        
+        updateAnswer(at: currentIndexBlock)
+//        if isLastAnswer {
+////            newShuffledKey()
+//            addCurrenKey()
+//        }
+        fetchAnswerBy(index: currentIndexBlock - 1)
+        fetchKeyBy(index: currentIndexBlock - 1)
+        currentIndexBlock -= 1
+        /*
         if isNotSavedAnswer {
             addCurrenAnswer()
             fetchAnswerBy(index: currentIndexBlock - 1)
@@ -185,7 +210,7 @@ extension PassingTest {
             updateAnswer(at: currentIndexBlock)
             fetchAnswerBy(index: currentIndexBlock - 1)
             fetchKeyBy(index: currentIndexBlock - 1)
-            
+            */
             /*
             if isLastAnswer {
 //                addCurrenAnswer()
@@ -202,25 +227,28 @@ extension PassingTest {
             }
             
             */
-        }
-        currentIndexBlock -= 1
+//        }
+        
         print("keys.count \(keys.count)")
         print("answers.count \(answers.count)")
         print("")
+        print(keys)
         print(answers)
     }
     
     private func actionFinishButton() -> Void {
-        isNotSavedAnswer ? addCurrenAnswer() : updateAnswer(at: currentIndexBlock)
-        //        UINotificationFeedbackGenerator().notificationOccurred(.success)
-        
+//        isNotSavedAnswer ? addCurrenAnswer() : updateAnswer(at: currentIndexBlock)
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+        updateAnswer(at: currentIndexBlock)
         isShowingResultView = true
         conditionManager.condition.isTestPassed = true
         conditionManager.condition.answer = sumAllAnswers
         DataManager.shared.save(
             condition: conditionManager.condition
         )
+        print("actionFinishButton()")
         print(answers)
+        print(answers.count)
     }
     //запоминание расположения вопросов
     private func newShuffledKey() {
@@ -279,13 +307,14 @@ extension PassingTest {
         
         
     }
+    /*
     //Текущий индекс блока не входит в
 //    текущий ответ сохранен
     private var isNotSavedAnswer: Bool {
 //        !(0..<answers.count).contains(currentIndexBlock + 1)
         !(0..<answers.count).contains(currentIndexBlock)
     }
-    
+    */
     //
     private var isLastAnswer: Bool {
         (currentIndexBlock + 1) == answers.count
