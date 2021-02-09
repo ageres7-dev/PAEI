@@ -18,7 +18,7 @@ struct RadioButtons: View {
         VStack {
             HStack {
                 Text(label)
-                    .font(.title3)
+                    .font(isSmallScreen ? .body : .title3) //.body
                     .multilineTextAlignment(.leading)
                     .offset(y: 4)
                     

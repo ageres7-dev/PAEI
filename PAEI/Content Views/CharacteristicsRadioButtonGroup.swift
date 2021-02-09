@@ -18,66 +18,36 @@ struct CharacteristicsRadioButtonGroup: View {
     var disabledButtonAction: () -> Void
     
     var keys = ["p", "a", "e", "i"]
-    mutating func random() {
-        radioButtons.shuffle()
-    }
+//    mutating func random() {
+//        radioButtons.shuffle()
+//    }
     
     
-    lazy var radioButtons: [RadioButtons] =
-        [
-            RadioButtons(currentValue: $producerValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityProducer,
-                         enabledButtonAction: autoPresLastButton,
-                         disabledButtonAction: disabledButtonAction),
-            RadioButtons(currentValue: $administratorValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityAdministrator,
-                         enabledButtonAction: autoPresLastButton,
-                         disabledButtonAction: disabledButtonAction),
-            RadioButtons(currentValue: $entrepreneurValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityEntrepreneurs,
-                         enabledButtonAction: autoPresLastButton,
-                         disabledButtonAction: disabledButtonAction),
-            RadioButtons(currentValue: $integratorValue,
-                         availablePoints: availablePoints,
-                         label: currentCharacteristic.qualityIntegrator,
-                         enabledButtonAction: autoPresLastButton,
-                         disabledButtonAction: disabledButtonAction)
-        ]
+//    lazy var radioButtons: [RadioButtons] =
+//        [
+//            RadioButtons(currentValue: $producerValue,
+//                         availablePoints: availablePoints,
+//                         label: currentCharacteristic.qualityProducer,
+//                         enabledButtonAction: autoPresLastButton,
+//                         disabledButtonAction: disabledButtonAction),
+//            RadioButtons(currentValue: $administratorValue,
+//                         availablePoints: availablePoints,
+//                         label: currentCharacteristic.qualityAdministrator,
+//                         enabledButtonAction: autoPresLastButton,
+//                         disabledButtonAction: disabledButtonAction),
+//            RadioButtons(currentValue: $entrepreneurValue,
+//                         availablePoints: availablePoints,
+//                         label: currentCharacteristic.qualityEntrepreneurs,
+//                         enabledButtonAction: autoPresLastButton,
+//                         disabledButtonAction: disabledButtonAction),
+//            RadioButtons(currentValue: $integratorValue,
+//                         availablePoints: availablePoints,
+//                         label: currentCharacteristic.qualityIntegrator,
+//                         enabledButtonAction: autoPresLastButton,
+//                         disabledButtonAction: disabledButtonAction)
+//        ]
         
-    private func setFuncFrom(key: String) -> Binding<Int> {
-        var result = $integratorValue
-        switch key {
-        case "p":
-            result = $producerValue
-        case "a":
-            result = $administratorValue
-        case "e":
-            result = $entrepreneurValue
-        case "i":
-            result =  $integratorValue
-        default: break
-        }
-        return result
-    }
-    
-    private func setLabelFrom(key: String) -> String {
-        var result = ""
-        switch key {
-        case "p":
-            result = currentCharacteristic.qualityProducer
-        case "a":
-            result = currentCharacteristic.qualityAdministrator
-        case "e":
-            result = currentCharacteristic.qualityEntrepreneurs
-        case "i":
-            result =  currentCharacteristic.qualityIntegrator
-        default: break
-        }
-        return result
-    }
+
     
     var body: some View {
         ZStack {
@@ -156,6 +126,38 @@ struct CharacteristicsRadioButtonGroup: View {
 }
 
 extension CharacteristicsRadioButtonGroup {
+    
+    private func setFuncFrom(key: String) -> Binding<Int> {
+        var result = $integratorValue
+        switch key {
+        case "p":
+            result = $producerValue
+        case "a":
+            result = $administratorValue
+        case "e":
+            result = $entrepreneurValue
+        case "i":
+            result =  $integratorValue
+        default: break
+        }
+        return result
+    }
+    
+    private func setLabelFrom(key: String) -> String {
+        var result = ""
+        switch key {
+        case "p":
+            result = currentCharacteristic.qualityProducer
+        case "a":
+            result = currentCharacteristic.qualityAdministrator
+        case "e":
+            result = currentCharacteristic.qualityEntrepreneurs
+        case "i":
+            result =  currentCharacteristic.qualityIntegrator
+        default: break
+        }
+        return result
+    }
 
     private func autoPresLastButton() {
         guard countUncheckedCharacteristics == 1 else { return }
