@@ -7,7 +7,8 @@
 
 struct Result {
     var shortInfo: String?
-    var picture = ""
+    var lightPicture = ""
+    var darkPicture = ""
     var characteristic: String?
     var qualities: [String]?
     var skills: [String]?

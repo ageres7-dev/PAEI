@@ -10,6 +10,7 @@ import SwiftUI
 struct ResultView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
+    @Environment(\.colorScheme) private var colorScheme
     //    @Environment(\.colorScheme) private var colorScheme
     @State private var isShareViewPresented: Bool = false
     
@@ -21,7 +22,7 @@ struct ResultView: View {
         ZStack {
             ScrollView {
                 LazyVStack{
-                    Image(resultTest.picture)
+                    Image(colorScheme == .dark ? resultTest.darkPicture : resultTest.lightPicture)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -94,10 +95,7 @@ struct ResultView: View {
                         VStack {
                             Text("Производитель")
                                 .bold()
-                                .padding(EdgeInsets(top: 0,
-                                                    leading: 0,
-                                                    bottom: 4,
-                                                    trailing: 0))
+                                .padding(.bottom, 4)
                             
                             CircleProgressBar(
                                 currentValue: answer.producer,
@@ -107,10 +105,7 @@ struct ResultView: View {
                                 color: .red
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 8,
-                                                trailing: 0))
+                            .padding(.bottom, 8)
                             
                             Text(detailedResult.pCharacteristic)
                         }
@@ -119,10 +114,7 @@ struct ResultView: View {
                         VStack {
                             Text("Администратор")
                                 .bold()
-                                .padding(EdgeInsets(top: 0,
-                                                    leading: 0,
-                                                    bottom: 4,
-                                                    trailing: 0))
+                                .padding(.bottom, 4)
                             
                             CircleProgressBar(
                                 currentValue: answer.administrator,
@@ -131,7 +123,7 @@ struct ResultView: View {
                                 fontValueIndex: 0.22
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                            .padding(.bottom, 8)
                             
                             Text(detailedResult.aCharacteristic)
                         }
@@ -140,10 +132,7 @@ struct ResultView: View {
                         VStack {
                             Text("Предприниматель")
                                 .bold()
-                                .padding(EdgeInsets(top: 0,
-                                                    leading: 0,
-                                                    bottom: 4,
-                                                    trailing: 0))
+                                .padding(.bottom, 4)
                             
                             CircleProgressBar(
                                 currentValue: answer.entrepreneur,
@@ -153,10 +142,7 @@ struct ResultView: View {
                                 color: .yellow
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 8,
-                                                trailing: 0))
+                            .padding(.bottom, 8)
                             
                             Text(detailedResult.eCharacteristic)
                         }
@@ -165,10 +151,7 @@ struct ResultView: View {
                         VStack {
                             Text("Интегратор")
                                 .bold()
-                                .padding(EdgeInsets(top: 0,
-                                                    leading: 0,
-                                                    bottom: 4,
-                                                    trailing: 0))
+                                .padding(.bottom, 4)
                             
                             CircleProgressBar(
                                 currentValue: answer.integrator,
@@ -178,7 +161,7 @@ struct ResultView: View {
                                 color: .green
                             )
                             .frame(height: 100)
-                            .padding(EdgeInsets(top: 0,leading: 0,bottom: 8,trailing: 0))
+                            .padding(.bottom, 8)
                             
                             Text(detailedResult.iCharacteristic)
                         }
@@ -199,7 +182,7 @@ struct ResultView: View {
                                 .bold()
                                 .setCustomStyleButton(color: .red)
                         }
-                        .padding(EdgeInsets(top: 16,leading: 0,bottom: 0 ,trailing: 0))
+                        .padding(.top, 16)
                     }
                     
                     if isNewResult {
@@ -207,7 +190,7 @@ struct ResultView: View {
                     }
                     
                 }
-                .padding(EdgeInsets(top: 0,leading: 0,bottom: 4 ,trailing: 0))
+                .padding(.bottom, 4)
                 .padding()
             }
             .shadow(radius: 25)
@@ -256,8 +239,10 @@ extension ResultView {
 
         
         return [
-            UIImage(named: resultTest.picture) ?? UIImage(systemName: "person.2.circle") as Any,
-            text]
+            UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle") as Any,
+            text,
+            URL(string: "https://github.com/ageres7-dev")!
+        ]
     }
     
     private var screenSize: CGSize {

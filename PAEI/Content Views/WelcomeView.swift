@@ -56,22 +56,17 @@ struct WelcomeView: View {
                             
                         }
                         .setCustomBackgroung()
-                        
+                        /*
                         VStack(alignment: .leading) {
                             Text("Доктор Ицхак Адизес, специалист в области управления и основатель компании Adizes Institute, разработал модель в начале 1970-х годов. С тех пор он применил ее к тысячам организаций по всему миру.")
-                            
-                            //                                .multilineTextAlignment(.center)
-                            //                                .frame(alignment: .)
-                            
                         }
                         .setCustomBackgroung()
-                        
+                        */
                         VStack(alignment: .leading) {
                             Text("Ни один человек не может одновременно выполнять все эти роли. Важно сделать так, чтобы всегда был кто-то, кто отвечает за каждую из них; тогда вы сможете построить сильную и эффективную команду менеджеров, которые выполняют свои обязанности и задачи.")
                                 .padding(0)
                         }
                         .setCustomBackgroung()
-//                            .multilineTextAlignment(.leading)
                         
                         Text("Кроме того, вы можете использовать модель PAEI, чтобы узнать свои сильные и слабые стороны как лидера. Скорее всего, вы «тянетесь» к одному из этих стилей управления, и это абсолютно естественно. Когда вы знаете, какой из них подходит вам лучше всего, вы можете определить, какой из них вам следует избегать. Модель поможет выявить слабые места и пробелы в навыках, которые вы должны устранить.")
                             .padding(0)
@@ -89,7 +84,6 @@ struct WelcomeView: View {
                 
                
                 BlurButton(text: "Дальше") {screenManager.isShowingInstructionsView.toggle()}
-                    
                 
                 NavigationLink(
                     destination: InstructionsView(),
@@ -98,17 +92,14 @@ struct WelcomeView: View {
                 )
                 
             }
-            .navigationBarTitle("Модель PAEI")// 􀀣􀀅􀀍􀀕
+            .navigationBarTitle("Модель PAEI")
         }
     }
 }
 
 
-
-
 struct TextBlockView: View {
     let imagaSystemName: String
-//    let key: String
     let title: String
     let text: String
     var imageColor = Color.primary
@@ -117,8 +108,9 @@ struct TextBlockView: View {
             Image(systemName: imagaSystemName)
                 .font(.system(size: 100))
                 .frame(height: 100)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                .padding(.bottom, 8)
                 .foregroundColor(imageColor)
+            
             Text(title)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -129,9 +121,6 @@ struct TextBlockView: View {
         .setCustomBackgroung()
     }
 }
-
-
-
 
 
 struct paeiTextBlocks: View {
@@ -160,7 +149,6 @@ struct paeiTextBlocks: View {
         }
     }
 }
-
 
 
 struct WelcomeView_Previews: PreviewProvider {

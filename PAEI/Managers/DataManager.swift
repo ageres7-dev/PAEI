@@ -45,6 +45,7 @@ class DataManager {
     ]
      */
     // 10 вопросов
+    /*
    let qualityOfProducers = [
     "Вовлеченный",
     "Прямой",
@@ -96,7 +97,8 @@ class DataManager {
     "Осведомленный",
     "Приятный"
    ]
-    /*
+    */
+    
     let qualityOfProducers = [
      "P_Вовлеченный",
      "P_Прямой",
@@ -148,7 +150,7 @@ class DataManager {
      "I_Осведомленный",
      "I_Приятный"
     ]
-    */
+    
     
     
 }

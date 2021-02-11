@@ -69,7 +69,7 @@ extension DetailedResult {
         /*
         return Result(
             shortInfo: key,
-            picture: "default",
+            lightPicture: "default",
             characteristic:
                 pCharacteristic + "\n\n" + aCharacteristic + "\n\n" +
                 eCharacteristic + "\n\n" + iCharacteristic

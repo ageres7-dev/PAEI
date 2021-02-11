@@ -29,7 +29,6 @@ struct InstructionsView: View {
                             HStack {
                                 Spacer()
                                 Image(systemName: "timer")
-                                    //                                .frame(height: 90)
                                     .resizable()
                                     .multilineTextAlignment(.center)
                                     .aspectRatio(contentMode: .fit)
@@ -40,7 +39,7 @@ struct InstructionsView: View {
                             }
                             HStack {
                                 Spacer()
-                                Text("Время прохождения теста: 5 - 10 минут.")
+                                Text("Время прохождения теста: \n5 – 10 минут.")
                                     .bold()
                                     .multilineTextAlignment(.center)
                                 Spacer()
@@ -49,7 +48,6 @@ struct InstructionsView: View {
                         .setCustomBackgroung()
                         
                         VStack {
-                            
                             /*
                             Image(systemName: "book")
                                 .resizable()
@@ -71,8 +69,6 @@ struct InstructionsView: View {
                         }
                         .setCustomBackgroung()
                         
-                        
-                        
                         Spacer(minLength: 82)
                         
                     }
@@ -85,24 +81,10 @@ struct InstructionsView: View {
                 modalState.isModalPresentPassingTest.toggle()
                 modalState.isShowingInstructionsView.toggle()
             }
-//
-//            Button(action: {
-//                modalState.isModalPresentPassingTest.toggle()
-//                modalState.isShowingInstructionsView.toggle()
-//
-//            }) {
-//                Text("Начать тест")
-//                    .bold()
-//                    .setCustomStyleButton()
-//            }
-//            .padding()
             .fullScreenCover(
                 isPresented: $modalState.isModalPresentPassingTest,
                 content: PassingTest.init
             )
-//            .sheet(isPresented: $screenManager.isModalPresentPassingTest, content: {
-//                PassingTest()
-//            })
             
         }
         .navigationBarTitleDisplayMode(.inline)

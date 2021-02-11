@@ -169,8 +169,7 @@ extension PassingTest {
     }
     
     private func actionFinishButton() -> Void {
-//        isNotSavedAnswer ? addCurrenAnswer() : updateAnswer(at: currentIndexBlock)
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
         updateAnswer(at: currentIndexBlock)
         isShowingResultView = true
         conditionManager.condition.isTestPassed = true
@@ -248,8 +247,6 @@ extension PassingTest {
             + entrepreneurValue + integratorValue)
     }
     
-    //    private var sumAllAnswers: Answer { sumAllAnswers(from: answers) }
-    
     private var sumAllAnswers: Answer {
         
         var result = Answer()
@@ -261,7 +258,6 @@ extension PassingTest {
         }
         return result
     }
-    
 }
 
 struct HelpButton: View {
