@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum Key {
+    case p, a, e, i
+}
+
 struct PassingTest: View {
     @EnvironmentObject var conditionManager: СonditionManager
     @State private var producerValue = 0
@@ -127,9 +131,9 @@ extension PassingTest {
     }
     
     private func actionNextButton() -> Void {
-        print("actionNextButton()")
-        print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
-        print("isLastAnswer \(isLastAnswer)")
+//        print("actionNextButton()")
+//        print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
+//        print("isLastAnswer \(isLastAnswer)")
       
         updateAnswer(at: currentIndexBlock)
         if isLastAnswer {
@@ -142,18 +146,18 @@ extension PassingTest {
             fetchKeyBy(index: currentIndexBlock + 1)
         }
         currentIndexBlock += 1
-
-        print("keys.count \(keys.count)")
-        print("answers.count \(answers.count)")
-        print("")
-        print(keys)
-        print(answers)
+//
+//        print("keys.count \(keys.count)")
+//        print("answers.count \(answers.count)")
+//        print("")
+//        print(keys)
+//        print(answers)
     }
     
     private func actionBackButton() -> Void {
-        print("actionBackButton()")
-        print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
-        print("isLastAnswer \(isLastAnswer)")
+//        print("actionBackButton()")
+//        print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
+//        print("isLastAnswer \(isLastAnswer)")
 
         guard currentIndexBlock > 0 else { return }
         updateAnswer(at: currentIndexBlock)
@@ -161,11 +165,11 @@ extension PassingTest {
         fetchKeyBy(index: currentIndexBlock - 1)
         currentIndexBlock -= 1
 
-        print("keys.count \(keys.count)")
-        print("answers.count \(answers.count)")
-        print("")
-        print(keys)
-        print(answers)
+//        print("keys.count \(keys.count)")
+//        print("answers.count \(answers.count)")
+//        print("")
+//        print(keys)
+//        print(answers)
     }
     
     private func actionFinishButton() -> Void {
