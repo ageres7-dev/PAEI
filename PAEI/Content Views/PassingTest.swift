@@ -23,8 +23,9 @@ struct PassingTest: View {
     @State private var showHelp = false
     @State private var showAlertDisabledButton = false
     //Необходимо для смены вопросов местами
-    @State private var currentKey = ["p", "a", "e", "i"]
-    @State private var keys: [[String]] = [["p", "a", "e", "i"]]
+//    @State private var currentKey = ["p", "a", "e", "i"]
+    @State private var currentKey: [Key] = [.p, .a, .e, .i]
+    @State private var keys: [[Key]] = [[.p, .a, .e, .i]]
     
     var body: some View {
         

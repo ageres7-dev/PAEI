@@ -17,46 +17,17 @@ struct CharacteristicsRadioButtonGroup: View {
     var currentCharacteristic: CharacteristicBlock
     var disabledButtonAction: () -> Void
     
-    var keys = ["p", "a", "e", "i"]
-//    mutating func random() {
-//        radioButtons.shuffle()
-//    }
-    
-    
-//    lazy var radioButtons: [RadioButtons] =
-//        [
-//            RadioButtons(currentValue: $producerValue,
-//                         availablePoints: availablePoints,
-//                         label: currentCharacteristic.qualityProducer,
-//                         enabledButtonAction: autoPresLastButton,
-//                         disabledButtonAction: disabledButtonAction),
-//            RadioButtons(currentValue: $administratorValue,
-//                         availablePoints: availablePoints,
-//                         label: currentCharacteristic.qualityAdministrator,
-//                         enabledButtonAction: autoPresLastButton,
-//                         disabledButtonAction: disabledButtonAction),
-//            RadioButtons(currentValue: $entrepreneurValue,
-//                         availablePoints: availablePoints,
-//                         label: currentCharacteristic.qualityEntrepreneurs,
-//                         enabledButtonAction: autoPresLastButton,
-//                         disabledButtonAction: disabledButtonAction),
-//            RadioButtons(currentValue: $integratorValue,
-//                         availablePoints: availablePoints,
-//                         label: currentCharacteristic.qualityIntegrator,
-//                         enabledButtonAction: autoPresLastButton,
-//                         disabledButtonAction: disabledButtonAction)
-//        ]
-        
-
+//    var keys = ["p", "a", "e", "i"]
+    let keys: [Key]
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20.0)
                 .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
                 .shadow(radius: isSmallScreen ? 10 : 25)
-
             
-             VStack {
+            
+            VStack {
                 Group{
                     RadioButtons(currentValue: setFuncFrom(key: keys[0]),
                                  availablePoints: availablePoints,
@@ -82,83 +53,54 @@ struct CharacteristicsRadioButtonGroup: View {
                                  enabledButtonAction: autoPresLastButton,
                                  disabledButtonAction: disabledButtonAction)
                     
-                    /*
-                RadioButtons(currentValue: $producerValue,
-                             availablePoints: availablePoints,
-                             label: currentCharacteristic.qualityProducer,
-                             enabledButtonAction: autoPresLastButton,
-                             disabledButtonAction: disabledButtonAction)
-                
-                RadioButtons(currentValue: $administratorValue,
-                             availablePoints: availablePoints,
-                             label: currentCharacteristic.qualityAdministrator,
-                             enabledButtonAction: autoPresLastButton,
-                             disabledButtonAction: disabledButtonAction)
-                
-                RadioButtons(currentValue: $entrepreneurValue,
-                             availablePoints: availablePoints,
-                             label: currentCharacteristic.qualityEntrepreneurs,
-                             enabledButtonAction: autoPresLastButton,
-                             disabledButtonAction: disabledButtonAction)
-                
-                RadioButtons(currentValue: $integratorValue,
-                             availablePoints: availablePoints,
-                             label: currentCharacteristic.qualityIntegrator,
-                             enabledButtonAction: autoPresLastButton,
-                             disabledButtonAction: disabledButtonAction)
- */
-                    
                 }
                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
             }
             .offset(y: -4)
-//            .padding(20)
-             .padding(
+            .padding(
                 EdgeInsets(
                     top: 20,
                     leading: isBigScreen ? 45 : 20,
                     bottom: 20,
                     trailing: isBigScreen ? 45 : 20
                 )
-             )
+            )
         }
     }
 }
 
 extension CharacteristicsRadioButtonGroup {
     
-    private func setFuncFrom(key: String) -> Binding<Int> {
+    private func setFuncFrom(key: Key) -> Binding<Int> {
         var result = $integratorValue
         switch key {
-        case "p":
+        case .p:
             result = $producerValue
-        case "a":
+        case .a:
             result = $administratorValue
-        case "e":
+        case .e:
             result = $entrepreneurValue
-        case "i":
+        case .i:
             result =  $integratorValue
-        default: break
         }
         return result
     }
     
-    private func setLabelFrom(key: String) -> String {
+    private func setLabelFrom(key: Key) -> String {
         var result = ""
         switch key {
-        case "p":
+        case .p:
             result = currentCharacteristic.qualityProducer
-        case "a":
+        case .a:
             result = currentCharacteristic.qualityAdministrator
-        case "e":
+        case .e:
             result = currentCharacteristic.qualityEntrepreneurs
-        case "i":
+        case .i:
             result =  currentCharacteristic.qualityIntegrator
-        default: break
         }
         return result
     }
-
+    
     private func autoPresLastButton() {
         guard countUncheckedCharacteristics == 1 else { return }
         var setValue: Int {
@@ -179,9 +121,9 @@ extension CharacteristicsRadioButtonGroup {
     
     private var maxPoint: Int { 10 }
     
-//    private var shadowColor: Color {
-//        colorScheme == .dark ? .blue : .gray
-//    }
+    //    private var shadowColor: Color {
+    //        colorScheme == .dark ? .blue : .gray
+    //    }
     private var availablePoints: Int {
         maxPoint - pointsTotal - countUncheckedCharacteristics
     }
@@ -219,7 +161,8 @@ struct CharacteristicsView_Previews: PreviewProvider {
             entrepreneurValue: .constant(3),
             integratorValue: .constant(4),
             currentCharacteristic: CharacteristicBlock.getBlocks()[1],
-            disabledButtonAction: {}
+            disabledButtonAction: {},
+            keys: [.p, .a, .e, .i]
         )
     }
 }

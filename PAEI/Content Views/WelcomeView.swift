@@ -73,7 +73,7 @@ struct WelcomeView: View {
                             .setCustomBackgroung()
                             
                         
-                        paeiTextBlocks()
+//                        paeiTextBlocks()
                         
                         Spacer(minLength: 82)
                         
