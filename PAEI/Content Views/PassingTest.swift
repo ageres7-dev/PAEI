@@ -92,7 +92,7 @@ struct PassingTest: View {
                             .bold()
                             .setCustomStyleButton(disabledStyle: pointsTotal != 10)
                     }
-                    .animation(nil)
+                    .animation(.none)
                     .disabled(pointsTotal != 10)
                     .padding(.top, isSmallScreen ? 0 : 8)
                     .padding(.bottom, 8)
@@ -182,9 +182,9 @@ extension PassingTest {
         DataManager.shared.save(
             condition: conditionManager.condition
         )
-        print("actionFinishButton()")
-        print(answers)
-        print(answers.count)
+//        print("actionFinishButton()")
+//        print(answers)
+//        print(answers.count)
     }
     //запоминание расположения вопросов
     private func newShuffledKey() {
