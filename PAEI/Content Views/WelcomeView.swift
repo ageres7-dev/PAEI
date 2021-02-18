@@ -52,7 +52,7 @@ struct WelcomeView: View {
                                 .frame(height: 100)
                                 .padding(.bottom, 8)
                             
-                            Text("PAEI – это аббревиатура, которая описывает 4 управленческих роли (или стилей); выполнение каждой из них помогает команде или организации обеспечить максимально эффективную деятельность. Это:\n\n- Producer / Производитель;\n- Administrator / Администратор;\n- Entrepreneur / Предприниматель;\n- Integrator / Интегратор.")
+                            Text("PAEI – это аббревиатура, которая описывает 4 управленческих роли, выполнение каждой из них помогает команде или организации обеспечить максимально эффективную деятельность. Это:\n\n- Producer / Производитель\n- Administrator / Администратор\n- Entrepreneur / Предприниматель\n- Integrator / Интегратор.")
                             
                         }
                         .setCustomBackgroung()
@@ -72,7 +72,6 @@ struct WelcomeView: View {
                             .padding(0)
                             .setCustomBackgroung()
                             
-                        
 //                        paeiTextBlocks()
                         
                         Spacer(minLength: 82)
