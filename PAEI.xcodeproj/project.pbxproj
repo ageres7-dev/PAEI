@@ -33,6 +33,7 @@
 		A58843D025A89409002DE43A /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843CF25A89408002DE43A /* Color + Extension.swift */; };
 		A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843D225A8E253002DE43A /* WelcomeView.swift */; };
 		A5899DF125DF76EE000A3FC8 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5899DF025DF76EE000A3FC8 /* PDFCreator.swift */; };
+		A5899DF425DFD397000A3FC8 /* PDFViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5899DF325DFD397000A3FC8 /* PDFViewUI.swift */; };
 		A5918F5C25C0857B00A8C608 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5918F5B25C0857B00A8C608 /* ActivityViewController.swift */; };
 		A59985F725C33232006323EA /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59985F625C33232006323EA /* SplashScreen.swift */; };
 		A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE4F25A24DAB00816A4A /* DataManager.swift */; };
@@ -73,6 +74,7 @@
 		A58843CF25A89408002DE43A /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		A58843D225A8E253002DE43A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A5899DF025DF76EE000A3FC8 /* PDFCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
+		A5899DF325DFD397000A3FC8 /* PDFViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewUI.swift; sourceTree = "<group>"; };
 		A5918F5B25C0857B00A8C608 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		A59985F625C33232006323EA /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		A5A9EE4F25A24DAB00816A4A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				A5899DEF25DF76CE000A3FC8 /* remove */,
 				A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */,
 				A5899DF025DF76EE000A3FC8 /* PDFCreator.swift */,
+				A5899DF325DFD397000A3FC8 /* PDFViewUI.swift */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB60E259FB53B0098CAAB /* Managers */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A59985F725C33232006323EA /* SplashScreen.swift in Sources */,
+				A5899DF425DFD397000A3FC8 /* PDFViewUI.swift in Sources */,
 				A51C94F025BC7BA3009D7DB4 /* Сondition.swift in Sources */,
 				A58843D025A89409002DE43A /* Color + Extension.swift in Sources */,
 				A504FF9C25C580C80080F073 /* Extension + View.swift in Sources */,

@@ -14,7 +14,7 @@ struct SimpleCircleButton: View {
     var action: () -> Void
 
     
-    var body: some View {
+    var detailedCharacteristic: some View {
 //        GeometryReader { geometry in
 //            let size = min(geometry.size.height, geometry.size.width)
             

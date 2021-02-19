@@ -227,6 +227,7 @@ extension ResultView {
     
     
     private var sharedContent: [Any] {
+       /*
         let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)\n\n" : ""
         
         let qualit = resultTest.qualities != nil ? "\nКачества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + ".\n" : ""
@@ -236,18 +237,34 @@ extension ResultView {
         let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
         
         let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+        */
         
+        
+        let qualit = resultTest.qualities != nil ? "\nКачества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + "." : ""
+        
+        
+        let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n" : ""
+                
         let titlePdf = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)" : "Мой PAEI: \(paeiKey)"
         let subTitlePdf = resultTest.shortInfo != nil ? "Мой PAEI: \(paeiKey)\n\n" : ""
         
-        let bodyPdf = "\(subTitlePdf)\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+        let characteristic = resultTest.characteristic != nil ? subTitlePdf  + "Характеристика:\n" + resultTest.characteristic! + "" : ""
+        let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
         
         
         
+        
+        let image = UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle")!
         
 
-        let pdfCreator = PDFCreator(title: titlePdf, body: bodyPdf)
-        let pdfData = pdfCreator.createFlyer()
+//        let pdfCreator = PDFCreator(title: titlePdf, body: bodyPdf, image: image)
+        let pdfCreator = PDFCreator(title: titlePdf,
+                                    characteristic: characteristic,
+                                    skills: skills,
+                                    qualit: qualit,
+                                    detailedCharacteristic: detailedCharacteristic,
+                                    image: image)
+        let pdfData = pdfCreator.createDocument()
         
         return [
             pdfData
@@ -362,7 +379,7 @@ extension ResultView {
  struct TextBlock: View {
  @Environment(\.colorScheme) private var colorScheme
  let text: String
- var body: some View {
+ var detailedCharacteristic: some View {
  ZStack {
  RoundedRectangle(cornerRadius: 20.0)
  .foregroundColor(colorScheme == .dark ? .customGray : .white)

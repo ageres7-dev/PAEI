@@ -12,7 +12,7 @@ struct CircleButton: View {
     @Binding var isMarked: Bool
     let isOn: Bool
     
-    var body: some View {
+    var detailedCharacteristic: some View {
         GeometryReader { geometry in
             let size = min(geometry.size.height, geometry.size.width)
             
