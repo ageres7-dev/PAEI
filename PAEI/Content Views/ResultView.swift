@@ -235,13 +235,14 @@ extension ResultView {
         
         let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
         
-        let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit) \(skills)Подробная расшифрока ключа: \(paeiKey)\n\n P=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+        let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
 
         
         return [
-            UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle") as Any,
-            text,
-            URL(string: "https://github.com/ageres7-dev")!
+//            UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle") as Any,
+            text
+//            ,
+//            URL(string: "https://github.com/ageres7-dev")!
         ]
     }
     
