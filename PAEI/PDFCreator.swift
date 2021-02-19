@@ -8,7 +8,7 @@ class PDFCreator {
 //  let image: UIImage
 //  let contactInfo: String
   
-  init(title: String, body: String, image: UIImage, contact: String) {
+  init(title: String, body: String) {
     self.title = title
     self.body = body
 //    self.image = image
@@ -18,16 +18,16 @@ class PDFCreator {
   func createFlyer() -> Data {
     // 1
     let pdfMetaData = [
-      kCGPDFContextCreator: "Flyer Builder",
-      kCGPDFContextAuthor: "raywenderlich.com",
+//      kCGPDFContextCreator: "Flyer Builder",
+//      kCGPDFContextAuthor: "raywenderlich.com",
       kCGPDFContextTitle: title
     ]
     let format = UIGraphicsPDFRendererFormat()
     format.documentInfo = pdfMetaData as [String: Any]
     
     // 2
-    let pageWidth = 8.5 * 72.0
-    let pageHeight = 11 * 72.0
+    let pageWidth = 8.3 * 72.0
+    let pageHeight = 11.7 * 72.0
     let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
     
     // 3
@@ -37,12 +37,12 @@ class PDFCreator {
       // 5
       context.beginPage()
       // 6
-//      let titleBottom = addTitle(pageRect: pageRect)
+      let titleBottom = addTitle(pageRect: pageRect)
 //      let imageBottom = addImage(pageRect: pageRect, imageTop: titleBottom + 18.0)
-//      addBodyText(pageRect: pageRect, textTop: imageBottom + 18.0)
+      addBodyText(pageRect: pageRect, textTop: titleBottom)
       
-      let context = context.cgContext
-      drawTearOffs(context, pageRect: pageRect, tearOffY: pageRect.height * 4.0 / 5.0, numberTabs: 8)
+//      let context = context.cgContext
+//      drawTearOffs(context, pageRect: pageRect, tearOffY: pageRect.height * 4.0 / 5.0, numberTabs: 8)
 //      drawContactLabels(context, pageRect: pageRect, numberTabs: 8)
     }
     
@@ -82,8 +82,8 @@ class PDFCreator {
     ]
     let attributedText = NSAttributedString(string: body, attributes: textAttributes)
     // 4
-    let textRect = CGRect(x: 10, y: textTop, width: pageRect.width - 20,
-                          height: pageRect.height - textTop - pageRect.height / 5.0)
+    let textRect = CGRect(x: 40, y: textTop, width: pageRect.width - 80,
+                          height: pageRect.height - textTop)
     attributedText.draw(in: textRect)
   }
 

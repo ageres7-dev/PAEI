@@ -236,11 +236,23 @@ extension ResultView {
         let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
         
         let text = "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+        
+        let titlePdf = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)" : "Мой PAEI: \(paeiKey)"
+        let subTitlePdf = resultTest.shortInfo != nil ? "Мой PAEI: \(paeiKey)\n\n" : ""
+        
+        let bodyPdf = "\(subTitlePdf)\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+        
+        
+        
+        
 
+        let pdfCreator = PDFCreator(title: titlePdf, body: bodyPdf)
+        let pdfData = pdfCreator.createFlyer()
         
         return [
+            pdfData
 //            UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle") as Any,
-            text
+//            text
 //            ,
 //            URL(string: "https://github.com/ageres7-dev")!
         ]
