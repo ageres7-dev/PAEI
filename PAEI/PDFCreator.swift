@@ -27,16 +27,16 @@ class PDFCreator {
         
         let imageCropRect = CGRect(
             x: 0,
-            y: (image.size.height - image.size.height * 0.7) / 2,
+            y: (image.size.height - image.size.width * 0.7) / 2,
             width: image.size.width,
-            height: image.size.height * 0.7
+            height: image.size.width * 0.7
         )
         let croppedImage = cropImage(image: image, rect: imageCropRect, scale: 1)
         
         
         let pdfMetaData = [
-            //      kCGPDFContextCreator: "Flyer Builder",
-            //      kCGPDFContextAuthor: "raywenderlich.com",
+            kCGPDFContextCreator: "",
+            kCGPDFContextAuthor: "",
             kCGPDFContextTitle: title
         ]
         let format = UIGraphicsPDFRendererFormat()
@@ -56,7 +56,7 @@ class PDFCreator {
                 x: leftMargin,
                 y: titleBottom + 20,
                 width: pageRect.width - (rightMargin + leftMargin),
-                height: pageRect.height * 0.18
+                height: pageRect.height * 0.15
             )
             
             let characteristicBottom = addTextBlock(
@@ -67,7 +67,7 @@ class PDFCreator {
                 x: leftMargin,
                 y: characteristicBottom,
                 width: (pageRect.width - leftMargin - rightMargin) / 2,
-                height: pageRect.height * 0.43
+                height: pageRect.height * 0.23
             )
             let skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + qualit)
             
@@ -75,7 +75,7 @@ class PDFCreator {
                 x: skilsTextRect.origin.x + skilsTextRect.width,
                 y: characteristicBottom,
                 width: (pageRect.width - leftMargin - rightMargin) / 2,
-                height: pageRect.height * 0.43
+                height: pageRect.height * 0.23
             )
             
             let _ = addImage(image: croppedImage, imageBlockRect: imageRect)
@@ -87,7 +87,6 @@ class PDFCreator {
                 height: pageRect.height
             )
             let _ = addTextBlock(textRect: detailedCharacteristicTextRect, text: detailedCharacteristic)
-        
         }
         
         return data
@@ -128,7 +127,7 @@ class PDFCreator {
         let attributedText = NSAttributedString(string: text, attributes: textAttributes)
         attributedText.draw(in: textRect)
         
-        return textRect.origin.x + textRect.size.height
+        return textRect.origin.y + textRect.size.height
         
     }
     
@@ -136,15 +135,17 @@ class PDFCreator {
         let maxHeight = imageBlockRect.height * 0.8
         let maxWidth = imageBlockRect.width * 0.8
         
-        let aspectWidth = maxWidth / image.size.width
-        let aspectHeight = maxHeight / image.size.height
-        let aspectRatio = min(aspectWidth, aspectHeight)
+//        let aspectWidth = maxWidth / image.size.width
+//        let aspectHeight = maxHeight / image.size.height
+//        let aspectRatio = min(aspectWidth, aspectHeight)
+        
+        let aspectRatio = maxWidth / image.size.width
         
         let scaledWidth = image.size.width * aspectRatio
         let scaledHeight = image.size.height * aspectRatio
 
-        let imageX = imageBlockRect.origin.x + (imageBlockRect.height - maxHeight) / 2
-        let imageY = imageBlockRect.origin.y + (imageBlockRect.width - maxWidth) / 2
+        let imageX = imageBlockRect.origin.x + imageBlockRect.width - scaledWidth
+        let imageY = imageBlockRect.origin.y + (imageBlockRect.height - scaledHeight) / 2
         
         let imageRect = CGRect(x: imageX, y: imageY,
                                width: scaledWidth, height: scaledHeight)

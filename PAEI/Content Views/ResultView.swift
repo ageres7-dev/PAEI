@@ -250,7 +250,7 @@ extension ResultView {
         let characteristic = resultTest.characteristic != nil ? subTitlePdf + "Характеристика:\n" + resultTest.characteristic! + "" : ""
         let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
         
-        let image = UIImage(named: resultTest.darkPicture) ?? UIImage(systemName: "person.2.circle")!
+        let image = UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle")!
         
         let pdfCreator = PDFCreator(title: titlePdf,
                                     characteristic: characteristic,
