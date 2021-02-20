@@ -27,9 +27,9 @@ class PDFCreator {
         
         let imageCropRect = CGRect(
             x: 0,
-            y: image.size.height / 4,
+            y: (image.size.height - image.size.height * 0.7) / 2,
             width: image.size.width,
-            height: image.size.height / 2
+            height: image.size.height * 0.7
         )
         let croppedImage = cropImage(image: image, rect: imageCropRect, scale: 1)
         
@@ -71,7 +71,14 @@ class PDFCreator {
             )
             let skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + qualit)
             
-            let _ = addImage(image: croppedImage, pageRect: pageRect, imageTop: characteristicBottom)
+            let imageRect = CGRect(
+                x: skilsTextRect.origin.x + skilsTextRect.width,
+                y: characteristicBottom,
+                width: (pageRect.width - leftMargin - rightMargin) / 2,
+                height: pageRect.height * 0.43
+            )
+            
+            let _ = addImage(image: croppedImage, imageBlockRect: imageRect)
             
             let detailedCharacteristicTextRect = CGRect(
                 x: leftMargin,
@@ -125,22 +132,23 @@ class PDFCreator {
         
     }
     
-    func addImage(image: UIImage, pageRect: CGRect, imageTop: CGFloat) -> CGFloat {
-        let maxHeight = pageRect.height * 0.3
-        let maxWidth = pageRect.width * 0.3
+    func addImage(image: UIImage, imageBlockRect: CGRect) -> CGFloat {
+        let maxHeight = imageBlockRect.height * 0.8
+        let maxWidth = imageBlockRect.width * 0.8
         
         let aspectWidth = maxWidth / image.size.width
         let aspectHeight = maxHeight / image.size.height
         let aspectRatio = min(aspectWidth, aspectHeight)
-        // 3
+        
         let scaledWidth = image.size.width * aspectRatio
         let scaledHeight = image.size.height * aspectRatio
-        // 4
-//        let imageX = (pageRect.width - scaledWidth) - (pageRect.width / 2)
-        let imageX = (leftMargin + (pageRect.width - leftMargin - rightMargin) * 3 / 4 - scaledWidth / 2)
-        let imageRect = CGRect(x: imageX, y: imageTop + 50,
+
+        let imageX = imageBlockRect.origin.x + (imageBlockRect.height - maxHeight) / 2
+        let imageY = imageBlockRect.origin.y + (imageBlockRect.width - maxWidth) / 2
+        
+        let imageRect = CGRect(x: imageX, y: imageY,
                                width: scaledWidth, height: scaledHeight)
-        // 5
+
         image.draw(in: imageRect)
         return imageRect.origin.y + imageRect.size.height
     }
