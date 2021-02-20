@@ -24,6 +24,16 @@ class PDFCreator {
     }
     
     func createDocument() -> Data {
+        
+        let imageCropRect = CGRect(
+            x: 0,
+            y: image.size.height / 4,
+            width: image.size.width,
+            height: image.size.height / 2
+        )
+        let croppedImage = cropImage(image: image, rect: imageCropRect, scale: 1)
+        
+        
         let pdfMetaData = [
             //      kCGPDFContextCreator: "Flyer Builder",
             //      kCGPDFContextAuthor: "raywenderlich.com",
@@ -60,7 +70,8 @@ class PDFCreator {
                 height: pageRect.height * 0.43
             )
             let skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + qualit)
-            let _ = addImage(pageRect: pageRect, imageTop: characteristicBottom)
+            
+            let _ = addImage(image: croppedImage, pageRect: pageRect, imageTop: characteristicBottom)
             
             let detailedCharacteristicTextRect = CGRect(
                 x: leftMargin,
@@ -96,32 +107,28 @@ class PDFCreator {
     }
     
     func addTextBlock(textRect: CGRect, text: String) -> CGFloat {
-        // 1
 //        let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
         let textFont = UIFont.init(name: "TimesNewRomanPSMT", size: 12) ?? UIFont.systemFont(ofSize: 12.0, weight: .regular)
-        // 2
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .justified
         paragraphStyle.lineBreakMode = .byWordWrapping
-        // 3
+
         let textAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: textFont
         ]
         let attributedText = NSAttributedString(string: text, attributes: textAttributes)
-        // 4
-//        let textRect = CGRect(x: leftMargin, y: textTop, width: pageRect.width - (rightMargin + leftMargin), height: pageRect.height * indexHeight )
         attributedText.draw(in: textRect)
         
         return textRect.origin.x + textRect.size.height
         
     }
     
-    func addImage(pageRect: CGRect, imageTop: CGFloat) -> CGFloat {
-        // 1
-        let maxHeight = pageRect.height * 0.2
-        let maxWidth = pageRect.width * 0.2
-        // 2
+    func addImage(image: UIImage, pageRect: CGRect, imageTop: CGFloat) -> CGFloat {
+        let maxHeight = pageRect.height * 0.3
+        let maxWidth = pageRect.width * 0.3
+        
         let aspectWidth = maxWidth / image.size.width
         let aspectHeight = maxHeight / image.size.height
         let aspectRatio = min(aspectWidth, aspectHeight)
@@ -131,7 +138,7 @@ class PDFCreator {
         // 4
 //        let imageX = (pageRect.width - scaledWidth) - (pageRect.width / 2)
         let imageX = (leftMargin + (pageRect.width - leftMargin - rightMargin) * 3 / 4 - scaledWidth / 2)
-        let imageRect = CGRect(x: imageX, y: imageTop,
+        let imageRect = CGRect(x: imageX, y: imageTop + 50,
                                width: scaledWidth, height: scaledHeight)
         // 5
         image.draw(in: imageRect)
