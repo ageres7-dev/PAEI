@@ -19,6 +19,7 @@
 		A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1725B36E1800BBBE50 /* DetailedResult.swift */; };
 		A540DE1E25B38A8C00BBBE50 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */; };
 		A54F3D0925CA5BED0022E603 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */; };
+		A5552F1825E2FF590014826F /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5552F1725E2FF590014826F /* UIImage + Extension.swift */; };
 		A55F62F025BF562800E12A2C /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55F62EF25BF562800E12A2C /* Blur.swift */; };
 		A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FC259FB4780098CAAB /* PAEIApp.swift */; };
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
@@ -58,6 +59,7 @@
 		A540DE1725B36E1800BBBE50 /* DetailedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResult.swift; sourceTree = "<group>"; };
 		A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
 		A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A5552F1725E2FF590014826F /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		A55F62EF25BF562800E12A2C /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		A56DB5F9259FB4780098CAAB /* PAEI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PAEI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56DB5FC259FB4780098CAAB /* PAEIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEIApp.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				A5899DEF25DF76CE000A3FC8 /* remove */,
 				A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */,
 				A5899DF025DF76EE000A3FC8 /* PDFCreator.swift */,
+				A5552F1725E2FF590014826F /* UIImage + Extension.swift */,
 				A5899DF325DFD397000A3FC8 /* PDFViewUI.swift */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
@@ -298,6 +301,7 @@
 				A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */,
 				A58843C125A51254002DE43A /* ResultView.swift in Sources */,
 				A56DB62625A115280098CAAB /* RadioButtons.swift in Sources */,
+				A5552F1825E2FF590014826F /* UIImage + Extension.swift in Sources */,
 				A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */,
 				A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */,
 				A540DE1E25B38A8C00BBBE50 /* CircleGraphView.swift in Sources */,

@@ -1,5 +1,5 @@
 
-import SwiftUI
+import UIKit
 import PDFKit
 
 class PDFCreator {
@@ -31,8 +31,9 @@ class PDFCreator {
             width: image.size.width,
             height: image.size.width * 0.7
         )
-        let croppedImage = cropImage(image: image, rect: imageCropRect, scale: 1)
-        
+        var imageForPrint = image.cropImage(rect: imageCropRect, scale: 1)
+        //        var croppedImage = cropImage(image: image, rect: imageCropRect, scale: 1)
+        imageForPrint = imageForPrint.round(30)
         
         let pdfMetaData = [
             kCGPDFContextCreator: "",
@@ -78,7 +79,7 @@ class PDFCreator {
                 height: pageRect.height * 0.23
             )
             
-            let _ = addImage(image: croppedImage, imageBlockRect: imageRect)
+            let _ = addImage(image: imageForPrint, imageBlockRect: imageRect)
             
             let detailedCharacteristicTextRect = CGRect(
                 x: leftMargin,
@@ -93,33 +94,26 @@ class PDFCreator {
     }
     
     func addTitle(pageRect: CGRect) -> CGFloat {
-        // 1
         let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
-        
-        // 2
         let titleAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: titleFont]
         let attributedTitle = NSAttributedString(string: title, attributes: titleAttributes)
-        // 3
         let titleStringSize = attributedTitle.size()
-        // 4
         let titleStringRect = CGRect(x: (pageRect.width - titleStringSize.width) / 2.0,
                                      y: topMargin, width: titleStringSize.width,
                                      height: titleStringSize.height)
-        // 5
         attributedTitle.draw(in: titleStringRect)
-        // 6
         return titleStringRect.origin.y + titleStringRect.size.height
     }
     
     func addTextBlock(textRect: CGRect, text: String) -> CGFloat {
-//        let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+        //        let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
         let textFont = UIFont.init(name: "TimesNewRomanPSMT", size: 12) ?? UIFont.systemFont(ofSize: 12.0, weight: .regular)
-
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .justified
         paragraphStyle.lineBreakMode = .byWordWrapping
-
+        
         let textAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: textFont
@@ -132,37 +126,30 @@ class PDFCreator {
     }
     
     func addImage(image: UIImage, imageBlockRect: CGRect) -> CGFloat {
-        let maxHeight = imageBlockRect.height * 0.8
+        //        let maxHeight = imageBlockRect.height * 0.8
         let maxWidth = imageBlockRect.width * 0.8
         
-//        let aspectWidth = maxWidth / image.size.width
-//        let aspectHeight = maxHeight / image.size.height
-//        let aspectRatio = min(aspectWidth, aspectHeight)
+        //        let aspectWidth = maxWidth / image.size.width
+        //        let aspectHeight = maxHeight / image.size.height
+        //        let aspectRatio = min(aspectWidth, aspectHeight)
         
         let aspectRatio = maxWidth / image.size.width
         
         let scaledWidth = image.size.width * aspectRatio
         let scaledHeight = image.size.height * aspectRatio
-
+        
         let imageX = imageBlockRect.origin.x + imageBlockRect.width - scaledWidth
         let imageY = imageBlockRect.origin.y + (imageBlockRect.height - scaledHeight) / 2
         
         let imageRect = CGRect(x: imageX, y: imageY,
                                width: scaledWidth, height: scaledHeight)
-
+        
         image.draw(in: imageRect)
         return imageRect.origin.y + imageRect.size.height
     }
     
-    func cropImage(image: UIImage, rect: CGRect, scale: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: rect.size.width / scale, height: rect.size.height / scale), true, 0.0)
-        image.draw(at: CGPoint(x: -rect.origin.x / scale, y: -rect.origin.y / scale))
-        let croppedImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage(systemName: "person.fill")!
-        UIGraphicsEndImageContext()
-        return croppedImage
-    }
-    
 }
+
 
 
 //
@@ -171,3 +158,9 @@ class PDFCreator {
 ////        PDFViewUI(data: PDFCreator(title: "jhbjhbhb", body: "bjhbhj", image: UIImage(named: "6")!).createDocument())
 //    }
 //}
+
+
+
+
+
+
