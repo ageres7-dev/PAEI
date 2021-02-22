@@ -10,10 +10,16 @@ class PDFCreator {
     let detailedCharacteristic: String
     let image: UIImage
     
+    
+    private let pageWidth = 8.3 * 72.0
+    private let pageHeight = 11.7 * 72.0
+    private lazy var pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
     private let topMargin: CGFloat = 36
     private let leftMargin: CGFloat = 60
     private lazy var rightMargin: CGFloat = 40
+    private var titleBottom: CGFloat = 0
     private var skillsBottom: CGFloat = 0
+    private var imageBottom: CGFloat = 0
     private var characteristicBottom: CGFloat = 0
     private var skilsRightEdge: CGFloat = 0
     private lazy var isFullCharacteristic = characteristic != nil
@@ -29,9 +35,6 @@ class PDFCreator {
     }
     
     func createDocument() -> Data {
-        
-        
-        
         let pdfMetaData = [
             kCGPDFContextCreator: "",
             kCGPDFContextAuthor: "",
@@ -39,77 +42,84 @@ class PDFCreator {
         ]
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
-        
-        let pageWidth = 8.3 * 72.0
-        let pageHeight = 11.7 * 72.0
-        let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
-        
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
+        
         let data = renderer.pdfData { context in
             context.beginPage()
             
-            let titleBottom = addTitle(pageRect: pageRect)
+            titleBottom = addTitle(pageRect: pageRect)
             
             if isFullCharacteristic {
-                //
-                let characteristicTextRect = CGRect(
-                    x: leftMargin,
-                    y: titleBottom + 20,
-                    width: pageRect.width - (rightMargin + leftMargin),
-                    height: pageRect.height * 0.15
-                )
-                
-                let characteristicBottom = addTextBlock(
-                    textRect: characteristicTextRect,
-                    text: characteristic ?? ""
-                )
-                let skilsTextRect = CGRect(
-                    x: leftMargin,
-                    y: characteristicBottom,
-                    width: (pageRect.width - leftMargin - rightMargin) / 2,
-                    height: pageRect.height * 0.23
-                )
-                skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + qualit)
-                skilsRightEdge = skilsTextRect.origin.x + skilsTextRect.width
+                drawCharacteristic()
+                drawSkils()
             }
             
-            
-            let imageCropRect = CGRect(
-                x: 0,
-                y: (image.size.height - image.size.width * 0.7) / 2,
-                width: image.size.width,
-                height: image.size.width * 0.7
-            )
-            
-            let imageForPrint = image
-                .cropImage(rect: imageCropRect, scale: 1)
-                .round(30)
-            
-            
-            let imageWidth = (pageRect.width - leftMargin - rightMargin) / 2
-            let centerPage = leftMargin + (pageRect.width - leftMargin - rightMargin - imageWidth) / 2
-            let imageRect = CGRect(
-                x: isFullCharacteristic ? skilsRightEdge : centerPage,
-                y: isFullCharacteristic ? characteristicBottom : titleBottom,
-                width: imageWidth,
-                height: pageRect.height * 0.23
-            )
-            
-            let imageBottom = addImage(image: imageForPrint, imageBlockRect: imageRect)
-            
-            
-            
-            let detailedCharacteristicTextRect = CGRect(
-                x: leftMargin,
-                y: characteristic != nil ? skillsBottom : imageBottom + 20,
-                width: (pageRect.width - leftMargin - rightMargin),
-                height: pageRect.height
-            )
-            let _ = addTextBlock(textRect: detailedCharacteristicTextRect, text: detailedCharacteristic)
+            drawImage()
+            drawDetailedCharacteristic()
         }
         
         return data
     }
+    
+    func drawCharacteristic() {
+        let characteristicTextRect = CGRect(
+            x: leftMargin,
+            y: titleBottom + 20,
+            width: pageRect.width - (rightMargin + leftMargin),
+            height: pageRect.height * 0.15
+        )
+        
+        characteristicBottom = addTextBlock(
+            textRect: characteristicTextRect,
+            text: characteristic ?? ""
+        )
+    }
+    
+    func drawSkils() {
+        let skilsTextRect = CGRect(
+            x: leftMargin,
+            y: characteristicBottom,
+            width: (pageRect.width - leftMargin - rightMargin) / 2,
+            height: pageRect.height * 0.23
+        )
+        skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + qualit)
+        skilsRightEdge = skilsTextRect.origin.x + skilsTextRect.width
+    }
+    
+    func drawImage() {
+        let imageCropRect = CGRect(
+            x: 0,
+            y: (image.size.height - image.size.width * 0.7) / 2,
+            width: image.size.width,
+            height: image.size.width * 0.7
+        )
+        
+        let imageForPrint = image
+                                .cropImage(rect: imageCropRect, scale: 1)
+                                .round(30)
+        
+        let imageWidth = (pageRect.width - leftMargin - rightMargin) / 2
+        let centerPage = leftMargin + (pageRect.width - leftMargin - rightMargin - imageWidth) / 2
+        let imageRect = CGRect(
+            x: isFullCharacteristic ? skilsRightEdge : centerPage,
+            y: isFullCharacteristic ? characteristicBottom : titleBottom,
+            width: imageWidth,
+            height: pageRect.height * 0.23
+        )
+        
+        imageBottom = addImage(image: imageForPrint, imageBlockRect: imageRect)
+    }
+    
+    func drawDetailedCharacteristic() {
+        let detailedCharacteristicTextRect = CGRect(
+            x: leftMargin,
+            y: characteristic != nil ? skillsBottom : imageBottom + 20,
+            width: (pageRect.width - leftMargin - rightMargin),
+            height: pageRect.height
+        )
+        let _ = addTextBlock(textRect: detailedCharacteristicTextRect, text: detailedCharacteristic)
+    }
+    
     
     func addTitle(pageRect: CGRect) -> CGFloat {
         let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
@@ -125,7 +135,6 @@ class PDFCreator {
     }
     
     func addTextBlock(textRect: CGRect, text: String) -> CGFloat {
-        //        let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
         let textFont = UIFont.init(name: "TimesNewRomanPSMT", size: 12) ?? UIFont.systemFont(ofSize: 12.0, weight: .regular)
         
         let paragraphStyle = NSMutableParagraphStyle()
