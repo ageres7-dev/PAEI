@@ -9,7 +9,6 @@ import SwiftUI
 
 struct InstructionsView: View {
     @EnvironmentObject var modalState: ScreenManager
-    
     @State private var isShowingResultView = false
     
     var body: some View {
@@ -78,8 +77,8 @@ struct InstructionsView: View {
             .shadow(radius: 25)
             
             BlurButton(text: "Начать тест") {
-                modalState.isModalPresentPassingTest.toggle()
-                modalState.isShowingInstructionsView.toggle()
+                modalState.isModalPresentPassingTest = true
+                modalState.isShowingInstructionsView = false
             }
             .fullScreenCover(
                 isPresented: $modalState.isModalPresentPassingTest,

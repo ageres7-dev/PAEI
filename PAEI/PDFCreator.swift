@@ -61,7 +61,7 @@ class PDFCreator {
         return data
     }
     
-    func drawCharacteristic() {
+    private func drawCharacteristic() {
         let characteristicTextRect = CGRect(
             x: leftMargin,
             y: titleBottom + 20,
@@ -75,7 +75,7 @@ class PDFCreator {
         )
     }
     
-    func drawSkils() {
+    private func drawSkils() {
         let skilsTextRect = CGRect(
             x: leftMargin,
             y: characteristicBottom,
@@ -86,7 +86,7 @@ class PDFCreator {
         skilsRightEdge = skilsTextRect.origin.x + skilsTextRect.width
     }
     
-    func drawImage() {
+    private func drawImage() {
         let imageCropRect = CGRect(
             x: 0,
             y: (image.size.height - image.size.width * 0.7) / 2,
@@ -110,7 +110,7 @@ class PDFCreator {
         imageBottom = addImage(image: imageForPrint, imageBlockRect: imageRect)
     }
     
-    func drawDetailedCharacteristic() {
+    private func drawDetailedCharacteristic() {
         let detailedCharacteristicTextRect = CGRect(
             x: leftMargin,
             y: characteristic != nil ? skillsBottom : imageBottom + 20,
@@ -121,7 +121,7 @@ class PDFCreator {
     }
     
     
-    func addTitle(pageRect: CGRect) -> CGFloat {
+    private func addTitle(pageRect: CGRect) -> CGFloat {
         let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
         let titleAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: titleFont]
@@ -134,7 +134,7 @@ class PDFCreator {
         return titleStringRect.origin.y + titleStringRect.size.height
     }
     
-    func addTextBlock(textRect: CGRect, text: String) -> CGFloat {
+    private func addTextBlock(textRect: CGRect, text: String) -> CGFloat {
         let textFont = UIFont.init(name: "TimesNewRomanPSMT", size: 12) ?? UIFont.systemFont(ofSize: 12.0, weight: .regular)
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -152,7 +152,7 @@ class PDFCreator {
         
     }
     
-    func addImage(image: UIImage, imageBlockRect: CGRect) -> CGFloat {
+    private func addImage(image: UIImage, imageBlockRect: CGRect) -> CGFloat {
         //        let maxHeight = imageBlockRect.height * 0.8
         let maxWidth = imageBlockRect.width * 0.8
         

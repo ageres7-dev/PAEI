@@ -11,7 +11,6 @@ struct ResultView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
     @Environment(\.colorScheme) private var colorScheme
-    //    @Environment(\.colorScheme) private var colorScheme
     @State private var isShareViewPresented: Bool = false
     
     let answer: Answer
@@ -205,16 +204,18 @@ struct ResultView: View {
                     }) {
                         Image(systemName: "square.and.arrow.up")
                     }
-                    .sheet(isPresented: $isShareViewPresented) {
-                        ActivityViewController(itemsToShare: sharedContent)
-                    }
                 }
+            }
+            .sheet(isPresented: $isShareViewPresented) {
+                ActivityViewController(itemsToShare: sharedContent)
             }
             
             //MARK: - кнопка выхода
             if isNewResult {
                 BlurButton(text: "Выход") {
-                    screenManager.isModalPresentPassingTest.toggle()
+                    screenManager.isModalPresentPassingTest = false
+                    
+                    screenManager.isModalPresentResultView = false
                 }
             }
         }
