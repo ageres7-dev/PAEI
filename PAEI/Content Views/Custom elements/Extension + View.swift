@@ -15,7 +15,9 @@ extension View {
     var isBigScreen: Bool {
         UIScreen.main.bounds.size.height > 667
     }
-    
+    var screenSize: CGSize {
+        UIScreen.main.bounds.size
+    }
 }
 
 
@@ -29,5 +31,8 @@ extension ViewModifier {
     }
     var isBigScreen: Bool {
         UIScreen.main.bounds.size.height > 667
+    }
+    var screenSize: CGSize {
+        UIScreen.main.bounds.size
     }
 }
