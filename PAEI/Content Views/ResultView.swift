@@ -15,7 +15,7 @@ struct ResultView: View {
     @State private var showingActionSheet = false
     
     let answer: Answer
-    var maxValueOneCharacteristic = 40
+    var maxValueOneCharacteristic = 100
     var isNewResult = true
     @State var sharedContent: [Any] = []
     
@@ -26,11 +26,11 @@ struct ResultView: View {
                 detailedResult: detailedResult,
                 answer: answer,
                 isNewResult: isNewResult,
-                maxValueOneCharacteristic: maxValueOneCharacteristic,
-                pProcent: pProcent,
-                aProcent: aProcent,
-                eProcent: eProcent,
-                iProcent: iProcent
+                maxValueOneCharacteristic: maxValueOneCharacteristic
+//                pProcent: pProcent,
+//                aProcent: aProcent,
+//                eProcent: eProcent,
+//                iProcent: iProcent
             )
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Ваш ключ: \(paeiKey)")
@@ -93,7 +93,7 @@ extension ResultView {
          let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
          
          return [
-            "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+            "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)%\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)%\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)%\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)%\n\(detailedResult.iCharacteristic)"
          ]
         
     }
@@ -230,10 +230,10 @@ struct ResultBodyView: View {
     let answer: Answer
     let isNewResult: Bool
     let maxValueOneCharacteristic: Int
-    let pProcent: String
-    let aProcent: String
-    let eProcent: String
-    let iProcent: String
+//    let pProcent: String
+//    let aProcent: String
+//    let eProcent: String
+//    let iProcent: String
   
     
     var body: some View {
@@ -257,10 +257,7 @@ struct ResultBodyView: View {
                     VStack {
                         Text("Характеристика")
                             .bold()
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 4,
-                                                trailing: 0))
+                            .padding(.bottom, 4)
                         Text(characteristic)
                     }
                     .setCustomBackgroung()
@@ -270,10 +267,7 @@ struct ResultBodyView: View {
                     VStack {
                         Text("Качества")
                             .bold()
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 4,
-                                                trailing: 0))
+                            .padding(.bottom, 4)
                         HStack {
                             VStack(alignment: .leading){
                                 ForEach(qualities, id: \.self) {quality in
@@ -291,10 +285,7 @@ struct ResultBodyView: View {
                     VStack {
                         Text("Навыки")
                             .bold()
-                            .padding(EdgeInsets(top: 0,
-                                                leading: 0,
-                                                bottom: 4,
-                                                trailing: 0))
+                            .padding(.bottom, 4)
                         HStack {
                             VStack(alignment: .leading){
                                 ForEach(skills, id: \.self) {quality in
@@ -317,7 +308,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.producer,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "P=\(pProcent)%",
+                            insideLabel: "P=\(answer.producer)%",
                             fontValueIndex: 0.22,
                             color: .red
                         )
@@ -336,7 +327,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.administrator,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "A=\(aProcent)%",
+                            insideLabel: "A=\(answer.administrator)%",
                             fontValueIndex: 0.22
                         )
                         .frame(height: 100)
@@ -354,7 +345,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.entrepreneur,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "E=\(eProcent)%",
+                            insideLabel: "E=\(answer.entrepreneur)%",
                             fontValueIndex: 0.22,
                             color: .yellow
                         )
@@ -373,7 +364,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.integrator,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "I=\(iProcent)%",
+                            insideLabel: "I=\(answer.integrator)%",
                             fontValueIndex: 0.22,
                             color: .green
                         )
@@ -411,9 +402,6 @@ struct ResultBodyView: View {
             .padding()
         }
         .shadow(radius: 25)
-        
-        
-        
     }
 }
 
