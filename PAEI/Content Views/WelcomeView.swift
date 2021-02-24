@@ -10,7 +10,6 @@ import SwiftUI
 struct WelcomeView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
-    
     @State private var showSplash = true
     var body: some View {
         
@@ -92,6 +91,35 @@ struct WelcomeView: View {
                 
             }
             .navigationBarTitle("Модель PAEI")
+            .fullScreenCover(isPresented: $screenManager.isModalPresentPassingTest) {
+                    PassingTest()
+            }
+            /*
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(
+                    title: Text("Вы не завершили предыдуший тест"),
+                    message: nil,
+                    buttons: [
+                        .default(Text("Продолжить")) {
+                            screenManager.isModalPresentPassingTest.toggle()
+                        },
+                        .destructive(Text("Удалить")) {
+                            conditionManager.condition.isTestRunning = false
+                        },
+                        .cancel()
+                ])
+            }
+            
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation() {
+                        if conditionManager.condition.isTestRunning {
+                            showingActionSheet.toggle()
+                        }
+                    }
+                }
+            }
+            */
         }
     }
 }

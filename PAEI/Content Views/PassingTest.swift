@@ -26,7 +26,7 @@ struct PassingTest: View {
 //    @State private var currentKey = ["p", "a", "e", "i"]
     @State private var currentKey: [Key] = [.p, .a, .e, .i]
     @State private var keys: [[Key]] = [[.p, .a, .e, .i]]
-    var isContinueTest = false
+//    var isContinueTest = false
     
     var body: some View {
         
@@ -141,10 +141,12 @@ struct PassingTest: View {
             }
             
             .onAppear{
-                if isContinueTest {
+                if conditionManager.condition.isTestRunning {
+                    print(".onAppear{ if isContinueTest {")
                     loadCurrentCondition()
 //                    isContinueTest = false
                 }
+                print("conditionManager.condition.isTestRunning \(conditionManager.condition.isTestRunning)")
             }
         }
     }
@@ -158,11 +160,9 @@ extension PassingTest {
         conditionManager.condition.valuesPassingTest.keys = keys
         conditionManager.condition.valuesPassingTest.currentIndexBlock = currentIndexBlock
         conditionManager.condition.valuesPassingTest.answers = answers
-        
         DataManager.shared.save(
             condition: conditionManager.condition
         )
-        
     }
     
     

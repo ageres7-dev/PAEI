@@ -8,108 +8,104 @@
 import SwiftUI
 
 struct InstructionsView: View {
-    @EnvironmentObject var modalState: ScreenManager
+    @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
-    
+    @State private var showingActionSheet = false
     @State private var isShowingResultView = false
     
     var body: some View {
         ZStack {
             ScrollView {
-                    LazyVStack {
-                       
-//                        Image("default")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                            .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//                            .clipped()
-                        //                            .cornerRadius(20)
-                        
-                        
-                        VStack(alignment: .leading){
-                            HStack {
-                                Spacer()
-                                Image(systemName: "timer")
-                                    .resizable()
-                                    .multilineTextAlignment(.center)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 70)
-                                    .clipped()
-                                    .padding(.bottom, 4)
-                                Spacer()
-                            }
-                            HStack {
-                                Spacer()
-                                Text("Время прохождения теста: \n5 – 10 минут.")
-                                    .bold()
-                                    .multilineTextAlignment(.center)
-                                Spacer()
-                            }
-                        }
-                        .setCustomBackgroung()
-                        
-                        VStack {
-                            /*
-                            Image(systemName: "book")
+                LazyVStack {
+                    
+                    //                        Image("default")
+                    //                            .resizable()
+                    //                            .aspectRatio(contentMode: .fill)
+                    //                            .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    //                            .clipped()
+                    //                            .cornerRadius(20)
+                    
+                    
+                    VStack(alignment: .leading){
+                        HStack {
+                            Spacer()
+                            Image(systemName: "timer")
                                 .resizable()
+                                .multilineTextAlignment(.center)
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height: screenSize.height * 0.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .frame(height: 70)
                                 .clipped()
-                                .padding(EdgeInsets(top: 20, leading: 0, bottom: 40, trailing: 0))
-                            */
-//                            Text("Оцените Ваши личные качества – КАКОЙ Я? \nБудьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
-                                //                        Text("Необходимо ответить на 12 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10. И да, будьте честны перед собой")
-                            
-                            Text("Оцените ваши личные качества – КАКОЙ Я?")
+                                .padding(.bottom, 4)
+                            Spacer()
+                        }
+                        HStack {
+                            Spacer()
+                            Text("Время прохождения теста: \n5 – 10 минут.")
                                 .bold()
                                 .multilineTextAlignment(.center)
-                                .padding(.bottom, 4)
-                            
-                            Text("Необходимо ответить на 10 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10.")
-                            
+                            Spacer()
                         }
-                        .setCustomBackgroung()
+                    }
+                    .setCustomBackgroung()
+                    
+                    VStack {
+                        /*
+                         Image(systemName: "book")
+                         .resizable()
+                         .aspectRatio(contentMode: .fit)
+                         .frame(height: screenSize.height * 0.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                         .clipped()
+                         .padding(EdgeInsets(top: 20, leading: 0, bottom: 40, trailing: 0))
+                         */
+                        //                            Text("Оцените Ваши личные качества – КАКОЙ Я? \nБудьте внимательны, описывайте себя, а не Вашу работу. Расставьте оценки от 1 (наименее подходящая для меня характеристика) до 4 баллов (наиболее подходящая). \nЧем меньше балл, тем  менее выражено качество. В сумме должно получиться 10 баллов в каждом.")
+                        //                        Text("Необходимо ответить на 12 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10. И да, будьте честны перед собой")
                         
-                        Spacer(minLength: 82)
+                        Text("Оцените ваши личные качества – КАКОЙ Я?")
+                            .bold()
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 4)
+                        
+                        Text("Необходимо ответить на 10 блоков, содержащие по 4 качества личности. Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10.")
                         
                     }
-                    .padding()
+                    .setCustomBackgroung()
+                    
+                    Spacer(minLength: 82)
+                    
+                }
+                .padding()
                 
             }
             .shadow(radius: 25)
-            VStack {
-//                Spacer()
-//
-//                BlurButton(text: "Начать тест") {
-//                    modalState.isModalPresentPassingTest = true
-//                    modalState.isShowingInstructionsView = false
-//                }
-//                .fullScreenCover(
-//                    isPresented: $modalState.isModalPresentPassingTest,
-//                    content: PassingTest.init
-//                )
-                
-                BlurButton(
-                    text: !conditionManager.condition.isTestRunning ? "Начать тест" : "Продолжить тест"
-                ) {
-                    modalState.isModalPresentPassingTest = true
-                    modalState.isShowingInstructionsView = false
+            
+            BlurButton(text: "Начать тест") {
+                if conditionManager.condition.isTestRunning {
+                    showingActionSheet.toggle()
+                } else {
+                    showPassingTest()
                 }
-                .fullScreenCover(isPresented: $modalState.isModalPresentPassingTest) {
-                        PassingTest(conditionManager: self._conditionManager, isContinueTest: conditionManager.condition.isTestRunning)
-                }
-                
-                /*
-                BlurButton(text: "Продолжить тест") {
-                    modalState.isModalPresentPassingTest = true
-//                    modalState.isShowingInstructionsView = false
-                }
-                .sheet(isPresented: $modalState.isModalPresentPassingTest) {
-                    PassingTest(conditionManager: self._conditionManager, isContinueTest: conditionManager.condition.isTestRunning)
-                }
-                */
-                
             }
+            .fullScreenCover(isPresented: $screenManager.isModalPresentPassingTest) {
+                PassingTest()
+            }
+            
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(
+                    title: Text("Опаньки"),
+                    message: Text("Вы не завершили предыдуший тест"),
+                    buttons: [
+                        .default(Text("Продолжить")) {
+                            showPassingTest()
+                        },
+                        .destructive(Text("Начать заново")) {
+                            conditionManager.condition.isTestRunning = false
+                            conditionManager.condition.valuesPassingTest = ValuesPassingTest()
+                            showPassingTest()
+                        },
+                        .cancel()
+                ])
+            }
+            
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle("Инструкция")
@@ -119,6 +115,13 @@ struct InstructionsView: View {
 
 
 extension InstructionsView {
+    
+    private func showPassingTest() {
+        screenManager.isModalPresentPassingTest = true
+        screenManager.isShowingInstructionsView = false
+    }
+    
+    
     private var screenSize: CGSize {
         UIScreen.main.bounds.size
     }
