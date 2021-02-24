@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Key {
+enum Key: String, Codable {
     case p, a, e, i
 }
 
@@ -26,6 +26,7 @@ struct PassingTest: View {
 //    @State private var currentKey = ["p", "a", "e", "i"]
     @State private var currentKey: [Key] = [.p, .a, .e, .i]
     @State private var keys: [[Key]] = [[.p, .a, .e, .i]]
+    var isContinueTest = false
     
     var body: some View {
         
@@ -118,12 +119,62 @@ struct PassingTest: View {
                     .offset( y: isSmallScreen ? -10 : 0)
             }
             .padding()
+            .onChange(of: producerValue) { _ in
+                print("p изменился")
+                updateAnswer(at: currentIndexBlock)
+                saveCurrentCondition()
+            }
+            .onChange(of: administratorValue) { _ in
+                print("а изменился")
+                updateAnswer(at: currentIndexBlock)
+                saveCurrentCondition()
+            }
+            .onChange(of: entrepreneurValue) { _ in
+                print("е изменился")
+                updateAnswer(at: currentIndexBlock)
+                saveCurrentCondition()
+            }
+            .onChange(of: integratorValue) { _ in
+                print("i изменился")
+                updateAnswer(at: currentIndexBlock)
+                saveCurrentCondition()
+            }
+            
+            .onAppear{
+                if isContinueTest {
+                    loadCurrentCondition()
+//                    isContinueTest = false
+                }
+            }
         }
     }
 }
 
 
 extension PassingTest {
+    
+    private func saveCurrentCondition() {
+        conditionManager.condition.valuesPassingTest.currentKey = currentKey
+        conditionManager.condition.valuesPassingTest.keys = keys
+        conditionManager.condition.valuesPassingTest.currentIndexBlock = currentIndexBlock
+        conditionManager.condition.valuesPassingTest.answers = answers
+        
+        DataManager.shared.save(
+            condition: conditionManager.condition
+        )
+        
+    }
+    
+    
+    private func loadCurrentCondition() {
+        print(" private func loadCurrentCondition()")
+        print("currentKey \(conditionManager.condition.valuesPassingTest.currentKey)")
+        currentKey = conditionManager.condition.valuesPassingTest.currentKey
+        keys = conditionManager.condition.valuesPassingTest.keys
+        currentIndexBlock = conditionManager.condition.valuesPassingTest.currentIndexBlock
+        answers = conditionManager.condition.valuesPassingTest.answers
+        fetchAnswerBy(index: currentIndexBlock)
+    }
     
     private func disabledButtonAction() -> Void {
         showAlertDisabledButton.toggle()
@@ -147,6 +198,8 @@ extension PassingTest {
             fetchKeyBy(index: currentIndexBlock + 1)
         }
         currentIndexBlock += 1
+        conditionManager.condition.isTestRunning = true
+        saveCurrentCondition()
 //
 //        print("keys.count \(keys.count)")
 //        print("answers.count \(answers.count)")
@@ -165,7 +218,8 @@ extension PassingTest {
         fetchAnswerBy(index: currentIndexBlock - 1)
         fetchKeyBy(index: currentIndexBlock - 1)
         currentIndexBlock -= 1
-
+        
+        saveCurrentCondition()
 //        print("keys.count \(keys.count)")
 //        print("answers.count \(answers.count)")
 //        print("")
@@ -179,6 +233,7 @@ extension PassingTest {
         isShowingResultView = true
         conditionManager.condition.isTestPassed = true
         conditionManager.condition.answer = sumAllAnswers
+        conditionManager.condition.isTestRunning = false
         DataManager.shared.save(
             condition: conditionManager.condition
         )

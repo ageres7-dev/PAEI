@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InstructionsView: View {
     @EnvironmentObject var modalState: ScreenManager
+    @EnvironmentObject var conditionManager: СonditionManager
+    
     @State private var isShowingResultView = false
     
     var body: some View {
@@ -75,16 +77,39 @@ struct InstructionsView: View {
                 
             }
             .shadow(radius: 25)
-            
-            BlurButton(text: "Начать тест") {
-                modalState.isModalPresentPassingTest = true
-                modalState.isShowingInstructionsView = false
+            VStack {
+//                Spacer()
+//
+//                BlurButton(text: "Начать тест") {
+//                    modalState.isModalPresentPassingTest = true
+//                    modalState.isShowingInstructionsView = false
+//                }
+//                .fullScreenCover(
+//                    isPresented: $modalState.isModalPresentPassingTest,
+//                    content: PassingTest.init
+//                )
+                
+                BlurButton(
+                    text: !conditionManager.condition.isTestRunning ? "Начать тест" : "Продолжить тест"
+                ) {
+                    modalState.isModalPresentPassingTest = true
+                    modalState.isShowingInstructionsView = false
+                }
+                .fullScreenCover(isPresented: $modalState.isModalPresentPassingTest) {
+                        PassingTest(conditionManager: self._conditionManager, isContinueTest: conditionManager.condition.isTestRunning)
+                }
+                
+                /*
+                BlurButton(text: "Продолжить тест") {
+                    modalState.isModalPresentPassingTest = true
+//                    modalState.isShowingInstructionsView = false
+                }
+                .sheet(isPresented: $modalState.isModalPresentPassingTest) {
+                    PassingTest(conditionManager: self._conditionManager, isContinueTest: conditionManager.condition.isTestRunning)
+                }
+                */
+                
             }
-            .fullScreenCover(
-                isPresented: $modalState.isModalPresentPassingTest,
-                content: PassingTest.init
-            )
-            
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle("Инструкция")

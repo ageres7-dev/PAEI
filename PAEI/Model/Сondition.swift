@@ -7,5 +7,7 @@
 
 struct Сondition: Codable {
     var isTestPassed = false
+    var isTestRunning = false
     var answer = Answer()
+    var valuesPassingTest = ValuesPassingTest()
 }
