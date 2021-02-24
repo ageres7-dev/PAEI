@@ -34,6 +34,19 @@ struct ResultView: View {
             )
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Ваш ключ: \(paeiKey)")
+            .actionSheet(isPresented: $showingActionSheet) {
+                ActionSheet(title: Text("Формат"), buttons: [
+                    .default(Text("Текст"), action: {
+                        sharedContent = sharedText
+                        isShareViewPresented.toggle()
+                    }),
+                    .default(Text("Документ PDF"), action: {
+                        sharedContent = sharedPDF
+                        isShareViewPresented.toggle()
+                    }),
+                    .cancel()
+                ])
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     
@@ -50,19 +63,7 @@ struct ResultView: View {
             }
             
             
-            .actionSheet(isPresented: $showingActionSheet) {
-                ActionSheet(title: Text("Формат"), buttons: [
-                    .default(Text("Текст"), action: {
-                        sharedContent = sharedText
-                        isShareViewPresented.toggle()
-                    }),
-                    .default(Text("Документ PDF"), action: {
-                        sharedContent = sharedPDF
-                        isShareViewPresented.toggle()
-                    }),
-                    .cancel()
-                ])
-            }
+            
             
             
             //MARK: - кнопка выхода

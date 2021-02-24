@@ -27,6 +27,7 @@ struct PassingTest: View {
     @State private var currentKey: [Key] = [.p, .a, .e, .i]
     @State private var keys: [[Key]] = [[.p, .a, .e, .i]]
 //    var isContinueTest = false
+    @State private var activeCircleProgressBar = false
     
     var body: some View {
         
@@ -42,7 +43,7 @@ struct PassingTest: View {
                             Text("Баллов")
                                 .offset( y: isSmallScreen ? -10 : 0)
                             CircleProgressBar(
-                                currentValue: pointsTotal,
+                                currentValue: activeCircleProgressBar ? pointsTotal : 0,
                                 maxValue: 10,
                                 insideLabel: "\(pointsTotal)/10"
                             )
@@ -51,15 +52,23 @@ struct PassingTest: View {
                         VStack(spacing: isSmallScreen ? 0 : 16) {
                             Text("Блок")
                                 .offset( y: isSmallScreen ? -10 : 0)
-                            CircleProgressBar(currentValue: currentIndexBlock + 1,
-                                              maxValue: сharacteristicBlocks.count,
-                                              insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
+                            CircleProgressBar(
+                                currentValue: activeCircleProgressBar ? currentIndexBlock + 1 : 0,
+                                maxValue: сharacteristicBlocks.count,
+                                insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
                             )
                         }
                         Spacer(minLength: 16)
                     }
                     .frame(minHeight: 0, idealHeight: 100, maxHeight: 160)
-                    
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            withAnimation() {
+                                activeCircleProgressBar.toggle()
+                                
+                            }
+                        }
+                    }
                     Spacer()
                     
                     CharacteristicsRadioButtonGroup(
@@ -120,22 +129,22 @@ struct PassingTest: View {
             }
             .padding()
             .onChange(of: producerValue) { _ in
-                print("p изменился")
+//                print("p изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
             .onChange(of: administratorValue) { _ in
-                print("а изменился")
+//                print("а изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
             .onChange(of: entrepreneurValue) { _ in
-                print("е изменился")
+//                print("е изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
             .onChange(of: integratorValue) { _ in
-                print("i изменился")
+//                print("i изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }

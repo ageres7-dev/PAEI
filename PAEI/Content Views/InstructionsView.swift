@@ -98,9 +98,7 @@ struct InstructionsView: View {
                             showPassingTest()
                         },
                         .destructive(Text("Начать заново")) {
-                            conditionManager.condition.isTestRunning = false
-                            conditionManager.condition.valuesPassingTest = ValuesPassingTest()
-                            showPassingTest()
+                            actionStartAgain()
                         },
                         .cancel()
                 ])
@@ -121,6 +119,14 @@ extension InstructionsView {
         screenManager.isShowingInstructionsView = false
     }
     
+    private func actionStartAgain() {
+        conditionManager.condition.isTestRunning = false
+        conditionManager.condition.valuesPassingTest = ValuesPassingTest()
+        DataManager.shared.save(
+            condition: conditionManager.condition
+        )
+        showPassingTest()
+    }
     
     private var screenSize: CGSize {
         UIScreen.main.bounds.size

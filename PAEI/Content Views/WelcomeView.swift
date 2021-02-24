@@ -22,25 +22,13 @@ struct WelcomeView: View {
                             
                             Button(action: {
                                 screenManager.isModalPresentResultView.toggle()
-                                
+                                print("fuck")
                             }) {
                                 Text("Последний результат теста")
                                     .bold()
                                     .setCustomStyleButton(color: .green)
                             }
-                            .sheet(isPresented: $screenManager.isModalPresentResultView) {
-                                NavigationView {
-                                    ResultView(answer: conditionManager.condition.answer,
-                                               isNewResult: false)
-                                        .toolbar {
-                                            ToolbarItem(placement: .navigationBarTrailing) {
-                                                Button("Закрыть") {
-                                                    screenManager.isModalPresentResultView = false
-                                                }
-                                            }
-                                        }
-                                }
-                            }
+                            
                         }
                         
                      
@@ -93,6 +81,20 @@ struct WelcomeView: View {
             .navigationBarTitle("Модель PAEI")
             .fullScreenCover(isPresented: $screenManager.isModalPresentPassingTest) {
                     PassingTest()
+            }
+            
+            .sheet(isPresented: $screenManager.isModalPresentResultView) {
+                NavigationView {
+                    ResultView(answer: conditionManager.condition.answer,
+                               isNewResult: false)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Закрыть") {
+                                    screenManager.isModalPresentResultView = false
+                                }
+                            }
+                        }
+                }
             }
             /*
             .actionSheet(isPresented: $showingActionSheet) {
