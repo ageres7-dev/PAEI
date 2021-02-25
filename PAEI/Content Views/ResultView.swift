@@ -10,7 +10,6 @@ import SwiftUI
 struct ResultView: View {
     @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
-//    @Environment(\.colorScheme) private var colorScheme
     @State private var isShareViewPresented: Bool = false
     @State private var showingActionSheet = false
     
@@ -27,23 +26,19 @@ struct ResultView: View {
                 answer: answer,
                 isNewResult: isNewResult,
                 maxValueOneCharacteristic: maxValueOneCharacteristic
-//                pProcent: pProcent,
-//                aProcent: aProcent,
-//                eProcent: eProcent,
-//                iProcent: iProcent
             )
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Ваш ключ: \(paeiKey)")
             .actionSheet(isPresented: $showingActionSheet) {
                 ActionSheet(title: Text("Формат"), buttons: [
-                    .default(Text("Текст"), action: {
+                    .default(Text("Текст")) {
                         sharedContent = sharedText
                         isShareViewPresented.toggle()
-                    }),
-                    .default(Text("Документ PDF"), action: {
+                    },
+                    .default(Text("Документ PDF")) {
                         sharedContent = sharedPDF
                         isShareViewPresented.toggle()
-                    }),
+                    },
                     .cancel()
                 ])
             }
@@ -51,7 +46,6 @@ struct ResultView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     
                     Button(action: {
-                        //                                                    isShareViewPresented.toggle()
                         showingActionSheet.toggle()
                     }) {
                         Image(systemName: "square.and.arrow.up")
@@ -63,14 +57,10 @@ struct ResultView: View {
             }
             
             
-            
-            
-            
             //MARK: - кнопка выхода
             if isNewResult {
                 BlurButton(text: "Выход") {
                     screenManager.isModalPresentPassingTest = false
-                    
                     screenManager.isModalPresentResultView = false
                 }
             }
@@ -84,7 +74,6 @@ extension ResultView {
     
     
     private var sharedText: [Any] {
-        
          let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)\n\n" : ""
          
          let qualit = resultTest.qualities != nil ? "\nКачества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + ".\n" : ""
@@ -100,15 +89,19 @@ extension ResultView {
     }
     
     private var sharedPDF: [Any] {
-        let qualit = resultTest.qualities != nil ? "\nКачества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + "." : ""
+        let qualit = resultTest.qualities != nil
+            ? "\nКачества:\n- \(resultTest.qualities!.joined(separator: ", \n- "))."
+            : ""
         
-        let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n" : ""
+        let skills = resultTest.skills != nil
+            ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n"
+            : ""
                 
         let titlePdf = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)" : "Мой PAEI: \(paeiKey)"
         let subTitlePdf = resultTest.shortInfo != nil ? "Мой PAEI: \(paeiKey)\n\n" : ""
         
         let characteristic = resultTest.characteristic != nil ? subTitlePdf + "Характеристика:\n" + resultTest.characteristic! + "" : nil
-        let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(pProcent)%\n\(detailedResult.pCharacteristic)  \n\nA=\(aProcent)%\n\(detailedResult.aCharacteristic) \n\nE=\(eProcent)%\n\(detailedResult.eCharacteristic) \n\nI=\(iProcent)%\n\(detailedResult.iCharacteristic)"
+        let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)%\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)%\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)%\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)%\n\(detailedResult.iCharacteristic)"
         
         let image = UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle")!
         
@@ -133,22 +126,6 @@ extension ResultView {
     
     private var detailedResult: DetailedResult {
         DetailedResult.customPael(key: paeiKey)
-    }
-    
-    private var pProcent: String {
-        String(lround(Double(answer.producer) / Double(maxValueOneCharacteristic) * 100))
-    }
-    
-    private var aProcent: String {
-        String(lround(Double(answer.administrator) / Double(maxValueOneCharacteristic) * 100))
-    }
-    
-    private var eProcent: String {
-        String(lround(Double(answer.entrepreneur) / Double(maxValueOneCharacteristic) * 100))
-    }
-    
-    private var iProcent: String {
-        String(lround(Double(answer.integrator) / Double(maxValueOneCharacteristic) * 100))
     }
     
 }
@@ -194,19 +171,7 @@ extension ResultView {
         default:
             characterForKey = "-"
         }
-        
-        
-        //хз
-        /*
-        switch number {
-        case 30...:
-            characterForKey = characters.first ?? "😱"
-        case 20..<30:
-            characterForKey = characters.last ?? "😱"
-        default:
-            characterForKey = "-"
-        }
-        */
+
         return characterForKey
     }
     //MARK: - Вытаскиваем нужный символ из строки
@@ -216,11 +181,6 @@ extension ResultView {
     }
     
 }
-
-
-
-
-
 
 struct ResultBodyView: View {
     @Environment(\.colorScheme) private var colorScheme

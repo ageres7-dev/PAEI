@@ -68,7 +68,6 @@ struct WelcomeView: View {
                 }
                 .shadow(radius: 25)
                 
-               
                 BlurButton(text: "Дальше") {screenManager.isShowingInstructionsView.toggle()}
                 
                 NavigationLink(
@@ -96,32 +95,6 @@ struct WelcomeView: View {
                         }
                 }
             }
-            /*
-            .actionSheet(isPresented: $showingActionSheet) {
-                ActionSheet(
-                    title: Text("Вы не завершили предыдуший тест"),
-                    message: nil,
-                    buttons: [
-                        .default(Text("Продолжить")) {
-                            screenManager.isModalPresentPassingTest.toggle()
-                        },
-                        .destructive(Text("Удалить")) {
-                            conditionManager.condition.isTestRunning = false
-                        },
-                        .cancel()
-                ])
-            }
-            
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation() {
-                        if conditionManager.condition.isTestRunning {
-                            showingActionSheet.toggle()
-                        }
-                    }
-                }
-            }
-            */
         }
     }
 }

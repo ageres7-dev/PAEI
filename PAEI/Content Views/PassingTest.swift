@@ -23,11 +23,9 @@ struct PassingTest: View {
     @State private var showHelp = false
     @State private var showAlertDisabledButton = false
     //Необходимо для смены вопросов местами
-//    @State private var currentKey = ["p", "a", "e", "i"]
     @State private var currentKey: [Key] = [.p, .a, .e, .i]
     @State private var keys: [[Key]] = [[.p, .a, .e, .i]]
-//    var isContinueTest = false
-    @State private var activeCircleProgressBar = false
+    @State private var activаteCircleProgressBar = false
     
     var body: some View {
         
@@ -43,7 +41,7 @@ struct PassingTest: View {
                             Text("Баллов")
                                 .offset( y: isSmallScreen ? -10 : 0)
                             CircleProgressBar(
-                                currentValue: activeCircleProgressBar ? pointsTotal : 0,
+                                currentValue: activаteCircleProgressBar ? pointsTotal : 0,
                                 maxValue: 10,
                                 insideLabel: "\(pointsTotal)/10"
                             )
@@ -53,7 +51,7 @@ struct PassingTest: View {
                             Text("Блок")
                                 .offset( y: isSmallScreen ? -10 : 0)
                             CircleProgressBar(
-                                currentValue: activeCircleProgressBar ? currentIndexBlock + 1 : 0,
+                                currentValue: activаteCircleProgressBar ? currentIndexBlock + 1 : 0,
                                 maxValue: сharacteristicBlocks.count,
                                 insideLabel: "\(currentIndexBlock + 1)/\(сharacteristicBlocks.count)"
                             )
@@ -64,7 +62,7 @@ struct PassingTest: View {
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             withAnimation() {
-                                activeCircleProgressBar.toggle()
+                                activаteCircleProgressBar.toggle()
                                 
                             }
                         }
@@ -116,9 +114,7 @@ struct PassingTest: View {
                     Button(action: actionBackButton) {
                         Text("Предыдущий блок")
                     }
-                    //                    .offset(y: isSmallScreen ? 3 : 0)
                     .disabled(currentIndexBlock == 0)
-//                    .padding(.top, isSmallScreen ? 0 : 8)
                     .frame(height: isSmallScreen ? 24 : 30)
                 }
 
