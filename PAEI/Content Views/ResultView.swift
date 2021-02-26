@@ -191,21 +191,18 @@ struct ResultBodyView: View {
     let answer: Answer
     let isNewResult: Bool
     let maxValueOneCharacteristic: Int
-//    let pProcent: String
-//    let aProcent: String
-//    let eProcent: String
-//    let iProcent: String
-  
     
     var body: some View {
         ScrollView {
             LazyVStack{
                 Image(colorScheme == .dark ? resultTest.darkPicture : resultTest.lightPicture)
                     .resizable()
+                    .scaleEffect(1.3)
                     .aspectRatio(contentMode: .fill)
                     .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .clipped()
                     .cornerRadius(20)
+                
                 
                 if let shortInfo = resultTest.shortInfo {
                     Text("Вы – " + shortInfo)
