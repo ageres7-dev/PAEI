@@ -33,7 +33,7 @@ struct InstructionsView: View {
                                 .resizable()
                                 .multilineTextAlignment(.center)
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height: 70)
+                                .frame(height: 90)
                                 .clipped()
                                 .padding(.bottom, 4)
                             Spacer()
