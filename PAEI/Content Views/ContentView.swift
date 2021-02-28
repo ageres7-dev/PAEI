@@ -19,7 +19,7 @@ struct ContentView: View {
                 SplashScreen()
                     .animation(.easeOut)
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             withAnimation() {
                                 showWelcomView = true
                             }

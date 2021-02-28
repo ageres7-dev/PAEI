@@ -277,7 +277,7 @@ struct ResultBodyView: View {
                             maxValue: maxValueOneCharacteristic,
                             insideLabel: "P=\(answer.producer)%",
                             fontValueIndex: 0.22,
-                            color: .pink
+                            color: .paeiPink
                         )
                         .frame(height: 100)
                         .padding(.bottom, 8)
@@ -295,8 +295,8 @@ struct ResultBodyView: View {
                             currentValue: answer.administrator,
                             maxValue: maxValueOneCharacteristic,
                             insideLabel: "A=\(answer.administrator)%",
-                            fontValueIndex: 0.22
-//                            color: Color(uicolor: UIColor)
+                            fontValueIndex: 0.22,
+                            color: .paeiOrange
                         )
                         .frame(height: 100)
                         .padding(.bottom, 8)
@@ -315,7 +315,7 @@ struct ResultBodyView: View {
                             maxValue: maxValueOneCharacteristic,
                             insideLabel: "E=\(answer.entrepreneur)%",
                             fontValueIndex: 0.22,
-                            color: .yellow
+                            color: .paeiBlue
                         )
                         .frame(height: 100)
                         .padding(.bottom, 8)
@@ -334,7 +334,7 @@ struct ResultBodyView: View {
                             maxValue: maxValueOneCharacteristic,
                             insideLabel: "I=\(answer.integrator)%",
                             fontValueIndex: 0.22,
-                            color: .green
+                            color: .paeiGreen
                         )
                         .frame(height: 100)
                         .padding(.bottom, 8)

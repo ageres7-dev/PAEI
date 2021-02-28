@@ -13,7 +13,7 @@ struct SplashScreen: View {
     
         PaeiLogo(showLogo: showLogo)
             .offset(y: 6)
-            .animation(Animation.easeOut(duration:0.7).delay(0.2))
+            .animation(Animation.easeOut(duration:0.6).delay(0.1))
             .frame(width: 300, height: 300)
             .onAppear {
                 withAnimation() {
@@ -80,9 +80,7 @@ struct PaeiLogo: View {
                         .transition(.upperRight)
                 }
             }
-//            .frame(width: 260, height: 130)
             
-//            Spacer()
             HStack(spacing: 8) {
                 if showLogo {
                     Image("eElementLogo")
@@ -101,7 +99,6 @@ struct PaeiLogo: View {
                     
                 }
             }
-//            .frame(width: 260, height: 130)
         }
         .frame(width: 260, height: 260)
     }

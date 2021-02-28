@@ -142,7 +142,7 @@ struct TextBlockView: View {
     }
 }
 
-
+/*
 struct paeiTextBlocks: View {
     var body: some View {
         Group {
@@ -170,7 +170,7 @@ struct paeiTextBlocks: View {
     }
 }
 
-
+*/
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()
