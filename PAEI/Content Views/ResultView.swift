@@ -192,12 +192,21 @@ struct ResultBodyView: View {
     let isNewResult: Bool
     let maxValueOneCharacteristic: Int
     
+//    private var shortInfo: String {
+//        if let shortInfo = resultTest.shortInfo {
+//            return shortInfo
+//        } else {
+//            return "Ваш ключ: \(paeiKey)"
+//        }
+//        
+//    }
+    
     var body: some View {
         ScrollView {
             LazyVStack{
                 Image(colorScheme == .dark ? resultTest.darkPicture : resultTest.lightPicture)
                     .resizable()
-                    .scaleEffect(1.3)
+//                    .scaleEffect(1.3)
                     .aspectRatio(contentMode: .fill)
                     .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .clipped()
