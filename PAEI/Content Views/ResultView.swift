@@ -277,7 +277,7 @@ struct ResultBodyView: View {
                             maxValue: maxValueOneCharacteristic,
                             insideLabel: "P=\(answer.producer)%",
                             fontValueIndex: 0.22,
-                            color: .red
+                            color: .pink
                         )
                         .frame(height: 100)
                         .padding(.bottom, 8)
@@ -296,6 +296,7 @@ struct ResultBodyView: View {
                             maxValue: maxValueOneCharacteristic,
                             insideLabel: "A=\(answer.administrator)%",
                             fontValueIndex: 0.22
+//                            color: Color(uicolor: UIColor)
                         )
                         .frame(height: 100)
                         .padding(.bottom, 8)

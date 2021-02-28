@@ -13,7 +13,7 @@ struct SplashScreen: View {
     
         PaeiLogo(showLogo: showLogo)
             .offset(y: 6)
-            .animation(.easeOut(duration:0.9))
+            .animation(Animation.easeOut(duration:0.7).delay(0.2))
             .frame(width: 300, height: 300)
             .onAppear {
                 withAnimation() {
@@ -62,41 +62,48 @@ struct PaeiLogo: View {
     let showLogo: Bool
     
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            HStack(spacing: 0) {
-                Spacer()
+        VStack(spacing: 8) {
+            HStack(spacing: 8) {
+                
                 if showLogo {
-                    CharacterElementLogo(text: "P", color: .red)
+                    Image("pElementLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
                         .transition(.upperLeft)
                 }
-                Spacer()
                 if showLogo {
-                    CharacterElementLogo(text: "A", color: .blue)
+                    Image("aElementLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
                         .transition(.upperRight)
                 }
-                Spacer()
             }
+//            .frame(width: 260, height: 130)
             
-            Spacer()
-            HStack(spacing: 0) {
-                Spacer()
+//            Spacer()
+            HStack(spacing: 8) {
                 if showLogo {
-                    CharacterElementLogo(text: "E", color: .yellow)
+                    Image("eElementLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
                         .transition(.bottomLeft)
                     
                 }
-                Spacer()
                 if showLogo {
-                    CharacterElementLogo(text: "I", color: .green)
+                    Image("iElementLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
                         .transition(.bottomRight)
                     
                 }
-                Spacer()
             }
-            Spacer()
+//            .frame(width: 260, height: 130)
         }
-        
+        .frame(width: 260, height: 260)
     }
 }
 

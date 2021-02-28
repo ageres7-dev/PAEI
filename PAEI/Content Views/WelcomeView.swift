@@ -33,11 +33,29 @@ struct WelcomeView: View {
                         
                      
                         VStack {
-                            Image("paeiLogoMini")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 100)
-                                .padding(.bottom, 8)
+//                            Image("paeiLogoMini")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(height: 100)
+//                                .padding(.bottom, 8)
+                            
+                            HStack {
+                                Image("pElement")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                Image("aElement")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                Image("eElement")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                Image("iElement")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                            .frame(height: 100)
+                            .padding(.bottom, 8)
+                            
                             
                             Text("PAEI – это аббревиатура, которая описывает 4 управленческих роли, выполнение каждой из них помогает команде или организации обеспечить максимально эффективную деятельность. Это:\n\n- Producer / Производитель\n- Administrator / Администратор\n- Entrepreneur / Предприниматель\n- Integrator / Интегратор.")
                             

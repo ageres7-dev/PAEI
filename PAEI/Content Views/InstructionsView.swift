@@ -29,7 +29,7 @@ struct InstructionsView: View {
                     VStack(alignment: .leading){
                         HStack {
                             Spacer()
-                            Image(systemName: "timer")
+                            Image("imageClock")
                                 .resizable()
                                 .multilineTextAlignment(.center)
                                 .aspectRatio(contentMode: .fit)

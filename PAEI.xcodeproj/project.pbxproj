@@ -138,6 +138,7 @@
 				A5899DF025DF76EE000A3FC8 /* PDFCreator.swift */,
 				A5552F1725E2FF590014826F /* UIImage + Extension.swift */,
 				A5899DF325DFD397000A3FC8 /* PDFViewUI.swift */,
+				A55F62F225BF5B0700E12A2C /* Custom elements */,
 				A56DB60F259FB5660098CAAB /* Supporting File */,
 				A56DB5FC259FB4780098CAAB /* PAEIApp.swift */,
 				A56DB60E259FB53B0098CAAB /* Managers */,
@@ -175,7 +176,6 @@
 		A56DB60D259FB5290098CAAB /* Content Views */ = {
 			isa = PBXGroup;
 			children = (
-				A55F62F225BF5B0700E12A2C /* Custom elements */,
 				A56DB5FE259FB4780098CAAB /* ContentView.swift */,
 				A59985F625C33232006323EA /* SplashScreen.swift */,
 				A58843D225A8E253002DE43A /* WelcomeView.swift */,
