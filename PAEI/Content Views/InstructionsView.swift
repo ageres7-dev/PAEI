@@ -17,15 +17,6 @@ struct InstructionsView: View {
         ZStack {
             ScrollView {
                 LazyVStack {
-                    
-                    //                        Image("default")
-                    //                            .resizable()
-                    //                            .aspectRatio(contentMode: .fill)
-                    //                            .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    //                            .clipped()
-                    //                            .cornerRadius(20)
-                    
-                    
                     VStack(alignment: .leading){
                         HStack {
                             Spacer()
@@ -91,7 +82,7 @@ struct InstructionsView: View {
                             actionStartAgain()
                         },
                         .cancel()
-                ])
+                    ])
             }
             
         }
@@ -99,7 +90,6 @@ struct InstructionsView: View {
         .navigationBarTitle("Инструкция")
     }
 }
-
 
 
 extension InstructionsView {

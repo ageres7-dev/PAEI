@@ -128,7 +128,6 @@ extension CharacteristicsRadioButtonGroup {
         maxPoint - pointsTotal - countUncheckedCharacteristics
     }
     
-    //Вынести отсюда
     private var pointsTotal: Int {
         (producerValue + administratorValue
             + entrepreneurValue + integratorValue)
@@ -143,11 +142,6 @@ extension CharacteristicsRadioButtonGroup {
         characteristics.forEach {
             result += $0 == 0 ? 1 : 0
         }
-        /*
-         for characteristic in characteristics {
-         result += characteristic == 0 ? 1 : 0
-         }
-         */
         return result
     }
 }

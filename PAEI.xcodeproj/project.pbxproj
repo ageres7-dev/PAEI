@@ -13,11 +13,9 @@
 		A51C94F325BC7E74009D7DB4 /* СonditionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */; };
 		A522021E25A8EA8B00EC0582 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522021D25A8EA8B00EC0582 /* ScreenManager.swift */; };
 		A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AF72C25A4E2A900D46757 /* PassingTest.swift */; };
-		A530E15125BAF0980008F91C /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530E15025BAF0980008F91C /* WelcomePageView.swift */; };
 		A530E15625BAF5CE0008F91C /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530E15525BAF5CE0008F91C /* InstructionsView.swift */; };
 		A540DE1525B36DE900BBBE50 /* DetailedResult + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */; };
 		A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1725B36E1800BBBE50 /* DetailedResult.swift */; };
-		A540DE1E25B38A8C00BBBE50 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */; };
 		A54F3D0925CA5BED0022E603 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */; };
 		A5552F1825E2FF590014826F /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5552F1725E2FF590014826F /* UIImage + Extension.swift */; };
 		A55F62F025BF562800E12A2C /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55F62EF25BF562800E12A2C /* Blur.swift */; };
@@ -25,8 +23,6 @@
 		A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB5FE259FB4780098CAAB /* ContentView.swift */; };
 		A56DB601259FB47B0098CAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB600259FB47B0098CAAB /* Assets.xcassets */; };
 		A56DB604259FB47B0098CAAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56DB603259FB47B0098CAAB /* Preview Assets.xcassets */; };
-		A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB61325A071460098CAAB /* SimpleCircleButton.swift */; };
-		A56DB62225A113900098CAAB /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62125A113900098CAAB /* CircleButton.swift */; };
 		A56DB62625A115280098CAAB /* RadioButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56DB62525A115280098CAAB /* RadioButtons.swift */; };
 		A58843C125A51254002DE43A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843C025A51254002DE43A /* ResultView.swift */; };
 		A58843C825A717B3002DE43A /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58843C725A717B3002DE43A /* CircleProgressBar.swift */; };
@@ -41,7 +37,6 @@
 		A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE4F25A24DAB00816A4A /* DataManager.swift */; };
 		A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */; };
 		A5A9EE5825A24E5E00816A4A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5325A24E5D00816A4A /* Answer.swift */; };
-		A5A9EE5925A24E5E00816A4A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5425A24E5E00816A4A /* Question.swift */; };
 		A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5525A24E5E00816A4A /* Result.swift */; };
 		A5A9EE5B25A24E5E00816A4A /* Result + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5625A24E5E00816A4A /* Result + Extension.swift */; };
 		A5A9EE5E25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */; };
@@ -54,11 +49,9 @@
 		A51C94F225BC7E74009D7DB4 /* СonditionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СonditionManager.swift"; sourceTree = "<group>"; };
 		A522021D25A8EA8B00EC0582 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
 		A52AF72C25A4E2A900D46757 /* PassingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingTest.swift; sourceTree = "<group>"; };
-		A530E15025BAF0980008F91C /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
 		A530E15525BAF5CE0008F91C /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		A540DE1425B36DE900BBBE50 /* DetailedResult + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailedResult + Extension.swift"; sourceTree = "<group>"; };
 		A540DE1725B36E1800BBBE50 /* DetailedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResult.swift; sourceTree = "<group>"; };
-		A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
 		A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A5552F1725E2FF590014826F /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		A55F62EF25BF562800E12A2C /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
@@ -68,8 +61,6 @@
 		A56DB600259FB47B0098CAAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56DB603259FB47B0098CAAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A56DB605259FB47B0098CAAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A56DB61325A071460098CAAB /* SimpleCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCircleButton.swift; sourceTree = "<group>"; };
-		A56DB62125A113900098CAAB /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		A56DB62525A115280098CAAB /* RadioButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtons.swift; sourceTree = "<group>"; };
 		A58843C025A51254002DE43A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		A58843C725A717B3002DE43A /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
@@ -84,7 +75,6 @@
 		A5A9EE4F25A24DAB00816A4A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicBlock.swift; sourceTree = "<group>"; };
 		A5A9EE5325A24E5D00816A4A /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
-		A5A9EE5425A24E5E00816A4A /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A5A9EE5525A24E5E00816A4A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A5A9EE5625A24E5E00816A4A /* Result + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result + Extension.swift"; sourceTree = "<group>"; };
 		A5A9EE5D25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicsRadioButtonGroup.swift; sourceTree = "<group>"; };
@@ -133,7 +123,6 @@
 		A56DB5FB259FB4780098CAAB /* PAEI */ = {
 			isa = PBXGroup;
 			children = (
-				A5899DEF25DF76CE000A3FC8 /* remove */,
 				A54F3D0825CA5BED0022E603 /* Launch Screen.storyboard */,
 				A5899DF025DF76EE000A3FC8 /* PDFCreator.swift */,
 				A5552F1725E2FF590014826F /* UIImage + Extension.swift */,
@@ -163,7 +152,6 @@
 				A5A9EE5325A24E5D00816A4A /* Answer.swift */,
 				A51C94EF25BC7BA3009D7DB4 /* Сondition.swift */,
 				A5A9EE5225A24E5D00816A4A /* CharacteristicBlock.swift */,
-				A5A9EE5425A24E5E00816A4A /* Question.swift */,
 				A5A9EE5525A24E5E00816A4A /* Result.swift */,
 				A5A9EE5625A24E5E00816A4A /* Result + Extension.swift */,
 				A540DE1725B36E1800BBBE50 /* DetailedResult.swift */,
@@ -206,17 +194,6 @@
 				A56DB600259FB47B0098CAAB /* Assets.xcassets */,
 			);
 			path = "Supporting File";
-			sourceTree = "<group>";
-		};
-		A5899DEF25DF76CE000A3FC8 /* remove */ = {
-			isa = PBXGroup;
-			children = (
-				A56DB61325A071460098CAAB /* SimpleCircleButton.swift */,
-				A540DE1D25B38A8C00BBBE50 /* CircleGraphView.swift */,
-				A56DB62125A113900098CAAB /* CircleButton.swift */,
-				A530E15025BAF0980008F91C /* WelcomePageView.swift */,
-			);
-			path = remove;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,20 +271,17 @@
 				A51C94F025BC7BA3009D7DB4 /* Сondition.swift in Sources */,
 				A58843D025A89409002DE43A /* Color + Extension.swift in Sources */,
 				A504FF9C25C580C80080F073 /* Extension + View.swift in Sources */,
-				A56DB61425A071460098CAAB /* SimpleCircleButton.swift in Sources */,
 				A51AAF5C25AF93C100452EF5 /* CustomBackgroung.swift in Sources */,
 				A5918F5C25C0857B00A8C608 /* ActivityViewController.swift in Sources */,
 				A5A9EE5025A24DAB00816A4A /* DataManager.swift in Sources */,
 				A58843C825A717B3002DE43A /* CircleProgressBar.swift in Sources */,
 				A56DB5FF259FB4780098CAAB /* ContentView.swift in Sources */,
-				A5A9EE5925A24E5E00816A4A /* Question.swift in Sources */,
 				A56DB5FD259FB4780098CAAB /* PAEIApp.swift in Sources */,
 				A58843C125A51254002DE43A /* ResultView.swift in Sources */,
 				A56DB62625A115280098CAAB /* RadioButtons.swift in Sources */,
 				A5552F1825E2FF590014826F /* UIImage + Extension.swift in Sources */,
 				A5A9EE5A25A24E5E00816A4A /* Result.swift in Sources */,
 				A58843CD25A7C0AB002DE43A /* ButtonStyle.swift in Sources */,
-				A540DE1E25B38A8C00BBBE50 /* CircleGraphView.swift in Sources */,
 				A5A9EE5E25A257FF00816A4A /* CharacteristicsRadioButtonGroup.swift in Sources */,
 				A5A9EE5725A24E5E00816A4A /* CharacteristicBlock.swift in Sources */,
 				A58843D325A8E253002DE43A /* WelcomeView.swift in Sources */,
@@ -317,8 +291,6 @@
 				A51C94F325BC7E74009D7DB4 /* СonditionManager.swift in Sources */,
 				A540DE1825B36E1800BBBE50 /* DetailedResult.swift in Sources */,
 				A5A9EE5B25A24E5E00816A4A /* Result + Extension.swift in Sources */,
-				A56DB62225A113900098CAAB /* CircleButton.swift in Sources */,
-				A530E15125BAF0980008F91C /* WelcomePageView.swift in Sources */,
 				A59A2F3C25E6337200E0C220 /* ValuesPassingTest.swift in Sources */,
 				A530E15625BAF5CE0008F91C /* InstructionsView.swift in Sources */,
 				A52AF72D25A4E2A900D46757 /* PassingTest.swift in Sources */,
@@ -452,7 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"PAEI/Preview Content\"";
 				DEVELOPMENT_TEAM = RNER64Q73Y;
 				ENABLE_PREVIEWS = YES;
@@ -477,7 +449,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"PAEI/Preview Content\"";
 				DEVELOPMENT_TEAM = RNER64Q73Y;
 				ENABLE_PREVIEWS = YES;

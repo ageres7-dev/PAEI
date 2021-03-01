@@ -25,7 +25,6 @@ struct RadioButtons: View {
                 Spacer()
             }
             HStack {
-//                Spacer()
                 RadioButton(value: $currentValue,
                             buttonValue: 1,
                             availablePoints: availablePoints,
@@ -49,7 +48,6 @@ struct RadioButtons: View {
                             availablePoints: availablePoints,
                             enabledButtonAction : enabledButtonAction,
                             disabledButtonAction: disabledButtonAction)
-//                Spacer()
             }
         }
         .frame(minHeight: 50, maxHeight: 100)
@@ -58,7 +56,6 @@ struct RadioButtons: View {
 
 
 struct RadioButton: View {
-//    @State private var showAlert = false
     @Binding var value: Int
     let buttonValue: Int
     let availablePoints: Int
@@ -73,8 +70,6 @@ struct RadioButton: View {
 
             Button(action: {
                 isOn ? action : disabledButtonAction()
-//                    showAlert.toggle()
-                
             }) {
                 Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
                     .resizable()
@@ -84,37 +79,16 @@ struct RadioButton: View {
             }
 //            .disabled(!isOn)
             .frame(width: 20, height: 20)
-//            .alert(isPresented: $showAlert) {
-//                Alert(
-//                    title: Text("Ты дебил?"),
-//                    message: Text("Читай инструкцию \(availablePoints)")
-//                )
-//            }
-
         }
     }
 }
 
 extension RadioButton {
     private var action: () {
-//        UISelectionFeedbackGenerator().selectionChanged()
         value = buttonValue
         enabledButtonAction ()
     }
-    
-    private var actionDisabledButton: () {
-//        UISelectionFeedbackGenerator().selectionChanged()
         
-//        let generator = UIImpactFeedbackGenerator(style: .medium)
-//        generator.impactOccurred()
-        
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.warning)
-//        showAlert.toggle()
-    }
-    
-    
-    
     private var isMarked: Bool { value == buttonValue }
     
     private var isOn: Bool {

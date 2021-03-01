@@ -56,7 +56,6 @@ struct ResultView: View {
                 ActivityViewController(itemsToShare: sharedContent)
             }
             
-            
             //MARK: - кнопка выхода
             if isNewResult {
                 BlurButton(text: "Выход") {
@@ -71,8 +70,6 @@ struct ResultView: View {
 
 extension ResultView {
     //MARK: - Properties
-    
-    
     private var sharedText: [Any] {
          let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)\n\n" : ""
          
@@ -191,16 +188,7 @@ struct ResultBodyView: View {
     let answer: Answer
     let isNewResult: Bool
     let maxValueOneCharacteristic: Int
-    
-//    private var shortInfo: String {
-//        if let shortInfo = resultTest.shortInfo {
-//            return shortInfo
-//        } else {
-//            return "Ваш ключ: \(paeiKey)"
-//        }
-//        
-//    }
-    
+
     var body: some View {
         ScrollView {
             LazyVStack{
@@ -372,8 +360,6 @@ struct ResultBodyView: View {
         .shadow(radius: 25)
     }
 }
-
-
 
 
 struct ResultView_Previews: PreviewProvider {

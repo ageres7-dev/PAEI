@@ -22,13 +22,11 @@ struct PassingTest: View {
     @State private var isShowingResultView = false
     @State private var showHelp = false
     @State private var showAlertDisabledButton = false
-    //Необходимо для смены вопросов местами
     @State private var currentKey: [Key] = [.p, .a, .e, .i]
     @State private var keys: [[Key]] = [[.p, .a, .e, .i]]
     @State private var activаteCircleProgressBar = false
     
     var body: some View {
-        
         NavigationView {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                
@@ -79,17 +77,13 @@ struct PassingTest: View {
                         keys: currentKey
                     )
                     .alert(isPresented: $showAlertDisabledButton) {
-                        Alert(
-                            title: Text("Максимальное количество баллов 10")
-//                            message: Text("Читай инструкцию")
-                        )
+                        Alert(title: Text("Максимальное количество баллов 10"))
                     }
                     
                     .frame(minHeight: 320, maxHeight: 450)
                     .padding(.top, isSmallScreen ? 8 : 20)
                     .padding(.bottom, isSmallScreen ? 8 : 20)
                     Spacer()
-                    
                     
                     Button(action: isNextButtom
                             ? actionNextButton
@@ -117,7 +111,6 @@ struct PassingTest: View {
                     .disabled(currentIndexBlock == 0)
                     .frame(height: isSmallScreen ? 24 : 30)
                 }
-
                 .navigationBarHidden(true)
                 
                 HelpButton(isPresented: $showHelp)
@@ -147,11 +140,8 @@ struct PassingTest: View {
             
             .onAppear{
                 if conditionManager.condition.isTestRunning {
-                    print(".onAppear{ if isContinueTest {")
                     loadCurrentCondition()
-//                    isContinueTest = false
                 }
-                print("conditionManager.condition.isTestRunning \(conditionManager.condition.isTestRunning)")
             }
         }
     }
@@ -170,10 +160,7 @@ extension PassingTest {
         )
     }
     
-    
     private func loadCurrentCondition() {
-        print(" private func loadCurrentCondition()")
-        print("currentKey \(conditionManager.condition.valuesPassingTest.currentKey)")
         currentKey = conditionManager.condition.valuesPassingTest.currentKey
         keys = conditionManager.condition.valuesPassingTest.keys
         currentIndexBlock = conditionManager.condition.valuesPassingTest.currentIndexBlock
@@ -188,10 +175,6 @@ extension PassingTest {
     }
     
     private func actionNextButton() -> Void {
-//        print("actionNextButton()")
-//        print("currentIndexBlock \(currentIndexBlock) answers.count \(answers.count)")
-//        print("isLastAnswer \(isLastAnswer)")
-      
         updateAnswer(at: currentIndexBlock)
         if isLastAnswer {
             clearAllValue()
@@ -205,19 +188,9 @@ extension PassingTest {
         currentIndexBlock += 1
         conditionManager.condition.isTestRunning = true
         saveCurrentCondition()
-//
-//        print("keys.count \(keys.count)")
-//        print("answers.count \(answers.count)")
-//        print("")
-//        print(keys)
-//        print(answers)
     }
     
     private func actionBackButton() -> Void {
-//        print("actionBackButton()")
-//        print("currentIndexBlock \(currentIndexBlock)  answers.count \(answers.count)")
-//        print("isLastAnswer \(isLastAnswer)")
-
         guard currentIndexBlock > 0 else { return }
         updateAnswer(at: currentIndexBlock)
         fetchAnswerBy(index: currentIndexBlock - 1)
@@ -225,11 +198,6 @@ extension PassingTest {
         currentIndexBlock -= 1
         
         saveCurrentCondition()
-//        print("keys.count \(keys.count)")
-//        print("answers.count \(answers.count)")
-//        print("")
-//        print(keys)
-//        print(answers)
     }
     
     private func actionFinishButton() -> Void {
@@ -242,9 +210,6 @@ extension PassingTest {
         DataManager.shared.save(
             condition: conditionManager.condition
         )
-//        print("actionFinishButton()")
-//        print(answers)
-//        print(answers.count)
     }
     //запоминание расположения вопросов
     private func newShuffledKey() {
