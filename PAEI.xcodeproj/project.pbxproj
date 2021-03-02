@@ -232,9 +232,10 @@
 			};
 			buildConfigurationList = A56DB5F4259FB4780098CAAB /* Build configuration list for PBXProject "PAEI" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ru,
 				en,
 				Base,
 			);
