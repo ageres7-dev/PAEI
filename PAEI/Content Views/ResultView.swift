@@ -80,7 +80,7 @@ extension ResultView {
          let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
          
          return [
-            "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)%\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)%\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)%\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)%\n\(detailedResult.iCharacteristic)"
+            "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
          ]
         
     }
@@ -98,7 +98,7 @@ extension ResultView {
         let subTitlePdf = resultTest.shortInfo != nil ? "Мой PAEI: \(paeiKey)\n\n" : ""
         
         let characteristic = resultTest.characteristic != nil ? subTitlePdf + "Характеристика:\n" + resultTest.characteristic! + "" : nil
-        let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)%\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)%\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)%\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)%\n\(detailedResult.iCharacteristic)"
+        let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
         
         let image = UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle")!
         
@@ -150,9 +150,9 @@ extension ResultView {
         /*
         //12 вопросов
         switch number {
-        case 31...:
+        case 30...:
             characterForKey = characters.first ?? "😱"
-        case 24..<30:
+        case 20..<29:
             characterForKey = characters.last ?? "😱"
         default:
             characterForKey = "-"
@@ -263,7 +263,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.producer,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "P=\(answer.producer)%",
+                            insideLabel: "P=\(answer.producer)",
                             fontValueIndex: 0.22,
                             color: .paeiPink
                         )
@@ -282,7 +282,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.administrator,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "A=\(answer.administrator)%",
+                            insideLabel: "A=\(answer.administrator)",
                             fontValueIndex: 0.22,
                             color: .paeiOrange
                         )
@@ -301,7 +301,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.entrepreneur,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "E=\(answer.entrepreneur)%",
+                            insideLabel: "E=\(answer.entrepreneur)",
                             fontValueIndex: 0.22,
                             color: .paeiBlue
                         )
@@ -320,7 +320,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.integrator,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "I=\(answer.integrator)%",
+                            insideLabel: "I=\(answer.integrator)",
                             fontValueIndex: 0.22,
                             color: .paeiGreen
                         )
