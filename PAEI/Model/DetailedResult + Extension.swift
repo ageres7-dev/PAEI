@@ -5,9 +5,6 @@
 //  Created by Сергей on 16.01.2021.
 //
 
-//import Foundation
-
-
 extension DetailedResult {
 
     static func customPael(key: String) -> DetailedResult {
@@ -66,16 +63,7 @@ extension DetailedResult {
             iCharacteristic = "Функция интеграции находится в зачаточном состоянии. Следовательно, формирование, сплочение и мотивацию команды лучше поручить I-менеджеру. Он сможет создать в компании систему ценностей и норм поведения, которые направят усилия ее сотрудников на достижение общей цели."
         default: break
         }
-        /*
-        return Result(
-            shortInfo: key,
-            lightPicture: "default",
-            characteristic:
-                pCharacteristic + "\n\n" + aCharacteristic + "\n\n" +
-                eCharacteristic + "\n\n" + iCharacteristic
-      
-        )
-        */
+        
         return DetailedResult(
             pCharacteristic: pCharacteristic,
             aCharacteristic: aCharacteristic,

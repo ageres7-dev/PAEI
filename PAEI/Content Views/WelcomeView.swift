@@ -20,7 +20,6 @@ struct WelcomeView: View {
                         if conditionManager.condition.isTestPassed {
                             Button(action: {
                                 screenManager.isModalPresentResultView.toggle()
-                                print("fuck")
                             }) {
                                 Text("Последний результат теста")
                                     .bold()
@@ -59,6 +58,26 @@ struct WelcomeView: View {
                         Text("Кроме того, вы можете использовать модель PAEI, чтобы узнать свои сильные и слабые стороны как лидера. Скорее всего, вы «тянетесь» к одному из этих стилей управления, и это абсолютно естественно. Когда вы знаете, какой из них подходит вам лучше всего, вы можете определить, какой из них вам следует избегать. Модель поможет выявить слабые места и пробелы в навыках, которые вы должны устранить.")
                             .padding(0)
                             .setCustomBackgroung()
+                        
+                        VStack{
+                            Text("Модель PAEI разработал Ицхак Адизес (יצחק אדיג'ס‏‎) – израильский и американский писатель и бизнес-консультант, специализирующийся на улучшении эффективности менеджмента.\nОригинальный тест вы можете пройти на сайте института Адизеса:")
+                            
+                            
+                            Link(destination: URL(string: "https://adizes.me")!) {
+                                HStack{
+                                    Image("AdizesLogo")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 16)
+                                    Text("adizes.me")
+                                    
+                                }
+                            }
+                            
+                            
+                        }
+                        .padding(0)
+                        .setCustomBackgroung()
                         
                         Spacer(minLength: 82)
                     }
