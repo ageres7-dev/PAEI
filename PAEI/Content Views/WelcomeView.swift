@@ -63,9 +63,13 @@ struct WelcomeView: View {
                             Text("Модель PAEI разработал Ицхак Адизес (יצחק אדיג'ס‏‎) – израильский и американский писатель и бизнес-консультант, специализирующийся на улучшении эффективности менеджмента.\nОригинальный тест вы можете пройти на сайте института Адизеса:")
                             
                             Link(destination: URL(string: "https://adizes.me")!) {
+                                HStack {
+                                    Image(systemName: "link")
+                                        .font(.body)
                                     Text("adizes.me")
+                                }
+                                .offset(x: -8, y: 0)
                             }
-                            
                         }
                         .padding(0)
                         .setCustomBackgroung()
