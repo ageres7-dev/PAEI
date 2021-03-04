@@ -14,7 +14,7 @@ struct ResultView: View {
     @State private var showingActionSheet = false
     
     let answer: Answer
-    var maxValueOneCharacteristic = 100
+    let maxValueOneCharacteristic = 120
     var isNewResult = true
     @State var sharedContent: [Any] = []
     
@@ -147,18 +147,18 @@ extension ResultView {
         var characterForKey = ""
         
         assert(characters.count == 2, "Передан неверный массив")
-        /*
+        
         //12 вопросов
         switch number {
-        case 30...:
+        case 31...:
             characterForKey = characters.first ?? "😱"
-        case 20..<29:
+        case 21...30:
             characterForKey = characters.last ?? "😱"
         default:
             characterForKey = "-"
         }
-        */
         
+        /*
         //10 вопросов
         switch number {
         case 26...:
@@ -168,7 +168,7 @@ extension ResultView {
         default:
             characterForKey = "-"
         }
-
+         */
         return characterForKey
     }
     //MARK: - Вытаскиваем нужный символ из строки
@@ -263,7 +263,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.producer,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "P=\(answer.producer)",
+                            insideLabel: "P = \(answer.producer)",
                             fontValueIndex: 0.22,
                             color: .paeiPink
                         )
@@ -282,7 +282,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.administrator,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "A=\(answer.administrator)",
+                            insideLabel: "A = \(answer.administrator)",
                             fontValueIndex: 0.22,
                             color: .paeiOrange
                         )
@@ -301,7 +301,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.entrepreneur,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "E=\(answer.entrepreneur)",
+                            insideLabel: "E = \(answer.entrepreneur)",
                             fontValueIndex: 0.22,
                             color: .paeiBlue
                         )
@@ -320,7 +320,7 @@ struct ResultBodyView: View {
                         CircleProgressBar(
                             currentValue: answer.integrator,
                             maxValue: maxValueOneCharacteristic,
-                            insideLabel: "I=\(answer.integrator)",
+                            insideLabel: "I = \(answer.integrator)",
                             fontValueIndex: 0.22,
                             color: .paeiGreen
                         )
