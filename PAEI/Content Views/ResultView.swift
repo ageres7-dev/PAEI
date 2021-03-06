@@ -150,9 +150,9 @@ extension ResultView {
         
         //12 вопросов
         switch number {
-        case 31...:
+        case 30...:
             characterForKey = characters.first ?? "😱"
-        case 21...30:
+        case 20..<30:
             characterForKey = characters.last ?? "😱"
         default:
             characterForKey = "-"
