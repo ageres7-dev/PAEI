@@ -23,9 +23,7 @@ struct CharacteristicsRadioButtonGroup: View {
             RoundedRectangle(cornerRadius: 20.0)
                 .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
                 .shadow(radius: isSmallScreen ? 10 : 25)
-            
-            
-            
+   
             VStack {
                 Group{
                     RadioButtons(
@@ -33,7 +31,6 @@ struct CharacteristicsRadioButtonGroup: View {
                         otherValueOne: setFuncFrom(key: keys[1]),
                         otherValueTwo: setFuncFrom(key: keys[2]),
                         otherValueThree: setFuncFrom(key: keys[3]),
-                        availablePoints: availablePoints,
                         label: setLabelFrom(key: keys[0]),
                         enabledButtonAction: autoPresLastButton,
                         disabledButtonAction: disabledButtonAction
@@ -43,7 +40,6 @@ struct CharacteristicsRadioButtonGroup: View {
                         otherValueOne: setFuncFrom(key: keys[0]),
                         otherValueTwo: setFuncFrom(key: keys[2]),
                         otherValueThree: setFuncFrom(key: keys[3]),
-                        availablePoints: availablePoints,
                         label: setLabelFrom(key: keys[1]),
                         enabledButtonAction: autoPresLastButton,
                         disabledButtonAction: disabledButtonAction
@@ -54,7 +50,6 @@ struct CharacteristicsRadioButtonGroup: View {
                         otherValueOne: setFuncFrom(key: keys[0]),
                         otherValueTwo: setFuncFrom(key: keys[1]),
                         otherValueThree: setFuncFrom(key: keys[3]),
-                        availablePoints: availablePoints,
                         label: setLabelFrom(key: keys[2]),
                         enabledButtonAction: autoPresLastButton,
                         disabledButtonAction: disabledButtonAction
@@ -65,7 +60,6 @@ struct CharacteristicsRadioButtonGroup: View {
                         otherValueOne: setFuncFrom(key: keys[0]),
                         otherValueTwo: setFuncFrom(key: keys[1]),
                         otherValueThree: setFuncFrom(key: keys[2]),
-                        availablePoints: availablePoints,
                         label: setLabelFrom(key: keys[3]),
                         enabledButtonAction: autoPresLastButton,
                         disabledButtonAction: disabledButtonAction
@@ -120,30 +114,30 @@ extension CharacteristicsRadioButtonGroup {
     }
     
     private func autoPresLastButton() {
-//        guard countUncheckedCharacteristics == 1 else { return }
-//        var setValue: Int {
-//            let availablePoints = maxPoint - pointsTotal
-//            return (0...4).contains(availablePoints) ? availablePoints : 4
-//        }
-//        
-//        if integratorValue == 0 {
-//            integratorValue = setValue
-//        } else if entrepreneurValue == 0 {
-//            entrepreneurValue = setValue
-//        } else if administratorValue == 0 {
-//            administratorValue = setValue
-//        } else if producerValue == 0 {
-//            producerValue = setValue
-//        }
+        guard countUncheckedCharacteristics == 1 else { return }
+        var setValue: Int {
+            let availablePoints = maxPoint - pointsTotal
+            return (0...4).contains(availablePoints) ? availablePoints : 4
+        }
+        
+        if integratorValue == 0 {
+            integratorValue = setValue
+        } else if entrepreneurValue == 0 {
+            entrepreneurValue = setValue
+        } else if administratorValue == 0 {
+            administratorValue = setValue
+        } else if producerValue == 0 {
+            producerValue = setValue
+        }
     }
     
     
     
     private var maxPoint: Int { 10 }
     
-    private var availablePoints: Int {
-        maxPoint - pointsTotal - countUncheckedCharacteristics
-    }
+//    private var availablePoints: Int {
+//        maxPoint - pointsTotal - countUncheckedCharacteristics
+//    }
     
     private var pointsTotal: Int {
         (producerValue + administratorValue

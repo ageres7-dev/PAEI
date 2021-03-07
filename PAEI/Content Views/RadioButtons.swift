@@ -12,7 +12,6 @@ struct RadioButtons: View {
     @Binding var otherValueOne: Int
     @Binding var otherValueTwo: Int
     @Binding var otherValueThree: Int
-    let availablePoints: Int
     let label: String
     let enabledButtonAction: () -> Void
     let disabledButtonAction: () -> Void
@@ -31,28 +30,24 @@ struct RadioButtons: View {
                 RadioButton(value: $currentValue,
                             otherValues: (otherValueOne, otherValueTwo, otherValueThree),
                             buttonValue: 1,
-                            availablePoints: availablePoints,
                             enabledButtonAction : enabledButtonAction,
                             disabledButtonAction: disabledButtonAction)
                 Spacer()
                 RadioButton(value: $currentValue,
                             otherValues: (otherValueOne, otherValueTwo, otherValueThree),
                             buttonValue: 2,
-                            availablePoints: availablePoints,
                             enabledButtonAction : enabledButtonAction,
                             disabledButtonAction: disabledButtonAction)
                 Spacer()
                 RadioButton(value: $currentValue,
                             otherValues: (otherValueOne, otherValueTwo, otherValueThree),
                             buttonValue: 3,
-                            availablePoints: availablePoints,
                             enabledButtonAction : enabledButtonAction,
                             disabledButtonAction: disabledButtonAction)
                 Spacer()
                 RadioButton(value: $currentValue,
                             otherValues: (otherValueOne, otherValueTwo, otherValueThree),
                             buttonValue: 4,
-                            availablePoints: availablePoints,
                             enabledButtonAction : enabledButtonAction,
                             disabledButtonAction: disabledButtonAction)
             }
@@ -66,10 +61,8 @@ struct RadioButton: View {
     @Binding var value: Int
     let otherValues: (Int, Int, Int)
     let buttonValue: Int
-    let availablePoints: Int
     let enabledButtonAction: () -> Void
     let disabledButtonAction: () -> Void
-//    let isOn: Bool
     
     var body: some View {
         VStack {
@@ -98,11 +91,8 @@ extension RadioButton {
             value = 0
         } else {
             value = buttonValue
+            enabledButtonAction()
         }
-        
-        enabledButtonAction()
-        
-        
     }
         
     private var isMarked: Bool {
@@ -111,12 +101,9 @@ extension RadioButton {
     }
     
     private var isOn: Bool {
-//        buttonValue <= availablePoints + (value == 0 ? 1 : value)
-
         buttonValue != otherValues.0
             && buttonValue != otherValues.1
             && buttonValue != otherValues.2
-//        return true
     }
 }
 
@@ -128,7 +115,6 @@ struct RadioButtonGroups_Previews: PreviewProvider {
             otherValueOne: .constant(2),
             otherValueTwo: .constant(2),
             otherValueThree: .constant(2),
-            availablePoints: 1,
             label: "Уважающий",
             enabledButtonAction: {},
             disabledButtonAction: {}
@@ -142,7 +128,6 @@ struct RadioButton_Previews: PreviewProvider {
             value: .constant(3),
             otherValues: (0, 0, 0),
             buttonValue: 3,
-            availablePoints: 3,
             enabledButtonAction : {},
             disabledButtonAction: {}
         )
