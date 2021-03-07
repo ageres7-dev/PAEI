@@ -14,10 +14,8 @@ struct CharacteristicsRadioButtonGroup: View {
     @Binding var entrepreneurValue: Int
     @Binding var integratorValue: Int
     
-    var currentCharacteristic: CharacteristicBlock
-    var disabledButtonAction: () -> Void
-    
-//    var keys = ["p", "a", "e", "i"]
+    let currentCharacteristic: CharacteristicBlock
+    let disabledButtonAction: () -> Void
     let keys: [Key]
     
     var body: some View {
@@ -27,31 +25,51 @@ struct CharacteristicsRadioButtonGroup: View {
                 .shadow(radius: isSmallScreen ? 10 : 25)
             
             
+            
             VStack {
                 Group{
-                    RadioButtons(currentValue: setFuncFrom(key: keys[0]),
-                                 availablePoints: availablePoints,
-                                 label: setLabelFrom(key: keys[0]),
-                                 enabledButtonAction: autoPresLastButton,
-                                 disabledButtonAction: disabledButtonAction)
+                    RadioButtons(
+                        currentValue: setFuncFrom(key: keys[0]),
+                        otherValueOne: setFuncFrom(key: keys[1]),
+                        otherValueTwo: setFuncFrom(key: keys[2]),
+                        otherValueThree: setFuncFrom(key: keys[3]),
+                        availablePoints: availablePoints,
+                        label: setLabelFrom(key: keys[0]),
+                        enabledButtonAction: autoPresLastButton,
+                        disabledButtonAction: disabledButtonAction
+                    )
+                    RadioButtons(
+                        currentValue: setFuncFrom(key: keys[1]),
+                        otherValueOne: setFuncFrom(key: keys[0]),
+                        otherValueTwo: setFuncFrom(key: keys[2]),
+                        otherValueThree: setFuncFrom(key: keys[3]),
+                        availablePoints: availablePoints,
+                        label: setLabelFrom(key: keys[1]),
+                        enabledButtonAction: autoPresLastButton,
+                        disabledButtonAction: disabledButtonAction
+                    )
                     
-                    RadioButtons(currentValue: setFuncFrom(key: keys[1]),
-                                 availablePoints: availablePoints,
-                                 label: setLabelFrom(key: keys[1]),
-                                 enabledButtonAction: autoPresLastButton,
-                                 disabledButtonAction: disabledButtonAction)
+                    RadioButtons(
+                        currentValue: setFuncFrom(key: keys[2]),
+                        otherValueOne: setFuncFrom(key: keys[0]),
+                        otherValueTwo: setFuncFrom(key: keys[1]),
+                        otherValueThree: setFuncFrom(key: keys[3]),
+                        availablePoints: availablePoints,
+                        label: setLabelFrom(key: keys[2]),
+                        enabledButtonAction: autoPresLastButton,
+                        disabledButtonAction: disabledButtonAction
+                    )
                     
-                    RadioButtons(currentValue: setFuncFrom(key: keys[2]),
-                                 availablePoints: availablePoints,
-                                 label: setLabelFrom(key: keys[2]),
-                                 enabledButtonAction: autoPresLastButton,
-                                 disabledButtonAction: disabledButtonAction)
-                    
-                    RadioButtons(currentValue: setFuncFrom(key: keys[3]),
-                                 availablePoints: availablePoints,
-                                 label: setLabelFrom(key: keys[3]),
-                                 enabledButtonAction: autoPresLastButton,
-                                 disabledButtonAction: disabledButtonAction)
+                    RadioButtons(
+                        currentValue: setFuncFrom(key: keys[3]),
+                        otherValueOne: setFuncFrom(key: keys[0]),
+                        otherValueTwo: setFuncFrom(key: keys[1]),
+                        otherValueThree: setFuncFrom(key: keys[2]),
+                        availablePoints: availablePoints,
+                        label: setLabelFrom(key: keys[3]),
+                        enabledButtonAction: autoPresLastButton,
+                        disabledButtonAction: disabledButtonAction
+                    )
                     
                 }
                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
@@ -102,28 +120,27 @@ extension CharacteristicsRadioButtonGroup {
     }
     
     private func autoPresLastButton() {
-        guard countUncheckedCharacteristics == 1 else { return }
-        var setValue: Int {
-            let availablePoints = maxPoint - pointsTotal
-            return (0...4).contains(availablePoints) ? availablePoints : 4
-        }
-        
-        if integratorValue == 0 {
-            integratorValue = setValue
-        } else if entrepreneurValue == 0 {
-            entrepreneurValue = setValue
-        } else if administratorValue == 0 {
-            administratorValue = setValue
-        } else if producerValue == 0 {
-            producerValue = setValue
-        }
+//        guard countUncheckedCharacteristics == 1 else { return }
+//        var setValue: Int {
+//            let availablePoints = maxPoint - pointsTotal
+//            return (0...4).contains(availablePoints) ? availablePoints : 4
+//        }
+//        
+//        if integratorValue == 0 {
+//            integratorValue = setValue
+//        } else if entrepreneurValue == 0 {
+//            entrepreneurValue = setValue
+//        } else if administratorValue == 0 {
+//            administratorValue = setValue
+//        } else if producerValue == 0 {
+//            producerValue = setValue
+//        }
     }
+    
+    
     
     private var maxPoint: Int { 10 }
     
-    //    private var shadowColor: Color {
-    //        colorScheme == .dark ? .blue : .gray
-    //    }
     private var availablePoints: Int {
         maxPoint - pointsTotal - countUncheckedCharacteristics
     }
