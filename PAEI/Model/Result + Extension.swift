@@ -298,7 +298,8 @@ extension Result {
                           "деловая переписка" ]
             )
             
-        default: result = Result(lightPicture: "lightDefault", darkPicture: "darkDefault")
+            //"lightDefault" "darkDefault"
+        default: result = Result(lightPicture: "light19", darkPicture: "dark19")
             
         }
 
