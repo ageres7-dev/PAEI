@@ -45,33 +45,7 @@ public extension UIImage {
         self.draw(at: CGPoint(x: -rect.origin.x / scale, y: -rect.origin.y / scale))
         let croppedImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage(systemName: "person.fill")!
         UIGraphicsEndImageContext()
+        
         return croppedImage
     }
 }
-
-
-/*
-func cropImage2(image: UIImage, rect: CGRect, scale: CGFloat) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: rect.size.width / scale, height: rect.size.height / scale), true, 0.0)
-    let imageView = UIImageView(frame: rect)
-    imageView.image = image
-    imageView.contentMode = .scaleAspectFit
-    imageView.layer.cornerRadius = 200
-    imageView.layer.masksToBounds = true
-//        imageView.draw(rect)
-    
-    UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, 1)
-    let context = UIGraphicsGetCurrentContext()!
-    imageView.layer.render(in: context)
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    
-//        let croppedImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage(systemName: "person.fill")!
-//        UIGraphicsEndImageContext()
-    return result
-    
-//        image.draw(at: CGPoint(x: -rect.origin.x / scale, y: -rect.origin.y / scale))
-//        let croppedImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage(systemName: "person.fill")!
-//        UIGraphicsEndImageContext()
-//        return croppedImage
-    */

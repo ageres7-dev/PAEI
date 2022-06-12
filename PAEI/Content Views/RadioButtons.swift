@@ -65,23 +65,23 @@ struct RadioButton: View {
     let disabledButtonAction: () -> Void
     
     var body: some View {
-        VStack {
-            Text("\(buttonValue)")
-                .font(.subheadline)
-                .offset(y: 6)
-
-            Button(action: {
-                isOn ? action : disabledButtonAction()
-            }) {
+        
+        Button(action: {
+            isOn ? action : disabledButtonAction()
+        }) {
+            VStack {
+                Text("\(buttonValue)")
+                    .font(.system(size: 14))
+                
                 Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
-                    .resizable()
+                    .font(.system(size: 20))
                     .aspectRatio(contentMode: .fit)
                     .opacity(isOn ? 1: 0.3)
-                    .foregroundColor(.primary)
             }
-//            .disabled(!isOn)
-            .frame(width: 20, height: 20)
         }
+        
+        .foregroundColor(.primary)
+        .frame(width: 24, height: 20)
     }
 }
 
@@ -94,7 +94,7 @@ extension RadioButton {
             enabledButtonAction()
         }
     }
-        
+    
     private var isMarked: Bool {
         value == buttonValue
         
@@ -102,8 +102,8 @@ extension RadioButton {
     
     private var isOn: Bool {
         buttonValue != otherValues.0
-            && buttonValue != otherValues.1
-            && buttonValue != otherValues.2
+        && buttonValue != otherValues.1
+        && buttonValue != otherValues.2
     }
 }
 

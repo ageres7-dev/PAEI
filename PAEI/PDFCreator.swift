@@ -1,5 +1,6 @@
 
 import UIKit
+import SwiftUI
 import PDFKit
 
 class PDFCreator {
@@ -153,15 +154,9 @@ class PDFCreator {
     }
     
     private func addImage(image: UIImage, imageBlockRect: CGRect) -> CGFloat {
-        //        let maxHeight = imageBlockRect.height * 0.8
         let maxWidth = imageBlockRect.width * 0.8
-        
-        //        let aspectWidth = maxWidth / image.size.width
-        //        let aspectHeight = maxHeight / image.size.height
-        //        let aspectRatio = min(aspectWidth, aspectHeight)
-        
         let aspectRatio = maxWidth / image.size.width
-        
+    
         let scaledWidth = image.size.width * aspectRatio
         let scaledHeight = image.size.height * aspectRatio
         
@@ -179,12 +174,22 @@ class PDFCreator {
 
 
 
-//
-//struct PDFViewUI_Previews: PreviewProvider {
-//    static var previews: some View {
-////        PDFViewUI(data: PDFCreator(title: "jhbjhbhb", body: "bjhbhj", image: UIImage(named: "6")!).createDocument())
-//    }
-//}
+
+struct PDFViewUI_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        let data = PDFCreator(
+            title:  "Lorem Ipsum",
+            characteristic: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            skills: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            qualit: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            detailedCharacteristic: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            image: UIImage(named: "light10")!
+        ).createDocument()
+        
+        PDFViewUI(data: data)
+    }
+}
 
 
 

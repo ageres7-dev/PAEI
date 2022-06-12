@@ -25,9 +25,7 @@ extension View {
 
 extension ViewModifier {
     var isSmallScreen: Bool {
-//                print("Высота экрана \(UIScreen.main.bounds.size.height)")
-//        return
-            UIScreen.main.bounds.size.height < 570
+        UIScreen.main.bounds.size.height < 570
     }
     var isBigScreen: Bool {
         UIScreen.main.bounds.size.height > 667

@@ -59,19 +59,9 @@ struct WelcomeView: View {
                             .padding(0)
                             .setCustomBackgroung()
                         
-                        VStack{
-                            Text("Модель PAEI разработал Ицхак Адизес (יצחק אדיג'ס‏‎) – израильский и американский писатель и бизнес-консультант, специализирующийся на улучшении эффективности менеджмента.\nОригинальный тест вы можете пройти на сайте института Адизеса:")
-                            
-                            Link(destination: URL(string: "https://adizes.me")!) {
-                                HStack {
-                                    Image(systemName: "link")
-                                        .font(.body)
-                                    Text("adizes.me")
-                                }
-                                .offset(x: -8, y: 0)
-                            }
-                        }
-                        .padding(0)
+                        
+                        Text("Модель PAEI разработал Ицхак Адизес (יצחק אדיג'ס‏‎) – израильский и американский писатель и бизнес-консультант, специализирующийся на улучшении эффективности менеджмента.\nОригинальный тест вы можете пройти на [сайте института Адизеса](https://adizes.me).")
+                            .padding(0)
                         .setCustomBackgroung()
                         
                         Spacer(minLength: 82)
@@ -136,35 +126,6 @@ struct TextBlockView: View {
     }
 }
 
-/*
-struct paeiTextBlocks: View {
-    var body: some View {
-        Group {
-            TextBlockView(imagaSystemName: "p.circle",
-                          title: "ЧТО НУЖНО СДЕЛАТЬ?",
-                          text: "Данная функция менеджмента отвечает за удовлетворение потребностей клиентов. От этого зависит результативность компании в краткосрочной перспективе.",
-                          imageColor: .red)
-            
-            TextBlockView(imagaSystemName: "a.circle",
-                          title: "КАК ЭТО НУЖНО СДЕЛАТЬ?",
-                          text: "Организация должна в правильной последовательности делать правильные вещи. Администратор обеспечивает данный процесс.",
-                          imageColor: .blue)
-            
-            TextBlockView(imagaSystemName: "e.circle",
-                          title: "КОГДА/ЗАЧЕМ ЭТО НУЖНО СДЕЛАТЬ?",
-                          text: "Придерживаясь творческого подхода и готовность идти на риск менеджент также должен ориентироваться в хаосе изменений и определять направление развития компании.",
-                          imageColor: .customYellow)
-                
-            
-            TextBlockView(imagaSystemName: "i.circle",
-                          title: "КТО ЭТО ДОЛЖЕН СДЕЛАТЬ?",
-                          text: "Руководителю нужно уметь создавать в компании такую систему ценностей, которая в свою очередь сформирует в команде атмосферу взаимоуважения и сотрудничества.",
-                          imageColor: .green)
-        }
-    }
-}
-
-*/
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeView()

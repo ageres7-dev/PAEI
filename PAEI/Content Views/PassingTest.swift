@@ -77,7 +77,6 @@ struct PassingTest: View {
                         keys: currentKey
                     )
                     .alert(isPresented: $showAlertDisabledButton) {
-//                        Alert(title: Text("В каждом блоке оценки НЕ повторяются"))
                         Alert(
                             title: Text("Внимание!"),
                             message: Text("В каждом блоке оценки НЕ повторяются")
@@ -89,16 +88,16 @@ struct PassingTest: View {
                     .padding(.bottom, isSmallScreen ? 8 : 20)
                     Spacer()
                     
-                    Button(action: isNextButtom
-                            ? actionNextButton
-                            : actionFinishButton) {
+                    Button(action: isNextButtom ? actionNextButton : actionFinishButton) {
                         Text(isNextButtom
-                                ? "Cледующий блок"
-                                : "Показать результат")
-                            .bold()
-                            .setCustomStyleButton(disabledStyle: pointsTotal != 10)
+                             ? "Cледующий блок"
+                             : "Показать результат")
+                        .bold()
+                        .setCustomStyleButton(disabledStyle: pointsTotal != 10)
                     }
-                    .animation(.none)
+                    .transaction { transaction in
+                        transaction.animation = nil
+                    }
                     .disabled(pointsTotal != 10)
                     .padding(.top, isSmallScreen ? 0 : 8)
                     .padding(.bottom, 8)
@@ -122,22 +121,18 @@ struct PassingTest: View {
             }
             .padding()
             .onChange(of: producerValue) { _ in
-//                print("p изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
             .onChange(of: administratorValue) { _ in
-//                print("а изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
             .onChange(of: entrepreneurValue) { _ in
-//                print("е изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
             .onChange(of: integratorValue) { _ in
-//                print("i изменился")
                 updateAnswer(at: currentIndexBlock)
                 saveCurrentCondition()
             }
@@ -307,7 +302,6 @@ struct HelpButton: View {
             Alert(
                 title: Text("Описывайте себя, а не Вашу работу"),
                 message:
-//                    Text("Присвойте каждому качеству от 1-го до 4-ех баллов в зависимости от того, насколько оно подходит именно вам. Общая сумма баллов одного блока должна быть равна 10."
                     Text("Расставьте оценки от 1 (наименее подходящая характеристика) до 4 баллов (наиболее подходящая). Чем меньше балл, тем  менее выражено качество. В каждом блоке оценки НЕ повторяются. В сумме должно получиться 10 баллов в каждом.")
                 )
                 
@@ -319,7 +313,21 @@ struct HelpButton: View {
 
 struct PassingTest_Previews: PreviewProvider {
     static var previews: some View {
+        let condition = DataManager.shared.loadCondition()
+        
         PassingTest()
+            .environmentObject(ScreenManager())
+            .environmentObject(СonditionManager(condition: condition))
             .preferredColorScheme(.light)
     }
 }
+
+
+/*
+ 
+ var body: some Scene {
+     WindowGroup {
+         ContentView()
+             .environmentObject(ScreenManager())
+             .environmentObject(СonditionManager(condition: condition))
+ */

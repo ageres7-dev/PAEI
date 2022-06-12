@@ -13,7 +13,8 @@ struct SplashScreen: View {
     
         PaeiLogo(showLogo: showLogo)
             .offset(y: 6)
-            .animation(Animation.easeOut(duration:0.6).delay(0.1))
+            .animation(Animation.easeOut(duration: 0.6).delay(0.1),
+                       value: showLogo)
             .frame(width: 300, height: 300)
             .onAppear {
                 withAnimation() {

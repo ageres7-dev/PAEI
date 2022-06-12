@@ -13,7 +13,6 @@ struct CustomBackgroung: ViewModifier {
     func body(content: Content) -> some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 20.0)
-//                .foregroundColor(Color(.systemGray6))
                 .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
             
             content

@@ -8,7 +8,7 @@
 import SwiftUI
 import PDFKit
 
-struct PDFViewUI : UIViewRepresentable {
+struct PDFViewUI: UIViewRepresentable {
 
     var data: Data
     init(data: Data) {
@@ -28,9 +28,3 @@ struct PDFViewUI : UIViewRepresentable {
     }
 
 }
-
-//struct PDFViewUI_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PDFViewUI()
-//    }
-//}

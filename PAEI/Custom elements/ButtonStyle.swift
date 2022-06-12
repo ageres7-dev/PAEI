@@ -14,7 +14,6 @@ struct CustomStyleButton: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.title3)
-//            .foregroundColor(disabledStyle ? Color.white.opacity(0.8) : .white)
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, minHeight: isSmallScreen ? 44 : 50)
             .background(disabledStyle ? backgroundColor.opacity(0.4) : backgroundColor)

@@ -72,9 +72,9 @@ struct CharacteristicsRadioButtonGroup: View {
             .padding(
                 EdgeInsets(
                     top: 20,
-                    leading: isBigScreen ? 45 : 20,
+                    leading: isBigScreen ? 34 : 20,
                     bottom: 20,
-                    trailing: isBigScreen ? 45 : 20
+                    trailing: isBigScreen ? 34 : 20
                 )
             )
         }

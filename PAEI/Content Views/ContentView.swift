@@ -17,7 +17,7 @@ struct ContentView: View {
             
             if showSplash {
                 SplashScreen()
-                    .animation(.easeOut)
+                    .animation(.easeOut, value: showSplash)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             withAnimation() {

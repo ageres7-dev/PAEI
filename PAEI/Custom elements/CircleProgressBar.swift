@@ -32,7 +32,7 @@ struct CircleProgressBar: View {
                                                lineJoin: .round))
                     .foregroundColor(color)
                     .rotationEffect(Angle(degrees: 270))
-                    .animation(.easeOut)
+                    .animation(.easeOut, value: progress)
                 Text(insideLabel)
                     .font(.system(size: fontValue))
                     .bold()
@@ -54,31 +54,3 @@ struct CircleProgressBarView_Previews: PreviewProvider {
             .frame(width: 130, height: 130, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
-
-
-
-//struct RingBackgroundShape: Shape {
-//    
-//    var thickness: CGFloat
-//    
-//    func path(in rect: CGRect) -> Path {
-//        var path = Path()
-//        path.addArc(
-//            center: CGPoint(x: rect.width / 2, y: rect.height / 2),
-//            radius: rect.width / 2 - thickness,
-//            startAngle: Angle(degrees: 0),
-//            endAngle: Angle(degrees: 360),
-//            clockwise: false
-//        )
-//        return path
-//            .strokedPath(.init(lineWidth: thickness, lineCap: .round, lineJoin: .round))
-//    }
-//    
-//}
-//
-//
-//struct RingBackgroundShape_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RingBackgroundShape(thickness: 7)
-//    }
-//}
