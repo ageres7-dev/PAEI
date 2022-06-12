@@ -23,6 +23,10 @@ struct CharacteristicsRadioButtonGroup: View {
             RoundedRectangle(cornerRadius: 20.0)
                 .foregroundColor(colorScheme == .dark ? Color(.systemGray5) : .white)
                 .shadow(radius: isSmallScreen ? 10 : 25)
+                .shadow(
+                    color: colorScheme == .dark ? .blue.opacity(0.25) : .clear ,
+                    radius: isSmallScreen ? 10 : 25
+                )
    
             VStack {
                 Group{

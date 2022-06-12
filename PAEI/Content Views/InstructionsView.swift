@@ -96,7 +96,9 @@ extension InstructionsView {
     
     private func showPassingTest() {
         screenManager.isModalPresentPassingTest = true
-        screenManager.isShowingInstructionsView = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.screenManager.isShowingInstructionsView = false
+        }
     }
     
     private func actionStartAgain() {
