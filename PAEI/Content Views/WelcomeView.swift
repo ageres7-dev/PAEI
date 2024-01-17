@@ -27,7 +27,7 @@ struct WelcomeView: View {
                             }
                         }
                      
-                        VStack {
+                        VStack(alignment: .leading) {
                             HStack {
                                 Image("pElement")
                                     .resizable()

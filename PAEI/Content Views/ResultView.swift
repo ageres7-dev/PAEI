@@ -71,46 +71,69 @@ struct ResultView: View {
 extension ResultView {
     //MARK: - Properties
     private var sharedText: [Any] {
-         let title = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)\n\n" : ""
-         
-         let qualit = resultTest.qualities != nil ? "\nКачества:\n" + "- " + resultTest.qualities!.joined(separator: ", \n- ") + ".\n" : ""
-         
-         let characteristic = resultTest.characteristic != nil ? "Характеристика:\n" + resultTest.characteristic! + "\n" : ""
-         
-         let skills = resultTest.skills != nil ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n\n" : ""
+        var title = ""
+        
+        if let shortInfo = resultTest.shortInfo {
+            title = "Я - \(shortInfo)\n\n"
+        }
+        
+        var quality = ""
+        if let qualities = resultTest.qualities {
+            quality = "\nКачества:\n" + "- " + qualities.joined(separator: ", \n- ") + ".\n"
+        }
+        var characteristicString = ""
+        
+        if let characteristic = resultTest.characteristic {
+            characteristicString = "Характеристика:\n" + characteristic + "\n"
+        }
+        var skillsString = ""
+        if let skills = resultTest.skills {
+            skillsString = "\nНавыки:\n" + "- " + skills.joined(separator: ", \n- ") + "." + "\n\n"
+        }
          
          return [
-            "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristic)\(qualit)\(skills)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
+            "\(title)Мой PAEI: \(paeiKey)\n\n\(characteristicString)\(quality)\(skillsString)Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
          ]
         
     }
     
     private var sharedPDF: [Any] {
-        let qualit = resultTest.qualities != nil
-            ? "\nКачества:\n- \(resultTest.qualities!.joined(separator: ", \n- "))."
-            : ""
+        var qualityString = ""
+        if let qualities = resultTest.qualities {
+            qualityString = "\nКачества:\n- \(qualities.joined(separator: ", \n- "))."
+        }
         
-        let skills = resultTest.skills != nil
-            ? "\nНавыки:\n"  + "- " + resultTest.skills!.joined(separator: ", \n- ") + "." + "\n"
-            : ""
+        var skillsString = ""
+        if let skills = resultTest.skills {
+            skillsString = "\nНавыки:\n"  + "- " + skills.joined(separator: ", \n- ") + "." + "\n"
+        }
                 
-        let titlePdf = resultTest.shortInfo != nil ? "Я - \(resultTest.shortInfo!)" : "Мой PAEI: \(paeiKey)"
-        let subTitlePdf = resultTest.shortInfo != nil ? "Мой PAEI: \(paeiKey)\n\n" : ""
+        let titlePdf: String
+        if let shortInfo = resultTest.shortInfo {
+            titlePdf = "Я - \(shortInfo)"
+        } else {
+            titlePdf = "Мой PAEI: \(paeiKey)"
+        }
         
-        let characteristic = resultTest.characteristic != nil ? subTitlePdf + "Характеристика:\n" + resultTest.characteristic! + "" : nil
+        let subTitlePdf: String = resultTest.shortInfo != nil ? "Мой PAEI: \(paeiKey)\n\n" : ""
+        
+        var characteristicString: String?
+        if let characteristic = resultTest.characteristic {
+            characteristicString = subTitlePdf + "Характеристика:\n" + characteristic
+        }
+        
         let detailedCharacteristic = "Подробная расшифровка ключа: \(paeiKey)\n\nP=\(answer.producer)\n\(detailedResult.pCharacteristic)  \n\nA=\(answer.administrator)\n\(detailedResult.aCharacteristic) \n\nE=\(answer.entrepreneur)\n\(detailedResult.eCharacteristic) \n\nI=\(answer.integrator)\n\(detailedResult.iCharacteristic)"
         
         let image = UIImage(named: resultTest.lightPicture) ?? UIImage(systemName: "person.2.circle")!
         
         let pdfCreator = PDFCreator(title: titlePdf,
-                                    characteristic: characteristic,
-                                    skills: skills,
-                                    qualit: qualit,
+                                    characteristic: characteristicString,
+                                    skills: skillsString,
+                                    quality: qualityString,
                                     detailedCharacteristic: detailedCharacteristic,
                                     image: image)
         
         return [pdfCreator.createDocument()]
-        
     }
 
     private var paeiKey: String{
@@ -255,78 +278,98 @@ struct ResultBodyView: View {
                 }
                 Group {
                     //MARK: - P
-                    VStack {
-                        Text("Производитель")
-                            .bold()
-                            .padding(.bottom, 4)
-                        
-                        CircleProgressBar(
-                            currentValue: answer.producer,
-                            maxValue: maxValueOneCharacteristic,
-                            insideLabel: "P = \(answer.producer)",
-                            fontValueIndex: 0.22,
-                            color: .paeiPink
-                        )
-                        .frame(height: 100)
-                        .padding(.bottom, 8)
-                        
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text("Производитель")
+                                    .bold()
+                                    .padding(.bottom, 4)
+                                
+                                CircleProgressBar(
+                                    currentValue: answer.producer,
+                                    maxValue: maxValueOneCharacteristic,
+                                    insideLabel: "P = \(answer.producer)",
+                                    fontValueIndex: 0.22,
+                                    color: .paeiPink
+                                )
+                                .frame(width: 100, height: 100)
+                                .padding(.bottom, 8)
+                            }
+                            Spacer()
+                        }
                         Text(detailedResult.pCharacteristic)
                     }
                     .setCustomBackgroung()
                     //MARK: - A
-                    VStack {
-                        Text("Администратор")
-                            .bold()
-                            .padding(.bottom, 4)
-                        
-                        CircleProgressBar(
-                            currentValue: answer.administrator,
-                            maxValue: maxValueOneCharacteristic,
-                            insideLabel: "A = \(answer.administrator)",
-                            fontValueIndex: 0.22,
-                            color: .paeiOrange
-                        )
-                        .frame(height: 100)
-                        .padding(.bottom, 8)
-                        
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text("Администратор")
+                                    .bold()
+                                    .padding(.bottom, 4)
+                                
+                                CircleProgressBar(
+                                    currentValue: answer.administrator,
+                                    maxValue: maxValueOneCharacteristic,
+                                    insideLabel: "A = \(answer.administrator)",
+                                    fontValueIndex: 0.22,
+                                    color: .paeiOrange
+                                )
+                                .frame(width: 100, height: 100)
+                                .padding(.bottom, 8)
+                            }
+                            Spacer()
+                        }
                         Text(detailedResult.aCharacteristic)
                     }
                     .setCustomBackgroung()
                     //MARK: - E
-                    VStack {
-                        Text("Предприниматель")
-                            .bold()
-                            .padding(.bottom, 4)
-                        
-                        CircleProgressBar(
-                            currentValue: answer.entrepreneur,
-                            maxValue: maxValueOneCharacteristic,
-                            insideLabel: "E = \(answer.entrepreneur)",
-                            fontValueIndex: 0.22,
-                            color: .paeiBlue
-                        )
-                        .frame(height: 100)
-                        .padding(.bottom, 8)
-                        
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text("Предприниматель")
+                                    .bold()
+                                    .padding(.bottom, 4)
+                                
+                                CircleProgressBar(
+                                    currentValue: answer.entrepreneur,
+                                    maxValue: maxValueOneCharacteristic,
+                                    insideLabel: "E = \(answer.entrepreneur)",
+                                    fontValueIndex: 0.22,
+                                    color: .paeiBlue
+                                )
+                                .frame(width: 100, height: 100)
+                                .padding(.bottom, 8)
+                            }
+                            Spacer()
+                        }
                         Text(detailedResult.eCharacteristic)
                     }
                     .setCustomBackgroung()
                     //MARK: - I
-                    VStack {
-                        Text("Интегратор")
-                            .bold()
-                            .padding(.bottom, 4)
-                        
-                        CircleProgressBar(
-                            currentValue: answer.integrator,
-                            maxValue: maxValueOneCharacteristic,
-                            insideLabel: "I = \(answer.integrator)",
-                            fontValueIndex: 0.22,
-                            color: .paeiGreen
-                        )
-                        .frame(height: 100)
-                        .padding(.bottom, 8)
-                        
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text("Интегратор")
+                                    .bold()
+                                    .padding(.bottom, 4)
+                                
+                                CircleProgressBar(
+                                    currentValue: answer.integrator,
+                                    maxValue: maxValueOneCharacteristic,
+                                    insideLabel: "I = \(answer.integrator)",
+                                    fontValueIndex: 0.22,
+                                    color: .paeiGreen
+                                )
+                                .frame(width: 100, height: 100)
+                                .padding(.bottom, 8)
+                            }
+                            Spacer()
+                        }
                         Text(detailedResult.iCharacteristic)
                     }
                     .setCustomBackgroung()
@@ -368,6 +411,6 @@ struct ResultView_Previews: PreviewProvider {
         ResultView(answer: Answer())
             .preferredColorScheme(.dark)
             .environmentObject(ScreenManager())
-        
+            .environmentObject(СonditionManager())
     }
 }

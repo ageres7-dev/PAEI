@@ -7,7 +7,7 @@ class PDFCreator {
     let title: String
     let characteristic: String?
     let skills: String
-    let qualit: String
+    let quality: String
     let detailedCharacteristic: String
     let image: UIImage
     
@@ -26,11 +26,11 @@ class PDFCreator {
     private lazy var isFullCharacteristic = characteristic != nil
     
     init(title: String, characteristic: String?, skills: String,
-         qualit: String, detailedCharacteristic: String, image: UIImage) {
+         quality: String, detailedCharacteristic: String, image: UIImage) {
         self.title = title
         self.characteristic = characteristic
         self.skills = skills
-        self.qualit = qualit
+        self.quality = quality
         self.detailedCharacteristic = detailedCharacteristic
         self.image = image
     }
@@ -83,7 +83,7 @@ class PDFCreator {
             width: (pageRect.width - leftMargin - rightMargin) / 2,
             height: pageRect.height * 0.23
         )
-        skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + qualit)
+        skillsBottom = addTextBlock(textRect: skilsTextRect, text: skills + quality)
         skilsRightEdge = skilsTextRect.origin.x + skilsTextRect.width
     }
     
@@ -182,7 +182,7 @@ struct PDFViewUI_Previews: PreviewProvider {
             title:  "Lorem Ipsum",
             characteristic: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             skills: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            qualit: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            quality: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             detailedCharacteristic: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             image: UIImage(named: "light10")!
         ).createDocument()
