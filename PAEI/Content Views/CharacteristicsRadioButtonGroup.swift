@@ -135,13 +135,7 @@ extension CharacteristicsRadioButtonGroup {
         }
     }
     
-    
-    
     private var maxPoint: Int { 10 }
-    
-//    private var availablePoints: Int {
-//        maxPoint - pointsTotal - countUncheckedCharacteristics
-//    }
     
     private var pointsTotal: Int {
         (producerValue + administratorValue

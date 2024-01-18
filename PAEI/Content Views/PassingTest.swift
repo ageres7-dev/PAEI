@@ -12,6 +12,7 @@ enum Key: String, Codable {
 }
 
 struct PassingTest: View {
+    @EnvironmentObject var screenManager: ScreenManager
     @EnvironmentObject var conditionManager: СonditionManager
     @State private var producerValue = 0
     @State private var administratorValue = 0
@@ -30,7 +31,7 @@ struct PassingTest: View {
         NavigationView {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                
-                VStack {
+                VStack(alignment: .center) {
                     Spacer()
                     
                     HStack {
@@ -115,9 +116,22 @@ struct PassingTest: View {
                     .frame(height: isSmallScreen ? 24 : 30)
                 }
                 .navigationBarHidden(true)
-                
-                HelpButton(isPresented: $showHelp)
+                HStack {
+                    Button {
+                        screenManager.isShowingInstructionsView = true
+                        screenManager.isModalPresentPassingTest = false
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24, height: 24)
+                    }
                     .offset( y: isSmallScreen ? -10 : 0)
+                    
+                    Spacer()
+                    HelpButton(isPresented: $showHelp)
+                        .offset( y: isSmallScreen ? -10 : 0)
+                }
             }
             .padding()
             .onChange(of: producerValue) { _ in
@@ -209,6 +223,7 @@ extension PassingTest {
         DataManager.shared.save(
             condition: conditionManager.condition
         )
+        screenManager.isShowingInstructionsView = false
     }
     //запоминание расположения вопросов
     private func newShuffledKey() {
@@ -321,13 +336,3 @@ struct PassingTest_Previews: PreviewProvider {
             .preferredColorScheme(.light)
     }
 }
-
-
-/*
- 
- var body: some Scene {
-     WindowGroup {
-         ContentView()
-             .environmentObject(ScreenManager())
-             .environmentObject(СonditionManager(condition: condition))
- */

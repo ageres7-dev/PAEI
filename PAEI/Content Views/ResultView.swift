@@ -12,11 +12,11 @@ struct ResultView: View {
     @EnvironmentObject var conditionManager: СonditionManager
     @State private var isShareViewPresented: Bool = false
     @State private var showingActionSheet = false
+    @State private var sharedContent: [Any] = []
     
     let answer: Answer
     let maxValueOneCharacteristic = 120
     var isNewResult = true
-    @State var sharedContent: [Any] = []
     
     var body: some View {
         ZStack {
@@ -29,6 +29,7 @@ struct ResultView: View {
             )
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Ваш ключ: \(paeiKey)")
+            .navigationBarTitleDisplayMode(.inline)
             .actionSheet(isPresented: $showingActionSheet) {
                 ActionSheet(title: Text("Формат"), buttons: [
                     .default(Text("Текст")) {
@@ -217,7 +218,6 @@ struct ResultBodyView: View {
             LazyVStack{
                 Image(colorScheme == .dark ? resultTest.darkPicture : resultTest.lightPicture)
                     .resizable()
-//                    .scaleEffect(1.3)
                     .aspectRatio(contentMode: .fill)
                     .frame(height: screenSize.width * 0.55, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .clipped()

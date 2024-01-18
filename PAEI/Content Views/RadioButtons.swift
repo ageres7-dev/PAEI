@@ -72,6 +72,7 @@ struct RadioButton: View {
             VStack {
                 Text("\(buttonValue)")
                     .font(.system(size: 14))
+                    .foregroundColor(.primary)
                 
                 Image(systemName: isMarked ? "largecircle.fill.circle": "circle")
                     .font(.system(size: 20))
@@ -79,8 +80,7 @@ struct RadioButton: View {
                     .opacity(isOn ? 1: 0.3)
             }
         }
-        
-        .foregroundColor(.primary)
+
         .frame(width: 24, height: 20)
     }
 }

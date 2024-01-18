@@ -70,7 +70,9 @@ struct WelcomeView: View {
                 }
                 .shadow(radius: 25)
                 
-                BlurButton(text: "Дальше") {screenManager.isShowingInstructionsView.toggle()}
+                BlurButton(text: "Дальше") {
+                    screenManager.isShowingInstructionsView.toggle()
+                }
                 
                 NavigationLink(
                     destination: InstructionsView(),

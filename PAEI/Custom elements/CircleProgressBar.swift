@@ -20,7 +20,7 @@ struct CircleProgressBar: View {
             let line = size * 0.12
             let fontValue = size * fontValueIndex
             
-            ZStack {
+            ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
                 Circle()
                     .stroke(lineWidth: line)
                     .opacity(0.3)
@@ -39,6 +39,9 @@ struct CircleProgressBar: View {
                     .multilineTextAlignment(.center)
                 
             }
+            .frame(width: geometry.size.width,
+                                   height: geometry.size.height,
+                                   alignment: .top)
             .scaleEffect(0.95)
         }
     }
