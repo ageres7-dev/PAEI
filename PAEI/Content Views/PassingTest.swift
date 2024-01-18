@@ -126,10 +126,12 @@ struct PassingTest: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 24, height: 24)
                     }
+                    .padding(.top, 8)
                     .offset( y: isSmallScreen ? -10 : 0)
                     
                     Spacer()
                     HelpButton(isPresented: $showHelp)
+                        .padding(.top, 8)
                         .offset( y: isSmallScreen ? -10 : 0)
                 }
             }
@@ -321,7 +323,6 @@ struct HelpButton: View {
                 )
                 
         }
-        .padding(.top, 8)
     }
 }
 
